@@ -74,3 +74,38 @@ export const TopNavSubContents = styled.div`
 
 	cursor: pointer;
 `;
+
+export const TopNavInputWrapper = styled.div`
+	width: 50%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+`;
+export const TopNavInputBox = styled.input`
+	width: 80%;
+	height: 20px;
+
+	border: none;
+	border-bottom: 1px solid #000000;
+	outline: none;
+`;
+export const TopNavInputIcon = styled.div`
+	width: 30px;
+	height: 50px;
+
+	background-image: url("/topnavbar/search.png");
+	background-size: 25px 25px;
+	background-position: center;
+	background-repeat: no-repeat;
+`;
+
+export const TopNavHamburger = styled.div`
+	width: 30px;
+	height: 30px;
+
+	background-image: url("/topnavbar/hamburger.png");
+	background-size: 40px 40px;
+	background-position: center;
+	background-repeat: no-repeat;
+`;

@@ -69,7 +69,15 @@ function TopNav() {
 						COMMUNITY
 					</TopNavS.TopNavSubContents>
 				</TopNavS.SubNavItemWrapper>
-				<TopNavS.TopNavInfoWrapper></TopNavS.TopNavInfoWrapper>
+				<TopNavS.TopNavInfoWrapper>
+					<TopNavS.TopNavInputWrapper>
+						<TopNavS.TopNavInputBox></TopNavS.TopNavInputBox>
+						<TopNavS.TopNavInputIcon></TopNavS.TopNavInputIcon>
+					</TopNavS.TopNavInputWrapper>
+					<TopNavS.TopNavInputWrapper style={{ width: "30%" }}>
+						<TopNavS.TopNavHamburger></TopNavS.TopNavHamburger>
+					</TopNavS.TopNavInputWrapper>
+				</TopNavS.TopNavInfoWrapper>
 			</TopNavS.TopNavContentWrapper>
 		</TopNavS.TopNavWrapper>
 	);
