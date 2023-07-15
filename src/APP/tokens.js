@@ -1,5 +1,15 @@
 export const colors = {
 	green_main: "#0A1A16",
+	grey_50: "#ebebeb",
+	grey_100: "#c0c0c0",
+	grey_200: "#a1a1a1",
+	grey_300: "#767676",
+	grey_400: "#5c5c5c",
+	grey_500: "#333333",
+	grey_600: "#2e2e2e",
+	grey_700: "#242424",
+	grey_800: "#1c1c1c",
+	grey_900: "#151515",
 };
 
 export const typography = {
@@ -14,10 +24,10 @@ export const typography = {
 		fontWeight: 500,
 		fontSize: "16px",
 	},
-	headline_6: {
+	headline_1: {
 		fontFamily: "Noto Sans KR",
-		fontWeight: 500,
-		fontSize: "1.25rem",
+		fontWeight: 400,
+		fontSize: "40px",
 		letterSpacing: "0.001em",
 	},
 	subtitle_3: {

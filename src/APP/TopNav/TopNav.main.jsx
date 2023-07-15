@@ -12,7 +12,7 @@ function TopNav() {
 	};
 	return (
 		<TopNavS.TopNavWrapper>
-			<TopNavS.TopNavContentWrapper>
+			<TopNavS.TopNavContentWrapper type="main">
 				<TopNavS.TopNavLogo>GREENY</TopNavS.TopNavLogo>
 				<TopNavS.TopNavInfoWrapper>
 					<TopNavS.TopNavContents
@@ -36,6 +36,47 @@ function TopNav() {
 					>
 						Like
 					</TopNavS.TopNavContents>
+				</TopNavS.TopNavInfoWrapper>
+			</TopNavS.TopNavContentWrapper>
+			<TopNavS.TopNavContentWrapper type="sub">
+				<TopNavS.SubNavItemWrapper>
+					<TopNavS.TopNavSubContents
+						onClick={(e) => {
+							NavClick(e, "all");
+						}}
+					>
+						ALL
+					</TopNavS.TopNavSubContents>
+					<TopNavS.TopNavSubContents
+						onClick={(e) => {
+							NavClick(e, "eco-products");
+						}}
+					>
+						ECO-PRODUCTS
+					</TopNavS.TopNavSubContents>
+					<TopNavS.TopNavSubContents
+						onClick={(e) => {
+							NavClick(e, "eco-store");
+						}}
+					>
+						ECO-STORE
+					</TopNavS.TopNavSubContents>
+					<TopNavS.TopNavSubContents
+						onClick={(e) => {
+							NavClick(e, "community");
+						}}
+					>
+						COMMUNITY
+					</TopNavS.TopNavSubContents>
+				</TopNavS.SubNavItemWrapper>
+				<TopNavS.TopNavInfoWrapper>
+					<TopNavS.TopNavInputWrapper>
+						<TopNavS.TopNavInputBox></TopNavS.TopNavInputBox>
+						<TopNavS.TopNavInputIcon></TopNavS.TopNavInputIcon>
+					</TopNavS.TopNavInputWrapper>
+					<TopNavS.TopNavInputWrapper style={{ width: "30%" }}>
+						<TopNavS.TopNavHamburger></TopNavS.TopNavHamburger>
+					</TopNavS.TopNavInputWrapper>
 				</TopNavS.TopNavInfoWrapper>
 			</TopNavS.TopNavContentWrapper>
 		</TopNavS.TopNavWrapper>
