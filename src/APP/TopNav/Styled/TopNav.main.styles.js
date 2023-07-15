@@ -27,7 +27,9 @@ export const TopNavContentWrapper = styled.div`
 	${(props) =>
 		props.type == "main"
 			? `background-color: ${tokens.colors.green_main};`
-			: `backgrond-color: #ffffff; color: #000000;`}
+			: `background-color: #ffffff; color: #000000;`}
+
+	z-index: 100;
 `;
 export const TopNavLogo = styled.span`
 	width: 600px;

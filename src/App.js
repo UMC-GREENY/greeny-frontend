@@ -18,13 +18,14 @@ import Home from "./APP/Home/Home.main";
 
 function App() {
 	const MainScreen = styled.div`
-		position: fixed;
+		position: absolute;
 		top: 100px;
 		width: 100vw;
 		min-height: 100vh;
 		height: fit-content;
 
-		background-color: ${tokens.colors.grey_100};
+		// background-color: ${tokens.colors.grey_100};
+		z-index: 50;
 	`;
 	return (
 		<div className="App">

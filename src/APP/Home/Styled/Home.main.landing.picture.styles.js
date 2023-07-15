@@ -2,11 +2,12 @@ import styled from "styled-components";
 import * as tokens from "../../tokens";
 
 export const MainPicWrapper = styled.div`
+	position: fixed;
 	width: 100vw;
 	height: 400px;
 	padding: 0 10vw;
 	display: flex;
-	flex-direction: flex-start;
+	flex-direction: row;
 	align-items: center;
 
 	background-image: url("/home/mainPicture.png");
@@ -15,6 +16,8 @@ export const MainPicWrapper = styled.div`
 	background-repeat: no-repeat;
 
 	background-color: #ffffff;
+
+	z-index: 10;
 `;
 
 export const MainPicContentWrapper = styled.div`
