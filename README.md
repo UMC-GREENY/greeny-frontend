@@ -1,70 +1,40 @@
-# Getting Started with Create React App
+# 2023-1 UMC Project - GREENY
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React로 구현되었습니다. 상태 관리 툴은 Recoil을 사용합니다.
 
-## Available Scripts
+## 협업 방식
 
-In the project directory, you can run:
+**_feature branch_** : 새로운 기능을 제작할 때 생성해주세요.
+예를 들어, 로그인 파트 제작을 진행하시면 `feature/login`
+**_hotfix branch_**: 버그를 수정할 때 생성해주세요.
+예를 들어, 로그인 파트 버그를 수정할때는 `hotfix/login`
 
-### `npm start`
+본인 branch에 작업을 진행하고, master branch에 PR(Pull Request)를 날리고, 팀원에게 말씀해주세요.
+팀원들이 상호 보완하면서 개선해나가면 되겠습니다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+항상 첫 작업을 시작하기 전에, master branch를 Pull 받고 시작해주세요!
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 컴포넌트 분리
 
-### `npm test`
+한 파일이 한 비즈니스로직을 수행하게 만들어주세요.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+> 로그인 화면을 만들 때,
+> 사용자 아이디 입력창, 로그인 버튼을 다른 파일로 만들기 -> X
+> 사용자 아이디 입력창과 로그인 버튼이 포함된 한 파일을 만들기 -> O
 
-### `npm run build`
+폴더 명은 Top down으로 생성해주세요. 컴포넌트 View부분은 ~.jsx로 생성해주세요.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+> 메인 홈 화면의 랜딩 사진 컴포넌트를 만들 경우
+> Home.main.landing.picture.jsx
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Styled component는 재사용성을 위해 따로 Styles 폴더를 생성하여 import 해주세요.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+> Home.main.landing.picture.jsx 의 Styled component를 생성할 경우,
+> Styles/Home.main.landing.picture.styles.js의 경로로 파일을 생성해주세요.
 
-### `npm run eject`
+Styles 폴더와 같은 원리로, 필요하다면 API폴더, Recoil폴더, Util폴더를 생성해주세요.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+> Home.main.landing.picture.jsx 의 API를 생성할 경우,
+> API/Home.main.landing.picture.api.js 같은 형식으로 생성해주세요.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+헷갈리는 부분이 있으실 경우, master branch의 `0694328340612cd7187b7a23489e50a0c5d419d3` 버전을 참고부탁드립니다!
