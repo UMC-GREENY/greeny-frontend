@@ -6,6 +6,7 @@ React로 구현되었습니다. 상태 관리 툴은 Recoil을 사용합니다.
 
 **_feature branch_** : 새로운 기능을 제작할 때 생성해주세요.
 예를 들어, 로그인 파트 제작을 진행하시면 `feature/login`
+
 **_hotfix branch_**: 버그를 수정할 때 생성해주세요.
 예를 들어, 로그인 파트 버그를 수정할때는 `hotfix/login`
 
