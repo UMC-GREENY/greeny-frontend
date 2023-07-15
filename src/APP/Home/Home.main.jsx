@@ -1,7 +1,12 @@
 import React, { useEffect, useState, useRef } from "react";
 
-function home() {
-	return <>홈화면</>;
+import MainLandigPicture from "./Home.main.landing.picture";
+function Home() {
+	return (
+		<>
+			<MainLandigPicture></MainLandigPicture>
+		</>
+	);
 }
 
-export default home;
+export default Home;

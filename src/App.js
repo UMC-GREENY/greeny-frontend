@@ -14,26 +14,26 @@ import * as tokens from "./APP/tokens";
 
 //Main components
 import TopNav from "./APP/TopNav/TopNav.main";
-import home from "./APP/Home/Home.main";
+import Home from "./APP/Home/Home.main";
 
 function App() {
 	const MainScreen = styled.div`
-		// position: fixed;
-		top: 80px;
-		width: 100%;
-		max-width: 800px;
+		position: fixed;
+		top: 100px;
+		width: 100vw;
 		min-height: 100vh;
 		height: fit-content;
-		background-color: ${tokens.colors.grey_50};
+
+		background-color: ${tokens.colors.grey_100};
 	`;
 	return (
 		<div className="App">
 			<TopNav></TopNav>
 			<MainScreen>
 				<Routes>
-					<Route path="/" element={<home />} />
+					<Route path="/" element={<Home />} />
 
-					<Route path="*" element={<home />} />
+					<Route path="*" element={<Home />} />
 				</Routes>
 			</MainScreen>
 		</div>
