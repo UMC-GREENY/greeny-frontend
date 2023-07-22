@@ -3,7 +3,7 @@ import * as tokens from "../../tokens";
 
 export const TopNavWrapper = styled.div`
 	width: 100vw;
-	height: 100px;
+	height: 50px;
 
 	position: fixed;
 	top: 0;

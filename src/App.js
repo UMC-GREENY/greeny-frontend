@@ -19,7 +19,7 @@ import Home from "./APP/Home/Home.main";
 function App() {
 	const MainScreen = styled.div`
 		position: absolute;
-		top: 100px;
+		top: 50px;
 		width: 100vw;
 		min-height: 100vh;
 		height: fit-content;
