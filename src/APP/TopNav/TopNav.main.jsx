@@ -1,9 +1,11 @@
 import React, { useEffect, useState, useRef } from "react";
+import { useNavigate } from 'react-router-dom';
 import styled from "styled-components";
 import * as tokens from "../tokens";
 import * as TopNavS from "./Styled/TopNav.main.styles";
 
 function TopNav() {
+	const navigate = useNavigate();
 	const NavClick = (e, type) => {
 		e.preventDefault();
 		alert(
@@ -17,7 +19,8 @@ function TopNav() {
 				<TopNavS.TopNavInfoWrapper>
 					<TopNavS.TopNavContents
 						onClick={(e) => {
-							NavClick(e, "login");
+							// NavClick(e, "login");
+							navigate('/select');
 						}}
 					>
 						Login

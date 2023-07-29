@@ -15,6 +15,9 @@ import * as tokens from "./APP/tokens";
 //Main components
 import TopNav from "./APP/TopNav/TopNav.main";
 import Home from "./APP/Home/Home.main";
+import Signup from "./APP/Auth/Auth.signup";
+import Agree from "./APP/Auth/Auth.signup.agree";
+import Select from "./APP/Auth/Auth.signup.select";
 
 function App() {
 	const MainScreen = styled.div`
@@ -33,7 +36,9 @@ function App() {
 			<MainScreen>
 				<Routes>
 					<Route path="/" element={<Home />} />
-
+					<Route path="/select" element={<Select />} />
+					<Route path="/agree" element={<Agree />} />
+					<Route path="/signup" element={<Signup />} />
 					<Route path="*" element={<Home />} />
 				</Routes>
 			</MainScreen>
