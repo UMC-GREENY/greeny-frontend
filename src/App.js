@@ -1,12 +1,12 @@
 import logo from "./logo.svg";
 import "./App.css";
 import {
-	BrowserRouter,
-	Route,
-	Router,
-	useLocation,
-	Routes,
-	useNavigate,
+  BrowserRouter,
+  Route,
+  Router,
+  useLocation,
+  Routes,
+  useNavigate,
 } from "react-router-dom";
 //styles
 import styled from "styled-components";
@@ -18,15 +18,17 @@ import Home from "./APP/Home/Home.main";
 import SignupSelect from "./APP/Auth/Auth.signup.select";
 import SignupAgree from "./APP/Auth/Auth.signup.agree";
 import Signup from "./APP/Auth/Auth.signup";
-import CommunityMain from "./APP/Comunity/Community.main";
+import Agree from "./APP/Auth/Auth.signup.agree";
+import Select from "./APP/Auth/Auth.signup.select";
+import Login from "./APP/Login/Login.main";
 
 function App() {
-	const MainScreen = styled.div`
-		position: absolute;
-		top: 100px;
-		width: 100vw;
-		min-height: 100vh;
-		height: fit-content;
+  const MainScreen = styled.div`
+    position: absolute;
+    top: 100px;
+    width: 100vw;
+    min-height: 100vh;
+    height: fit-content;
 
 		// background-color: ${tokens.colors.grey_100};
 		z-index: 50;
@@ -40,7 +42,7 @@ function App() {
 					<Route path="/select" element={<SignupSelect />} />
 					<Route path="/agree" element={<SignupAgree />} />
 					<Route path="/signup" element={<Signup />} />
-					<Route path="/community" element={<CommunityMain />} />
+					<Route path="/login" element={<Login />} />
 					<Route path="*" element={<Home />} />
 				</Routes>
 			</MainScreen>

@@ -33,68 +33,70 @@ function SignupAgree() {
     // Create similar functions for the other checkboxes...
   
     return (
-      <div>
-        <itemS.JoinHeading>Join</itemS.JoinHeading>
-        <itemS.BasicInfoHeading>약관동의</itemS.BasicInfoHeading>
-        <itemS.InfoBox>
-          <itemS.CheckboxContainer>
-            <itemS.Checkbox
-              type="checkbox"
-              checked={checkedItems[0]}
-              onChange={handleCheckbox1Change}
-            />
-            <itemS.FstCheckboxLabel>{checkboxTexts[0]}</itemS.FstCheckboxLabel>
-          </itemS.CheckboxContainer>
-          <itemS.CheckboxContainer>
-            <itemS.Checkbox
-              type="checkbox"
-              checked={checkedItems[1]}
-              onChange={handleCheckbox2Change}
-            />
-            <itemS.CheckboxLabel>{checkboxTexts[1]}</itemS.CheckboxLabel>
-          </itemS.CheckboxContainer>
-					<itemS.ContentsBox>
-					약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 
-					</itemS.ContentsBox>
-          <itemS.CheckboxContainer>
-            <itemS.Checkbox
-              type="checkbox"
-              checked={checkedItems[2]}
-              onChange={handleCheckbox2Change}
-            />
-            <itemS.CheckboxLabel>{checkboxTexts[2]}</itemS.CheckboxLabel>
-          </itemS.CheckboxContainer>
-					<itemS.ContentsBox>
-					약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 
-					</itemS.ContentsBox>
-          <itemS.CheckboxContainer>
-            <itemS.Checkbox
-              type="checkbox"
-              checked={checkedItems[3]}
-              onChange={handleCheckbox2Change}
-            />
-            <itemS.CheckboxLabel>{checkboxTexts[3]}</itemS.CheckboxLabel>
-          </itemS.CheckboxContainer>
-					<itemS.ContentsBox>
-					약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 
-					</itemS.ContentsBox>
-          <itemS.CheckboxContainer>
-            <itemS.Checkbox
-              type="checkbox"
-              checked={checkedItems[4]}
-              onChange={handleCheckbox2Change}
-            />
-            <itemS.CheckboxLabel>{checkboxTexts[4]}</itemS.CheckboxLabel>
-          </itemS.CheckboxContainer>
-					<itemS.ContentsBox>
-					약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 
-					</itemS.ContentsBox>
-          <div>
-						<itemS.CancelButton>취소하기</itemS.CancelButton>
-						<itemS.NextButton onClick={handleSubmit}>다음단계</itemS.NextButton>
-          </div>
-        </itemS.InfoBox>
-      </div>
+      <itemS.SignupWrapper>
+        <itemS.SignupContentWrapper>
+          <itemS.JoinHeading>Join</itemS.JoinHeading>
+          <itemS.Label>약관동의</itemS.Label>
+          <itemS.InfoBox>
+            <itemS.CheckboxContainer>
+              <itemS.Checkbox
+                type="checkbox"
+                checked={checkedItems[0]}
+                onChange={handleCheckbox1Change}
+              />
+              <itemS.FstCheckboxLabel>{checkboxTexts[0]}</itemS.FstCheckboxLabel>
+            </itemS.CheckboxContainer>
+            <itemS.CheckboxContainer>
+              <itemS.Checkbox
+                type="checkbox"
+                checked={checkedItems[1]}
+                onChange={handleCheckbox2Change}
+              />
+              <itemS.CheckboxLabel>{checkboxTexts[1]}</itemS.CheckboxLabel>
+            </itemS.CheckboxContainer>
+            <itemS.ContentsBox>
+            약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 
+            </itemS.ContentsBox>
+            <itemS.CheckboxContainer>
+              <itemS.Checkbox
+                type="checkbox"
+                checked={checkedItems[2]}
+                onChange={handleCheckbox2Change}
+              />
+              <itemS.CheckboxLabel>{checkboxTexts[2]}</itemS.CheckboxLabel>
+            </itemS.CheckboxContainer>
+            <itemS.ContentsBox>
+            약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 
+            </itemS.ContentsBox>
+            <itemS.CheckboxContainer>
+              <itemS.Checkbox
+                type="checkbox"
+                checked={checkedItems[3]}
+                onChange={handleCheckbox2Change}
+              />
+              <itemS.CheckboxLabel>{checkboxTexts[3]}</itemS.CheckboxLabel>
+            </itemS.CheckboxContainer>
+            <itemS.ContentsBox>
+            약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 
+            </itemS.ContentsBox>
+            <itemS.CheckboxContainer>
+              <itemS.Checkbox
+                type="checkbox"
+                checked={checkedItems[4]}
+                onChange={handleCheckbox2Change}
+              />
+              <itemS.CheckboxLabel>{checkboxTexts[4]}</itemS.CheckboxLabel>
+            </itemS.CheckboxContainer>
+            <itemS.ContentsBox>
+            약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 약관 내용 
+            </itemS.ContentsBox>
+            <itemS.ButtonContainer>
+              <itemS.CancelButton>취소하기</itemS.CancelButton>
+              <itemS.NextButton onClick={handleSubmit}>다음단계</itemS.NextButton>
+            </itemS.ButtonContainer>
+          </itemS.InfoBox>
+        </itemS.SignupContentWrapper>
+      </itemS.SignupWrapper>
     );
   }
   
