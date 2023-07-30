@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import styled from "styled-components";
 import * as tokens from "../tokens";
 import * as TopNavS from "./Styled/TopNav.main.styles";
-import { useNavigate } from "react-router-dom";
 
 function TopNav() {
   const navigate = useNavigate();
