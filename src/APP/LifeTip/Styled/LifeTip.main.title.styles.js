@@ -18,7 +18,7 @@ export const Title = styled.h1`
   font-weight: normal;
   justify-content: flex-start;
   margin-top: 104px;
-  ${(props) => `color:${tokens.colors.geen_main2}`}
+  ${(props) => `color:${tokens.colors.green_main2}`}
 `;
 export const Div2 = styled.div`
   display: flex;
@@ -40,7 +40,7 @@ export const TopNavInputWrapper = styled.div`
   height: 100%;
   display: flex;
   align-items: flex-end;
-  justify-content: center;
+  justify-content: flex-end;
 `;
 export const TopNavInputBox = styled.input`
   width: 353px;

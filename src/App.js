@@ -15,7 +15,9 @@ import * as tokens from "./APP/tokens";
 //Main components
 import TopNav from "./APP/TopNav/TopNav.main";
 import Home from "./APP/Home/Home.main";
+import Login from "./APP/Login/Login.main";
 import LifeTip from "./APP/LifeTip/LifeTip.main";
+import LifeTipDe from "./APP/LifeTip/LifeTipDe.main";
 
 function App() {
   const MainScreen = styled.div`
@@ -36,7 +38,9 @@ function App() {
           <Route path="/" element={<Home />} />
 
           <Route path="*" element={<Home />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/lifeTip" element={<LifeTip />} />
+          <Route path="/lifeTip_de" element={<LifeTipDe />} />
         </Routes>
       </MainScreen>
     </div>

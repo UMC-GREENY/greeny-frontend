@@ -16,12 +16,20 @@ function TopNav() {
   return (
     <TopNavS.TopNavWrapper>
       <TopNavS.TopNavContentWrapper type="main">
-        <TopNavS.TopNavLogo>GREENY</TopNavS.TopNavLogo>
+        <TopNavS.TopNavLogo
+          onClick={(e) => {
+            NavClick(e, "/");
+          }}
+        >
+          GREENY
+        </TopNavS.TopNavLogo>
         <TopNavS.TopNavInfoWrapper>
           <TopNavS.TopNavContents
-            onClick={(e) => {
-              NavClick(e, "login");
-            }}
+            onClick={() =>
+              navigate("/login", {
+                state: { type: "login", name: "로그인" },
+              })
+            }
           >
             Login
           </TopNavS.TopNavContents>
