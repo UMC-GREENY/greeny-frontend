@@ -15,9 +15,10 @@ import * as tokens from "./APP/tokens";
 //Main components
 import TopNav from "./APP/TopNav/TopNav.main";
 import Home from "./APP/Home/Home.main";
+import SignupSelect from "./APP/Auth/Auth.signup.select";
+import SignupAgree from "./APP/Auth/Auth.signup.agree";
 import Signup from "./APP/Auth/Auth.signup";
-import Agree from "./APP/Auth/Auth.signup.agree";
-import Select from "./APP/Auth/Auth.signup.select";
+import CommunityMain from "./APP/Comunity/Community.main";
 
 function App() {
 	const MainScreen = styled.div`
@@ -36,9 +37,10 @@ function App() {
 			<MainScreen>
 				<Routes>
 					<Route path="/" element={<Home />} />
-					<Route path="/select" element={<Select />} />
-					<Route path="/agree" element={<Agree />} />
+					<Route path="/select" element={<SignupSelect />} />
+					<Route path="/agree" element={<SignupAgree />} />
 					<Route path="/signup" element={<Signup />} />
+					<Route path="/community" element={<CommunityMain />} />
 					<Route path="*" element={<Home />} />
 				</Routes>
 			</MainScreen>

@@ -66,7 +66,8 @@ function TopNav() {
 					</TopNavS.TopNavSubContents>
 					<TopNavS.TopNavSubContents
 						onClick={(e) => {
-							NavClick(e, "community");
+							// NavClick(e, "community");
+							navigate('/community');
 						}}
 					>
 						COMMUNITY

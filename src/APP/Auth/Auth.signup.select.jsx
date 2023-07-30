@@ -4,7 +4,7 @@ import * as itemS from "./Styled/Auth.signup.select.styles";
 import naverLogo from './naver-logo.png';
 import kakaoLogo from './kakao-logo.jpg';
 
-function Select() {
+function SignupSelect() {
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     // e.preventDefault();
@@ -36,4 +36,4 @@ function Select() {
   );
 }
 
-export default Select;
+export default SignupSelect;

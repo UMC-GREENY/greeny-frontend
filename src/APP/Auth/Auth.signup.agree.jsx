@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as itemS from "./Styled/Auth.signup.agree.styles"
 
-function TermsAndConditions() {
+function SignupAgree() {
     const checkboxTexts = [
       'GREENY 모든 약관을 확인하고 전체 동의합니다.',
       '서비스 이용 동의 (필수)',
@@ -98,5 +98,5 @@ function TermsAndConditions() {
     );
   }
   
-  export default TermsAndConditions;
+  export default SignupAgree;
   

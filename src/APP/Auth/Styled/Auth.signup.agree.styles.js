@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const JoinHeading = styled.h2`
   font-size: 32px;
-  color: green;
+  color: #649D17;
   text-align: left;
 `;
 
@@ -33,12 +33,10 @@ export const CheckboxLabel = styled.label`
   margin-left: 5px;
 `;
 //전체 동의
-export const FstCheckboxLabel = styled.div`
-	margin-left: 5px;  
-	font-weight: bold;
+export const FstCheckboxLabel = styled.label`
+  margin-left: 5px;
+  font-weight: bold;
 `;
-
-
 //취소하기 버튼
 export const CancelButton = styled.button`
 	background-color: grey;
@@ -51,7 +49,7 @@ export const CancelButton = styled.button`
 
 //다음단계 버튼
 export const NextButton = styled.button`
-	background-color: green;
+	background-color: #649D17;
 	color: white;
   padding: 4px 16px;
   margin-left: 10px;

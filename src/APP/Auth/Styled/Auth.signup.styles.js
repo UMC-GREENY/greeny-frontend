@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const JoinHeading = styled.h2`
   font-size: 32px;
-  color: green;
+  color: #649D17;
   text-align: left;
 `;
 
@@ -111,7 +111,7 @@ export const CancelButton = styled.button`
 
 //회원가입 버튼
 export const SignupButton = styled.button`
-	background-color: green;
+	background-color: #649D17;
 	color: white;
   padding: 4px 16px;
   margin-left: 10px;
