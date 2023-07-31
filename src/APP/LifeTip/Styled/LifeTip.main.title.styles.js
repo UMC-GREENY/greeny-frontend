@@ -35,14 +35,14 @@ export const SubTitle = styled.div`
   ${(props) =>
     `color:${tokens.colors.grey_15} ; border-bottom:1px solid ${tokens.colors.grey_15}`}
 `;
-export const TopNavInputWrapper = styled.div`
+export const InputWrapper = styled.div`
   width: 50%;
   height: 100%;
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
 `;
-export const TopNavInputBox = styled.input`
+export const InputBox = styled.input`
   width: 353px;
   height: 20px;
   border: none;
@@ -52,11 +52,11 @@ export const TopNavInputBox = styled.input`
   ${(prop) =>
     `color:${tokens.colors.grey_60}; border-bottom:1px solid ${tokens.colors.grey_15}`}
 `;
-export const TopNavInputIcon = styled.div`
+export const InputIcon = styled.div`
   width: 30px;
   height: 50px;
 
-  background-image: url("/topnavbar/search.png");
+  background-image: url("/lifetip/search.png");
   background-size: 25px 25px;
   background-position: bottom;
   background-repeat: no-repeat;

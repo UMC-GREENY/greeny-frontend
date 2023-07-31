@@ -6,10 +6,10 @@ function LifeTipMainTitle() {
         <titleS.Title>Life Tip</titleS.Title>
         <titleS.Div2>
           <titleS.SubTitle>Greeny Life Tip</titleS.SubTitle>
-          <titleS.TopNavInputWrapper>
-            <titleS.TopNavInputBox placeholder="게시글 검색하기"></titleS.TopNavInputBox>
-            <titleS.TopNavInputIcon></titleS.TopNavInputIcon>
-          </titleS.TopNavInputWrapper>
+          <titleS.InputWrapper>
+            <titleS.InputBox placeholder="게시글 검색하기"></titleS.InputBox>
+            <titleS.InputIcon></titleS.InputIcon>
+          </titleS.InputWrapper>
         </titleS.Div2>
         <titleS.Div3>
           greeny는 더 많은 사람이 친환경 라이프 스타일을 구축할 수 있도록
