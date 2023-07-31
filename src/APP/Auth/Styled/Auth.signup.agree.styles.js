@@ -73,9 +73,9 @@ export const CheckboxLabel = styled.label`
   font-color: #E6E6E6;
 `;
 //전체 동의
-export const FstCheckboxLabel = styled.div`
-	margin-left: 5px;  
-	font-weight: bold;
+export const FstCheckboxLabel = styled.label`
+  margin-left: 5px;
+  font-weight: bold;
 `;
 
 export const ButtonContainer = styled.button`
