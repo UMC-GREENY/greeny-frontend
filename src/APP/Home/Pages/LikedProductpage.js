@@ -1,11 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import * as mystyles from './Likepage';
 
-function LikedProductpage() {
+function LikedProductpage(props) {
   return (
     <mystyles.productcontainer>
-      <mystyles.productimage src='public\pages\product1.jpeg'></mystyles.productimage>
-      <mystyles.productinfo>Brand</mystyles.productinfo>
+      <mystyles.productimage src={props.src}></mystyles.productimage>
+      <mystyles.productinfo>
+        <mystyles.productinfodetail>{props.title}</mystyles.productinfodetail>
+        <mystyles.productinfodetail>
+          {props.content1}
+        </mystyles.productinfodetail>
+        <mystyles.productinfodetail>
+          {props.content2}
+        </mystyles.productinfodetail>
+      </mystyles.productinfo>
     </mystyles.productcontainer>
   );
 }

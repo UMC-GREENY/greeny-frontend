@@ -6,11 +6,15 @@ function Likepage() {
   const menuArr = [
     {
       name: 'PRODUCTS(00)',
-      content: 'I am products',
+      content1: 'Product Name',
+      content2: '$100,000',
+      imgsrc: './pages/product1.jpeg',
     },
     {
       name: 'STORE(00)',
-      content: 'I am store',
+      content1: '지역',
+      content2: '카테고리',
+      imgsrc: './pages/Rectangle 8.png',
     },
   ];
   const [currentTab, clickTab] = useState(0);
@@ -42,17 +46,60 @@ function Likepage() {
         ))}
       </mystyles.tabwrapper>
       <mystyles.contentscontainer>
-        <LikedProductpage></LikedProductpage>
-        <LikedProductpage></LikedProductpage>
-        <LikedProductpage></LikedProductpage>
-        <LikedProductpage></LikedProductpage>
-        <LikedProductpage></LikedProductpage>
-        <LikedProductpage></LikedProductpage>
-        <LikedProductpage></LikedProductpage>
-        <LikedProductpage></LikedProductpage>
-        <LikedProductpage></LikedProductpage>
-        <hr></hr>
-        <p>{menuArr[currentTab].content}</p>
+        <LikedProductpage
+          src={menuArr[currentTab].imgsrc}
+          title={menuArr[currentTab].name}
+          content1={menuArr[currentTab].content1}
+          content2={menuArr[currentTab].content2}
+        ></LikedProductpage>
+        <LikedProductpage
+          src={menuArr[currentTab].imgsrc}
+          title={menuArr[currentTab].name}
+          content1={menuArr[currentTab].content1}
+          content2={menuArr[currentTab].content2}
+        ></LikedProductpage>
+        <LikedProductpage
+          src={menuArr[currentTab].imgsrc}
+          title={menuArr[currentTab].name}
+          content1={menuArr[currentTab].content1}
+          content2={menuArr[currentTab].content2}
+        ></LikedProductpage>
+        <LikedProductpage
+          src={menuArr[currentTab].imgsrc}
+          title={menuArr[currentTab].name}
+          content1={menuArr[currentTab].content1}
+          content2={menuArr[currentTab].content2}
+        ></LikedProductpage>
+        <LikedProductpage
+          src={menuArr[currentTab].imgsrc}
+          title={menuArr[currentTab].name}
+          content1={menuArr[currentTab].content1}
+          content2={menuArr[currentTab].content2}
+        ></LikedProductpage>
+        <LikedProductpage
+          src={menuArr[currentTab].imgsrc}
+          title={menuArr[currentTab].name}
+          content1={menuArr[currentTab].content1}
+          content2={menuArr[currentTab].content2}
+        ></LikedProductpage>
+        <LikedProductpage
+          src={menuArr[currentTab].imgsrc}
+          title={menuArr[currentTab].name}
+          content1={menuArr[currentTab].content1}
+          content2={menuArr[currentTab].content2}
+        ></LikedProductpage>
+        <LikedProductpage
+          src={menuArr[currentTab].imgsrc}
+          title={menuArr[currentTab].name}
+          content1={menuArr[currentTab].content1}
+          content2={menuArr[currentTab].content2}
+        ></LikedProductpage>
+        <LikedProductpage
+          src={menuArr[currentTab].imgsrc}
+          title={menuArr[currentTab].name}
+          content1={menuArr[currentTab].content1}
+          content2={menuArr[currentTab].content2}
+        ></LikedProductpage>
       </mystyles.contentscontainer>
     </mystyles.totalcontainer>
   );

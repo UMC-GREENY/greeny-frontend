@@ -2,7 +2,8 @@ import styled, { css } from 'styled-components';
 import * as tokens from '../../tokens';
 
 export const totalcontainer = styled.div`
-  position: fixed;
+  position: absolute;
+  top: 50px;
   width: 100%;
   height: 100%;
   display: flex;
@@ -68,7 +69,6 @@ export const tabwrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: beige;
   color: black;
 
   .submenu {
@@ -81,6 +81,7 @@ export const tabwrapper = styled.div`
 
 export const contentscontainer = styled.div`
   width: 80%;
+  height: 700px;
   display: flex;
   flex-direction: row;
   flex-flow: wrap;
@@ -96,16 +97,26 @@ export const contentscontainer = styled.div`
 export const productcontainer = styled.div`
   display: flex;
   flex-direction: row;
-  width: 30%;
-  heigt: 160px;
+  width: 392px;
+  heigt: 40px;
   border-radius: 6px;
-  background-color: yellow;
+  border-color: gray;
+  border-style: solid;
+  border-width: 1px;
+  margin: 20px;
 `;
 
 export const productimage = styled.img`
-  width: 160px;
+  width: 45%;
+  border-radius: 6px;
 `;
 
 export const productinfo = styled.div`
+  margin-left: 12px;
   color: black;
+  flex-direction: column;
+`;
+export const productinfodetail = styled.div`
+  text-align: start;
+  margin: 4px;
 `;

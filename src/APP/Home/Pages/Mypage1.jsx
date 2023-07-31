@@ -19,7 +19,9 @@ function Mypage() {
 
   return (
     <mystyles.totalcontainer>
-      <mystyles.Login>Login</mystyles.Login>
+      <mystyles.Login style={{ fontFamily: 'Merriweather' }}>
+        Login
+      </mystyles.Login>
       <hr></hr>
       <mystyles.firstcontainer>
         <mystyles.firstcontainerfont>
