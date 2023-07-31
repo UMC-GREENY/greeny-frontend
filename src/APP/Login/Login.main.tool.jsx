@@ -2,6 +2,9 @@ import { useNavigate } from "react-router-dom";
 import * as toolS from "./Styled/Login.main.tool.styles";
 function LoginMainTool({ type, name }) {
   const navigate = useNavigate();
+  const handleSignup = () => {
+    navigate('/select');
+  }
   return (
     <toolS.LoginWrapper>
       <toolS.LoginContentWrapper>
@@ -21,7 +24,7 @@ function LoginMainTool({ type, name }) {
                 <button>로그인</button>
               </toolS.LoginBtn>
               <toolS.FindBtn>
-                <button>회원가입</button>|
+                <button onClick={handleSignup}>회원가입</button>|
                 <button
                   onClick={() =>
                     navigate("/login", {

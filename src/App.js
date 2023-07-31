@@ -15,6 +15,9 @@ import * as tokens from "./APP/tokens";
 //Main components
 import TopNav from "./APP/TopNav/TopNav.main";
 import Home from "./APP/Home/Home.main";
+import Signup from "./APP/Auth/Auth.signup";
+import Agree from "./APP/Auth/Auth.signup.agree";
+import Select from "./APP/Auth/Auth.signup.select";
 import Login from "./APP/Login/Login.main";
 
 function App() {
@@ -25,22 +28,24 @@ function App() {
     min-height: 100vh;
     height: fit-content;
 
-    // background-color: ${tokens.colors.grey_100};
-    z-index: 50;
-  `;
-  return (
-    <div className="App">
-      <TopNav></TopNav>
-      <MainScreen>
-        <Routes>
-          <Route path="/" element={<Home />} />
-
-          <Route path="*" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-        </Routes>
-      </MainScreen>
-    </div>
-  );
+		// background-color: ${tokens.colors.grey_100};
+		z-index: 50;
+	`;
+	return (
+		<div className="App">
+			<TopNav></TopNav>
+			<MainScreen>
+				<Routes>
+					<Route path="/" element={<Home />} />
+					<Route path="/select" element={<Select />} />
+					<Route path="/agree" element={<Agree />} />
+					<Route path="/signup" element={<Signup />} />
+					<Route path="/login" element={<Login />} />
+					<Route path="*" element={<Home />} />
+				</Routes>
+			</MainScreen>
+		</div>
+	);
 }
 
 export default App;
