@@ -15,6 +15,8 @@ import * as tokens from "./APP/tokens";
 //Main components
 import TopNav from "./APP/TopNav/TopNav.main";
 import Home from "./APP/Home/Home.main";
+import SideNav from "./APP/SideNav/SideNav.main";
+import DetailPage from "./APP/DetailPage/DetailPage.main";
 import Signup from "./APP/Auth/Auth.signup";
 import Agree from "./APP/Auth/Auth.signup.agree";
 import Select from "./APP/Auth/Auth.signup.select";
@@ -44,11 +46,13 @@ function App() {
 					<Route path="/login" element={<Login />} />
           <Route path="/lifeTip" element={<LifeTip />} />
           <Route path="/lifeTip_de" element={<LifeTipDe />} />
+          <Route path="/detailPage" element={<DetailPage />} />
 					<Route path="*" element={<Home />} />
 				</Routes>
 			</MainScreen>
 		</div>
 	);
+
 }
 
 export default App;

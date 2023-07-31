@@ -1,7 +1,9 @@
 export const colors = {
   green_main: "#0A1A16",
+  green: "#649D17",
   green_deep: "#1A2807",
   grey_15: "#262626",
+	grey_40: "#666666",
   grey_50: "#ebebeb",
   grey_60: "#999999",
   grey_80: "#CCCCCC",
