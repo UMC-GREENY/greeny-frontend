@@ -19,6 +19,8 @@ import Signup from "./APP/Auth/Auth.signup";
 import Agree from "./APP/Auth/Auth.signup.agree";
 import Select from "./APP/Auth/Auth.signup.select";
 import Login from "./APP/Login/Login.main";
+import LifeTip from "./APP/LifeTip/LifeTip.main";
+import LifeTipDe from "./APP/LifeTip/LifeTipDe.main";
 
 function App() {
   const MainScreen = styled.div`
@@ -27,7 +29,6 @@ function App() {
     width: 100vw;
     min-height: 100vh;
     height: fit-content;
-
 		// background-color: ${tokens.colors.grey_100};
 		z-index: 50;
 	`;
@@ -41,6 +42,8 @@ function App() {
 					<Route path="/agree" element={<Agree />} />
 					<Route path="/signup" element={<Signup />} />
 					<Route path="/login" element={<Login />} />
+          <Route path="/lifeTip" element={<LifeTip />} />
+          <Route path="/lifeTip_de" element={<LifeTipDe />} />
 					<Route path="*" element={<Home />} />
 				</Routes>
 			</MainScreen>
