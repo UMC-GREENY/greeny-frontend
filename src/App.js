@@ -19,6 +19,8 @@ import SignupSelect from "./APP/Auth/Auth.signup.select";
 import SignupAgree from "./APP/Auth/Auth.signup.agree";
 import Signup from "./APP/Auth/Auth.signup";
 import Login from "./APP/Login/Login.main";
+import LifeTip from "./APP/LifeTip/LifeTip.main";
+import LifeTipDe from "./APP/LifeTip/LifeTipDe.main";
 import CommunityMain from "./APP/Comunity/Community.main";
 import Post from "./APP/Comunity/Community.main.post";
 
@@ -45,6 +47,8 @@ function App() {
 					<Route path="/login" element={<Login />} />
 					<Route path="/community" element={<CommunityMain />} />
 					<Route path="/post" element={<Post />} />
+          <Route path="/lifeTip" element={<LifeTip />} />
+          <Route path="/lifeTip_de" element={<LifeTipDe />} />
 					<Route path="*" element={<Home />} />
 				</Routes>
 			</MainScreen>
