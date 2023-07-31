@@ -15,8 +15,6 @@ import * as tokens from "./APP/tokens";
 //Main components
 import TopNav from "./APP/TopNav/TopNav.main";
 import Home from "./APP/Home/Home.main";
-import SideNav from "./APP/SideNav/SideNav.main";
-import DetailPage from "./APP/DetailPage/DetailPage.main";
 
 function App() {
 	const MainScreen = styled.div`
@@ -35,8 +33,8 @@ function App() {
 			<MainScreen>
 				<Routes>
 					<Route path="/" element={<Home />} />
+
 					<Route path="*" element={<Home />} />
-					<Route path="/detailPage" element={<DetailPage />} />
 				</Routes>
 			</MainScreen>
 		</div>
