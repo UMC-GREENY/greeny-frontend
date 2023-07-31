@@ -12,6 +12,7 @@ export const ContentWrap = styled.div`
     justify-content: center;
     align-items: center ;
     flex-direction: column;
+    
 `
 
 export const DetailInfo = styled.div`
