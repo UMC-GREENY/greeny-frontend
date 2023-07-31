@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const JoinHeading = styled.h2`
   font-size: 32px;
-  color: green;
+  color: #649D17;
   text-align: left;
 `;
 

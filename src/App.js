@@ -18,9 +18,9 @@ import Home from "./APP/Home/Home.main";
 import SignupSelect from "./APP/Auth/Auth.signup.select";
 import SignupAgree from "./APP/Auth/Auth.signup.agree";
 import Signup from "./APP/Auth/Auth.signup";
-import Agree from "./APP/Auth/Auth.signup.agree";
-import Select from "./APP/Auth/Auth.signup.select";
 import Login from "./APP/Login/Login.main";
+import CommunityMain from "./APP/Comunity/Community.main";
+import Post from "./APP/Comunity/Community.main.post";
 
 function App() {
   const MainScreen = styled.div`
@@ -43,6 +43,8 @@ function App() {
 					<Route path="/agree" element={<SignupAgree />} />
 					<Route path="/signup" element={<Signup />} />
 					<Route path="/login" element={<Login />} />
+					<Route path="/community" element={<CommunityMain />} />
+					<Route path="/post" element={<Post />} />
 					<Route path="*" element={<Home />} />
 				</Routes>
 			</MainScreen>

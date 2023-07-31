@@ -1,15 +1,14 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import * as itemS from "./Styled/Community.main.styles";
-import { PostDummy } from './PostDummy';
-import { ReviewDummy } from './ReviewDummy';
-import { CommunityDummy } from './CommunityDummy';
+import { PostDummy } from "./PostDummy";
+import { ReviewDummy } from "./ReviewDummy";
+import { CommunityDummy } from "./CommunityDummy";
 
 function CommunityMain() {
   const navigate = useNavigate();
-  const handleSubmit = (e) => {
-    // e.preventDefault();
-    // navigate('/agree');
+  const handleMore = (type) => {
+    navigate("/post", { state: { type } });
   };
 
   return (
@@ -20,7 +19,7 @@ function CommunityMain() {
         <itemS.LabelContainer>
           <itemS.BasicInfoHeading>BEST POST</itemS.BasicInfoHeading>
         </itemS.LabelContainer>
-        <itemS.MoreButton onClick={handleSubmit}>
+        <itemS.MoreButton onClick={() => handleMore("post")}>
           더보기
         </itemS.MoreButton>
       </itemS.ContentWrapper>
@@ -41,7 +40,7 @@ function CommunityMain() {
         <itemS.LabelContainer>
           <itemS.BasicInfoHeading>REVIEW</itemS.BasicInfoHeading>
         </itemS.LabelContainer>
-        <itemS.MoreButton onClick={handleSubmit}>
+        <itemS.MoreButton onClick={() => handleMore("review")}>
           더보기
         </itemS.MoreButton>
       </itemS.ContentWrapper>
@@ -63,7 +62,7 @@ function CommunityMain() {
         <itemS.LabelContainer>
           <itemS.BasicInfoHeading>GREENY COMMUNITY</itemS.BasicInfoHeading>
         </itemS.LabelContainer>
-        <itemS.MoreButton onClick={handleSubmit}>
+        <itemS.MoreButton onClick={() => handleMore("community")}>
           더보기
         </itemS.MoreButton>
       </itemS.ContentWrapper>
@@ -79,7 +78,6 @@ function CommunityMain() {
           </React.Fragment>
         ))}
       </itemS.InfoBox>
-
     </div>
   );
 }
