@@ -50,9 +50,9 @@ function App() {
 					<Route path="/login" element={<Login />} />
 					<Route path="/community" element={<CommunityMain />} />
 					<Route path="/post" element={<Post />} />
-					  <Route path="/lifeTip" element={<LifeTip />} />
-					  <Route path="/lifeTip_de" element={<LifeTipDe />} />
-					  // <Route path="/detailPage" element={<DetailPage />} />
+          <Route path="/lifeTip" element={<LifeTip />} />
+          <Route path="/lifeTip_de" element={<LifeTipDe />} />
+					  {/*  <Route path="/detailPage" element={<DetailPage />} /> */}
 					<Route path="*" element={<Home />} />
 				</Routes>
 			</MainScreen>
