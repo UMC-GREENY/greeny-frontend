@@ -41,7 +41,7 @@ export const Div2 = styled.div`
   & > button {
     width: 130px;
     display: flex;
-
+    font-family: "Pretendard";
     border-radius: 0px 0px 6px 0px;
     justify-content: space-around;
     align-items: center;
