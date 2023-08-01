@@ -35,30 +35,29 @@ function App() {
     min-height: 100vh;
     height: fit-content;
 
-		// background-color: ${tokens.colors.grey_100};
-		z-index: 50;
-	`;
-	return (
-		<div className="App">
-			<TopNav></TopNav>
-			<MainScreen>
-				<Routes>
-					<Route path="/" element={<Home />} />
-					<Route path="/select" element={<SignupSelect />} />
-					<Route path="/agree" element={<SignupAgree />} />
-					<Route path="/signup" element={<Signup />} />
-					<Route path="/login" element={<Login />} />
-					<Route path="/community" element={<CommunityMain />} />
-					<Route path="/post" element={<Post />} />
-					  <Route path="/lifeTip" element={<LifeTip />} />
-					  <Route path="/lifeTip_de" element={<LifeTipDe />} />
-					  // <Route path="/detailPage" element={<DetailPage />} />
-					<Route path="*" element={<Home />} />
-				</Routes>
-			</MainScreen>
-		</div>
-	);
-
+    // background-color: ${tokens.colors.grey_100};
+    z-index: 50;
+  `;
+  return (
+    <div className="App">
+      <TopNav></TopNav>
+      <MainScreen>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/select" element={<SignupSelect />} />
+          <Route path="/agree" element={<SignupAgree />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/community" element={<CommunityMain />} />
+          <Route path="/post" element={<Post />} />
+          <Route path="/lifeTip" element={<LifeTip />} />
+          <Route path="/lifeTip_de" element={<LifeTipDe />} />
+          {/* // <Route path="/detailPage" element={<DetailPage />} /> */}
+          <Route path="*" element={<Home />} />
+        </Routes>
+      </MainScreen>
+    </div>
+  );
 }
 
 export default App;
