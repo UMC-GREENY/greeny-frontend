@@ -16,7 +16,7 @@ export const LoginContentWrapper = styled.div`
   margin-top: 104px;
   margin-left: 240px;
   margin-right: 240px;
-  width: 1400px;
+  width: 1440px;
   /* height: 545px; */
 `;
 export const LoginTitle = styled.div`
@@ -35,7 +35,7 @@ export const Name = styled.h2`
   justify-content: flex-start;
   color: #1a2807;
   font-size: 24px;
-  font-family: "regular";
+  font-family: "Pretendard";
   font-weight: normal;
 `;
 export const Line = styled.div`
@@ -58,12 +58,14 @@ export const Input = styled.input`
   width: 600px;
   height: 48px;
   margin-bottom: 12px;
+  font-family: "Pretendard";
   ${(props) => `border:1px solid ${tokens.colors.grey_60}`};
 `;
 export const Label = styled.span`
   display: flex;
   justify-content: flex-end;
   ${(props) => `color:${tokens.colors.grey_60}`};
+  font-family: "Pretendard";
 `;
 export const LoginBtn = styled.div`
   display: flex;
@@ -76,6 +78,7 @@ export const LoginBtn = styled.div`
     border: none;
     width: 224px;
     height: 44px;
+    font-family: "Pretendard";
     color: white;
     ${(props) => ` background-color:${tokens.colors.green_main2}`}
   }
@@ -93,6 +96,7 @@ export const FindBtn = styled.div`
     margin-right: 12px;
     border: none;
     background-color: white;
+    font-family: "Pretendard";
     ${(props) => `color:${tokens.colors.grey_60}`};
   }
 `;
