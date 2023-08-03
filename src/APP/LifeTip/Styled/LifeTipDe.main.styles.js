@@ -51,3 +51,39 @@ export const Con = styled.div`
   font-family: "Pretendard";
   font-size: 16px;
 `;
+export const ConDe = styled.div`
+  height: 916px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+`;
+export const Ti = styled.div`
+  display: flex;
+  width: 700px;
+  justify-content: space-between;
+  & > img {
+    width: 390px;
+    height: 390px;
+  }
+`;
+export const Col = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  & > h2 {
+    font-size: 35px;
+  }
+  & > h4 {
+    font-size: 25px;
+    & > a {
+      ${(props) => `color:${tokens.colors.grey_80}`};
+    }
+  }
+`;
+export const Text = styled.div`
+  width: 1200px;
+  & > h4 {
+    font-weight: lighter;
+    font-size: 18px;
+  }
+`;

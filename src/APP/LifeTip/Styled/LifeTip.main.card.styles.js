@@ -11,9 +11,16 @@ export const Div = styled.div`
   ${(prop) =>
     `border:1px solid ${tokens.colors.grey_80}; background-color:${tokens.colors.grey_95}`}
 `;
-export const Img = styled.img`
+export const Img = styled.div`
   width: 330px;
   height: 390px;
+  overflow: hidden;
+  margin: 0 auto;
+  & > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 `;
 export const Title = styled.div`
   text-align: left;
