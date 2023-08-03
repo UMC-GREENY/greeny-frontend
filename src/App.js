@@ -26,6 +26,7 @@ import LifeTip from "./APP/LifeTip/LifeTip.main";
 import LifeTipDe from "./APP/LifeTip/LifeTipDe.main";
 import CommunityMain from "./APP/Comunity/Community.main";
 import Post from "./APP/Comunity/Community.main.post";
+import WritePost from "./APP/Comunity/Community.main.post.write";
 
 function App() {
   const MainScreen = styled.div`
@@ -50,6 +51,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/community" element={<CommunityMain />} />
           <Route path="/post" element={<Post />} />
+          <Route path="/write_post" element={<WritePost />} />
           <Route path="/lifeTip" element={<LifeTip />} />
           <Route path="/lifeTip_de" element={<LifeTipDe />} />
           {/* // <Route path="/detailPage" element={<DetailPage />} /> */}

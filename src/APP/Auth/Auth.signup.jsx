@@ -22,8 +22,8 @@ function Signup() {
   return (
     <itemS.SignupWrapper>
       <itemS.SignupContentWrapper>
-        <itemS.JoinHeading>Join</itemS.JoinHeading>
-        <itemS.Label>기본정보</itemS.Label>
+        <itemS.Title>Join</itemS.Title>
+        <itemS.SubTitle>기본정보</itemS.SubTitle>
         <itemS.InfoBox>
           <itemS.InputContainer>
             <itemS.EmailLabel>이메일</itemS.EmailLabel>

@@ -15,8 +15,8 @@ function SignupSelect() {
   return (
     <itemS.SignupWrapper>
       <itemS.SignupContentWrapper>
-        <itemS.JoinHeading>Join</itemS.JoinHeading>
-        <itemS.Label>회원가입</itemS.Label>
+        <itemS.Title>Join</itemS.Title>
+        <itemS.SubTitle>회원가입</itemS.SubTitle>
         <itemS.InfoBox>
           {/* Container to align buttons to the left */}
           <itemS.ButtonContainer>
@@ -33,7 +33,7 @@ function SignupSelect() {
             />
           </itemS.ButtonContainer>
         </itemS.InfoBox>
-        <itemS.Label></itemS.Label>
+        <itemS.SubTitle></itemS.SubTitle>
       </itemS.SignupContentWrapper>
     </itemS.SignupWrapper>
   );

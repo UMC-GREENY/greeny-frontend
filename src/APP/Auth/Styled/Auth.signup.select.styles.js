@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import * as tokens from "../../tokens";
 
 export const SignupWrapper = styled.div`
   display: flex;
@@ -18,8 +19,8 @@ export const SignupContentWrapper = styled.div`
   width: 1400px;
 `;
 
-export const JoinHeading = styled.div`
-  color: #649D17;
+export const Title = styled.div`
+  ${(props) => `color:${tokens.colors.green_main2}`};
   display: flex;
   width: 100%;
   justify-content: flex-start;
@@ -28,7 +29,7 @@ export const JoinHeading = styled.div`
   font-size: 48px;
 `;
 
-export const Label = styled.div`
+export const SubTitle = styled.div`
   margin-top: 36px;
   margin-bottom: 36px;
   padding-bottom: 10px;
@@ -37,8 +38,7 @@ export const Label = styled.div`
   justify-content: flex-start;
   
   font-size: 24px;
-  font-family: "regular";
-  font-weight: normal;
+  font-family: "New York";
   border-bottom: 1px solid black;
 `;
 

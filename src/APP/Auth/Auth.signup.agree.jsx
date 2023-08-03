@@ -35,8 +35,8 @@ function SignupAgree() {
     return (
       <itemS.SignupWrapper>
         <itemS.SignupContentWrapper>
-          <itemS.JoinHeading>Join</itemS.JoinHeading>
-          <itemS.Label>약관동의</itemS.Label>
+          <itemS.Title>Join</itemS.Title>
+          <itemS.SubTitle>약관동의</itemS.SubTitle>
           <itemS.InfoBox>
             <itemS.CheckboxContainer>
               <itemS.Checkbox
