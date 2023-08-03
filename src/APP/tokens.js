@@ -1,6 +1,6 @@
 export const colors = {
   green_main: "#0A1A16",
-  green: "#649D17",
+  green_main2: "#649D17",
   green_deep: "#1A2807",
   grey_15: "#262626",
 	grey_40: "#666666",
@@ -8,7 +8,7 @@ export const colors = {
   grey_60: "#999999",
   grey_80: "#CCCCCC",
   grey_95: "#F2F2F2",
-  grey_100: "#c0c0c0",
+  grey_100: "#FFFFFF",
   grey_200: "#a1a1a1",
   grey_300: "#767676",
   grey_400: "#5c5c5c",
@@ -16,8 +16,7 @@ export const colors = {
   grey_600: "#2e2e2e",
   grey_700: "#242424",
   grey_800: "#1c1c1c",
-  grey_900: "#151515",
-  green_main2: "#649D17",
+  grey_900: "#151515"
 };
 
 export const typography = {
