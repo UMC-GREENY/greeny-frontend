@@ -1,7 +1,7 @@
 import axios from "axios";
 export const ACCESS_TOKEN = 'accessToken';
 const request = axios.create({
-    baseURL: 'BASEURL',
+    baseURL: 'www.greeny.r-e.kr',
     withCredentials: true,
     transformRequest: true,
 });

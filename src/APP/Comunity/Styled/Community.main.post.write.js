@@ -19,36 +19,27 @@ export const SignupContentWrapper = styled.div`
   width: 1270px;
 `;
 
-export const Title = styled.div`
-  ${(props) => `color:${tokens.colors.green_main2}`};
+export const Title = styled.h1`
   display: flex;
-  width: 100%;
-  justify-content: flex-start;
-  
-  font-family: "New York";
   font-size: 48px;
+  margin: 0px;
+  font-family: "New York";
+  font-weight: normal;
+  justify-content: flex-start;
+  margin-top: 104px;
+  ${(props) => `color:${tokens.colors.green_main2}`}
 `;
 
 export const SubTitle = styled.div`
-  margin-top: 36px;
-  margin-bottom: 36px;
-  padding-bottom: 10px;
   display: flex;
-  width: 100%;
   justify-content: flex-start;
-  
-  font-size: 24px;
+  width: 1273px;
   font-family: "New York";
-  border-bottom: 1px solid black;
-`;
-
-export const Line = styled.div`
-  display: flex;
-  justify-content: center;
-  background-color: #262626;
-  width: 660px;
-  height: 1px;
-  margin-bottom: 60px;
+  font-size: 24px;
+	margin-top: 36px;
+	padding-bottom: 16px;
+  ${(props) =>
+    ` border-bottom:1px solid ${tokens.colors.grey_15}`}
 `;
 
 export const InfoBox = styled.div`
@@ -56,69 +47,63 @@ export const InfoBox = styled.div`
 `;
 
 
-// 라벨들 (입력칸의 x좌표 맞춰주기 위해)-----------------------------------
-export const EmailLabel = styled.label`
+// 라벨들-----------------------------------
+export const TitleLabel = styled.label`
   display: block;
-  margin-bottom: 5px;
-	margin-right: 103px;
+  width: 170px;
+	text-align: left;
+	
 `;
 
-export const PwdLabel = styled.label`
+export const FileLabel = styled.label`
   display: block;
-  margin-bottom: 5px;
-	margin-right: 87px;
+  width: 170px;
+	text-align: left;
+	
 `;
 
-export const PwdConfirmLabel = styled.label`
+export const ContentLabel = styled.label`
   display: block;
-  margin-bottom: 5px;
-	margin-right: 51px;
+  width: 170px;
+	text-align: left;
 `;
 
-export const NameLabel = styled.label`
-  display: block;
-  margin-bottom: 5px;
-	margin-right: 119px;
-`;
-
-export const NumLabel = styled.label`
-  display: block;
-  margin-bottom: 5px;
-	margin-right: 67px;
-`;
-
-export const BirthLabel = styled.label`
-  display: block;
-  margin-bottom: 5px;
-	margin-right: 87px;
-`;
 //---------------------------------------------------------------
 
-//기본정보 각각 박스
+//입력칸들 박스
 export const InputContainer = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: 10px;
+	vertical-align: top; 
 `;
 
-//이메일 입력
-export const EmailInput = styled.input`
-  
+//제목 입력
+export const TitleInput = styled.input`
   padding: 4px;
   border-radius: 3px;
-	border:solid 1px grey;
-	margin-right: 10px;
-  width: 300px;
+	border:solid 1px #CCCCCC;
+  width: 800px; 
   height: 21px;
 `;
 
-//일반 입력
-export const Input = styled.input`
+//파일 첨부
+export const FileInput = styled.input`
 	padding: 4px;
   border-radius: 3px;
-	border:solid 1px grey;
-  width: 300px;
+	border:solid 1px #CCCCCC;
+  width: 824px;
   height: 21px;
+`;
+
+//본문 입력
+export const ContentInput = styled.textarea`
+	padding: 4px;
+  border-radius: 3px;
+	border:solid 1px #CCCCCC;
+  width: 1067px;
+  height: 326px;
+	
 `;
 
 export const Select = styled.select`
@@ -128,14 +113,8 @@ export const Select = styled.select`
   height: 36px;
 `;
 
-// export const Button = styled.button`
-// 	padding: 4px 16px;
-// 	margin-left: 10px;
-// 	border-radius: 3px;
-// `;
-
-//이메일 인증하기 버튼
-export const ConfirmButton = styled.button`
+//첨부 파일 버튼
+export const FileSendButton = styled.button`
 	background-color: black;
 	color: white;
   padding: 4px 16px;
@@ -165,8 +144,8 @@ export const CancelButton = styled.button`
   height: 44px;
 `;
 
-//회원가입 버튼
-export const SignupButton = styled.button`
+//작성하기 버튼
+export const WriteButton = styled.button`
 	background-color: #649D17;
 	color: white;
   padding: 4px 16px;
