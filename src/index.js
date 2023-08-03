@@ -4,29 +4,29 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import {
-	RecoilRoot,
-	atom,
-	selector,
-	useRecoilState,
-	useRecoilValue,
+  RecoilRoot,
+  atom,
+  selector,
+  useRecoilState,
+  useRecoilValue,
 } from "recoil";
 import {
-	BrowserRouter,
-	Route,
-	Router,
-	Routes,
-	useNavigate,
+  BrowserRouter,
+  Route,
+  Router,
+  Routes,
+  useNavigate,
 } from "react-router-dom";
-
+import "../src/static/fonts/font.css";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-	<React.StrictMode>
-		<RecoilRoot>
-			<BrowserRouter>
-				<App />
-			</BrowserRouter>
-		</RecoilRoot>
-	</React.StrictMode>
+  <React.StrictMode>
+    <RecoilRoot>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </RecoilRoot>
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
