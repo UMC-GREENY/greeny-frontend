@@ -1,5 +1,5 @@
-import logo from "./logo.svg";
-import "./App.css";
+import logo from './logo.svg';
+import './App.css';
 import {
   BrowserRouter,
   Route,
@@ -9,12 +9,14 @@ import {
   useNavigate,
 } from "react-router-dom";
 //styles
-import styled from "styled-components";
-import * as tokens from "./APP/tokens";
+import styled from 'styled-components';
+import * as tokens from './APP/tokens';
 
 //Main components
-import TopNav from "./APP/TopNav/TopNav.main";
-import Home from "./APP/Home/Home.main";
+import TopNav from './APP/TopNav/TopNav.main';
+import Home from './APP/Home/Home.main';
+import Mypage from './APP/Home/Pages/Mypage1';
+import Likepage from './APP/Home/Pages/Likepage1';
 
 import SideNav from "./APP/SideNav/SideNav.main";
 import DetailPage from "./APP/DetailPage/DetailPage.main";
@@ -42,6 +44,7 @@ function App() {
   return (
     <div className="App">
       <TopNav></TopNav>
+      <Likepage></Likepage>
       <MainScreen>
         <Routes>
           <Route path="/" element={<Home />} />

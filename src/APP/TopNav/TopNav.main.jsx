@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import styled from "styled-components";
 import * as tokens from "../tokens";
 import * as TopNavS from "./Styled/TopNav.main.styles";
+import Mypage from '../Home/Pages/Mypage1';
 
 function TopNav() {
   const navigate = useNavigate();
@@ -11,6 +12,7 @@ function TopNav() {
     alert(
       `${type}버튼이 클릭됐습니다. 이 함수를 활용해서 다른 페이지로 이동하게 하시면 됩니다!`
     );
+
     navigate(`${type}`);
   };
   return (
@@ -35,7 +37,9 @@ function TopNav() {
           </TopNavS.TopNavContents>
           <TopNavS.TopNavContents
             onClick={(e) => {
+
               NavClick(e, "my");
+
             }}
           >
             My
