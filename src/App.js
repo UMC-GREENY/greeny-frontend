@@ -44,7 +44,7 @@ function App() {
   return (
     <div className='App'>
       <TopNav></TopNav>
-
+      {/* <SideNav></SideNav> */}
       <MainScreen>
         <Routes>
           <Route path='/' element={<Home />} />
