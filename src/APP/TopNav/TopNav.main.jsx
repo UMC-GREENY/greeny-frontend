@@ -1,9 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
-import * as tokens from '../tokens';
 import * as TopNavS from './Styled/TopNav.main.styles';
-import Mypage from '../Home/Pages/Mypage1';
 
 function TopNav() {
   const navigate = useNavigate();
@@ -80,7 +77,7 @@ function TopNav() {
           </TopNavS.TopNavSubContents>
           <TopNavS.TopNavSubContents
             onClick={(e) => {
-              NavClick(e, 'community');
+              // NavClick(e, 'community');
               navigate('/community');
             }}
           >
@@ -89,7 +86,8 @@ function TopNav() {
           {/* 생활팁 페이지로 넘어가는페이지가 아직 구현전이라 잠시추가한 내용입니다. */}
           <TopNavS.TopNavSubContents
             onClick={(e) => {
-              NavClick(e, '/lifeTip');
+              // NavClick(e, '/lifeTip');
+              navigate('/lifeTip')
             }}
           >
             TIP
