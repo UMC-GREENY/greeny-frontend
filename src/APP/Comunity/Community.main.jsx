@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import * as itemS from "./Styled/Community.main.styles";
-import { PostDummy } from "./PostDummy";
-import { ReviewDummy } from "./ReviewDummy";
-import { CommunityDummy } from "./CommunityDummy";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import * as itemS from './Styled/Community.main.styles';
+import { PostDummy } from './PostDummy';
+import { ReviewDummy } from './ReviewDummy';
+import { CommunityDummy } from './CommunityDummy';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import { FaStar, FaRegStar } from "react-icons/fa";
+import { FaStar, FaRegStar, FaHome } from 'react-icons/fa';
 
 function CommunityMain() {
   const navigate = useNavigate();
   const handleMore = (type) => {
-    navigate("/post", { state: { type } });
+    navigate('/post', { state: { type } });
   };
 
   const renderStars = (count) => {
@@ -31,9 +31,9 @@ function CommunityMain() {
     <itemS.SignupWrapper>
       <itemS.SignupContentWrapper>
         <itemS.Title>Community</itemS.Title>
-        <itemS.ContentWrapper>  
-          <itemS.SubTitle>BEST POST</itemS.SubTitle>   
-          <itemS.MoreButton onClick={() => handleMore("post")}>
+        <itemS.ContentWrapper>
+          <itemS.SubTitle>BEST POST</itemS.SubTitle>
+          <itemS.MoreButton onClick={() => handleMore('post')}>
             더보기
           </itemS.MoreButton>
         </itemS.ContentWrapper>
@@ -53,18 +53,16 @@ function CommunityMain() {
 
         <itemS.ContentWrapper>
           <itemS.SubTitle>REVIEW</itemS.SubTitle>
-          <itemS.MoreButton onClick={() => handleMore("review")}>
+          <itemS.MoreButton onClick={() => handleMore('review')}>
             더보기
           </itemS.MoreButton>
         </itemS.ContentWrapper>
 
         <itemS.InfoBox>
-         {limitData(ReviewDummy, limit).map((post, index) => (
+          {limitData(ReviewDummy, limit).map((post, index) => (
             <React.Fragment key={index}>
               <itemS.InfoLine>
-                <itemS.PostStar>
-                  {renderStars(post.star)}
-                </itemS.PostStar>
+                <itemS.PostStar>{renderStars(post.star)}</itemS.PostStar>
                 <itemS.PostContent>{post.content}</itemS.PostContent>
                 <itemS.PostEmail>{post.email}</itemS.PostEmail>
                 <itemS.PostDate>{post.date}</itemS.PostDate>
@@ -75,8 +73,8 @@ function CommunityMain() {
         </itemS.InfoBox>
 
         <itemS.ContentWrapper>
-            <itemS.SubTitle>GREENY COMMUNITY</itemS.SubTitle>
-          <itemS.MoreButton onClick={() => handleMore("community")}>
+          <itemS.SubTitle>GREENY COMMUNITY</itemS.SubTitle>
+          <itemS.MoreButton onClick={() => handleMore('community')}>
             더보기
           </itemS.MoreButton>
         </itemS.ContentWrapper>
@@ -94,7 +92,6 @@ function CommunityMain() {
           ))}
         </itemS.InfoBox>
       </itemS.SignupContentWrapper>
-      
     </itemS.SignupWrapper>
   );
 }

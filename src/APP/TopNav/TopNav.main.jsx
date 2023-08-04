@@ -1,8 +1,8 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import styled from "styled-components";
-import * as tokens from "../tokens";
-import * as TopNavS from "./Styled/TopNav.main.styles";
+import styled from 'styled-components';
+import * as tokens from '../tokens';
+import * as TopNavS from './Styled/TopNav.main.styles';
 import Mypage from '../Home/Pages/Mypage1';
 
 function TopNav() {
@@ -17,10 +17,10 @@ function TopNav() {
   };
   return (
     <TopNavS.TopNavWrapper>
-      <TopNavS.TopNavContentWrapper type="main">
+      <TopNavS.TopNavContentWrapper type='main'>
         <TopNavS.TopNavLogo
           onClick={(e) => {
-            NavClick(e, "/");
+            NavClick(e, '/');
           }}
         >
           GREENY
@@ -28,58 +28,60 @@ function TopNav() {
         <TopNavS.TopNavInfoWrapper>
           <TopNavS.TopNavContents
             onClick={() =>
-              navigate("/login", {
-                state: { type: "login", name: "로그인" },
+              navigate('/login', {
+                state: { type: 'login', name: '로그인' },
               })
             }
           >
             Login
           </TopNavS.TopNavContents>
           <TopNavS.TopNavContents
-            onClick={(e) => {
-
-              NavClick(e, "my");
-
-            }}
+            onClick={() =>
+              navigate('/mypage', {
+                state: { type: 'mypagae', name: '나의페이지' },
+              })
+            }
           >
             My
           </TopNavS.TopNavContents>
           <TopNavS.TopNavContents
-            onClick={(e) => {
-              NavClick(e, "like");
-            }}
+            onClick={() =>
+              navigate('/likepage', {
+                state: { type: 'likepage', name: '찜페이지' },
+              })
+            }
           >
             Like
           </TopNavS.TopNavContents>
         </TopNavS.TopNavInfoWrapper>
       </TopNavS.TopNavContentWrapper>
-      <TopNavS.TopNavContentWrapper type="sub">
+      <TopNavS.TopNavContentWrapper type='sub'>
         <TopNavS.SubNavItemWrapper>
           <TopNavS.TopNavSubContents
-            onClick={(e) => {
-              NavClick(e, "all");
+            onClick={() => {
+              navigate();
             }}
           >
             ALL
           </TopNavS.TopNavSubContents>
           <TopNavS.TopNavSubContents
             onClick={(e) => {
-              NavClick(e, "eco-products");
+              NavClick(e, 'eco-products');
             }}
           >
             ECO-PRODUCTS
           </TopNavS.TopNavSubContents>
           <TopNavS.TopNavSubContents
             onClick={(e) => {
-              NavClick(e, "eco-store");
+              NavClick(e, 'eco-store');
             }}
           >
             ECO-STORE
           </TopNavS.TopNavSubContents>
           <TopNavS.TopNavSubContents
             onClick={(e) => {
-              NavClick(e, "community");
-              navigate("/community");
+              NavClick(e, 'community');
+              navigate('/community');
             }}
           >
             COMMUNITY
@@ -87,7 +89,7 @@ function TopNav() {
           {/* 생활팁 페이지로 넘어가는페이지가 아직 구현전이라 잠시추가한 내용입니다. */}
           <TopNavS.TopNavSubContents
             onClick={(e) => {
-              NavClick(e, "/lifeTip");
+              NavClick(e, '/lifeTip');
             }}
           >
             TIP
@@ -99,7 +101,7 @@ function TopNav() {
             <TopNavS.TopNavInputBox></TopNavS.TopNavInputBox>
             <TopNavS.TopNavInputIcon></TopNavS.TopNavInputIcon>
           </TopNavS.TopNavInputWrapper>
-          <TopNavS.TopNavInputWrapper style={{ width: "30%" }}>
+          <TopNavS.TopNavInputWrapper style={{ width: '30%' }}>
             <TopNavS.TopNavHamburger></TopNavS.TopNavHamburger>
           </TopNavS.TopNavInputWrapper>
         </TopNavS.TopNavInfoWrapper>

@@ -1,5 +1,5 @@
-import { Link, useLocation } from "react-router-dom";
-import * as tipDeS from "./Styled/LifeTipDe.main.styles";
+import { Link, useLocation } from 'react-router-dom';
+import * as tipDeS from './Styled/LifeTipDe.main.styles';
 function LifeTipDe() {
   const location = useLocation();
   console.log(location);
@@ -12,9 +12,9 @@ function LifeTipDe() {
         <tipDeS.Main>
           <tipDeS.Title>Life Tip</tipDeS.Title>
           <tipDeS.SubTitle>{title}</tipDeS.SubTitle>
-          <tipDeS.Line style={{ marginTop: "8px" }} />
+          <tipDeS.Line style={{ marginTop: '8px' }} />
           <tipDeS.Con>
-            {`${content}` === "2" ? (
+            {`${content}` === '2' ? (
               <tipDeS.ConDe>
                 <tipDeS.Ti>
                   <img src={img} />
@@ -22,10 +22,10 @@ function LifeTipDe() {
                     <h2>#양산</h2>
                     <h4>재활용: 불가능</h4>
                     <h4>
-                      분류:{" "}
+                      분류:{' '}
                       <Link
-                        to="https://blisgo.com/category/%ec%9d%bc%eb%b0%98%ec%93%b0%eb%a0%88%ea%b8%b0/"
-                        target="_blank"
+                        to='https://blisgo.com/category/%ec%9d%bc%eb%b0%98%ec%93%b0%eb%a0%88%ea%b8%b0/'
+                        target='_blank'
                       >
                         재활용 쓰레기
                       </Link>

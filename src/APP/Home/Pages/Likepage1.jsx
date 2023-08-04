@@ -21,7 +21,6 @@ function Likepage() {
 
   const selectMenuHandler = (index) => {
     clickTab(index);
-    alert('hi!');
   };
   return (
     <mystyles.totalcontainer>
