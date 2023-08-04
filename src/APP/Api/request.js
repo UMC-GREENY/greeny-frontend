@@ -1,5 +1,6 @@
 import axios from "axios";
 export const ACCESS_TOKEN = 'accessToken';
+
 const request = axios.create({
     baseURL: 'www.greeny.r-e.kr',
     withCredentials: true,
