@@ -18,6 +18,18 @@ import Home from './APP/Home/Home.main';
 import Mypage from './APP/Home/Pages/Mypage1';
 import Likepage from './APP/Home/Pages/Likepage1';
 
+import SideNav from './APP/SideNav/SideNav.main';
+import DetailPage from './APP/DetailPage/DetailPage.main';
+import SignupSelect from './APP/Auth/Auth.signup.select';
+import SignupAgree from './APP/Auth/Auth.signup.agree';
+import Signup from './APP/Auth/Auth.signup';
+import Login from './APP/Login/Login.main';
+import LifeTip from './APP/LifeTip/LifeTip.main';
+import LifeTipDe from './APP/LifeTip/LifeTipDe.main';
+import CommunityMain from './APP/Comunity/Community.main';
+import Post from './APP/Comunity/Community.main.post';
+import WritePost from './APP/Comunity/Community.main.post.write';
+
 function App() {
   const MainScreen = styled.div`
     position: absolute;
@@ -32,11 +44,23 @@ function App() {
   return (
     <div className='App'>
       <TopNav></TopNav>
+
       <MainScreen>
         <Routes>
           <Route path='/' element={<Home />} />
+          <Route path='/select' element={<SignupSelect />} />
+          <Route path='/agree' element={<SignupAgree />} />
+          <Route path='/signup' element={<Signup />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/community' element={<CommunityMain />} />
+          <Route path='/post' element={<Post />} />
+          <Route path='/write_post' element={<WritePost />} />
+          <Route path='/lifeTip' element={<LifeTip />} />
+          <Route path='/lifeTip_de' element={<LifeTipDe />} />
+          <Route path='/detailPage' element={<DetailPage />} />
           <Route path='/mypage' element={<Mypage />} />
-          <Route path='/likepage' element={<Likepage />} />
+          <Route path='/likepage' element={<Likepage />} />s
+          <Route path='*' element={<Home />} />
         </Routes>
       </MainScreen>
     </div>
