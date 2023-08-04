@@ -1,10 +1,39 @@
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as toolS from "./Styled/Login.main.tool.styles";
+import request from "./../Api/request";
+
 function LoginMainTool({ type, name }) {
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isAutoLogin, setIsAutoLogin] = useState(false);
+
+  const handleLogin = async () => {
+    const requestData = {
+      "email": email,
+      "password": password,
+      "is_auto": isAutoLogin,
+    };
+
+    try {
+      // console.log("requestData@", requestData);
+      const response = await request.post("/api/auth/sign-in/general", requestData, {
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+        },
+      });
+
+      console.log("응답 데이터:", response);
+    } catch (error) {
+      console.error("에러:", error);
+    }
+  };
+
   const handleSignup = () => {
-    navigate('/select');
-  }
+    navigate("/select");
+  };
+
   return (
     <toolS.LoginWrapper>
       <toolS.LoginContentWrapper>
@@ -14,14 +43,28 @@ function LoginMainTool({ type, name }) {
         <toolS.LoginBox type="main">
           {type === "login" ? (
             <toolS.Div>
-              <toolS.Input type="email" placeholder="이메일" />
-              <toolS.Input type="password" placeholder="비밀번호" />
+              <toolS.Input
+                type="email"
+                placeholder="이메일"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <toolS.Input
+                type="password"
+                placeholder="비밀번호"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
               <toolS.Label>
-                <input type="radio" />
+                <input
+                  type="checkbox"
+                  checked={isAutoLogin}
+                  onChange={(e) => setIsAutoLogin(e.target.checked)}
+                />
                 자동 로그인
               </toolS.Label>
               <toolS.LoginBtn style={{ marginTop: "40px" }}>
-                <button>로그인</button>
+                <button onClick={handleLogin}>로그인</button>
               </toolS.LoginBtn>
               <toolS.FindBtn>
                 <button onClick={handleSignup}>회원가입</button>|
@@ -38,11 +81,16 @@ function LoginMainTool({ type, name }) {
             </toolS.Div>
           ) : (
             <toolS.Div>
-              <toolS.Input type="email" placeholder="이메일"></toolS.Input>
+              <toolS.Input
+                type="email"
+                placeholder="이메일"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
               <toolS.LoginBtn
                 style={{ marginBottom: "60px", marginTop: "48px" }}
               >
-                <button>이메일 보내기</button>
+                <button onClick={handleLogin}>이메일 보내기</button>
               </toolS.LoginBtn>
             </toolS.Div>
           )}
@@ -66,4 +114,5 @@ function LoginMainTool({ type, name }) {
     </toolS.LoginWrapper>
   );
 }
+
 export default LoginMainTool;
