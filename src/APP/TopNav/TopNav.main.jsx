@@ -1,10 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 import * as tokens from '../tokens';
 import * as TopNavS from './Styled/TopNav.main.styles';
 import Mypage from '../Home/Pages/Mypage1';
 
 function TopNav() {
+  const navigate = useNavigate();
   const NavClick = (e, type) => {
     e.preventDefault();
     alert(
@@ -24,15 +26,19 @@ function TopNav() {
             Login
           </TopNavS.TopNavContents>
           <TopNavS.TopNavContents
-            onClick={(e) => {
-              NavClick(e, 'my');
+            onClick={() => {
+              navigate('/mypage', {
+                state: { type: 'mypage', name: '나의페이지' },
+              });
             }}
           >
             My
           </TopNavS.TopNavContents>
           <TopNavS.TopNavContents
-            onClick={(e) => {
-              NavClick(e, 'like');
+            onClick={() => {
+              navigate('/likepage', {
+                state: { type: 'likepage', name: '찜페이지' },
+              });
             }}
           >
             Like

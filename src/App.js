@@ -32,7 +32,13 @@ function App() {
   return (
     <div className='App'>
       <TopNav></TopNav>
-      <Likepage></Likepage>
+      <MainScreen>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/mypage' element={<Mypage />} />
+          <Route path='/likepage' element={<Likepage />} />
+        </Routes>
+      </MainScreen>
     </div>
   );
 }
