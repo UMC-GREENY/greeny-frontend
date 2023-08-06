@@ -8,7 +8,7 @@ function MainLandigPicture() {
 				<landingS.MainPicContent type="main">
 					친환경적인<br></br>
 					라이프스타일 구축을 위해<br></br>
-					노력하는 <sapn style={{ fontFamily: "Merriweather" }}>GREENY</sapn>
+					노력하는 <span style={{ fontFamily: "Merriweather" }}>GREENY</span>
 				</landingS.MainPicContent>
 				<landingS.MainPicContent type="sub">
 					<u style={{ marginRight: "10px" }}>더 알아보기</u> {">"}
