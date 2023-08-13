@@ -1,11 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import * as itemS from "./Styled/Auth.signup.styles"
+import request from "./../Api/request";
+import { refreshToken } from './../Api/request';
+import axios from 'axios';
 
 function Signup() {
+  // 토큰 유효 검사 실시 false면 refreshToken로 재발급
+  // isSuccess 는 사용하고 싶으면 쓰세요
+  const [isSuccess, setIsSuccess] = useState(null);
+  useEffect(() => {
+    // 데이터 가져오기를 처리하는 함수 정의
+    async function fetchData() {
+      try {
+        const response = await request.get('/api/auth');
+        console.log("response",response);
+        setIsSuccess(response.isSuccess);
+      } catch (error) {
+        if (error.response && error.response.status === 401) {
+          // 토큰 만료 또는 인증 실패로 인한 오류인 경우
+          try {
+            // refreshToken 함수를 사용하여 액세스 토큰 갱신
+            await refreshToken();
+            // 실패한 요청을 다시 시도
+            const response = await request.get('/api/auth');
+            setIsSuccess(response.isSuccess);
+          } catch (refreshError) {
+            console.error('토큰 갱신 중 오류:', refreshError);
+          }
+        } else {
+          console.error('데이터 가져오기 중 오류:', error);
+        }
+      }
+    }
+
+    fetchData();
+  }, []);
 
   const location = useLocation();
-  
   const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
@@ -15,12 +47,140 @@ function Signup() {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [dateOfBirth, setDateOfBirth] = useState('');
 
-  // Function to handle form submission
-  const handleSubmit = (e) => {
-    const optionalChecked = location.state.optionalChecked;
-    const advertisingChecked = location.state.advertisingChecked;
-    console.log("optionalChecked",optionalChecked);
-    console.log("advertisingChecked",advertisingChecked);
+  // 정규식을 이용한 유효성 검사
+  const emailRegEx = /^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{2,3}$/;
+  // const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
+  const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,15}$/;
+  const phoneNumberRegex = /^010-\d{4}-\d{4}$/; // 010-4자리-4자리
+  const dateOfBirthRegex = /^(19|20)\d{2}-(0[1-9]|1[0-2])-([0-2][1-9]|3[01])$/;
+  const nameRegex = /^[A-Za-z가-힣]{2,}$/; // 최소 2글자
+
+  // 비밀번호 유효성 검사
+  const [isPasswordValid, setIsPasswordValid] = useState(true);
+  const handlePasswordChange = (value) => {
+    setPassword(value); 
+    // 비밀번호를 정규식과 비교하여 유효성을 검사
+    if (passwordRegex.test(value)) {
+      setIsPasswordValid(true);
+    } else {
+      setIsPasswordValid(false);
+    }
+  };
+
+  // 비밀번호 확인 
+  const [isPasswordConfirmed, setIsPasswordConfirmed] = useState(true);
+  const handlePasswordConfirmationChange = (value) => {
+    setPasswordConfirmation(value);
+    // 비밀번호 확인 값과 비밀번호 값이 일치하는지 확인
+    if (value === password) {
+      setIsPasswordConfirmed(true);
+    } else {
+      setIsPasswordConfirmed(false);
+    }
+  };
+
+  // 이메일 인증 여부 추적
+  const [isEmailVerified, setIsEmailVerified] = useState(true);
+
+  const [selectedDomain, setSelectedDomain] = useState('직접입력')
+
+  //이메일 인증하기
+  const handleEmailVerification = async () => { 
+    console.log("email".email);
+    const requestData = {
+      email: email,
+      authorizationUrl: "/signup"
+    };
+    await axios.post('/api/auth', requestData)    
+    .then(res => {
+      console.log('res: ', res)
+      if (res.data.success) {
+        setIsEmailVerified(true);
+      } else {
+        console.log("res.data.success",res.data.success);
+      }
+    })
+    .catch(error => {
+      console.log(error);
+    })
+  };
+
+  //이메일 합치기
+  const handleDomainChange = (e) => {
+    setSelectedDomain(e.target.value);
+    if (e.target.value !== '직접입력') {
+      setEmail(email.split('@')[0] + '@' + e.target.value);
+    }
+  };
+
+  // 회원가입 버튼 조건 
+  const [isFormValid, setIsFormValid] = useState(false);
+  const handleFormValidation = () => {
+    // 필수 입력 필드가 모두 채워져 있고, 이메일이 인증된 경우 검사
+    if (
+      email &&
+      password &&
+      passwordConfirmation &&
+      name &&
+      phoneNumber &&
+      dateOfBirth &&
+      isEmailVerified &&
+      isPasswordValid &&
+      isPasswordConfirmed
+    ) {
+      setIsFormValid(true);
+    } else {
+      setIsFormValid(false);
+    }
+  };
+
+
+  const handleSubmit = async () => {
+    
+    const personalInfo = location.state.optionalChecked;
+    const thirdParty = location.state.advertisingChecked;
+
+    try {
+      const requestData = {
+        email: email,
+        password: password,
+        name: name,
+        phone: phoneNumber,
+        birth: dateOfBirth
+      };
+  
+      const response = await request.post('/api/auth/sign-up', requestData);
+      console.log("response",response);
+      if (response.isSuccess) {
+        alert(response.message);
+        navigate('/login'); 
+        // 회원가입이 성공적으로 완료된 경우 동의서 제출 요청을 보냄
+        try {
+          const agreementData = {
+            email: email,
+            personalInfo: personalInfo,
+            thirdParty: thirdParty,
+          };
+          console.log("agreementData",agreementData);
+
+          const agreementResponse = await request.post('/api/auth/sign-up/agreement', agreementData);
+          console.log("agreementResponse", agreementResponse);
+
+          if (agreementResponse.isSuccess) {
+            console.log("동의서 제출 성공.");
+          } else {
+            console.log("동의서 제출 실패.");
+          }
+        } catch (agreementError) {
+          console.error('동의서 제출 오류: ', agreementError);
+        }
+      } else {
+        alert('회원가입 중 오류가 발생했습니다.');
+      }
+    } catch (error) {
+      console.error('API 요청 오류: ', error);
+      alert('회원가입 중 오류가 발생했습니다.');
+    }
 
   };
 
@@ -39,12 +199,17 @@ function Signup() {
               onChange={(e) => setEmail(e.target.value)}
             />
             <span>@</span>
-            <itemS.Select>
+            <itemS.Select
+              value={selectedDomain}
+              onChange={handleDomainChange}
+            >
               <option value="직접입력">직접입력</option>
               <option value="gmail.com">gmail.com</option>
               <option value="naver.com">naver.com</option>
             </itemS.Select>
-            <itemS.ConfirmButton>이메일 인증하기</itemS.ConfirmButton>
+            <itemS.ConfirmButton onClick={handleEmailVerification}>
+              이메일 인증하기
+            </itemS.ConfirmButton>
           </itemS.InputContainer>
           <itemS.InputContainer>
             <itemS.PwdLabel>비밀번호</itemS.PwdLabel>
@@ -52,18 +217,30 @@ function Signup() {
               type="password"
               placeholder="특수문자 1개 이상, 영문+숫자, 15자 이내"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => handlePasswordChange(e.target.value)}
+              disabled={!isEmailVerified}
             />
           </itemS.InputContainer>
+          {!isPasswordValid && password.length > 0 && (
+            <itemS.ErrorMessage>
+              * 특수문자 1개 이상, 영문+숫자, 15자 이내로 설정해주세요.
+            </itemS.ErrorMessage>
+          )}
           <itemS.InputContainer>
             <itemS.PwdConfirmLabel>비밀번호 확인</itemS.PwdConfirmLabel>
             <itemS.Input
               type="password"
               placeholder="비밀번호 확인"
               value={passwordConfirmation}
-              onChange={(e) => setPasswordConfirmation(e.target.value)}
+              onChange={(e) => handlePasswordConfirmationChange(e.target.value)}
+              disabled={!isEmailVerified}
             />
           </itemS.InputContainer>
+          {!isPasswordConfirmed && passwordConfirmation.length > 0 && (
+            <itemS.ErrorMessage>
+              * 비밀번호가 일치하지 않습니다.
+            </itemS.ErrorMessage>
+          )}
           <itemS.InputContainer>
             <itemS.NameLabel>이름</itemS.NameLabel>
             <itemS.Input
@@ -71,6 +248,7 @@ function Signup() {
               placeholder="이름을 입력해주세요"
               value={name}
               onChange={(e) => setName(e.target.value)}
+              disabled={!isEmailVerified}
             />
           </itemS.InputContainer>
           <itemS.InputContainer>
@@ -80,6 +258,7 @@ function Signup() {
               placeholder="000-0000-0000"
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
+              disabled={!isEmailVerified}
             />
           </itemS.InputContainer>
           <itemS.InputContainer>
@@ -89,11 +268,16 @@ function Signup() {
               placeholder="0000-00-00"
               value={dateOfBirth}
               onChange={(e) => setDateOfBirth(e.target.value)}
+              disabled={!isEmailVerified}
             />
           </itemS.InputContainer>
           <itemS.ButtonContainer>
             <itemS.CancelButton>취소하기</itemS.CancelButton>
-            <itemS.SignupButton onClick={handleSubmit}>회원가입</itemS.SignupButton>
+            <itemS.SignupButton
+              onClick={handleSubmit}
+              disabled={!isFormValid}
+            >
+            회원가입</itemS.SignupButton>
           </itemS.ButtonContainer>
         </itemS.InfoBox>
       </itemS.SignupContentWrapper>
