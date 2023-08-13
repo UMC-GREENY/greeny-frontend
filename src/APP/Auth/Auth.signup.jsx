@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import * as itemS from "./Styled/Auth.signup.styles"
 
 function Signup() {
+
+  const location = useLocation();
   
   const navigate = useNavigate();
 
@@ -15,8 +17,11 @@ function Signup() {
 
   // Function to handle form submission
   const handleSubmit = (e) => {
-    // e.preventDefault();
-    // navigate('/agree');
+    const optionalChecked = location.state.optionalChecked;
+    const advertisingChecked = location.state.advertisingChecked;
+    console.log("optionalChecked",optionalChecked);
+    console.log("advertisingChecked",advertisingChecked);
+
   };
 
   return (
