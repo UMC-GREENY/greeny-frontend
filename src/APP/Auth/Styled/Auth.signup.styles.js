@@ -98,7 +98,7 @@ export const BirthLabel = styled.label`
 export const InputContainer = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  margin-top: 10px;
 `;
 
 //이메일 입력
@@ -127,12 +127,6 @@ export const Select = styled.select`
   width: 320px;
   height: 36px;
 `;
-
-// export const Button = styled.button`
-// 	padding: 4px 16px;
-// 	margin-left: 10px;
-// 	border-radius: 3px;
-// `;
 
 //이메일 인증하기 버튼
 export const ConfirmButton = styled.button`
@@ -175,4 +169,12 @@ export const SignupButton = styled.button`
 	border: none;
   width: 224px;
   height: 44px;
+`;
+
+export const ErrorMessage = styled.small`
+  color: red;
+  text-align: left;
+  display: block;
+  margin-bottom: 10px;
+  margin-left: 150px;
 `;

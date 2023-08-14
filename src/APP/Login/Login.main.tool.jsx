@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as toolS from "./Styled/Login.main.tool.styles";
 import request from "./../Api/request";
-import { ACCESS_TOKEN, REFREASH_TOKEN, refreshToken } from "./../Api/request";
+import { ACCESS_TOKEN, REFRESH_TOKEN, refreshToken } from "./../Api/request";
 
 
 function LoginMainTool({ type, name }) {
@@ -22,18 +22,6 @@ function LoginMainTool({ type, name }) {
       "isAuto": isAutoLogin,
     };
   
-    // try {
-    //   console.log("requestData@", requestData);
-    //   const response = await request.post("/api/auth/sign-in/general", requestData, {
-    //     headers: {
-    //       "Content-Type": "application/json; charset=utf-8",
-    //     },
-    //   });
-    //   console.log("ww");
-    //   console.log("응답 데이터:", response);
-    // } catch (error) {
-    //   console.error("에러:", error);
-    // }
     await request.post('/api/auth/sign-in/general', requestData)    
       .then(res => {
           console.log('res: ', res)
@@ -42,7 +30,7 @@ function LoginMainTool({ type, name }) {
           const { accessToken, refreshToken } = res.data;
           // console.log('token : ', token)
           localStorage.setItem(ACCESS_TOKEN, accessToken)
-          localStorage.setItem(REFREASH_TOKEN, refreshToken);
+          localStorage.setItem(REFRESH_TOKEN, refreshToken);
           // 헤더에 토큰 잘 들어가는지 확인 
           // console.log("headers:", request.defaults.headers)
           console.log('accessToken',accessToken);
