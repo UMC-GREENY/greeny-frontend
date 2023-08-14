@@ -36,10 +36,10 @@ export const REFRESH_TOKEN = 'refreshToken'
 // Authorization 에 토큰 자동으로 들어가도록 설정하였습니다. 
 const request = axios.create({
   baseURL: 'http://www.greeny.r-e.kr',
-  withCredentials: true,
-  transformRequest: true,
   headers: {
-    'Authorization': `Bearer ${window.localStorage.getItem(ACCESS_TOKEN)}`
+    withCredentials: true,
+    transformRequest: true,
+    Authorization: `Bearer ${window.localStorage.getItem(ACCESS_TOKEN)}`
   }
 });
 

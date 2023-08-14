@@ -2,41 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import * as itemS from "./Styled/Auth.signup.styles"
 import request from "./../Api/request";
-import { refreshToken } from './../Api/request';
+// import { refreshToken } from './../Api/request';
 import axios from 'axios';
 
 function Signup() {
-  // 토큰 유효 검사 실시 false면 refreshToken로 재발급
-  // isSuccess 는 사용하고 싶으면 쓰세요
-  const [isSuccess, setIsSuccess] = useState(null);
-  useEffect(() => {
-    // 데이터 가져오기를 처리하는 함수 정의
-    async function fetchData() {
-      try {
-        const response = await request.get('/api/auth');
-        console.log("response",response);
-        setIsSuccess(response.isSuccess);
-      } catch (error) {
-        if (error.response && error.response.status === 401) {
-          // 토큰 만료 또는 인증 실패로 인한 오류인 경우
-          try {
-            // refreshToken 함수를 사용하여 액세스 토큰 갱신
-            await refreshToken();
-            // 실패한 요청을 다시 시도
-            const response = await request.get('/api/auth');
-            setIsSuccess(response.isSuccess);
-          } catch (refreshError) {
-            console.error('토큰 갱신 중 오류:', refreshError);
-          }
-        } else {
-          console.error('데이터 가져오기 중 오류:', error);
-        }
-      }
-    }
-
-    fetchData();
-  }, []);
-
+  
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -114,7 +84,7 @@ function Signup() {
   };
 
   // 회원가입 버튼 조건 
-  const [isFormValid, setIsFormValid] = useState(false);
+  const [isFormValid, setIsFormValid] = useState(true);
   const handleFormValidation = () => {
     // 필수 입력 필드가 모두 채워져 있고, 이메일이 인증된 경우 검사
     if (
@@ -153,7 +123,9 @@ function Signup() {
       console.log("response",response);
       if (response.isSuccess) {
         alert(response.message);
-        navigate('/login'); 
+        navigate("/login", {
+          state: { type: "login", name: "로그인" },
+        })
         // 회원가입이 성공적으로 완료된 경우 동의서 제출 요청을 보냄
         try {
           const agreementData = {
