@@ -13,7 +13,7 @@ function LoginKakao() {
     <toolS.InputBtn
       type="button"
       onClick={handleLogin}
-      style={{ background: `url("Login/kakaoLogin.png")` }}
+      style={{ background: `url("/Login/kakaoLogin.png")` }}
     ></toolS.InputBtn>
   );
 }

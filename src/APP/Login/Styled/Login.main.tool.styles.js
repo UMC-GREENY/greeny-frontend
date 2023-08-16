@@ -110,5 +110,5 @@ export const SocialBtn = styled.div`
 export const InputBtn = styled.input`
   width: 320px;
   height: 48px;
-  /* border: none; */
+  border: none;
 `;

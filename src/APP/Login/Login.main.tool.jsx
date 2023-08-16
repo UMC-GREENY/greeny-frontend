@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as toolS from "./Styled/Login.main.tool.styles";
 import request from "./../Api/request";
-import { ACCESS_TOKEN, REFREASH_TOKEN, refreshToken } from "./../Api/request";
+import { ACCESS_TOKEN, REFRESH_TOKEN, refreshToken } from "./../Api/request";
 import LoginKakao from "./Login.kakao";
 
 function LoginMainTool() {
@@ -22,18 +22,28 @@ function LoginMainTool() {
   //     kakaoLogin();
   //   }
   // }, []);
+  const Change = () => {
+    setType("find");
+    setName("비밀번호 찾기");
+  };
 
   useEffect(() => {
     const code = window.location.href.split("=")[1];
+    if (!code) return;
     const fetch = async () => {
-      const response = await request.post("/api/auth/sign-in/kakao", null, {
+      const { data } = await request.post("/api/auth/sign-in/kakao", null, {
         params: { authorizationCode: code },
       });
-      console.log(response);
+      localStorage.setItem(ACCESS_TOKEN, data.accessToken);
+      localStorage.setItem(REFRESH_TOKEN, data.refreshToken);
+      if (data.email === "nothing") {
+        navigate("/agree");
+        return;
+      }
+      navigate("/");
     };
-
     fetch();
-  }, [window.location.href]);
+  }, []);
 
   const kakaoLogin = async () => {
     const url = window.location.href;
@@ -60,18 +70,6 @@ function LoginMainTool() {
       isAuto: isAutoLogin,
     };
 
-    // try {
-    //   console.log("requestData@", requestData);
-    //   const response = await request.post("/api/auth/sign-in/general", requestData, {
-    //     headers: {
-    //       "Content-Type": "application/json; charset=utf-8",
-    //     },
-    //   });
-    //   console.log("ww");
-    //   console.log("응답 데이터:", response);
-    // } catch (error) {
-    //   console.error("에러:", error);
-    // }
     await request
       .post("/api/auth/sign-in/general", requestData)
       .then((res) => {
@@ -81,7 +79,7 @@ function LoginMainTool() {
         const { accessToken, refreshToken } = res.data;
         // console.log('token : ', token)
         localStorage.setItem(ACCESS_TOKEN, accessToken);
-        localStorage.setItem(REFREASH_TOKEN, refreshToken);
+        localStorage.setItem(REFRESH_TOKEN, refreshToken);
         // 헤더에 토큰 잘 들어가는지 확인
         // console.log("headers:", request.defaults.headers)
         console.log("accessToken", accessToken);
@@ -138,15 +136,7 @@ function LoginMainTool() {
               </toolS.LoginBtn>
               <toolS.FindBtn>
                 <button onClick={handleSignup}>회원가입</button>|
-                <button
-                  onClick={() =>
-                    navigate("/login", {
-                      state: { type: "find", name: "비밀번호 찾기" },
-                    })
-                  }
-                >
-                  비밀번호 찾기
-                </button>
+                <button onClick={() => Change()}>비밀번호 찾기</button>
               </toolS.FindBtn>
             </toolS.Div>
           ) : (
@@ -171,7 +161,7 @@ function LoginMainTool() {
             <toolS.InputBtn
               type="button"
               // onClick=""
-              style={{ background: `url("Login/naverLogin.png")` }}
+              style={{ background: `url("/Login/naverLogin.png")` }}
             ></toolS.InputBtn>
             <LoginKakao />
           </toolS.SocialBtn>
