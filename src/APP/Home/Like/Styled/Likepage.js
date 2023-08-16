@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import * as tokens from '../../tokens';
+import * as tokens from '../../../tokens';
 
 export const Div = styled.div`
   display: flex;

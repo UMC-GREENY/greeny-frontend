@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as TopNavS from './Styled/TopNav.main.styles';
-
+import Modal from '../Modal/Modal.main';
 function TopNav() {
   const navigate = useNavigate();
   const NavClick = (e, type) => {
@@ -12,6 +12,18 @@ function TopNav() {
 
     navigate(`${type}`);
   };
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = () => {
+    setShowModal(true);
+    console.log(showModal);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+    console.log(showModal);
+  };
+
   return (
     <TopNavS.TopNavWrapper>
       <TopNavS.TopNavContentWrapper type='main'>
@@ -87,7 +99,7 @@ function TopNav() {
           <TopNavS.TopNavSubContents
             onClick={(e) => {
               // NavClick(e, '/lifeTip');
-              navigate('/lifeTip')
+              navigate('/lifeTip');
             }}
           >
             TIP
@@ -100,7 +112,16 @@ function TopNav() {
             <TopNavS.TopNavInputIcon></TopNavS.TopNavInputIcon>
           </TopNavS.TopNavInputWrapper>
           <TopNavS.TopNavInputWrapper style={{ width: '30%' }}>
-            <TopNavS.TopNavHamburger></TopNavS.TopNavHamburger>
+            <TopNavS.TopNavHamburger
+              onClick={openModal}
+            ></TopNavS.TopNavHamburger>
+            <Modal isOpen={showModal} onClose={closeModal}>
+              <TopNavS.ModalLine>
+                <TopNavS.ModalButton onClick={closeModal}>
+                  {'X'}
+                </TopNavS.ModalButton>
+              </TopNavS.ModalLine>
+            </Modal>
           </TopNavS.TopNavInputWrapper>
         </TopNavS.TopNavInfoWrapper>
       </TopNavS.TopNavContentWrapper>

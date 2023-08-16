@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import * as tokens from '../../tokens';
+import * as tokens from '../../../tokens';
 
 export const Div = styled.div`
   display: flex;
@@ -9,6 +9,7 @@ export const Div = styled.div`
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 1279px;
 `;
 export const totalcontainer = styled.div`
@@ -47,9 +48,11 @@ export const secondcontainertitle = styled.div`
   margin-top: 36px;
 `;
 export const Title = styled.div`
+  width: 181px;
   font-size: 40px;
   color: #649d17;
   text-align: start;
+  margin-right: 1100px;
 `;
 export const secondcontainer = styled.div`
   display: flex;
@@ -107,7 +110,7 @@ export const contentsemail = styled.div`
   font-size: 14px;
 `;
 export const contentsdate = styled.div`
-  width: 73px;
+  width: 160px;
   color: gray;
   font-size: 14px;
 `;
@@ -126,4 +129,17 @@ export const MoreButton = styled.button`
   padding: 4px 10px;
   cursor: pointer;
   border-radius: 4px;
+`;
+
+export const lastcontainer = styled.div`
+  width: 188px;
+  height: 32px;
+  margin-top: 225px;
+  display: flex;
+  flex-direction: row;
+`;
+export const lastbutton = styled.div`
+  width: 90px;
+  height: 32px;
+  color: black;
 `;

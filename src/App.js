@@ -15,8 +15,9 @@ import * as tokens from './APP/tokens';
 //Main components
 import TopNav from './APP/TopNav/TopNav.main';
 import Home from './APP/Home/Home.main';
-import Mypage from './APP/Home/Pages/Mypage1';
-import Likepage from './APP/Home/Pages/Likepage1';
+import Mypage from './APP/Home/MyPages/Mypage1';
+import Mypageinfo from './APP/Home/MyPages/Mypage.basicinfo';
+import Likepage from './APP/Home/Like/Likepage.main';
 
 import SideNav from './APP/SideNav/SideNav.main';
 import DetailPage from './APP/DetailPage/DetailPage.main';
@@ -59,7 +60,8 @@ function App() {
           <Route path='/lifeTip_de' element={<LifeTipDe />} />
           <Route path='/detailPage' element={<DetailPage />} />
           <Route path='/mypage' element={<Mypage />} />
-          <Route path='/likepage' element={<Likepage />} />s
+          <Route path='/likepage' element={<Likepage />} />
+          <Route path='/mypageinfo' element={<Mypageinfo />} />
           <Route path='*' element={<Home />} />
         </Routes>
       </MainScreen>

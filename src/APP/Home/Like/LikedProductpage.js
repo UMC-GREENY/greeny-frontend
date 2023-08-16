@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import * as mystyles from './Likepage';
+import * as mystyles from './Styled/Likepage';
 
 function LikedProductpage(props) {
   const isProductContent = props.title === 'Brand';

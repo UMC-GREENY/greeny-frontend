@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import * as mystyles from './Likepage';
+import axios from 'axios';
+import * as mystyles from './Styled/Likepage';
 import LikedProductpage from './LikedProductpage';
+import LikeButton from './Like.main.clickitem';
 
 function Likepage() {
   const menuArr = [
@@ -26,6 +28,30 @@ function Likepage() {
   const selectMenuHandler = (index) => {
     clickTab(index);
   };
+
+  const [storeList, setStoreList] = useState([]);
+  const [productList, setProductList] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get('/api/members/simple/store-bookmark?page=0&size=2&sort=id,desc')
+      .then((response) => {
+        setStoreList(response.data);
+      })
+      .catch((error) => {
+        console.error('Error fetching Store List', error);
+      });
+
+    axios
+      .get('/api/members/simple/product-bookmark?page=0&size=2&sort=id,desc')
+      .then((response) => {
+        setProductList(response.data);
+      })
+      .catch((error) => {
+        console.error('Error fetching Product List', error);
+      });
+  }, []);
+
   return (
     <mystyles.Div>
       <mystyles.Wrapper>
@@ -62,7 +88,28 @@ function Likepage() {
                 content2={menuArr[currentTab].content2}
               />
             ))}
+
+            {currentTab === 0
+              ? storeList.map((store, index) => (
+                  <LikedProductpage
+                    key={index}
+                    src={store.imgUrl}
+                    title={store.name}
+                    content1={store.category}
+                    content2={store.location}
+                  />
+                ))
+              : productList.map((product, index) => (
+                  <LikedProductpage
+                    key={index}
+                    src={product.imgsrc}
+                    title={product.productName}
+                    content1={product.storeName}
+                    content2={product.price}
+                  />
+                ))}
           </mystyles.contentsinnercontainer>
+
           <mystyles.SignupContentWrapper>
             <mystyles.PageSearchWrapper>
               <mystyles.PaginationBox>
