@@ -1,9 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import * as cardS from "./Styled/LifeTip.main.card.styles";
-function LifeTipCard({ title, content, img }) {
+function LifeTipCard({ title, ti, recy, type, num, content1, content2, img }) {
   const navigate = useNavigate();
-  console.log(title);
-  console.log(content);
   return (
     <cardS.Div>
       <cardS.Img>
@@ -15,7 +13,16 @@ function LifeTipCard({ title, content, img }) {
         <button
           onClick={() =>
             navigate("/lifeTip_de", {
-              state: { title: title, content: content, img: img },
+              state: {
+                title: title,
+                ti: ti,
+                recy: recy,
+                type: type,
+                num: num,
+                content1: content1,
+                content2: content2,
+                img: img,
+              },
             })
           }
         >
