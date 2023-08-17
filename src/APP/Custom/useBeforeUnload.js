@@ -1,9 +1,16 @@
-// useBeforeUnload.js
 import { useEffect } from 'react';
+import { useRecoilValue } from 'recoil';
+import { isAutoState } from '../Login/Recoil/Recoil.auth.state';
 
 function useBeforeUnload() {
+  const isAuto = useRecoilValue(isAutoState);
+
 	const removeTokenFromLocalStorage = () => {
-			window.localStorage.clear();
+      if (!isAuto) {
+        window.localStorage.clear();
+      } else {
+        console.log("");
+      }
 		};
   useEffect(() => {
     const handleBeforeUnload = (event) => {

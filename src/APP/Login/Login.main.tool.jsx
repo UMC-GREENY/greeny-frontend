@@ -8,9 +8,11 @@ import LoginKakao from "./Login.kakao";
 import useBeforeUnload from "../Custom/useBeforeUnload";
 import { useRecoilState } from 'recoil';
 import { isSuccessState } from "./Recoil/Recoil.auth.state";
+import { isAutoState } from "./Recoil/Recoil.auth.state";
 
 function LoginMainTool() {
-  const [isSuccess, setIsSuccess] = useRecoilState(isSuccessState);  //recoil 로그인 여부
+  const [isSuccess, setIsSuccess] = useRecoilState(isSuccessState);  // recoil 로그인 여부
+  const [isAuto, setIsAuto] = useRecoilState(isAutoState); // recoil 자동로그인 여부
   // useBeforeUnload();
   const [type, setType] = useState("login");
   const [name, setName] = useState("로그인");
@@ -111,7 +113,10 @@ function LoginMainTool() {
                 <input
                   type='checkbox'
                   checked={isAutoLogin}
-                  onChange={(e) => setIsAutoLogin(e.target.checked)}
+                  onChange={(e) => {
+                    setIsAutoLogin(e.target.checked); 
+                    setIsAuto(e.target.checked);
+                  }}
                 />
                 자동 로그인
               </toolS.Label>

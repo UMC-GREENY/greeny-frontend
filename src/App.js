@@ -33,6 +33,7 @@ import Post from "./APP/Comunity/Community.main.post";
 import WritePost from "./APP/Comunity/Community.main.post.write";
 
 function App() {
+
   const MainScreen = styled.div`
     position: absolute;
     top: 100px;
