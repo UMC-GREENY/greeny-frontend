@@ -31,6 +31,8 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
           cd greeny-frontend
+          sudo pm2 stop "${{ secrets.APP_NAME }}"
+          sudo pm2 delete "${{ secrets.APP_NAME }}"
           sudo git pull
           sudo npm run build
-          nohup sudo serve -l 3000 -s build &
+          sudo pm2 start --name "${{ secrets.APP_NAME }}" serve -- -l 3000 -s build
