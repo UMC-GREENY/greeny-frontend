@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import * as mystyles from './Styled/Likepage';
 import LikedProductpage from './LikedProductpage';
-import LikeButton from './Like.main.clickitem';
+import LikeButton from './Likepage.main.clickitem';
+import request from '../../Api/request';
+import { refreshToken } from '../../Api/request';
 
 function Likepage() {
-  const menuArr = [
+  /*const menuArr = [
     {
       name: 'PRODUCTS',
       subname: 'Brand',
@@ -22,35 +24,90 @@ function Likepage() {
       imgsrc: './pages/Rectangle 8.png',
       count: 9,
     },
-  ];
-  const [currentTab, clickTab] = useState(0);
+  ];*/
+
+  const [currentTab, clickTab] = useState('store');
 
   const selectMenuHandler = (index) => {
     clickTab(index);
   };
-
-  const [storeList, setStoreList] = useState([]);
-  const [productList, setProductList] = useState([]);
+  //////////////////////////////////
+  const [loading, setLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(null); // 상태 최상위 레벨로 이동
 
   useEffect(() => {
-    axios
-      .get('/api/members/simple/store-bookmark?page=0&size=2&sort=id,desc')
-      .then((response) => {
-        setStoreList(response.data);
-      })
-      .catch((error) => {
-        console.error('Error fetching Store List', error);
-      });
+    async function fetchData() {
+      try {
+        const response = await request.get('/api/auth');
+        console.log('response', response);
+        setIsSuccess(response.isSuccess);
+      } catch (error) {
+        if (error.response && error.response.status === 401) {
+          try {
+            await refreshToken();
+            const response = await request.get('/api/auth');
+            setIsSuccess(response.isSuccess);
+          } catch (refreshError) {
+            console.error('토큰 갱신 중 오류:', refreshError);
+          }
+        } else {
+          console.error('데이터 가져오기 중 오류:', error);
+        }
+      }
+    }
 
-    axios
-      .get('/api/members/simple/product-bookmark?page=0&size=2&sort=id,desc')
-      .then((response) => {
-        setProductList(response.data);
-      })
-      .catch((error) => {
-        console.error('Error fetching Product List', error);
-      });
+    fetchData();
   }, []);
+  //////////////////////////////////////////////////////////
+  const [likeStore, setLikeStore] = useState([]);
+  useEffect(() => {
+    const fetchLikeStore = async () => {
+      setLoading(true);
+      console.log(request);
+      try {
+        const response = await request.get(
+          'api/members/simple/store-bookmark?page=0&size=2&sort=id,desc'
+        );
+        console.log('찜한 스토어 데이터:', response);
+        setLikeStore(response.data.content);
+        console.log(likeStore);
+      } catch (error) {
+        console.error('찜한 스토어 목록을 가져오는데 실패', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchLikeStore();
+  }, []);
+  //////////////////////////////////////////
+  const [likeProduct, setLikeProduct] = useState([]);
+  useEffect(() => {
+    const fetchLikeProduct = async () => {
+      setLoading(true);
+      console.log(request);
+      try {
+        const response = await request.get(
+          'api/members/simple/product-bookmark?page=0&size=2&sort=id,desc'
+        );
+        console.log('찜한 제품 데이터:', response);
+        setLikeProduct(response.data.content);
+        console.log(likeProduct);
+      } catch (error) {
+        console.error('찜한 제품 목록을 가져오는데 실패', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchLikeProduct();
+  }, []);
+
+  useEffect(() => {
+    console.log(likeProduct); // userPosts가 업데이트될 때마다 로그 출력
+  }, [likeProduct]); // userPosts를 의존성 배열로 추가;
+
+  const selectedArray = currentTab === 'store' ? likeStore : likeProduct;
 
   return (
     <mystyles.Div>
@@ -60,73 +117,49 @@ function Likepage() {
         </mystyles.Title>
         <hr></hr>
         <mystyles.tabwrapper>
-          {menuArr.map((el, index) => (
-            <ul
-              style={{
-                fontFamily: 'Merriweather',
-                fontSize: '16px',
-                fontWeight: '500',
-                letterSpacing: '0.5px',
-              }}
-              className={index === currentTab ? 'focused' : 'submenu'}
-              onClick={() => selectMenuHandler(index)}
-            >
-              {el.name}
-              {'('} {el.count}
-              {')'}
-            </ul>
-          ))}
+          <ul
+            style={{
+              fontFamily: 'Merriweather',
+              fontSize: '16px',
+              fontWeight: '500',
+              letterSpacing: '0.5px',
+            }}
+            className={currentTab === 'store' ? 'focused' : 'submenu'}
+            onClick={() => selectMenuHandler('store')}
+          >
+            STORE {'('} {likeStore.length}
+            {')'}
+          </ul>
+          <ul
+            style={{
+              fontFamily: 'Merriweather',
+              fontSize: '16px',
+              fontWeight: '500',
+              letterSpacing: '0.5px',
+            }}
+            className={currentTab === 'product' ? 'focused' : 'submenu'}
+            onClick={() => selectMenuHandler('product')}
+          >
+            PRODUCTS{'('} {likeProduct.length}
+            {')'}
+          </ul>
         </mystyles.tabwrapper>
         <mystyles.contentscontainer>
           <mystyles.contentsinnercontainer>
-            {Array.from({ length: menuArr[currentTab].count }, (_, i) => (
+            {selectedArray.map((item, index) => (
               <LikedProductpage
-                key={i}
-                src={menuArr[currentTab].imgsrc}
-                title={menuArr[currentTab].subname}
-                content1={menuArr[currentTab].content1}
-                content2={menuArr[currentTab].content2}
+                type={currentTab === 'store' ? 'store' : 'product'}
+                src={currentTab === 'store' ? item.imageUrl : item.imageUrl}
+                title={currentTab === 'store' ? item.name : item.productName}
+                content2={currentTab === 'store' ? item.category : item.price}
+                content1={
+                  currentTab === 'store' ? item.location : item.storeName
+                }
               />
             ))}
-
-            {currentTab === 0
-              ? storeList.map((store, index) => (
-                  <LikedProductpage
-                    key={index}
-                    src={store.imgUrl}
-                    title={store.name}
-                    content1={store.category}
-                    content2={store.location}
-                  />
-                ))
-              : productList.map((product, index) => (
-                  <LikedProductpage
-                    key={index}
-                    src={product.imgsrc}
-                    title={product.productName}
-                    content1={product.storeName}
-                    content2={product.price}
-                  />
-                ))}
           </mystyles.contentsinnercontainer>
 
-          <mystyles.SignupContentWrapper>
-            <mystyles.PageSearchWrapper>
-              <mystyles.PaginationBox>
-                <mystyles.PaginationButton disabled>
-                  {' '}
-                  &lt;{' '}
-                </mystyles.PaginationButton>
-                <mystyles.PageNumber>1</mystyles.PageNumber>
-                <mystyles.PageNumber>2</mystyles.PageNumber>
-                <mystyles.PageNumber>3</mystyles.PageNumber>
-                <mystyles.PageNumber>4</mystyles.PageNumber>
-                <mystyles.PageNumber>5</mystyles.PageNumber>
-                {/* Add more page numbers here based on 'totalPages' */}
-                <mystyles.PaginationButton> &gt; </mystyles.PaginationButton>
-              </mystyles.PaginationBox>
-            </mystyles.PageSearchWrapper>
-          </mystyles.SignupContentWrapper>
+          {/* Pagination and other elements */}
         </mystyles.contentscontainer>
       </mystyles.Wrapper>
     </mystyles.Div>

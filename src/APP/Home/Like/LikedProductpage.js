@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import * as mystyles from './Styled/Likepage';
-
+import LikeButton from './Likepage.main.clickitem';
 function LikedProductpage(props) {
-  const isProductContent = props.title === 'Brand';
+  const { src, title, content1, content2, type } = props;
+
   return (
     <mystyles.productcontainer>
-      <mystyles.productimage src={props.src}></mystyles.productimage>
+      <mystyles.productimage src={src}></mystyles.productimage>
       <mystyles.productinfo>
-        <mystyles.productinfotitle>{props.title}</mystyles.productinfotitle>
-        <mystyles.productinfodetail
-          className={isProductContent ? 'product' : 'store'}
-        >
-          {props.content1}
+        <mystyles.productinfotitle>{title}</mystyles.productinfotitle>
+        <mystyles.productinfodetail className={type}>
+          {content1}
         </mystyles.productinfodetail>
-        <mystyles.productinfodetail
-          className={isProductContent ? 'product' : 'store2'}
-        >
-          {props.content2}
-        </mystyles.productinfodetail>
+        <mystyles.productinfodetail2 className={type}>
+          {content2}
+        </mystyles.productinfodetail2>
+        <mystyles.lastcontainer>
+          <LikeButton></LikeButton>
+        </mystyles.lastcontainer>
       </mystyles.productinfo>
     </mystyles.productcontainer>
   );

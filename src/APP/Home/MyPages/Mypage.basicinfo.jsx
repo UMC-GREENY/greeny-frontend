@@ -3,11 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import * as mystyles from './Styled/Mypage.styles';
 import { FaStar } from 'react-icons/fa';
 import UserContent from './Mypage.Usercontent';
-import LikeClick from '../Like/Like.main.clickitem';
+import LikeClick from '../Like/Likepage.main.clickitem';
 import UserReview from './Mypage.UserReview';
+import UserLikeStore from '../Like/Likepage.main.userLiked';
 
 function Mypage() {
-  const navigate = useNavigate();
+  /*const navigate = useNavigate();
   const handleMore = (type) => {
     navigate('/post', { state: { type } });
   };
@@ -52,7 +53,7 @@ function Mypage() {
       email: 'idd**@gmail.com',
       date: '2025.00.00',
     },
-  ];
+  ];*/
   return (
     <mystyles.Div>
       <mystyles.Wrapper>
@@ -63,6 +64,7 @@ function Mypage() {
         <LikeClick type='store' id={1} />
         <LikeClick type='product' id={1} />
         <UserReview></UserReview>
+        <UserLikeStore></UserLikeStore>
       </mystyles.Wrapper>
     </mystyles.Div>
   );

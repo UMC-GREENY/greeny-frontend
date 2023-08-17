@@ -127,7 +127,7 @@ export const productcontainer = styled.div`
 
 export const productimage = styled.img`
   width: 160px;
-  height: 160px;
+  height: 165px;
   border-radius: 6px;
 `;
 
@@ -139,49 +139,77 @@ export const productinfo = styled.div`
   align-items: start;
 `;
 export const productinfotitle = styled.div`
-  font-size: 24px;
+  font-size: 23px;
   justify-content: start;
   text-align: start;
+  margin-top: 5px;
+  font-family: Pretendard;
 `;
 export const productinfodetail = styled.div`
+  /* 공통 스타일 */
   text-align: start;
   margin: 4px;
 
-  ${(props) =>
-    props.className === 'product'
-      ? `
-          text-align: start;
-          margin-top: 4px;
-          color: black;
-          font-size: 16px;
-        `
-      : props.className === 'store'
-      ? `
-          text-align: start;
-          width: 60px;
-          height: 24px;
-          text-align: center;
-          color: black;
-          border-radius: 5px;
-          border-color: gray;
-          border-style: solid;
-          border-width: 1.5px;
-          margin-top: 4px;
-        `
-      : props.className === 'store2'
-      ? `
-      text-align: start;
-      width: 88px;
-      height: 24px;
-      text-align: center;
-      color: black;
-      border-radius: 5px;
-      background-color: #D9F0AB;
-      border-color: #D9F0AB;
-      border-style: solid;
-      margin-top:8px;
-      `
-      : ''}
+  /* type이 'product'일 때의 스타일 */
+  &.product {
+    text-align: start;
+    margin-top: 20px;
+    color: black;
+    font-size: 16px;
+    font-family: Pretendard;
+  }
+
+  /* type이 'store'일 때의 스타일 */
+  &.store {
+    text-align: start;
+    width: 60px;
+    height: 24px;
+    text-align: center;
+    color: black;
+    border-radius: 5px;
+    border-color: gray;
+    border-style: solid;
+    border-width: 1.5px;
+    margin-top: 20px;
+    font-family: Pretendard;
+  }
+`;
+
+export const productinfodetail2 = styled.div`
+  /* 공통 스타일 */
+  text-align: start;
+  margin: 4px;
+
+  /* type이 'product'일 때의 스타일 */
+  &.product {
+    text-align: start;
+    margin-top: 4px;
+    color: black;
+    font-size: 16px;
+    font-family: Pretendard;
+  }
+
+  /* type이 'store'일 때의 스타일 */
+  &.store {
+    text-align: start;
+    width: 88px;
+    height: 24px;
+    text-align: center;
+    color: black;
+    border-radius: 5px;
+    background-color: #d9f0ab;
+    border-color: #d9f0ab;
+    border-style: solid;
+    margin-top: 8px;
+    font-family: Pretendard;
+  }
+`;
+export const lastcontainer = styled.div`
+  width: 220px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 `;
 /*---------------------------------------------- */
 export const PageSearchWrapper = styled.div`
