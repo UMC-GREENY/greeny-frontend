@@ -27,7 +27,7 @@
 
 // export default request;
 
-import axios from "axios";
+import axios from 'axios';
 
 export const ACCESS_TOKEN = "accessToken";
 export const REFRESH_TOKEN = "refreshToken";
@@ -63,7 +63,7 @@ export const refreshToken = async () => {
     localStorage.setItem("accessToken", newAccessToken);
     return newAccessToken;
   } catch (error) {
-    console.error("토큰 갱신 에러:", error);
+    console.error('토큰 갱신 에러:', error);
     throw error;
   }
 };
