@@ -10,7 +10,9 @@ function Mypage() {
   const handleLogout = () => {
     const confirmLogout = window.confirm('정말 로그아웃을 하십니까');
     if (confirmLogout) {
+      window.localStorage.clear();
       alert('로그아웃 완료');
+      navigate('/login');
     }
   };
   const handleWithdrawal = () => {

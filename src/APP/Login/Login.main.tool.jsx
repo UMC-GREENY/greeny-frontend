@@ -5,8 +5,13 @@ import * as toolS from "./Styled/Login.main.tool.styles";
 import request from "./../Api/request";
 import { ACCESS_TOKEN, REFRESH_TOKEN, refreshToken } from "./../Api/request";
 import LoginKakao from "./Login.kakao";
+import useBeforeUnload from "../Custom/useBeforeUnload";
+import { useRecoilState } from 'recoil';
+import { isSuccessState } from "./Recoil/Recoil.auth.state";
 
 function LoginMainTool() {
+  const [isSuccess, setIsSuccess] = useRecoilState(isSuccessState);  //recoil 로그인 여부
+  // useBeforeUnload();
   const [type, setType] = useState("login");
   const [name, setName] = useState("로그인");
   const navigate = useNavigate();
@@ -14,15 +19,6 @@ function LoginMainTool() {
   const [password, setPassword] = useState('');
   const [isAutoLogin, setIsAutoLogin] = useState(false);
 
-  // useEffect(() => {
-  //   console.log(type);
-  //   console.log(window.location.href);
-
-  //   if (window.location.href !== `http://localhost:3000/login`) {
-  //     console.log("dddddd");
-  //     kakaoLogin();
-  //   }
-  // }, []);
   const Change = () => {
     setType("find");
     setName("비밀번호 찾기");
@@ -46,22 +42,6 @@ function LoginMainTool() {
     };
     fetch();
   }, []);
-
-  // const kakaoLogin = async () => {
-  //   const url = window.location.href;
-  //   const code = url.split("=")[1];
-  //   console.log(code);
-
-  //   await request
-  //     .post("/api/auth/sign-in/kakao", null, {
-  //       params: { authorizationCode: code },
-  //     })
-  //     .then((res) => {
-  //       console.log(res);
-  //       console.log("success~~~~~~");
-  //       navigate("/");
-  //     });
-  // };
 
   const handleEmail = {};
 
@@ -88,9 +68,11 @@ function LoginMainTool() {
         console.log("refreshToken", refreshToken);
 
         if (res["isSuccess"]) {
+          setIsSuccess(true);
           alert("로그인에 성공했습니다.");
           navigate("/");
         } else {
+          setIsSuccess(false);
           alert("등록되지 않은 회원입니다.");
         }
       })
