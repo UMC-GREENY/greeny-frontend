@@ -2,8 +2,14 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as TopNavS from './Styled/TopNav.main.styles';
 import Modal from '../Modal/Modal.main';
+import { useRecoilValue } from 'recoil';
+import { isSuccessState } from '../Login/Recoil/Recoil.auth.state';
+
 
 function TopNav() {
+  const isSuccess = useRecoilValue(isSuccessState);
+	console.log("isSuccess",isSuccess);
+
   const navigate = useNavigate();
   const NavClick = (e, type) => {
     e.preventDefault();

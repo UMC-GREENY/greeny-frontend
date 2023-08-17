@@ -4,8 +4,14 @@ import * as mystyles from './Styled/Mypage.styles';
 import { FaStar } from 'react-icons/fa';
 import request from '../../Api/request';
 import { refreshToken } from '../../Api/request';
+import useBeforeUnload from '../../Custom/useBeforeUnload';
+import { useRecoilValue } from 'recoil';
+import { isAutoState } from '../../Login/Recoil/Recoil.auth.state';
 
 function Mypage() {
+  const isAuto = useRecoilValue(isAutoState);
+	console.log("isAuto",isAuto);
+  useBeforeUnload();
   const navigate = useNavigate();
   const handleLogout = () => {
     const confirmLogout = window.confirm('정말 로그아웃을 하십니까');
@@ -71,7 +77,7 @@ function Mypage() {
   const [isSuccess, setIsSuccess] = useState(null); // 상태 최상위 레벨로 이동
 
   useEffect(() => {
-    async function fetchData() {
+    const fetchData = async () => {
       try {
         const response = await request.get('/api/auth');
         console.log('response', response);
@@ -95,49 +101,50 @@ function Mypage() {
   }, []);
 
   useEffect(() => {
-    const fetchUserPosts = async () => {
-      setLoading(true);
-      console.log(request);
-      try {
-        const response = await request.get(
-          '/api/members/post?page=0&size=3&sort=id,desc'
-        );
-        console.log('서버 응답 데이터:', response);
-        setUserPosts(response.data.content);
-        console.log(userPosts);
-      } catch (error) {
-        console.error('사용자의 정보를 가져오는데 실패', error);
-      } finally {
-        setLoading(false);
-      }
-    };
+    if (isSuccess) {
+      const fetchUserPosts = async () => {
+        setLoading(true);
+        try {
+          const response = await request.get(
+            '/api/members/post?page=0&size=3&sort=id,desc'
+          );
+          console.log('서버 응답 데이터:', response);
+          setUserPosts(response.data.content);
+          console.log(userPosts);
+        } catch (error) {
+          console.error('사용자의 정보를 가져오는데 실패', error);
+        } finally {
+          setLoading(false);
+        }
+      };
+      fetchUserPosts();
+    }
+  }, [isSuccess]);
 
-    fetchUserPosts();
-  }, []);
-
+  // useEffect(() => {
+  //   console.log(userPosts); // userPosts가 업데이트될 때마다 로그 출력
+  // }, [userPosts]); // userPosts를 의존성 배열로 추가
   useEffect(() => {
-    console.log(userPosts); // userPosts가 업데이트될 때마다 로그 출력
-  }, [userPosts]); // userPosts를 의존성 배열로 추가
-  useEffect(() => {
-    const fetchUserReview = async () => {
-      setLoading(true);
-      console.log(request);
-      try {
-        const response = await request.get(
-          'api/members/review?type=s&page=0&size=5&sort=id,desc'
-        );
-        console.log(response);
-        setUserReview(response.data.content);
-      } catch (error) {
-        console.error('사용자의 정보를 가져오는데 실패', error);
-      } finally {
-        setLoading(false);
-        console.log(userReview);
-      }
-    };
-
-    fetchUserReview();
-  }, []);
+    if (isSuccess) {
+      const fetchUserReview = async () => {
+        setLoading(true);
+        console.log(request);
+        try {
+          const response = await request.get(
+            'api/members/review?type=s&page=0&size=5&sort=id,desc'
+          );
+          console.log(response);
+          setUserReview(response.data.content);
+        } catch (error) {
+          console.error('사용자의 정보를 가져오는데 실패', error);
+        } finally {
+          setLoading(false);
+          console.log(userReview);
+        }
+      };
+      fetchUserReview();
+    }
+  }, [isSuccess]);
 
   return (
     <mystyles.Div>
@@ -167,7 +174,7 @@ function Mypage() {
           <mystyles.thirdcontainer>
             {Array.isArray(userPosts) ? (
               userPosts.map((post) => (
-                <mystyles.mycontents key={post}>
+                <mystyles.mycontents key={post.id}>
                   <mystyles.contentstitle>{post.title}</mystyles.contentstitle>
                   <mystyles.contentsemail>
                     {post.writerEmail}
@@ -190,7 +197,7 @@ function Mypage() {
           </mystyles.secondcontainertitle>
           <mystyles.thirdcontainer>
             {userReview.map((post) => (
-              <mystyles.mycontents key={post}>
+              <mystyles.mycontents key={post.id}>
                 <mystyles.reviewstar>
                   {[...Array(5)].map((_, index) => (
                     <FaStar

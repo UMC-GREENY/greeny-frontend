@@ -66,8 +66,8 @@ function Modal({ isOpen, onClose, children }) {
           </Styles.ModalContentInnerpage>
           <Styles.ModalContentInnerpage
             onClick={() =>
-              handleLinkClick('/signup', {
-                state: { type: 'signup', name: '회원가입' },
+              handleLinkClick('/select', {
+                state: { type: 'select', name: '회원가입' },
               })
             }
           >
