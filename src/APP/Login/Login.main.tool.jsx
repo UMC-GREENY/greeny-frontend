@@ -45,21 +45,21 @@ function LoginMainTool() {
     fetch();
   }, []);
 
-  const kakaoLogin = async () => {
-    const url = window.location.href;
-    const code = url.split("=")[1];
-    console.log(code);
+  // const kakaoLogin = async () => {
+  //   const url = window.location.href;
+  //   const code = url.split("=")[1];
+  //   console.log(code);
 
-    await request
-      .post("/api/auth/sign-in/kakao", null, {
-        params: { authorizationCode: code },
-      })
-      .then((res) => {
-        console.log(res);
-        console.log("success~~~~~~");
-        navigate("/");
-      });
-  };
+  //   await request
+  //     .post("/api/auth/sign-in/kakao", null, {
+  //       params: { authorizationCode: code },
+  //     })
+  //     .then((res) => {
+  //       console.log(res);
+  //       console.log("success~~~~~~");
+  //       navigate("/");
+  //     });
+  // };
 
   const handleEmail = {};
 
