@@ -4,11 +4,13 @@ import * as TopNavS from './Styled/TopNav.main.styles';
 import Modal from '../Modal/Modal.main';
 import { useRecoilValue } from 'recoil';
 import { isSuccessState } from '../Login/Recoil/Recoil.auth.state';
-
+import useBeforeUnload from '../Custom/useBeforeUnload';
 
 function TopNav() {
   const isSuccess = useRecoilValue(isSuccessState);
 	console.log("isSuccess",isSuccess);
+  console.log("@@");
+  useBeforeUnload();
 
   const navigate = useNavigate();
   const NavClick = (e, type) => {
