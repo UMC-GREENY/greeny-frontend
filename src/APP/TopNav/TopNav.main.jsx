@@ -9,7 +9,6 @@ import useBeforeUnload from '../Custom/useBeforeUnload';
 function TopNav() {
   const isSuccess = useRecoilValue(isSuccessState);
 	console.log("isSuccess",isSuccess);
-  console.log("@@");
   useBeforeUnload();
 
   const navigate = useNavigate();

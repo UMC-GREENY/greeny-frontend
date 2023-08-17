@@ -4,12 +4,12 @@ import { isAutoState } from '../Login/Recoil/Recoil.auth.state';
 
 function useBeforeUnload() {
   const isAuto = useRecoilValue(isAutoState);
-
+  console.log("isissisis",isAuto);
 	const removeTokenFromLocalStorage = () => {
       if (!isAuto) {
         window.localStorage.clear();
       } else {
-        console.log("");
+        console.log("isAuto false");
       }
 		};
   useEffect(() => {
