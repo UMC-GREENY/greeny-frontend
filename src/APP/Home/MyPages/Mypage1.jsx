@@ -11,7 +11,7 @@ import { isAutoState } from '../../Login/Recoil/Recoil.auth.state';
 function Mypage() {
   const isAuto = useRecoilValue(isAutoState);
 	console.log("isAuto",isAuto);
-  useBeforeUnload();
+  // useBeforeUnload();
   const navigate = useNavigate();
   const handleLogout = () => {
     const confirmLogout = window.confirm('정말 로그아웃을 하십니까');
