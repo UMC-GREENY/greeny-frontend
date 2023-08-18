@@ -3,7 +3,7 @@ import * as tokens from "../../tokens";
 
 export const ContentWrap = styled.div`
     position: relative;
-    top: 797px;
+    top: 757px;
     width: 75vw;
     margin-left: 12.5vw;
     padding-bottom:13.0208vw;;
@@ -33,6 +33,7 @@ export const InquiryWrapper = styled.div`
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            margin-top: 40px;
         `
         : `
             height: 44px;`}        
@@ -53,7 +54,11 @@ export const ContentText = styled.span`
             ? `
                 font-size: 16px;
                 line-height: 24px;
-
+            `
+            :props.type === "body1"
+            ? `
+                font-size: 14px;
+                line-height: 21px;
             `
         : `
             font-size: 20px;
@@ -73,7 +78,10 @@ export const ReviewWrapper = styled.div`
             : props.type === "body" 
             ? `
                 width: 1231px;
-                height: 246px;
+                height: 100%;
+                padding-top: 40px;
+                padding-bottom: 40px;
+                
             `
             :props.type === "content"
             ? `
@@ -91,7 +99,63 @@ export const ReviewWrapper = styled.div`
                 display: flex;
                 justify-content: space-around;
             `
-            : ` width: 96px;
+            :props.type === "btns"
+            ? `
+                width: 488px;
+                height: 44px;
+                border-radius: 6px;
+                margin-top: 316px;
+                display: flex;
+                justify-content: space-between;
+            `
+            :props.type === "write"
+            ? `
+                width: 1231px;
+                height: 550px;
+            `
+            :props.type === "title"
+            ? `
+                width: 1231px;
+                height: 50px;
+                border-bottom: 1px solid ${tokens.colors.grey_80};
+                display: flex;
+                align-items: center;
+            `
+            :props.type === "img"
+            ? `
+            width: 566px;
+            height: 424px;
+            border-radius: 5px;
+            overflow: hidden;
+            `
+            :props.type === "viewContent"
+            ? `
+            width: 566px;
+            height: 424px;
+            border-radius: 5px;
+            `
+            :props.type === "starbox"
+            ?`
+            z-index: 1000;
+            margin-left: 55px;
+            margin-right: 10px;
+            height: 19px;
+            overflow: hidden;
+            `
+            :props.type === "bottom"
+            ? `
+                width: 1231px;
+                display: flex;
+            `
+            :props.type === "writeContent"
+            ? `
+                width: 1212px;
+                display: flex;
+                flexDirection: column;
+                alignItems: start;
+                margin-bottom: 36px;
+            `
+            : ` 
             `
     }
     
@@ -107,12 +171,46 @@ export const Btn = styled.button`
                     border-radius: 4px;
                     font-size: 16px;
                     line-height: 21px;`
+                : props.type === "list"
+                ? `
+                    height: 29px;
+                    margin-top: 20px;
+                    padding: 4px 20px 4px 20px;
+                    border-radius: 4px;
+                    border: 1px solid ${tokens.colors.grey_80};
+                    color: ${tokens.colors.grey_60};
+                    background-color: white;
+                    font-weight: 600;
+                    font-size: 16px;
+                    line-height: 21px;
+                `
+                : props.type === "attach"
+                ? `
+                    width: 127px;
+                    height: 36px;
+                    border-radius: 4px;
+                    margin-left: 20px;
+                    font-weight: 600;
+                    font-size: 16px;
+                    line-height: 21px;
+                `
+                : props.type === "cancelSubmit"
+                ? `
+                    width: 224px;
+                    height: 44px;
+                    border-radius: 6px;
+                    color: ${tokens.colors.grey_100};
+                    border: none;
+                    font-size: 24px;
+                    line-height: 36px;
+                `
                 : `width: 26px;
                    height: 26px;
                    border-radius: 99%;
                    font-size: 12px;
                    line-height: 18px;
                    border: none;`
+                   
         }`
 
 export const overline = styled.span`
@@ -120,6 +218,39 @@ export const overline = styled.span`
     background-color: ${tokens.colors.grey_15};
     width: 1231px;
 `
+export const textarea = styled.textarea`
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    text-align: left;
+    width: 1030px;
+    height: 326px;
+    border-radius: 5px;
+    border: 1px solid ${tokens.colors.grey_70};
+    resize: none;
+    padding: 10px;
+`
+
+export const PaginationWrapper = styled.div`
+    .pagination { display: flex; justify-content: center; margin-top: 15px;}
+    ul { list-style: none; padding: 0; }
+    ul.pagination li {
+    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem; 
+    width: 26px;
+    height: 26px;
+    border-radius: 99%;
+    font-size: 12px;
+    line-height: 18px;
+    border: none;}
+    ul.pagination li.active a { color: ${tokens.colors.grey_100}; }
+    ul.pagination li.active { background-color: ${tokens.colors.green_deep}; }
+    ul.pagination li a {text-decoration-line: none; color: ${tokens.colors.grey_60};}
+`
+
 
     /* ${(props) => 
         props.type === "name"
