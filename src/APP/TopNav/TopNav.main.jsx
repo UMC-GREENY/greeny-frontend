@@ -1,8 +1,16 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as TopNavS from './Styled/TopNav.main.styles';
+import Modal from '../Modal/Modal.main';
+import { useRecoilValue } from 'recoil';
+import { isSuccessState } from '../Login/Recoil/Recoil.auth.state';
+import useBeforeUnload from '../Custom/useBeforeUnload';
 
 function TopNav() {
+  const isSuccess = useRecoilValue(isSuccessState);
+	console.log("isSuccess",isSuccess);
+  // useBeforeUnload();
+
   const navigate = useNavigate();
   const NavClick = (e, type) => {
     e.preventDefault();
@@ -12,47 +20,55 @@ function TopNav() {
 
     navigate(`${type}`);
   };
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = () => {
+    setShowModal(true);
+    console.log(showModal);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+    console.log(showModal);
+  };
+
   return (
     <TopNavS.TopNavWrapper>
-      <TopNavS.TopNavContentWrapper type='main'>
+      <TopNavS.TopNavContentWrapper type="main">
         <TopNavS.TopNavLogo
           onClick={(e) => {
-            NavClick(e, '/');
+            NavClick(e, "/");
           }}
         >
           GREENY
         </TopNavS.TopNavLogo>
         <TopNavS.TopNavInfoWrapper>
-          <TopNavS.TopNavContents
-            onClick={() =>
-              navigate('/login', {
-                state: { type: 'login', name: '로그인' },
-              })
-            }
-          >
+          <TopNavS.TopNavContents onClick={() => navigate("/login")}>
             Login
           </TopNavS.TopNavContents>
           <TopNavS.TopNavContents
             onClick={() =>
-              navigate('/mypage', {
-                state: { type: 'mypagae', name: '나의페이지' },
+              navigate("/mypage", {
+                state: { type: "mypagae", name: "나의페이지" },
               })
             }
+            disabled={!isSuccess}
           >
             My
           </TopNavS.TopNavContents>
           <TopNavS.TopNavContents
             onClick={() =>
-              navigate('/likepage', {
-                state: { type: 'likepage', name: '찜페이지' },
+              navigate("/likepage", {
+                state: { type: "likepage", name: "찜페이지" },
               })
             }
+            disabled={!isSuccess}
           >
             Like
           </TopNavS.TopNavContents>
         </TopNavS.TopNavInfoWrapper>
       </TopNavS.TopNavContentWrapper>
-      <TopNavS.TopNavContentWrapper type='sub'>
+      <TopNavS.TopNavContentWrapper type="sub">
         <TopNavS.SubNavItemWrapper>
           <TopNavS.TopNavSubContents
             onClick={() => {
@@ -63,14 +79,14 @@ function TopNav() {
           </TopNavS.TopNavSubContents>
           <TopNavS.TopNavSubContents
             onClick={(e) => {
-              NavClick(e, 'eco-products');
+              NavClick(e, "eco-products");
             }}
           >
             ECO-PRODUCTS
           </TopNavS.TopNavSubContents>
           <TopNavS.TopNavSubContents
             onClick={(e) => {
-              NavClick(e, 'eco-store');
+              NavClick(e, "eco-store");
             }}
           >
             ECO-STORE
@@ -78,7 +94,7 @@ function TopNav() {
           <TopNavS.TopNavSubContents
             onClick={(e) => {
               // NavClick(e, 'community');
-              navigate('/community');
+              navigate("/community");
             }}
           >
             COMMUNITY
@@ -87,7 +103,7 @@ function TopNav() {
           <TopNavS.TopNavSubContents
             onClick={(e) => {
               // NavClick(e, '/lifeTip');
-              navigate('/lifeTip')
+              navigate('/lifeTip');
             }}
           >
             TIP
@@ -100,7 +116,16 @@ function TopNav() {
             <TopNavS.TopNavInputIcon></TopNavS.TopNavInputIcon>
           </TopNavS.TopNavInputWrapper>
           <TopNavS.TopNavInputWrapper style={{ width: '30%' }}>
-            <TopNavS.TopNavHamburger></TopNavS.TopNavHamburger>
+            <TopNavS.TopNavHamburger
+              onClick={openModal}
+            ></TopNavS.TopNavHamburger>
+            <Modal isOpen={showModal} onClose={closeModal}>
+              <TopNavS.ModalLine>
+                <TopNavS.ModalButton onClick={closeModal}>
+                  {'X'}
+                </TopNavS.ModalButton>
+              </TopNavS.ModalLine>
+            </Modal>
           </TopNavS.TopNavInputWrapper>
         </TopNavS.TopNavInfoWrapper>
       </TopNavS.TopNavContentWrapper>
