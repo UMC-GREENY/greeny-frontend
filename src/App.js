@@ -60,7 +60,8 @@ function App() {
           <Route path='/write_post' element={<WritePost />} />
           <Route path='/lifeTip' element={<LifeTip />} />
           <Route path='/lifeTip_de' element={<LifeTipDe />} />
-          <Route path='/detailPage' element={<DetailPage />} />
+          <Route path='/product/detailPage' element={<DetailPage />} />
+          <Route path='/store/detailPage' element={<DetailPage />} />
           <Route path='/mypage' element={<Mypage />} />
           <Route path='/likepage' element={<Likepage />} />
           <Route path='/mypageinfo' element={<Mypageinfo />} />

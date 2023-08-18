@@ -25,5 +25,4 @@ export const serviceItem = styled.div`
     font-size: 24px;
     line-height: 36px;
     color: ${tokens.colors.grey_15};
-    border-bottom: 3px solid ${tokens.colors.grey_80};
 `
