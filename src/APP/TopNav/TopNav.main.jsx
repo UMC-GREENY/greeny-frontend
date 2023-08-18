@@ -8,8 +8,7 @@ import useBeforeUnload from '../Custom/useBeforeUnload';
 
 function TopNav() {
   const isSuccess = useRecoilValue(isSuccessState);
-	console.log("isSuccess",isSuccess);
-  // useBeforeUnload();
+  useBeforeUnload();
 
   const navigate = useNavigate();
   const NavClick = (e, type) => {
@@ -31,7 +30,7 @@ function TopNav() {
     setShowModal(false);
     console.log(showModal);
   };
-  console.log("isSuccess2",isSuccess);
+
   return (
     <TopNavS.TopNavWrapper>
       <TopNavS.TopNavContentWrapper type="main">
@@ -47,22 +46,20 @@ function TopNav() {
             Login
           </TopNavS.TopNavContents>
           <TopNavS.TopNavContents
-            onClick={() =>
-              navigate("/mypage", {
-                state: { type: "mypagae", name: "나의페이지" },
-              })
-            }
-            disabled={!isSuccess}
+            onClick={(e) => {
+              if (isSuccess) {
+                NavClick(e, "/mypage");
+              }
+            }}
           >
             My
           </TopNavS.TopNavContents>
           <TopNavS.TopNavContents
-            onClick={() =>
-              navigate("/likepage", {
-                state: { type: "likepage", name: "찜페이지" },
-              })
-            }
-            disabled={!isSuccess}
+            onClick={(e) => {
+              if (isSuccess) {
+                NavClick(e, "/likepage");
+              }
+            }}
           >
             Like
           </TopNavS.TopNavContents>
@@ -74,7 +71,6 @@ function TopNav() {
             onClick={() => {
               navigate();
             }}
-            disabled={true}
           >
             ALL
           </TopNavS.TopNavSubContents>

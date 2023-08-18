@@ -5,15 +5,11 @@ import * as toolS from "./Styled/Login.main.tool.styles";
 import request from "./../Api/request";
 import { ACCESS_TOKEN, REFRESH_TOKEN, refreshToken } from "./../Api/request";
 import LoginKakao from "./Login.kakao";
-import useBeforeUnload from "../Custom/useBeforeUnload";
 import { useRecoilState } from 'recoil';
 import { isSuccessState } from "./Recoil/Recoil.auth.state";
-import { isAutoState } from "./Recoil/Recoil.auth.state";
 
 function LoginMainTool() {
   const [isSuccess, setIsSuccess] = useRecoilState(isSuccessState);  // recoil 로그인 여부
-  const [isAuto, setIsAuto] = useRecoilState(isAutoState); // recoil 자동로그인 여부
-  // useBeforeUnload();
   const [type, setType] = useState("login");
   const [name, setName] = useState("로그인");
   const navigate = useNavigate();
@@ -115,7 +111,7 @@ function LoginMainTool() {
                   checked={isAutoLogin}
                   onChange={(e) => {
                     setIsAutoLogin(e.target.checked); 
-                    setIsAuto(e.target.checked);
+                    // setIsAuto(e.target.checked);
                   }}
                 />
                 자동 로그인

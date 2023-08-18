@@ -1,8 +1,11 @@
 import React from 'react';
 import * as Styles from './Styled/Modal.main.styles'; // Styles로 명시적으로 임포트
 import { useNavigate } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
+import { isSuccessState } from '../Login/Recoil/Recoil.auth.state';
 
 function Modal({ isOpen, onClose, children }) {
+  const isSuccess = useRecoilValue(isSuccessState);
   const navigate = useNavigate();
 
   const handleLinkClick = (path) => {
@@ -74,19 +77,25 @@ function Modal({ isOpen, onClose, children }) {
             JOIN
           </Styles.ModalContentInnerpage>
           <Styles.ModalContentInnerpage
-            onClick={() =>
-              handleLinkClick('/mypage', {
-                state: { type: 'mypagae', name: '나의페이지' },
-              })
+            onClick={() => {
+              if (isSuccess) {
+                handleLinkClick('/mypage', {
+                  state: { type: 'mypagae', name: '나의페이지' },
+                })
+              }
+            }
             }
           >
             MY
           </Styles.ModalContentInnerpage>
           <Styles.ModalContentInnerpage
-            onClick={() =>
-              handleLinkClick('/likepage', {
-                state: { type: 'likepage', name: '찜페이지' },
-              })
+            onClick={() => {
+              if (isSuccess) {
+                handleLinkClick('/likepage', {
+                  state: { type: 'likepage', name: '찜페이지' },
+                })
+              }
+            }
             }
           >
             LIKE
