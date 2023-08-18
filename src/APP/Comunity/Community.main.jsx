@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as itemS from './Styled/Community.main.styles';
-import { PostDummy } from './PostDummy';
-import { ReviewDummy } from './ReviewDummy';
-import { CommunityDummy } from './CommunityDummy';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { FaStar, FaRegStar, FaHome } from 'react-icons/fa';
+import request from '../Api/request';
+import axios from 'axios';
+import { refreshToken } from '../Api/request';
+import { ACCESS_TOKEN } from '../Api/request';
 
 function CommunityMain() {
   const navigate = useNavigate();
@@ -21,11 +22,40 @@ function CommunityMain() {
     return stars;
   };
 
-  const limitData = (data, limit) => {
-    return data.slice(0, limit);
-  };
+  const [storeReviewsResponse, setStoreReviewsResponse] = useState([]); //스토어 리뷰
+  const [productReviewsResponse, setProductReviewsResponse] = useState([]); //제품 리뷰
+  const [bestResponse, setBestResponse] = useState([]); //베스트 게시글
+  const [postResponse, setPostResponse] = useState([]); //게시글
+  
+  // 유효성 검증
+  const [isSuccess, setIsSuccess] = useState(null);
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
 
-  const limit = 3;
+        const storeReviewsResponse = await axios.get('/api/reviews/all?type=store&page=0&size=3&sort=id,desc');
+        setStoreReviewsResponse(storeReviewsResponse.data.content);
+        console.log('storeReviewsResponse', storeReviewsResponse);
+
+        const productReviewsResponse = await axios.get('/api/reviews/all?type=product&page=0&size=3&sort=id,desc');
+        setProductReviewsResponse(productReviewsResponse.data.content);
+        console.log('productReviewsResponse', productReviewsResponse);
+
+        const bestResponse = await axios.get('/api/posts/search?page=0&size=3&sort=hits,desc');
+        setBestResponse(bestResponse.data.content);
+        console.log('bestResponse', bestResponse);
+
+        const postResponse = await axios.get('/api/posts/search?page=0&size=3&sort=id,desc');
+        setPostResponse(postResponse.data.content);
+        console.log('postResponse', postResponse);
+      } catch (error) {
+        console.error('오류:', error);
+      
+      }
+    }
+    fetchData();
+  }, []);
 
   return (
     <itemS.SignupWrapper>
@@ -39,12 +69,12 @@ function CommunityMain() {
         </itemS.ContentWrapper>
 
         <itemS.InfoBox>
-          {limitData(PostDummy, limit).map((post, index) => (
-            <React.Fragment key={index}>
+          {bestResponse.map((post, index) => (
+            <React.Fragment key={post.id}>
               <itemS.InfoLine>
                 <itemS.PostTitle>{post.title}</itemS.PostTitle>
-                <itemS.PostEmail>{post.email}</itemS.PostEmail>
-                <itemS.PostDate>{post.date}</itemS.PostDate>
+                <itemS.PostEmail>{post.writerEmail}</itemS.PostEmail>
+                <itemS.PostDate>{post.createdAt}</itemS.PostDate>
               </itemS.InfoLine>
               <itemS.Line></itemS.Line>
             </React.Fragment>
@@ -52,20 +82,41 @@ function CommunityMain() {
         </itemS.InfoBox>
 
         <itemS.ContentWrapper>
-          <itemS.SubTitle>REVIEW</itemS.SubTitle>
+          <itemS.SubTitle>ECO-STORE REVIEW</itemS.SubTitle>
           <itemS.MoreButton onClick={() => handleMore('review')}>
             더보기
           </itemS.MoreButton>
         </itemS.ContentWrapper>
 
         <itemS.InfoBox>
-          {limitData(ReviewDummy, limit).map((post, index) => (
-            <React.Fragment key={index}>
+          {storeReviewsResponse.map((post, index) => (
+            <React.Fragment key={post.id}>
               <itemS.InfoLine>
                 <itemS.PostStar>{renderStars(post.star)}</itemS.PostStar>
                 <itemS.PostContent>{post.content}</itemS.PostContent>
-                <itemS.PostEmail>{post.email}</itemS.PostEmail>
-                <itemS.PostDate>{post.date}</itemS.PostDate>
+                <itemS.PostEmail>{post.writerEmail}</itemS.PostEmail>
+                <itemS.PostDate>{post.createdAt}</itemS.PostDate>
+              </itemS.InfoLine>
+              <itemS.Line></itemS.Line>
+            </React.Fragment>
+          ))}
+        </itemS.InfoBox>
+
+        <itemS.ContentWrapper>
+          <itemS.SubTitle>ECO_PRODUCT REVIEW</itemS.SubTitle>
+          <itemS.MoreButton onClick={() => handleMore('review')}>
+            더보기
+          </itemS.MoreButton>
+        </itemS.ContentWrapper>
+
+        <itemS.InfoBox>
+          {productReviewsResponse.map((post, index) => (
+            <React.Fragment key={post.id}>
+              <itemS.InfoLine>
+                <itemS.PostStar>{renderStars(post.star)}</itemS.PostStar>
+                <itemS.PostContent>{post.content}</itemS.PostContent>
+                <itemS.PostEmail>{post.writerEmail}</itemS.PostEmail>
+                <itemS.PostDate>{post.createdAt}</itemS.PostDate>
               </itemS.InfoLine>
               <itemS.Line></itemS.Line>
             </React.Fragment>
@@ -80,12 +131,12 @@ function CommunityMain() {
         </itemS.ContentWrapper>
 
         <itemS.InfoBox>
-          {limitData(CommunityDummy, limit).map((post, index) => (
-            <React.Fragment key={index}>
+          {postResponse.map((post, index) => (
+            <React.Fragment key={post.id}>
               <itemS.InfoLine>
                 <itemS.PostTitle>{post.title}</itemS.PostTitle>
-                <itemS.PostEmail>{post.email}</itemS.PostEmail>
-                <itemS.PostDate>{post.date}</itemS.PostDate>
+                <itemS.PostEmail>{post.writerEmail}</itemS.PostEmail>
+                <itemS.PostDate>{post.createdAt}</itemS.PostDate>
               </itemS.InfoLine>
               <itemS.Line></itemS.Line>
             </React.Fragment>
