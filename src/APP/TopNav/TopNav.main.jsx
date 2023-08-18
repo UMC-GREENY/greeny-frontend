@@ -8,8 +8,9 @@ import useBeforeUnload from '../Custom/useBeforeUnload';
 
 function TopNav() {
   const isSuccess = useRecoilValue(isSuccessState);
-	console.log("isSuccess",isSuccess);
-  // useBeforeUnload();
+  const [abled, setAbled] = useState(isSuccess);
+	console.log("abled",abled);
+  useBeforeUnload();
 
   const navigate = useNavigate();
   const NavClick = (e, type) => {
@@ -52,7 +53,7 @@ function TopNav() {
                 state: { type: "mypagae", name: "나의페이지" },
               })
             }
-            disabled={!isSuccess}
+            disabled={!abled}
           >
             My
           </TopNavS.TopNavContents>
@@ -62,7 +63,7 @@ function TopNav() {
                 state: { type: "likepage", name: "찜페이지" },
               })
             }
-            disabled={!isSuccess}
+            disabled={!abled}
           >
             Like
           </TopNavS.TopNavContents>

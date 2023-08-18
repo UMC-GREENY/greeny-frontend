@@ -1,12 +1,13 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import { isAutoState } from '../Login/Recoil/Recoil.auth.state';
 
 function useBeforeUnload() {
   const isAuto = useRecoilValue(isAutoState);
-  console.log("isissisis",isAuto);
+  const [remove, setRemove] = useState(isAuto);
+  console.log("remove",remove);
 	const removeTokenFromLocalStorage = () => {
-      if (!isAuto) {
+      if (!remove) {
         console.log("@@@@@@@@@");
         window.localStorage.clear();
       } else {
