@@ -7,6 +7,7 @@ function useBeforeUnload() {
   console.log("isissisis",isAuto);
 	const removeTokenFromLocalStorage = () => {
       if (!isAuto) {
+        console.log("@@@@@@@@@");
         window.localStorage.clear();
       } else {
         console.log("isAuto false");

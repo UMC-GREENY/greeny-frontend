@@ -31,7 +31,7 @@ function TopNav() {
     setShowModal(false);
     console.log(showModal);
   };
-
+  console.log("isSuccess2",isSuccess);
   return (
     <TopNavS.TopNavWrapper>
       <TopNavS.TopNavContentWrapper type="main">
@@ -74,6 +74,7 @@ function TopNav() {
             onClick={() => {
               navigate();
             }}
+            disabled={true}
           >
             ALL
           </TopNavS.TopNavSubContents>
