@@ -59,15 +59,16 @@ function Signup() {
     console.log("email".email);
     const requestData = {
       email: email,
-      authorizationUrl: "/signup"
+      authorizationUrl: "https://www.greeny.n-e.kr/signup"
     };
-    await axios.post('/api/auth', requestData)    
+    await request.post('/api/auth', requestData)    
     .then(res => {
+      alert("이메일을 보냈습니다. 이메일 확인하기 버튼을 눌러주세요")
       console.log('res: ', res)
-      if (res.data.success) {
+      if (res.isSuccess) {
         setIsEmailVerified(true);
       } else {
-        console.log("res.data.success",res.data.success);
+        console.log("res.isSuccess",res.isSuccess);
       }
     })
     .catch(error => {

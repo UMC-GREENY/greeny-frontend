@@ -8,6 +8,7 @@ import useBeforeUnload from '../Custom/useBeforeUnload';
 
 function TopNav() {
   const isSuccess = useRecoilValue(isSuccessState);
+  console.log("isSuccess",isSuccess);
   useBeforeUnload();
 
   const navigate = useNavigate();
@@ -48,6 +49,7 @@ function TopNav() {
           <TopNavS.TopNavContents
             onClick={(e) => {
               if (isSuccess) {
+                console.log("isSuccess2",isSuccess);
                 NavClick(e, "/mypage");
               }
             }}
