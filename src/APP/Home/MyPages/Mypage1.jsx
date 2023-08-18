@@ -6,11 +6,12 @@ import request from '../../Api/request';
 import { refreshToken } from '../../Api/request';
 import useBeforeUnload from '../../Custom/useBeforeUnload';
 import { useRecoilValue } from 'recoil';
-import { isAutoState } from '../../Login/Recoil/Recoil.auth.state';
+// import { isAutoState } from '../../Login/Recoil/Recoil.auth.state';
+// import { isAutoState } from '../../Custom/Recoil/Custom.recoil.auto';
 
 function Mypage() {
-  const isAuto = useRecoilValue(isAutoState);
-	console.log("isAuto",isAuto);
+  // const isAuto = useRecoilValue(isAutoState);
+	// console.log("isAuto",isAuto);
   // useBeforeUnload();
   const navigate = useNavigate();
   const handleLogout = () => {
