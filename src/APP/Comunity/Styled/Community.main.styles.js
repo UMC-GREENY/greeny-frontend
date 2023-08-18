@@ -109,14 +109,15 @@ export const PostTitle = styled.div`
 export const PostEmail = styled.div`
   font-size: 14px;
   text-align: left; 
-  margin-right: 10px;
+  margin-right: 40px;
   ${(props) => `color: ${tokens.colors.grey_15}`};
 `;
 
 export const PostDate = styled.div`
   font-size: 14px;
   text-align: left; 
-  margin-right: 10px;
+  margin-right: 0px;
+  width: 130px;
   ${(props) => `color: ${tokens.colors.grey_40}`};
 `;
 
