@@ -1,21 +1,46 @@
 import React, { useState, useEffect } from "react";
 import * as myInfo from "./Styled/MypageInfo.styles";
 import request from "../../Api/request";
-import axios from "axios";
+import { ACCESS_TOKEN } from "../../Api/request";
+
 function MypageInfo() {
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [type, setType] = useState("Kakao");
+  const [userData, setUserData] = useState({
+    type: "",
+    email: "",
+    name: "",
+    phone: "",
+    birth: "",
+  });
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchUserData = async () => {
       try {
-        const response = await request.get("/api/members");
-        console.log("ee");
-      } catch (error) {}
+        const response = await request.get("api/members", {
+          headers: {
+            Authorization: `Bearer ${window.localStorage.getItem(
+              ACCESS_TOKEN
+            )}`,
+          },
+        });
+
+        const loginType = response.data.loginType;
+        setUserData({
+          type: loginType,
+          email: response.data.email,
+          name: loginType === "General" ? response.data.name : "",
+          phone: loginType === "General" ? response.data.phone : "",
+          birth: loginType === "General" ? response.data.birth : "",
+        });
+      } catch (error) {
+        console.error("사용자의 정보를 가져오는데 실패", error);
+      }
     };
-    fetchData();
-    console.log("qq");
+
+    fetchUserData();
   }, []);
+
+  const { type, email, name, phone, birth } = userData;
+
   return (
     <myInfo.Div>
       <myInfo.Wrapper>
@@ -25,36 +50,56 @@ function MypageInfo() {
         <myInfo.firstcontainer>
           <myInfo.secondcontainertitle>기본정보</myInfo.secondcontainertitle>
         </myInfo.firstcontainer>
-        {type == "General" && (
+        {type === "General" && (
           <>
             <myInfo.Main>
               <myInfo.Divs>
                 <h3>이메일</h3>
-                <input />
+                <input
+                  value={email}
+                  onChange={(e) =>
+                    setUserData({ ...userData, email: e.target.value })
+                  }
+                />
               </myInfo.Divs>
               <myInfo.Divs>
                 <h3>기존 비밀번호</h3>
-                <input />
+                <input placeholder="특수문자 1개 이상, 영문+숫자, 15자 이내" />
               </myInfo.Divs>
               <myInfo.Divs>
                 <h3>비밀번호 변경</h3>
-                <input />
+                <input placeholder="특수문자 1개 이상, 영문+숫자, 15자 이내" />
               </myInfo.Divs>
               <myInfo.Divs>
                 <h3>비밀번호 확인</h3>
-                <input />
+                <input placeholder="비밀번호 확인" />
               </myInfo.Divs>
               <myInfo.Divs>
                 <h3>이름</h3>
-                <input />
+                <input
+                  value={name}
+                  onChange={(e) =>
+                    setUserData({ ...userData, name: e.target.value })
+                  }
+                />
               </myInfo.Divs>
               <myInfo.Divs>
                 <h3>휴대폰 번호</h3>
-                <input />
+                <input
+                  value={phone}
+                  onChange={(e) =>
+                    setUserData({ ...userData, phone: e.target.value })
+                  }
+                />
               </myInfo.Divs>
               <myInfo.Divs>
                 <h3>생년월일</h3>
-                <input />
+                <input
+                  value={birth}
+                  onChange={(e) =>
+                    setUserData({ ...userData, birth: e.target.value })
+                  }
+                />
               </myInfo.Divs>
             </myInfo.Main>
             <myInfo.Btns>
@@ -63,13 +108,13 @@ function MypageInfo() {
             </myInfo.Btns>
           </>
         )}
-        {(type == "Kakao" || type == "Naver") && (
+        {(type === "Kakao" || type === "Naver") && (
           <myInfo.Main>
             <myInfo.Divs>
               <h3>이메일</h3>
-              <input />
+              <input value={email} readOnly />
             </myInfo.Divs>
-            {type}
+            <h4>{type} 로그인 하셨습니다</h4>
           </myInfo.Main>
         )}
       </myInfo.Wrapper>
