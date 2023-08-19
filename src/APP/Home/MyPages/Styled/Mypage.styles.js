@@ -82,10 +82,11 @@ export const thirdcontainer = styled.div`
   justify-content: start;
   flex-direction: column;
   width: 100%;
-  height: 225px;
+  height: 240px;
   color: #999999;
   border-style: solid;
   border-width: 2px 0 2px 0;
+  background-color: yellow;
 `;
 export const mycontents = styled.div`
   height: 30px;
@@ -141,4 +142,38 @@ export const lastbutton = styled.div`
   width: 90px;
   height: 32px;
   color: black;
+`;
+export const PaginationWrapper = styled.div`
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  ul.pagination li {
+    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    width: 26px;
+    height: 26px;
+    border-radius: 99%;
+    font-size: 12px;
+    line-height: 18px;
+    border: none;
+  }
+  ul.pagination li.active a {
+    color: ${tokens.colors.grey_100};
+  }
+  ul.pagination li.active {
+    background-color: ${tokens.colors.green_deep};
+  }
+  ul.pagination li a {
+    text-decoration-line: none;
+    color: ${tokens.colors.grey_60};
+  }
 `;
