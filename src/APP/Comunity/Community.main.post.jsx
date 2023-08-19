@@ -9,11 +9,11 @@ function Post() {
 	const navigate = useNavigate();
   const location = useLocation();
   const type = location.state?.type;
-
+	
 	const handleMore = () => {
-    navigate("/write_post");
+    navigate('/write_post', { state: { type } });
   };
-
+	
   return (
     <itemS.SignupWrapper>
       <itemS.SignupContentWrapper>
