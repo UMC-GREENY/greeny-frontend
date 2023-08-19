@@ -1,73 +1,53 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import * as mystyles from './Styled/Mypage.styles';
-import { FaStar } from 'react-icons/fa';
-import UserContent from './Mypage.Usercontent';
-import LikeClick from '../Like/Likepage.main.clickitem';
-import UserReview from './Mypage.UserReview';
-import UserLikeStore from '../Like/Likepage.main.userLiked';
+import React, { useState, useEffect } from "react";
+import * as myInfo from "./Styled/MypageInfo.styles";
 
-function Mypage() {
-  /*const navigate = useNavigate();
-  const handleMore = (type) => {
-    navigate('/post', { state: { type } });
-  };
-  const usercontentinfo = [
-    {
-      title: '글제목1',
-      email: 'idd**@gmail.com',
-      date: '2023.00.00',
-    },
-    {
-      title: '글제목2',
-      email: 'idd**@gmail.com',
-      date: '2024.00.00',
-    },
-    {
-      title: '글제목3',
-      email: 'idd**@gmail.com',
-      date: '2025.00.00',
-    },
-    {
-      title: '글제목4',
-      email: 'idd**@gmail.com',
-      date: '2026.00.00',
-    },
-  ];
-  const myreviewinfo = [
-    {
-      grade: 3,
-      content: '리뷰 후기 내용 미리보기',
-      email: 'idd**@gmail.com',
-      date: '2023.00.00',
-    },
-    {
-      grade: 4,
-      content: '리뷰 후기 내용 미리미리미리미리미리보기',
-      email: 'idd**@gmail.com',
-      date: '2024.00.00',
-    },
-    {
-      grade: 5,
-      content: '리뷰리뷰리뷰리뷰 후기 내용 미리보기',
-      email: 'idd**@gmail.com',
-      date: '2025.00.00',
-    },
-  ];*/
+function MypageInfo() {
   return (
-    <mystyles.Div>
-      <mystyles.Wrapper>
-        <mystyles.Title style={{ fontFamily: 'Merriweather' }}>
+    <myInfo.Div>
+      <myInfo.Wrapper>
+        <myInfo.Title style={{ fontFamily: "Merriweather" }}>
           My Page
-        </mystyles.Title>
-        <UserContent></UserContent>
-        <LikeClick type='store' id={1} />
-        <LikeClick type='product' id={1} />
-        <UserReview></UserReview>
-        <UserLikeStore></UserLikeStore>
-      </mystyles.Wrapper>
-    </mystyles.Div>
+        </myInfo.Title>
+        <myInfo.firstcontainer>
+          <myInfo.secondcontainertitle>기본정보</myInfo.secondcontainertitle>
+        </myInfo.firstcontainer>
+        <myInfo.Main>
+          <myInfo.Divs>
+            <h3>이메일</h3>
+            <input />
+          </myInfo.Divs>
+          <myInfo.Divs>
+            <h3>기존 비밀번호</h3>
+            <input />
+          </myInfo.Divs>
+          <myInfo.Divs>
+            <h3>비밀번호 변경</h3>
+            <input />
+          </myInfo.Divs>
+          <myInfo.Divs>
+            <h3>비밀번호 확인</h3>
+            <input />
+          </myInfo.Divs>
+          <myInfo.Divs>
+            <h3>이름</h3>
+            <input />
+          </myInfo.Divs>
+          <myInfo.Divs>
+            <h3>휴대폰 번호</h3>
+            <input />
+          </myInfo.Divs>
+          <myInfo.Divs>
+            <h3>생년월일</h3>
+            <input />
+          </myInfo.Divs>
+        </myInfo.Main>
+        <myInfo.Btns>
+          <button style={{ backgroundColor: "#CCCCCC" }}>취소하기</button>
+          <button style={{ backgroundColor: "#649D17" }}>변경하기</button>
+        </myInfo.Btns>
+      </myInfo.Wrapper>
+    </myInfo.Div>
   );
 }
 
-export default Mypage;
+export default MypageInfo;
