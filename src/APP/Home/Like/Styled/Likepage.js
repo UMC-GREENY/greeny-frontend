@@ -47,6 +47,7 @@ export const secondcontainer = styled.div`
   flex-direction: row;
   align-items: center;
   margin-top: 40px;
+  background-color: yellow;
 `;
 export const styledInput_pw = styled.input`
   width: 50%;
@@ -118,16 +119,18 @@ export const productcontainer = styled.div`
   display: flex;
   flex-direction: row;
   width: 392px;
-  heigt: 160px;
+  height: 175px;
   border-radius: 6px;
   border-color: gray;
   border-style: solid;
   border-width: 1px;
+  background-color: beige;
+  margin-bottom: 8px;
 `;
 
 export const productimage = styled.img`
   width: 160px;
-  height: 165px;
+  height: 175px;
   border-radius: 6px;
 `;
 
@@ -139,7 +142,7 @@ export const productinfo = styled.div`
   align-items: start;
 `;
 export const productinfotitle = styled.div`
-  font-size: 23px;
+  font-size: 20px;
   justify-content: start;
   text-align: start;
   margin-top: 5px;
