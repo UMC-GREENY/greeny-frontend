@@ -9,35 +9,6 @@ import Pagination from 'react-js-pagination';
 
 function Mypage() {
   const navigate = useNavigate();
-  const handleLogout = () => {
-    const confirmLogout = window.confirm('정말 로그아웃을 하십니까');
-    if (confirmLogout) {
-      window.localStorage.clear();
-      alert('로그아웃 완료');
-      navigate('/login');
-    }
-  };
-
-  const handleWithdrawal = async () => {
-    const confirmWithdrawal = window.confirm('정말 회원탈퇴를 하십니까');
-    if (confirmWithdrawal) {
-      try {
-        const response = await request.delete('/api/members/withdrawal', {
-          headers: {
-            Authorization: `Bearer ${window.localStorage.getItem(
-              'ACCESS_TOKEN'
-            )}`,
-          },
-        });
-
-        alert('회원탈퇴 완료');
-        navigate('/');
-      } catch (error) {
-        console.error('회원탈퇴 실패', error);
-      }
-    }
-  };
-
   /*const usercontentinfo = [
     {
       title: '글제목1',
@@ -108,6 +79,43 @@ function Mypage() {
 
     fetchData();
   }, []);
+  //////////////////////////
+  ///로그아웃, 회원탈퇴
+  const handleLogout = () => {
+    const confirmLogout = window.confirm('정말 로그아웃을 하십니까');
+    if (confirmLogout) {
+      window.localStorage.clear();
+      alert('로그아웃 완료');
+      navigate('/login');
+    }
+  };
+
+  const handleWithdrawal = async () => {
+    let response;
+    const confirmWithdrawal = window.confirm('정말 회원탈퇴를 하십니까');
+    if (confirmWithdrawal) {
+      try {
+        response = await request.delete('/api/members', {
+          headers: {
+            Authorization: `Bearer ${window.localStorage.getItem(
+              ACCESS_TOKEN
+            )}`,
+          },
+        });
+        console.log(response);
+
+        if (isSuccess) {
+          alert('회원 탈퇴가 완료되었습니다.');
+          // 회원 탈퇴 후 필요한 동작 (예: 로그아웃, 페이지 이동 등)
+        } else {
+          alert('회원 탈퇴 실패');
+        }
+      } catch (error) {
+        console.error('회원 탈퇴 실패', error);
+      }
+    }
+  };
+
   ////////////////
   ///작성글 api 연결
   useEffect(() => {

@@ -117,7 +117,7 @@ export const ModalLine = styled.div`
   display: flex;
   justify-content: flex-end;
   margin-bottom: 103px;
-  margin-right: 40px;
+  margin-right: 20px;
 `;
 
 export const ModalButton = styled.div`

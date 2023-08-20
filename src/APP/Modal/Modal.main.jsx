@@ -80,11 +80,10 @@ function Modal({ isOpen, onClose, children }) {
             onClick={() => {
               if (isSuccess) {
                 handleLinkClick('/mypage', {
-                  state: { type: 'mypagae', name: '나의페이지' },
-                })
+                  state: { type: 'mypage', name: '나의페이지' },
+                });
               }
-            }
-            }
+            }}
           >
             MY
           </Styles.ModalContentInnerpage>
@@ -93,10 +92,9 @@ function Modal({ isOpen, onClose, children }) {
               if (isSuccess) {
                 handleLinkClick('/likepage', {
                   state: { type: 'likepage', name: '찜페이지' },
-                })
+                });
               }
-            }
-            }
+            }}
           >
             LIKE
           </Styles.ModalContentInnerpage>

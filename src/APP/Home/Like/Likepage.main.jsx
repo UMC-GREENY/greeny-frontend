@@ -7,6 +7,8 @@ import request from '../../Api/request';
 import { refreshToken } from '../../Api/request';
 import { ACCESS_TOKEN } from '../../Api/request';
 import Pagination from 'react-js-pagination';
+
+const baseUrl = 'https://umc-greeny.s3.apnortheast-2.amazonaws.com/';
 function Likepage() {
   /*const menuArr = [
     {
@@ -179,8 +181,13 @@ function Likepage() {
           <mystyles.contentsinnercontainer>
             {currentItems.map((item, index) => (
               <LikedProductpage
+                likestate={true}
                 type={currentTab === 'store' ? 'store' : 'product'}
-                src={currentTab === 'store' ? item.imageUrl : item.imageUrl}
+                src={
+                  currentTab === 'store'
+                    ? baseUrl + item.imageUrl
+                    : item.imageUrl
+                }
                 title={currentTab === 'store' ? item.name : item.productName}
                 content2={currentTab === 'store' ? item.category : item.price}
                 content1={

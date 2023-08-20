@@ -4,8 +4,8 @@ import request from '../../Api/request'; // request 모듈을 가져온다고 �
 import { ACCESS_TOKEN } from '../../Api/request';
 import { refreshToken } from '../../Api/request';
 import axios from 'axios';
-const LikeButton = ({ type, id }) => {
-  const [isLike, setIsLike] = useState(false);
+const LikeButton = ({ type, id, likestate }) => {
+  const [isLike, setIsLike] = useState(likestate);
 
   const handleToggleLike = async () => {
     try {

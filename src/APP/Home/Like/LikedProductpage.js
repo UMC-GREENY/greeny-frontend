@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import * as mystyles from './Styled/Likepage';
 import LikeButton from './Likepage.main.clickitem';
 function LikedProductpage(props) {
-  const { src, title, content1, content2, type } = props;
+  const { src, title, content1, content2, type, likestate } = props;
 
   return (
     <mystyles.productcontainer>
@@ -16,7 +16,7 @@ function LikedProductpage(props) {
           {content2}
         </mystyles.productinfodetail2>
         <mystyles.lastcontainer>
-          <LikeButton></LikeButton>
+          <LikeButton likestate={likestate}></LikeButton>
         </mystyles.lastcontainer>
       </mystyles.productinfo>
     </mystyles.productcontainer>
