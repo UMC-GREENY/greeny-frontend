@@ -13,6 +13,4 @@ export const MainItemWrapper = styled.div`
 	align-items: center;
 	justify-content: space-between;
 
-	background-color: antiquewhite;
-	z-index: 90;
 `;

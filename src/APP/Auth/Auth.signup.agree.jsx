@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import * as itemS from './Styled/Auth.signup.agree.styles';
 import { AuthDummy1 } from './Auth.signup.agreeDummy';
 import { AuthDummy2 } from './Auth.signup.agreeDummy2';
 import { AuthDummy3 } from './Auth.signup.agreeDummy3';
+import axios from 'axios';
 
 function SignupAgree() {
   const checkboxTexts = [
@@ -16,6 +17,9 @@ function SignupAgree() {
 
   const navigate = useNavigate();
 
+  const location = useLocation();
+  const { email, type } = location.state; 
+
   const [checkedItems, setCheckedItems] = useState(
     new Array(checkboxTexts.length).fill(false)
   );
@@ -27,9 +31,7 @@ function SignupAgree() {
 
   const handleCheckboxChange = (index) => {
     if (index === 0) {
-      const newCheckedItems = new Array(checkboxTexts.length).fill(
-        !checkedItems[0]
-      );
+      const newCheckedItems = new Array(checkboxTexts.length).fill(!checkedItems[0]);
       setCheckedItems(newCheckedItems);
     } else {
       const newCheckedItems = [...checkedItems];
@@ -42,21 +44,40 @@ function SignupAgree() {
   };
   useEffect(() => {
     const requiredCheckboxes = checkedItems.slice(1, 3);
-    const allRequiredChecked = requiredCheckboxes.every((item) => item);
+
+    const allRequiredChecked = requiredCheckboxes.every(item => item);
     setAllRequiredChecked(allRequiredChecked);
   }, [checkedItems]);
 
-  const handleSubmit = () => {
-    if (checkedItems.slice(1, 3).every((item) => item)) {
+  const handleNextStep = () => { // 일반 회원가입 시 다음단계 버튼 동작
+    if (checkedItems.slice(1, 3).every(item => item)) {
       setOptionalChecked(checkedItems[3]);
       setAdvertisingChecked(checkedItems[4]);
 
       navigate('/signup', {
         state: {
           optionalChecked: checkedItems[3],
-          advertisingChecked: checkedItems[4],
-        },
+          advertisingChecked: checkedItems[4]
+        }
       });
+    }
+  };
+
+  const handleSignUp = async () => { //소셜 로그인 약관동의
+    const agreementData = {
+      email: email,
+      personalInfo: checkedItems[3],
+      thirdParty: checkedItems[4],
+    };
+
+    const agreementResponse = await axios.post('/api/auth/sign-up/agreement', agreementData);
+    console.log("agreementResponse", agreementResponse);
+
+    if (agreementResponse.isSuccess) {
+      console.log("동의 양식 제출에 성공했습니다.");
+      navigate("/");
+    } else {
+      console.log("동의 양식 제출에 실패했습니다.");
     }
   };
 
@@ -68,7 +89,7 @@ function SignupAgree() {
         <itemS.InfoBox>
           <itemS.CheckboxContainer>
             <itemS.Checkbox
-              type='checkbox'
+              type="checkbox"
               checked={checkedItems[0]}
               onChange={() => handleCheckboxChange(0)}
             />
@@ -76,7 +97,7 @@ function SignupAgree() {
           </itemS.CheckboxContainer>
           <itemS.CheckboxContainer>
             <itemS.Checkbox
-              type='checkbox'
+              type="checkbox"
               checked={checkedItems[1]}
               onChange={() => handleCheckboxChange(1)}
             />
@@ -89,7 +110,7 @@ function SignupAgree() {
           </itemS.ContentsBox>
           <itemS.CheckboxContainer>
             <itemS.Checkbox
-              type='checkbox'
+              type="checkbox"
               checked={checkedItems[2]}
               onChange={() => handleCheckboxChange(2)}
             />
@@ -102,7 +123,7 @@ function SignupAgree() {
           </itemS.ContentsBox>
           <itemS.CheckboxContainer>
             <itemS.Checkbox
-              type='checkbox'
+              type="checkbox"
               checked={checkedItems[3]}
               onChange={() => handleCheckboxChange(3)}
             />
@@ -115,7 +136,7 @@ function SignupAgree() {
           </itemS.ContentsBox>
           <itemS.CheckboxContainer>
             <itemS.Checkbox
-              type='checkbox'
+              type="checkbox"
               checked={checkedItems[4]}
               onChange={() => handleCheckboxChange(4)}
             />
@@ -127,13 +148,15 @@ function SignupAgree() {
             ))}
           </itemS.ContentsBox>
           <itemS.ButtonContainer>
-            <itemS.CancelButton>취소</itemS.CancelButton>
-            <itemS.NextButton
-              disabled={!allRequiredChecked}
-              onClick={handleSubmit}
-            >
-              다음
-            </itemS.NextButton>
+            <itemS.CancelButton>취소하기</itemS.CancelButton>
+            {type === "social" && (
+              <itemS.NextButton onClick={handleSignUp}>회원가입</itemS.NextButton>
+            )}
+            {type === "general" && (
+              <itemS.NextButton disabled={!allRequiredChecked} onClick={handleNextStep}>
+                다음단계
+              </itemS.NextButton>
+            )}
           </itemS.ButtonContainer>
         </itemS.InfoBox>
       </itemS.SignupContentWrapper>

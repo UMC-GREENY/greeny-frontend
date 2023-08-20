@@ -49,7 +49,6 @@ function TopNav() {
           <TopNavS.TopNavContents
             onClick={(e) => {
               if (isSuccess) {
-                console.log("isSuccess2",isSuccess);
                 NavClick(e, "/mypage");
               }
             }}
@@ -78,7 +77,7 @@ function TopNav() {
           </TopNavS.TopNavSubContents>
           <TopNavS.TopNavSubContents
             onClick={(e) => {
-              NavClick(e, "eco-products");
+              NavClick(e, "/product/category");
             }}
           >
             ECO-PRODUCTS
