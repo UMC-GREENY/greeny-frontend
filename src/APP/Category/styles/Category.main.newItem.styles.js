@@ -81,14 +81,13 @@ export const ItemsWrapper = styled.div`
 `;
 
 export const SortContainer = styled.div`
-  width: 344px;
-  height: 44px;
+  width: 124px;
   gap: 4px;
 
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 36px 0 0 900px;
+  margin: 36px 0 0 1120px;
 `;
 
 export const SortText = styled.span`
@@ -98,6 +97,7 @@ export const SortText = styled.span`
   line-height: 24px;
   letter-spacing: 0em;
   text-align: right;
+  :active {font-weight: 600;};
 `;
 
 export const PaginationWrapper = styled.div`

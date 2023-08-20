@@ -67,10 +67,6 @@ function AllItem() {
                 <itemS.SortText onClick={sortBest}>인기순</itemS.SortText>
                 <itemS.overline type='sero'></itemS.overline>
                 <itemS.SortText onClick={sortreview}>후기순</itemS.SortText>
-                <itemS.overline type='sero'></itemS.overline>
-                <itemS.SortText>가격 높은 순</itemS.SortText>
-                <itemS.overline type='sero'></itemS.overline>
-                <itemS.SortText>가격 낮은 순</itemS.SortText>
             </itemS.SortContainer>
             <itemS.ItemsWrapper type='all'>
                 {currentItems.map((item, index) => (
