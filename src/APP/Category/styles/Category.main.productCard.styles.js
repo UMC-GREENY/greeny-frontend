@@ -29,10 +29,17 @@ export const descripWrap = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
 `;
 
 export const text = styled.span`
   font-family: Pretendard;
+
+  width: 280px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  
   font-weight: 400;
   text-align: center;
   margin-top: 4px;
