@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate,useLocation } from "react-router-dom";
 import * as itemS from "./Styled/Community.main.post.styles";
-import { PostDummy } from "./PostDummy";
-import { ReviewDummy } from "./ReviewDummy";
-import { CommunityDummy } from "./CommunityDummy";
+import { FaStar, FaRegStar, FaHome } from 'react-icons/fa';
 import request from '../Api/request';
 
 function Post() {
@@ -13,6 +11,14 @@ function Post() {
 	
 	const handleMore = () => {
     navigate('/write_post', { state: { type } });
+  };
+
+	const renderStars = (count) => {
+    const stars = [];
+    for (let i = 0; i < 5; i++) {
+      stars.push(i < count ? <FaStar key={i} /> : <FaRegStar key={i} />);
+    }
+    return stars;
   };
 
 	const [storeReviewsResponse, setStoreReviewsResponse] = useState([]); //스토어 리뷰
@@ -88,7 +94,8 @@ function Post() {
 							{storeReviewsResponse.map((post, index) => (
 								<React.Fragment key={post.id}>
 									<itemS.InfoLine>
-										<itemS.PostTitle>{post.title}</itemS.PostTitle>
+										<itemS.PostStar>{renderStars(post.star)}</itemS.PostStar>
+										<itemS.PostContent>{post.content}</itemS.PostContent>
 										<itemS.PostEmail>{post.writerEmail}</itemS.PostEmail>
 										<itemS.PostDate>{post.createdAt}</itemS.PostDate>
 									</itemS.InfoLine>
@@ -110,7 +117,8 @@ function Post() {
 							{productReviewsResponse.map((post, index) => (
 								<React.Fragment key={post.id}>
 									<itemS.InfoLine>
-										<itemS.PostTitle>{post.title}</itemS.PostTitle>
+										<itemS.PostStar>{renderStars(post.star)}</itemS.PostStar>
+										<itemS.PostContent>{post.content}</itemS.PostContent>
 										<itemS.PostEmail>{post.writerEmail}</itemS.PostEmail>
 										<itemS.PostDate>{post.createdAt}</itemS.PostDate>
 									</itemS.InfoLine>
