@@ -108,7 +108,8 @@ function Mypage() {
 
     fetchData();
   }, []);
-
+  ////////////////
+  ///작성글 api 연결
   useEffect(() => {
     if (isSuccess) {
       const fetchUserPosts = async () => {
@@ -137,6 +138,9 @@ function Mypage() {
   // useEffect(() => {
   //   console.log(userPosts); // userPosts가 업데이트될 때마다 로그 출력
   // }, [userPosts]); // userPosts를 의존성 배열로 추가
+
+  /////////////
+  ///후기 api 연결
   useEffect(() => {
     if (isSuccess) {
       const fetchUserReview = async () => {
@@ -144,7 +148,7 @@ function Mypage() {
         console.log(request);
         try {
           const response = await request.get(
-            '/api/members/review?type=store&id=1&page=0&size=9&sort=id,desc',
+            '/api/members/review?type=store&id=1&sort=id,desc',
             {
               headers: {
                 Authorization: `Bearer ${window.localStorage.getItem(
@@ -171,12 +175,13 @@ function Mypage() {
 
   // 페이지네이션 관련 상태
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
+  const itemsPerPage = 4;
 
   // 현재 페이지의 리뷰 목록 계산
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const currentPosts = userPosts.slice(startIndex, endIndex);
+  const currentReviews = userReview.slice(startIndex, endIndex);
 
   // 페이지 변경 시 호출되는 함수
   const handlePageChange = (pageNumber) => {
@@ -253,26 +258,25 @@ function Mypage() {
             ) : (
               <p>배열이 존재하지 않음</p>
             )}
-            <mystyles.PaginationWrapper>
-              <Pagination
-                activePage={currentPage}
-                itemsCountPerPage={itemsPerPage}
-                totalItemsCount={userPosts.length}
-                onChange={handlePageChange}
-                hideNavigation={true}
-                hideFirstLastPages={true}
-              />
-            </mystyles.PaginationWrapper>
           </mystyles.thirdcontainer>
         </mystyles.secondcontainer>
-        <hr></hr>
+        <mystyles.PaginationWrapper>
+          <Pagination
+            activePage={currentPage}
+            itemsCountPerPage={itemsPerPage}
+            totalItemsCount={userPosts.length}
+            onChange={handlePageChange}
+            hideNavigation={true}
+            hideFirstLastPages={true}
+          />
+        </mystyles.PaginationWrapper>
         <hr></hr>
         <mystyles.secondcontainer>
           <mystyles.secondcontainertitle>
             내 후기({userReview.length})
           </mystyles.secondcontainertitle>
           <mystyles.thirdcontainer>
-            {userReview.map((post) => (
+            {currentReviews.map((post) => (
               <mystyles.mycontents key={post.id}>
                 <mystyles.reviewstar>
                   {[...Array(5)].map((_, index) => (
@@ -292,6 +296,16 @@ function Mypage() {
             ))}
           </mystyles.thirdcontainer>
         </mystyles.secondcontainer>
+        <mystyles.PaginationWrapper>
+          <Pagination
+            activePage={currentPage}
+            itemsCountPerPage={itemsPerPage}
+            totalItemsCount={userReview.length}
+            onChange={handlePageChange}
+            hideNavigation={true}
+            hideFirstLastPages={true}
+          />
+        </mystyles.PaginationWrapper>
         <mystyles.lastcontainer>
           <mystyles.lastbutton onClick={handleLogout}>
             로그아웃

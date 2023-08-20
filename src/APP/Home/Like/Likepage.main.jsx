@@ -6,7 +6,7 @@ import LikeButton from './Likepage.main.clickitem';
 import request from '../../Api/request';
 import { refreshToken } from '../../Api/request';
 import { ACCESS_TOKEN } from '../../Api/request';
-
+import Pagination from 'react-js-pagination';
 function Likepage() {
   /*const menuArr = [
     {
@@ -67,7 +67,7 @@ function Likepage() {
       console.log(request);
       try {
         const response = await request.get(
-          'api/members/simple/store-bookmark?page=0&size=9&sort=id,desc',
+          'api/members/simple/store-bookmark?sort=id,desc',
           {
             headers: {
               Authorization: `Bearer ${window.localStorage.getItem(
@@ -96,7 +96,7 @@ function Likepage() {
       console.log(request);
       try {
         const response = await request.get(
-          'api//members/simple/product-bookmark?page=0&size=9&sort=id,desc',
+          'api//members/simple/product-bookmark?sort=id,desc',
           {
             headers: {
               Authorization: `Bearer ${window.localStorage.getItem(
@@ -123,7 +123,23 @@ function Likepage() {
   }, [likeProduct]); // userPosts를 의존성 배열로 추가;
 
   const selectedArray = currentTab === 'store' ? likeStore : likeProduct;
+  //////////////////////////////////////////////////
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 9;
 
+  // 현재 페이지의 리뷰 목록 계산
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentItems =
+    currentTab === 'store'
+      ? likeStore.slice(startIndex, endIndex)
+      : likeProduct.slice(startIndex, endIndex);
+
+  // 페이지 변경 시 호출되는 함수
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+  /////////////////////////////////////
   return (
     <mystyles.Div>
       <mystyles.Wrapper>
@@ -161,7 +177,7 @@ function Likepage() {
         </mystyles.tabwrapper>
         <mystyles.contentscontainer>
           <mystyles.contentsinnercontainer>
-            {selectedArray.map((item, index) => (
+            {currentItems.map((item, index) => (
               <LikedProductpage
                 type={currentTab === 'store' ? 'store' : 'product'}
                 src={currentTab === 'store' ? item.imageUrl : item.imageUrl}
@@ -173,9 +189,19 @@ function Likepage() {
               />
             ))}
           </mystyles.contentsinnercontainer>
-
-          {/* Pagination and other elements */}
         </mystyles.contentscontainer>
+        <mystyles.PaginationWrapper>
+          <Pagination
+            activePage={currentPage}
+            itemsCountPerPage={itemsPerPage}
+            totalItemsCount={
+              currentTab === 'store' ? likeStore.length : likeProduct.length
+            }
+            onChange={handlePageChange}
+            hideNavigation={true}
+            hideFirstLastPages={true}
+          />
+        </mystyles.PaginationWrapper>
       </mystyles.Wrapper>
     </mystyles.Div>
   );
