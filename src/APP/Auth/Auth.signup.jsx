@@ -48,11 +48,25 @@ function Signup() {
     }
   };
 
+  
   // 이메일 인증 여부 추적
-  const [isEmailVerified, setIsEmailVerified] = useState(true);
+  const [isEmailVerified, setIsEmailVerified] = useState(false);
+  const [selectedDomain, setSelectedDomain] = useState('직접입력');
 
-  const [selectedDomain, setSelectedDomain] = useState('직접입력')
-
+  const [token, setToken] = useState('');
+  const [resEmail, setResEmail] = useState('');
+  
+  useEffect(() => {
+    // URL 쿼리에서 토큰 추출
+    const queryParams = new URLSearchParams(location.search);
+    const tokenFromQuery = queryParams.get('token');
+    // 토큰이 존재하고 유효한지 확인
+      if (tokenFromQuery && token === tokenFromQuery) {
+        // 토큰이 유효한 경우 상태 및 이메일 입력 값을 업데이트합니다.
+        setIsEmailVerified(true);
+        setEmail(resEmail);
+      }
+  }, [token]);
   //이메일 인증하기
   const handleEmailVerification = async () => { 
     console.log("email".email);
@@ -66,6 +80,8 @@ function Signup() {
       console.log('res: ', res)
       if (res.isSuccess) {
         setIsEmailVerified(true);
+        setToken(res.data.token);
+        setResEmail(res.data.email);
       } else {
         console.log("res.isSuccess",res.isSuccess);
       }
@@ -169,6 +185,7 @@ function Signup() {
               placeholder="이메일을 입력해주세요"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              disabled={isEmailVerified} // 이메일이 인증된 경우 입력 비활성화
             />
             <span>@</span>
             <itemS.Select
@@ -179,8 +196,11 @@ function Signup() {
               <option value="gmail.com">gmail.com</option>
               <option value="naver.com">naver.com</option>
             </itemS.Select>
-            <itemS.ConfirmButton onClick={handleEmailVerification}>
-              이메일 인증하기
+            <itemS.ConfirmButton 
+            onClick={handleEmailVerification}
+            disabled={isEmailVerified} // 이메일이 인증된 경우 버튼 비활성화
+            >
+              {isEmailVerified ? "이메일 인증 완료" : "이메일 인증하기"}
             </itemS.ConfirmButton>
           </itemS.InputContainer>
           <itemS.InputContainer>
