@@ -18,8 +18,6 @@ import Home from './APP/Home/Home.main';
 import Mypage from './APP/Home/MyPages/Mypage1';
 import Mypageinfo from './APP/Home/MyPages/Mypage.basicinfo';
 import Likepage from './APP/Home/Like/Likepage.main';
-
-
 import SideNav from "./APP/SideNav/SideNav.main";
 import DetailPage from "./APP/DetailPage/DetailPage.main";
 import SignupSelect from "./APP/Auth/Auth.signup.select";
@@ -48,7 +46,7 @@ function App() {
   return (
     <div className="App">
       <TopNav></TopNav>
-      {/* <SideNav></SideNav> */}
+      {/* <SideNav type='main'></SideNav> */}
       <MainScreen>
         <Routes>
           <Route path='/' element={<Home />} />
