@@ -60,8 +60,9 @@ function Signup() {
     // URL 쿼리에서 토큰 추출
     const queryParams = new URLSearchParams(location.search);
     const tokenFromQuery = queryParams.get('token');
+    console.log("@@@@",tokenFromQuery);
     // 토큰이 존재하고 유효한지 확인
-      if (tokenFromQuery && token === tokenFromQuery) {
+      if (tokenFromQuery) {
         // 토큰이 유효한 경우 상태 및 이메일 입력 값을 업데이트합니다.
         setIsEmailVerified(true);
         setEmail(resEmail);
