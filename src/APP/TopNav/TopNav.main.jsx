@@ -78,7 +78,7 @@ function TopNav() {
           </TopNavS.TopNavSubContents>
           <TopNavS.TopNavSubContents
             onClick={(e) => {
-              NavClick(e, "eco-products");
+              NavClick(e, "/product/category");
             }}
           >
             ECO-PRODUCTS

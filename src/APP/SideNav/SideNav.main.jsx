@@ -6,7 +6,7 @@ import * as SideNavS from "./Styled/SideNav.main.styles";
 import List from "./SideNav.main.list.jsx";
 import search from "./SideNav.main.search.jsx";
 
-function SideNav() {
+function SideNav(props) {
     const NavClick = (e, type) => {
 		e.preventDefault();
 		alert(
@@ -14,24 +14,24 @@ function SideNav() {
 		);
 	};
     return (
-    <SideNavS.SideNavWrapper>
+    <SideNavS.SideNavWrapper type={props.type}>
         <SideNavS.SideNavSearchWrapper>
-            <SideNavS.SideNavInputBox></SideNavS.SideNavInputBox>
-            <SideNavS.SideNavInputIcon></SideNavS.SideNavInputIcon>
+            <SideNavS.SideNavInputBox type={props.type}></SideNavS.SideNavInputBox>
+            <SideNavS.SideNavInputIcon type={props.type}></SideNavS.SideNavInputIcon>
         </SideNavS.SideNavSearchWrapper>
-        <SideNavS.SideNavList
+        <SideNavS.SideNavList type={props.type}
             onClick={(e) => {
                 NavClick(e, "ECO-PRODUCTS");
             }}>
             ECO-PRODUCTS
         </SideNavS.SideNavList>
-        <SideNavS.SideNavList
+        <SideNavS.SideNavList type={props.type}
             onClick={(e) => {
                 NavClick(e, "ECO-STORE");
             }}>
             ECO-STORE
         </SideNavS.SideNavList>
-        <SideNavS.SideNavList
+        <SideNavS.SideNavList type={props.type}
             onClick={(e) => {
                 NavClick(e, "COMMUNITY");
             }}>
