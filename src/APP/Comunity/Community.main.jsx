@@ -34,19 +34,19 @@ function CommunityMain() {
     const fetchData = async () => {
       try {
 
-        const storeReviewsResponse = await axios.get('/api/reviews/all?type=store&page=0&size=3&sort=id,desc');
+        const storeReviewsResponse = await request.get('/api/reviews/all?type=store&page=0&size=3&sort=id,desc');
         setStoreReviewsResponse(storeReviewsResponse.data.content);
         console.log('storeReviewsResponse', storeReviewsResponse);
 
-        const productReviewsResponse = await axios.get('/api/reviews/all?type=product&page=0&size=3&sort=id,desc');
+        const productReviewsResponse = await request.get('/api/reviews/all?type=product&page=0&size=3&sort=id,desc');
         setProductReviewsResponse(productReviewsResponse.data.content);
         console.log('productReviewsResponse', productReviewsResponse);
 
-        const bestResponse = await axios.get('/api/posts/search?page=0&size=3&sort=hits,desc');
+        const bestResponse = await request.get('/api/posts/search?page=0&size=3&sort=hits,desc');
         setBestResponse(bestResponse.data.content);
         console.log('bestResponse', bestResponse);
 
-        const postResponse = await axios.get('/api/posts/search?page=0&size=3&sort=id,desc');
+        const postResponse = await request.get('/api/posts/search?page=0&size=3&sort=id,desc');
         setPostResponse(postResponse.data.content);
         console.log('postResponse', postResponse);
       } catch (error) {
@@ -63,7 +63,7 @@ function CommunityMain() {
         <itemS.Title>Community</itemS.Title>
         <itemS.ContentWrapper>
           <itemS.SubTitle>BEST POST</itemS.SubTitle>
-          <itemS.MoreButton onClick={() => handleMore('post')}>
+          <itemS.MoreButton onClick={() => handleMore('best')}>
             더보기
           </itemS.MoreButton>
         </itemS.ContentWrapper>
@@ -83,7 +83,7 @@ function CommunityMain() {
 
         <itemS.ContentWrapper>
           <itemS.SubTitle>ECO-STORE REVIEW</itemS.SubTitle>
-          <itemS.MoreButton onClick={() => handleMore('review')}>
+          <itemS.MoreButton onClick={() => handleMore('storereview')}>
             더보기
           </itemS.MoreButton>
         </itemS.ContentWrapper>
@@ -104,7 +104,7 @@ function CommunityMain() {
 
         <itemS.ContentWrapper>
           <itemS.SubTitle>ECO_PRODUCT REVIEW</itemS.SubTitle>
-          <itemS.MoreButton onClick={() => handleMore('review')}>
+          <itemS.MoreButton onClick={() => handleMore('productreview')}>
             더보기
           </itemS.MoreButton>
         </itemS.ContentWrapper>
