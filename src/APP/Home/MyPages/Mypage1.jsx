@@ -4,6 +4,8 @@ import * as mystyles from './Styled/Mypage.styles';
 import { FaStar } from 'react-icons/fa';
 import request from '../../Api/request';
 import { refreshToken } from '../../Api/request';
+import { ACCESS_TOKEN } from '../../Api/request';
+import Pagination from 'react-js-pagination';
 
 function Mypage() {
   const navigate = useNavigate();
@@ -15,15 +17,28 @@ function Mypage() {
       navigate('/login');
     }
   };
-  const handleWithdrawal = () => {
-    const confirmWithdrwal = window.confirm('정말 회원탈퇴를 하십니까');
-    if (confirmWithdrwal) {
-      alert('회원탈퇴 완료');
-      navigate('/');
+
+  const handleWithdrawal = async () => {
+    const confirmWithdrawal = window.confirm('정말 회원탈퇴를 하십니까');
+    if (confirmWithdrawal) {
+      try {
+        const response = await request.delete('/api/members/withdrawal', {
+          headers: {
+            Authorization: `Bearer ${window.localStorage.getItem(
+              'ACCESS_TOKEN'
+            )}`,
+          },
+        });
+
+        alert('회원탈퇴 완료');
+        navigate('/');
+      } catch (error) {
+        console.error('회원탈퇴 실패', error);
+      }
     }
   };
 
-  const usercontentinfo = [
+  /*const usercontentinfo = [
     {
       title: '글제목1',
       email: 'idd**@gmail.com',
@@ -64,7 +79,7 @@ function Mypage() {
       email: 'idd**@gmail.com',
       date: '2025.00.00',
     },
-  ];
+  ];*/
   const [userPosts, setUserPosts] = useState([]);
   const [userReview, setUserReview] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -89,7 +104,7 @@ function Mypage() {
           console.error('데이터 가져오기 중 오류:', error);
         }
       }
-    }
+    };
 
     fetchData();
   }, []);
@@ -99,14 +114,18 @@ function Mypage() {
       const fetchUserPosts = async () => {
         setLoading(true);
         try {
-          const response = await request.get(
-            '/api/members/post?page=0&size=3&sort=id,desc'
-          );
+          const response = await request.get('/api/members/post?sort=id,desc', {
+            headers: {
+              Authorization: `Bearer ${window.localStorage.getItem(
+                ACCESS_TOKEN
+              )}`,
+            },
+          });
           console.log('서버 응답 데이터:', response);
           setUserPosts(response.data.content);
           console.log(userPosts);
         } catch (error) {
-          console.error('사용자의 정보를 가져오는데 실패', error);
+          console.error('사용자의 작성글을 가져오는데 실패', error);
         } finally {
           setLoading(false);
         }
@@ -125,12 +144,19 @@ function Mypage() {
         console.log(request);
         try {
           const response = await request.get(
-            'api/members/review?type=s&page=0&size=5&sort=id,desc'
+            '/api/members/review?type=store&id=1&page=0&size=9&sort=id,desc',
+            {
+              headers: {
+                Authorization: `Bearer ${window.localStorage.getItem(
+                  ACCESS_TOKEN
+                )}`,
+              },
+            }
           );
           console.log(response);
           setUserReview(response.data.content);
         } catch (error) {
-          console.error('사용자의 정보를 가져오는데 실패', error);
+          console.error('사용자의 후기를 가져오는데 실패', error);
         } finally {
           setLoading(false);
           console.log(userReview);
@@ -139,6 +165,52 @@ function Mypage() {
       fetchUserReview();
     }
   }, [isSuccess]);
+  /////////////////////////////////////////////////////
+
+  //page 넘기기
+
+  // 페이지네이션 관련 상태
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
+
+  // 현재 페이지의 리뷰 목록 계산
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentPosts = userPosts.slice(startIndex, endIndex);
+
+  // 페이지 변경 시 호출되는 함수
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+  ///////////////
+  /* const Pagination1 = ({
+    totalItems,
+    currentPage,
+    itemsPerPage,
+    onPageChange,
+  }) => {
+    const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+    return (
+      <div>
+        {Array.from({ length: totalPages }, (_, index) => {
+          const pageNumber = index + 1;
+          const isCurrentPage = currentPage === pageNumber;
+
+          return (
+            <button
+              key={pageNumber}
+              onClick={() => onPageChange(pageNumber)}
+              disabled={isCurrentPage}
+              className={isCurrentPage ? 'current-page' : ''}
+            >
+              {pageNumber}
+            </button>
+          );
+        })}
+      </div>
+    );
+  };*/
 
   return (
     <mystyles.Div>
@@ -167,7 +239,7 @@ function Mypage() {
           </mystyles.secondcontainertitle>
           <mystyles.thirdcontainer>
             {Array.isArray(userPosts) ? (
-              userPosts.map((post) => (
+              currentPosts.map((post) => (
                 <mystyles.mycontents key={post.id}>
                   <mystyles.contentstitle>{post.title}</mystyles.contentstitle>
                   <mystyles.contentsemail>
@@ -181,6 +253,16 @@ function Mypage() {
             ) : (
               <p>배열이 존재하지 않음</p>
             )}
+            <mystyles.PaginationWrapper>
+              <Pagination
+                activePage={currentPage}
+                itemsCountPerPage={itemsPerPage}
+                totalItemsCount={userPosts.length}
+                onChange={handlePageChange}
+                hideNavigation={true}
+                hideFirstLastPages={true}
+              />
+            </mystyles.PaginationWrapper>
           </mystyles.thirdcontainer>
         </mystyles.secondcontainer>
         <hr></hr>

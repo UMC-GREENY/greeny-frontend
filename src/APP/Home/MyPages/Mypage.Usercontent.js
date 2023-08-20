@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import request from '../../Api/request';
 import { refreshToken } from '../../Api/request';
-
+import { ACCESS_TOKEN } from '../../Api/request';
 function UserContent() {
   const [userPosts, setUserPosts] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -37,7 +37,14 @@ function UserContent() {
       console.log(request);
       try {
         const response = await request.get(
-          '/api/members/post?page=0&size=3&sort=id,desc'
+          '/api/members/post?page=0&size=3&sort=id,desc',
+          {
+            headers: {
+              Authorization: `Bearer ${window.localStorage.getItem(
+                ACCESS_TOKEN
+              )}`,
+            },
+          }
         );
         console.log('서버 응답 데이터:', response);
         setUserPosts(response.data.content);

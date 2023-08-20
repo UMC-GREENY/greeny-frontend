@@ -5,6 +5,7 @@ import LikedProductpage from './LikedProductpage';
 import LikeButton from './Likepage.main.clickitem';
 import request from '../../Api/request';
 import { refreshToken } from '../../Api/request';
+import { ACCESS_TOKEN } from '../../Api/request';
 
 function Likepage() {
   /*const menuArr = [
@@ -66,7 +67,14 @@ function Likepage() {
       console.log(request);
       try {
         const response = await request.get(
-          'api/members/simple/store-bookmark?page=0&size=2&sort=id,desc'
+          'api/members/simple/store-bookmark?page=0&size=9&sort=id,desc',
+          {
+            headers: {
+              Authorization: `Bearer ${window.localStorage.getItem(
+                ACCESS_TOKEN
+              )}`,
+            },
+          }
         );
         console.log('찜한 스토어 데이터:', response);
         setLikeStore(response.data.content);
@@ -88,13 +96,20 @@ function Likepage() {
       console.log(request);
       try {
         const response = await request.get(
-          'api/members/simple/product-bookmark?page=0&size=2&sort=id,desc'
+          'api//members/simple/product-bookmark?page=0&size=9&sort=id,desc',
+          {
+            headers: {
+              Authorization: `Bearer ${window.localStorage.getItem(
+                ACCESS_TOKEN
+              )}`,
+            },
+          }
         );
         console.log('찜한 제품 데이터:', response);
         setLikeProduct(response.data.content);
         console.log(likeProduct);
       } catch (error) {
-        console.error('찜한 제품 목록을 가져오는데 실패', error);
+        console.error('찜한 제품 목록을 가져오는데 실패!', error);
       } finally {
         setLoading(false);
       }
