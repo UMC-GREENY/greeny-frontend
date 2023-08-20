@@ -4,9 +4,6 @@ import * as itemS from './Styled/Community.main.styles';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { FaStar, FaRegStar, FaHome } from 'react-icons/fa';
 import request from '../Api/request';
-import axios from 'axios';
-import { refreshToken } from '../Api/request';
-import { ACCESS_TOKEN } from '../Api/request';
 
 function CommunityMain() {
   const navigate = useNavigate();

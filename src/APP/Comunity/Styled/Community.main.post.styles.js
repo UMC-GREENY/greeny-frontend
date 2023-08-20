@@ -98,6 +98,21 @@ export const PostTitle = styled.div`
   ${(props) => `color: ${tokens.colors.grey_15}`};
 `;
 
+export const PostStar = styled.div`
+  font-size: 16px;
+  text-align: left; 
+  width: 250px;
+  margin-right: 20px;
+`;
+
+export const PostContent = styled.div`
+  font-size: 16px;
+  text-align: left; 
+  width: 930px;
+  margin-right: 20px;
+  ${(props) => `color: ${tokens.colors.grey_15}`};
+`;
+
 export const PostEmail = styled.div`
   font-size: 14px;
   text-align: left; 
