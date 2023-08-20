@@ -49,7 +49,6 @@ function TopNav() {
           <TopNavS.TopNavContents
             onClick={(e) => {
               if (isSuccess) {
-                console.log("isSuccess2",isSuccess);
                 NavClick(e, "/mypage");
               }
             }}
