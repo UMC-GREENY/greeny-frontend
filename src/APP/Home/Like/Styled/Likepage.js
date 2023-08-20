@@ -274,3 +274,38 @@ export const PageNumber = styled.div`
     background-color: ${tokens.colors.grey_80};
   }
 `;
+
+export const PaginationWrapper = styled.div`
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  ul.pagination li {
+    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    width: 26px;
+    height: 26px;
+    border-radius: 99%;
+    font-size: 12px;
+    line-height: 18px;
+    border: none;
+  }
+  ul.pagination li.active a {
+    color: ${tokens.colors.grey_100};
+  }
+  ul.pagination li.active {
+    background-color: ${tokens.colors.green_deep};
+  }
+  ul.pagination li a {
+    text-decoration-line: none;
+    color: ${tokens.colors.grey_60};
+  }
+`;
