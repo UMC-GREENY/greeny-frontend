@@ -54,7 +54,7 @@ function Signup() {
   const [selectedDomain, setSelectedDomain] = useState('직접입력');
 
   const [token, setToken] = useState('');
-  const [resEmail, setResEmail] = useState('');
+  // const [resEmail, setResEmail] = useState('');
   
   useEffect(() => {
     // URL 쿼리에서 토큰 추출
@@ -63,9 +63,12 @@ function Signup() {
     console.log("@@@@",tokenFromQuery);
     // 토큰이 존재하고 유효한지 확인
       if (tokenFromQuery) {
+        const storedToken = localStorage.getItem('token');
+        const storedEmail = localStorage.getItem('email');
+        
         // 토큰이 유효한 경우 상태 및 이메일 입력 값을 업데이트합니다.
         setIsEmailVerified(true);
-        setEmail(resEmail);
+        setEmail(storedEmail);
       }
   }, [token]);
   //이메일 인증하기
@@ -77,12 +80,15 @@ function Signup() {
     };
     await request.post('/api/auth', requestData)    
     .then(res => {
-      alert("이메일을 보냈습니다. 이메일 확인하기 버튼을 눌러주세요")
+      alert("이메일을 보냈습니다. 이메일 확인하기 버튼을 눌러주세요.")
       console.log('res: ', res)
       if (res.isSuccess) {
-        setIsEmailVerified(true);
-        setToken(res.data.token);
-        setResEmail(res.data.email);
+        // setIsEmailVerified(true);
+        localStorage.setItem('token', res.data.token);
+        localStorage.setItem('email', res.data.email);
+        setToken(localStorage.getItem('token'));
+        // setToken(res.data.token);
+        // setResEmail(res.data.email);
       } else {
         console.log("res.isSuccess",res.isSuccess);
       }
@@ -124,6 +130,10 @@ function Signup() {
 
   const handleSubmit = async () => {
     
+    if (!isEmailVerified) {
+      alert("이메일로 이동 후, 이메일 확인하기 버튼을 눌러주세요.");
+      return;
+    }
     const personalInfo = location.state.optionalChecked;
     const thirdParty = location.state.advertisingChecked;
 
