@@ -10,7 +10,7 @@ function DetailPage() {
         fontFamily: "Predendard"
    };
 
-   const [isProduct, setIsProduct] = useState(!true); // 초기값을 제품으로 설정
+   const [isProduct, setIsProduct] = useState(true); // 초기값을 제품으로 설정
    const [selectedService, setSelectedService] = useState("detailInfo");
 
    const handleSelectService = (service) => {
@@ -19,9 +19,9 @@ function DetailPage() {
 
    useEffect(() => {
       const path = window.location.pathname;
-      if (path.includes("/store/detailPage")) {
+      if (path.includes("/store/:storeId")) {
          setIsProduct(false);
-      } else if (path.includes("/product/detailPage")) {
+      } else if (path.includes("/product/:productId")) {
          setIsProduct(true);
       }
    }, []);
