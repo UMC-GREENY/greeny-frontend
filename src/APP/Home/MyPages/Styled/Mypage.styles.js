@@ -57,7 +57,7 @@ export const Title = styled.div`
 export const secondcontainer = styled.div`
   display: flex;
   width: 1270px;
-  height: 222px;
+  height: 300px;
   flex-direction: column;
   align-items: start;
   margin-top: 40px;
@@ -87,7 +87,6 @@ export const thirdcontainer = styled.div`
   color: #999999;
   border-style: solid;
   border-width: 2px 0 2px 0;
-  background-color: yellow;
 `;
 export const mycontents = styled.div`
   height: 30px;

@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import * as itemS from "./Styled/Auth.signup.agree.styles";
+import * as itemS from './Styled/Auth.signup.agree.styles';
+import { AuthDummy1 } from './Auth.signup.agreeDummy';
+import { AuthDummy2 } from './Auth.signup.agreeDummy2';
+import { AuthDummy3 } from './Auth.signup.agreeDummy3';
 import axios from 'axios';
 
 function SignupAgree() {
@@ -13,6 +16,7 @@ function SignupAgree() {
   ];
 
   const navigate = useNavigate();
+
   const location = useLocation();
   const { email, type } = location.state; 
 
@@ -40,6 +44,7 @@ function SignupAgree() {
   };
   useEffect(() => {
     const requiredCheckboxes = checkedItems.slice(1, 3);
+
     const allRequiredChecked = requiredCheckboxes.every(item => item);
     setAllRequiredChecked(allRequiredChecked);
   }, [checkedItems]);
@@ -76,8 +81,6 @@ function SignupAgree() {
     }
   };
 
-  
-
   return (
     <itemS.SignupWrapper>
       <itemS.SignupContentWrapper>
@@ -101,7 +104,9 @@ function SignupAgree() {
             <itemS.CheckboxLabel>{checkboxTexts[1]}</itemS.CheckboxLabel>
           </itemS.CheckboxContainer>
           <itemS.ContentsBox>
-            이용약관 내용 이용약관 내용 이용약관 내용 이용약관 내용 이용약관 내용 이용약관 내용 이용약관 내용 이용약관 내용
+            {AuthDummy1.map((content, index) => (
+              <p key={index}>{content}</p>
+            ))}
           </itemS.ContentsBox>
           <itemS.CheckboxContainer>
             <itemS.Checkbox
@@ -112,7 +117,9 @@ function SignupAgree() {
             <itemS.CheckboxLabel>{checkboxTexts[2]}</itemS.CheckboxLabel>
           </itemS.CheckboxContainer>
           <itemS.ContentsBox>
-            개인정보 수집 및 이용 내용 개인정보 수집 및 이용 내용 개인정보 수집 및 이용 내용 개인정보 수집 및 이용 내용
+            {AuthDummy1.map((content, index) => (
+              <p key={index}>{content}</p>
+            ))}
           </itemS.ContentsBox>
           <itemS.CheckboxContainer>
             <itemS.Checkbox
@@ -123,7 +130,9 @@ function SignupAgree() {
             <itemS.CheckboxLabel>{checkboxTexts[3]}</itemS.CheckboxLabel>
           </itemS.CheckboxContainer>
           <itemS.ContentsBox>
-            개인정보 수집 및 이용 동의 (선택) 개인정보 수집 및 이용 동의 (선택) 개인정보 수집 및 이용 동의 (선택)
+            {AuthDummy2.map((content, index) => (
+              <p key={index}>{content}</p>
+            ))}
           </itemS.ContentsBox>
           <itemS.CheckboxContainer>
             <itemS.Checkbox
@@ -134,7 +143,9 @@ function SignupAgree() {
             <itemS.CheckboxLabel>{checkboxTexts[4]}</itemS.CheckboxLabel>
           </itemS.CheckboxContainer>
           <itemS.ContentsBox>
-            광고 정보 수신 동의 (선택) 광고 정보 수신 동의 (선택) 광고 정보 수신 동의 (선택)
+            {AuthDummy3.map((content, index) => (
+              <p key={index}>{content}</p>
+            ))}
           </itemS.ContentsBox>
           <itemS.ButtonContainer>
             <itemS.CancelButton>취소하기</itemS.CancelButton>

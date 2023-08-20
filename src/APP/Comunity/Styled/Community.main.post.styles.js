@@ -98,10 +98,25 @@ export const PostTitle = styled.div`
   ${(props) => `color: ${tokens.colors.grey_15}`};
 `;
 
+export const PostStar = styled.div`
+  font-size: 16px;
+  text-align: left; 
+  width: 250px;
+  margin-right: 20px;
+`;
+
+export const PostContent = styled.div`
+  font-size: 16px;
+  text-align: left; 
+  width: 930px;
+  margin-right: 20px;
+  ${(props) => `color: ${tokens.colors.grey_15}`};
+`;
+
 export const PostEmail = styled.div`
   font-size: 14px;
   text-align: left; 
-  margin-right: 20px;
+  margin-right: 40px;
   width: 160px;
   ${(props) => `color: ${tokens.colors.grey_15}`};
 `;
@@ -109,8 +124,8 @@ export const PostEmail = styled.div`
 export const PostDate = styled.div`
   font-size: 14px;
   text-align: left; 
-  margin-left: 10px;
-  width: 83px;
+  margin-left: 0px;
+  width: 130px;
   ${(props) => `color: ${tokens.colors.grey_40}`};
 `;
 //---------------------------------------------------------------
