@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import * as itemS from "./Styled/Auth.signup.styles"
+import request from "./../Api/request";
 import axios from 'axios';
 
 function Signup() {
@@ -73,8 +74,7 @@ function Signup() {
       email: email,
       authorizationUrl: "https://www.greeny.n-e.kr/signup"
     };
-    console.log("requestData",requestData);
-    await axios.post('/api/auth', requestData)    
+    await request.post('/api/auth', requestData)    
     .then(res => {
       alert("이메일을 보냈습니다. 이메일 확인하기 버튼을 눌러주세요")
       console.log('res: ', res)
@@ -135,7 +135,7 @@ function Signup() {
         birth: dateOfBirth
       };
   
-      const response = await axios.post('/api/auth/sign-up', requestData);
+      const response = await request.post('/api/auth/sign-up', requestData);
       console.log("response",response);
       if (response.isSuccess) {
         alert(response.message);
@@ -151,7 +151,7 @@ function Signup() {
           };
           console.log("agreementData",agreementData);
 
-          const agreementResponse = await axios.post('/api/auth/sign-up/agreement', agreementData);
+          const agreementResponse = await request.post('/api/auth/sign-up/agreement', agreementData);
           console.log("agreementResponse", agreementResponse);
 
           if (agreementResponse.isSuccess) {
