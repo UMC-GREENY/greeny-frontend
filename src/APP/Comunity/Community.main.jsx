@@ -137,12 +137,10 @@ function CommunityMain() {
         <itemS.InfoBox>
           {postResponse.map((post, index) => (
             <React.Fragment key={post.id}>
-              <itemS.InfoLine>
-                <Link to={`/community`}>
-                  <itemS.PostTitle>{post.title}</itemS.PostTitle>
-                  <itemS.PostEmail>{post.writerEmail}</itemS.PostEmail>
-                  <itemS.PostDate>{post.createdAt}</itemS.PostDate>
-                </Link>
+              <itemS.InfoLine onClick={() => navigate(`/community/${post.id}`)}>
+                <itemS.PostTitle>{post.title}</itemS.PostTitle>
+                <itemS.PostEmail>{post.writerEmail}</itemS.PostEmail>
+                <itemS.PostDate>{post.createdAt}</itemS.PostDate>
               </itemS.InfoLine>
               <itemS.Line></itemS.Line>
             </React.Fragment>
