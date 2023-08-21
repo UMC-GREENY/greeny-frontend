@@ -3,13 +3,16 @@ import * as detailS from "./Styled/Community.detail.styles";
 import { useNavigate } from "react-router";
 function CommunityDetail() {
   const navigate = useNavigate();
+  const handleMore = (type) => {
+    navigate("/post", { state: { type } });
+  };
   return (
     <detailS.SignupWrapper>
       <detailS.SignupContentWrapper>
         <detailS.Title>Community</detailS.Title>
         <detailS.ContentWrapper>
           <detailS.SubTitle>GREENY COMMUNITY</detailS.SubTitle>
-          <detailS.ListButton onClick={() => navigate("/post")}>
+          <detailS.ListButton onClick={() => handleMore("community")}>
             글 목록
           </detailS.ListButton>
         </detailS.ContentWrapper>
