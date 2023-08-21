@@ -2,13 +2,14 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as TopNavS from './Styled/TopNav.main.styles';
 import Modal from '../Modal/Modal.main';
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { isSuccessState } from '../Login/Recoil/Recoil.auth.state';
 import useBeforeUnload from '../Custom/useBeforeUnload';
 
 function TopNav() {
   const isSuccess = useRecoilValue(isSuccessState);
-  console.log("isSuccess",isSuccess);
+  const setIsSuccess = useSetRecoilState(isSuccessState);
+  console.log("isSuccess", isSuccess);
   useBeforeUnload();
 
   const navigate = useNavigate();
@@ -19,6 +20,12 @@ function TopNav() {
     );
 
     navigate(`${type}`);
+  };
+  
+  const handleLogout = () => {
+    setIsSuccess(false);
+    alert("로그아웃 되었습니다")
+    navigate("/home"); // 예시로 로그아웃 후 이동하는 경로
   };
   const [showModal, setShowModal] = useState(false);
 
@@ -43,8 +50,8 @@ function TopNav() {
           GREENY
         </TopNavS.TopNavLogo>
         <TopNavS.TopNavInfoWrapper>
-          <TopNavS.TopNavContents onClick={() => navigate("/login")}>
-            Login
+          <TopNavS.TopNavContents onClick={isSuccess ? handleLogout : () => navigate("/login")}>
+            {isSuccess ? "Logout" : "Login"}
           </TopNavS.TopNavContents>
           <TopNavS.TopNavContents
             onClick={(e) => {
