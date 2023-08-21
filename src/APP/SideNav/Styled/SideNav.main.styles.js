@@ -9,10 +9,11 @@ export const SideNavWrapper = styled.div`
     ${(props) =>
     props.type === "main"
       ? `
+            position: absolute;
             width: 163px;
             height: 255px;
-            padding-top: 94px;
-            padding-left: 69px;
+            top: 94px;
+            left: 69px;
             gap: 20px;
 
 `
