@@ -5,12 +5,12 @@ import request from "./../Api/request";
 import { ACCESS_TOKEN, REFRESH_TOKEN, refreshToken } from "./../Api/request";
 import LoginKakao from "./Login.kakao";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { isSuccessState, socialTypeState } from "./Recoil/Recoil.auth.state";
+import { isSuccessState } from "./Recoil/Recoil.auth.state";
 import LoginNaver from "./Login.naver";
 
 function LoginMainTool() {
   const [isSuccess, setIsSuccess] = useRecoilState(isSuccessState); // recoil 로그인 여부
-  const socialType = useRecoilValue(socialTypeState);
+  // const socialType = useRecoilValue(socialTypeState);
   const [type, setType] = useState("login");
   const [name, setName] = useState("로그인");
   const navigate = useNavigate();
@@ -28,9 +28,9 @@ function LoginMainTool() {
     const params = new URLSearchParams(window.location.search);
     const code = params.get("code");
     if (!code) return;
-    const source = socialType;
-    console.log("source",source);
-    // const source = localStorage.getItem("source");
+    // const source = socialType;
+    // console.log("source",source);
+    const source = localStorage.getItem("source");
     if (!source) {
       console.error("Source is not available.");
       return;
