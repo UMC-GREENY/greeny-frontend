@@ -38,7 +38,7 @@ function NewItemStore() {
          <itemS.TitleWrap>
             <itemS.overline></itemS.overline>
             <itemS.TitleText>
-               "STORE NEW"
+               STORE NEW
             </itemS.TitleText>
             <itemS.overline></itemS.overline>
          </itemS.TitleWrap>
