@@ -18,8 +18,6 @@ import Home from './APP/Home/Home.main';
 import Mypage from './APP/Home/MyPages/Mypage1';
 import Mypageinfo from './APP/Home/MyPages/Mypage.basicinfo';
 import Likepage from './APP/Home/Like/Likepage.main';
-
-
 import SideNav from "./APP/SideNav/SideNav.main";
 import DetailPage from "./APP/DetailPage/DetailPage.main";
 import SignupSelect from "./APP/Auth/Auth.signup.select";
@@ -31,6 +29,7 @@ import LifeTipDe from "./APP/LifeTip/LifeTipDe.main";
 import CommunityMain from "./APP/Comunity/Community.main";
 import Post from "./APP/Comunity/Community.main.post";
 import WritePost from "./APP/Comunity/Community.main.post.write";
+import Category from "./APP/Category/Category.main";
 
 function App() {
 
@@ -47,7 +46,7 @@ function App() {
   return (
     <div className="App">
       <TopNav></TopNav>
-      {/* <SideNav></SideNav> */}
+      {/* <SideNav type='main'></SideNav> */}
       <MainScreen>
         <Routes>
           <Route path='/' element={<Home />} />
@@ -55,13 +54,14 @@ function App() {
           <Route path='/agree' element={<SignupAgree />} />
           <Route path='/signup' element={<Signup />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/product/category' element={<Category />}/>
           <Route path='/community' element={<CommunityMain />} />
           <Route path='/post' element={<Post />} />
           <Route path='/write_post' element={<WritePost />} />
           <Route path='/lifeTip' element={<LifeTip />} />
           <Route path='/lifeTip_de' element={<LifeTipDe />} />
-          <Route path='/product/detailPage' element={<DetailPage />} />
-          <Route path='/store/detailPage' element={<DetailPage />} />
+          <Route path='/product/:productId' element={<DetailPage />} />
+          <Route path='/store/:storeId' element={<DetailPage />} />
           <Route path='/mypage' element={<Mypage />} />
           <Route path='/likepage' element={<Likepage />} />
           <Route path='/mypageinfo' element={<Mypageinfo />} />

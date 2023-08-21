@@ -9,8 +9,6 @@ export const ItemWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center ;
-    
-    background-color: red;
 `;
 
 export const InItemWrapper = styled.div`
@@ -18,13 +16,15 @@ export const InItemWrapper = styled.div`
     width: 1272px;
 `
 
-export const ImageItem = styled.div`
+export const ImageItem = styled.img`
     position: absolute;
     top: 104px;
+    left: -0px;
     width: 625px;
     height: 468px;
-    background-color: yellow;
     border-radius: 5px;
+    
+    object-fit: cover;
 `;
 
 export const TitleItemWrapper = styled.div`
@@ -82,7 +82,8 @@ ${(props) =>
                 font-weight: bold;
                 font-size: 32px;
                 line-height: 60px;
-                letter-spacing: -2px;`
+                letter-spacing: -2px;
+                text-align: start;`
             : props.type === "price"
             ? `height: 30px;
                 color: ${tokens.colors.grey_15};
