@@ -54,7 +54,7 @@ function App() {
           <Route path='/agree' element={<SignupAgree />} />
           <Route path='/signup' element={<Signup />} />
           <Route path='/login' element={<Login />} />
-          <Route path='/product/category' element={<Category />}/>
+          <Route path='/product' element={<Category />}/>
           <Route path='/community' element={<CommunityMain />} />
           <Route path='/post' element={<Post />} />
           <Route path='/write_post' element={<WritePost />} />
