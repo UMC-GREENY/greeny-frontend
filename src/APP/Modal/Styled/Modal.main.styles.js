@@ -61,6 +61,7 @@ export const ModalContentInnerpage = styled.div`
   font-size: 24px;
   width: 264px;
   margin-top: 31px;
+  cursor: pointer;
 `;
 
 export const ModalContent = styled.div`
