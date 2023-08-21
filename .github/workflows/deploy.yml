@@ -23,7 +23,7 @@ jobs:
       with:
         node-version: '12'
   
-    - name: create env and secure file
+    - name: Touch env file
       run: |
         touch .env
         echo "${{ secrets.ENV_VARS }}" >> .env
