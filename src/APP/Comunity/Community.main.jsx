@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import * as itemS from './Styled/Community.main.styles';
-import '@fortawesome/fontawesome-free/css/all.min.css';
-import { FaStar, FaRegStar, FaHome } from 'react-icons/fa';
-import request from '../Api/request';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import * as itemS from "./Styled/Community.main.styles";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import { FaStar, FaRegStar, FaHome } from "react-icons/fa";
+import request from "../Api/request";
+import { Link } from "react-router-dom";
 
 function CommunityMain() {
   const navigate = useNavigate();
   const handleMore = (type) => {
-    navigate('/post', { state: { type } });
+    navigate("/post", { state: { type } });
   };
 
   const renderStars = (count) => {
@@ -23,34 +24,40 @@ function CommunityMain() {
   const [productReviewsResponse, setProductReviewsResponse] = useState([]); //제품 리뷰
   const [bestResponse, setBestResponse] = useState([]); //베스트 게시글
   const [postResponse, setPostResponse] = useState([]); //게시글
-  
+
   // 유효성 검증
   const [isSuccess, setIsSuccess] = useState(null);
-  
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-
-        const storeReviewsResponse = await request.get('/api/reviews/all?type=store&page=0&size=3&sort=id,desc');
+        const storeReviewsResponse = await request.get(
+          "/api/reviews/all?type=store&page=0&size=3&sort=id,desc"
+        );
         setStoreReviewsResponse(storeReviewsResponse.data.content);
-        console.log('storeReviewsResponse', storeReviewsResponse);
+        console.log("storeReviewsResponse", storeReviewsResponse);
 
-        const productReviewsResponse = await request.get('/api/reviews/all?type=product&page=0&size=3&sort=id,desc');
+        const productReviewsResponse = await request.get(
+          "/api/reviews/all?type=product&page=0&size=3&sort=id,desc"
+        );
         setProductReviewsResponse(productReviewsResponse.data.content);
-        console.log('productReviewsResponse', productReviewsResponse);
+        console.log("productReviewsResponse", productReviewsResponse);
 
-        const bestResponse = await request.get('/api/posts/search?page=0&size=3&sort=hits,desc');
+        const bestResponse = await request.get(
+          "/api/posts/search?page=0&size=3&sort=hits,desc"
+        );
         setBestResponse(bestResponse.data.content);
-        console.log('bestResponse', bestResponse);
+        console.log("bestResponse", bestResponse);
 
-        const postResponse = await request.get('/api/posts/search?page=0&size=3&sort=id,desc');
+        const postResponse = await request.get(
+          "/api/posts/search?page=0&size=3&sort=id,desc"
+        );
         setPostResponse(postResponse.data.content);
-        console.log('postResponse', postResponse);
+        console.log("postResponse", postResponse);
       } catch (error) {
-        console.error('오류:', error);
-      
+        console.error("오류:", error);
       }
-    }
+    };
     fetchData();
   }, []);
 
@@ -60,7 +67,7 @@ function CommunityMain() {
         <itemS.Title>Community</itemS.Title>
         <itemS.ContentWrapper>
           <itemS.SubTitle>BEST POST</itemS.SubTitle>
-          <itemS.MoreButton onClick={() => handleMore('best')}>
+          <itemS.MoreButton onClick={() => handleMore("best")}>
             더보기
           </itemS.MoreButton>
         </itemS.ContentWrapper>
@@ -80,7 +87,7 @@ function CommunityMain() {
 
         <itemS.ContentWrapper>
           <itemS.SubTitle>ECO-STORE REVIEW</itemS.SubTitle>
-          <itemS.MoreButton onClick={() => handleMore('storereview')}>
+          <itemS.MoreButton onClick={() => handleMore("storereview")}>
             더보기
           </itemS.MoreButton>
         </itemS.ContentWrapper>
@@ -101,7 +108,7 @@ function CommunityMain() {
 
         <itemS.ContentWrapper>
           <itemS.SubTitle>ECO_PRODUCT REVIEW</itemS.SubTitle>
-          <itemS.MoreButton onClick={() => handleMore('productreview')}>
+          <itemS.MoreButton onClick={() => handleMore("productreview")}>
             더보기
           </itemS.MoreButton>
         </itemS.ContentWrapper>
@@ -122,7 +129,7 @@ function CommunityMain() {
 
         <itemS.ContentWrapper>
           <itemS.SubTitle>GREENY COMMUNITY</itemS.SubTitle>
-          <itemS.MoreButton onClick={() => handleMore('community')}>
+          <itemS.MoreButton onClick={() => handleMore("community")}>
             더보기
           </itemS.MoreButton>
         </itemS.ContentWrapper>
@@ -131,9 +138,11 @@ function CommunityMain() {
           {postResponse.map((post, index) => (
             <React.Fragment key={post.id}>
               <itemS.InfoLine>
-                <itemS.PostTitle>{post.title}</itemS.PostTitle>
-                <itemS.PostEmail>{post.writerEmail}</itemS.PostEmail>
-                <itemS.PostDate>{post.createdAt}</itemS.PostDate>
+                <Link to={`/community`}>
+                  <itemS.PostTitle>{post.title}</itemS.PostTitle>
+                  <itemS.PostEmail>{post.writerEmail}</itemS.PostEmail>
+                  <itemS.PostDate>{post.createdAt}</itemS.PostDate>
+                </Link>
               </itemS.InfoLine>
               <itemS.Line></itemS.Line>
             </React.Fragment>

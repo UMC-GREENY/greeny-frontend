@@ -13,11 +13,11 @@ import styled from "styled-components";
 import * as tokens from "./APP/tokens";
 
 //Main components
-import TopNav from './APP/TopNav/TopNav.main';
-import Home from './APP/Home/Home.main';
-import Mypage from './APP/Home/MyPages/Mypage1';
-import Mypageinfo from './APP/Home/MyPages/Mypage.basicinfo';
-import Likepage from './APP/Home/Like/Likepage.main';
+import TopNav from "./APP/TopNav/TopNav.main";
+import Home from "./APP/Home/Home.main";
+import Mypage from "./APP/Home/MyPages/Mypage1";
+import Mypageinfo from "./APP/Home/MyPages/Mypage.basicinfo";
+import Likepage from "./APP/Home/Like/Likepage.main";
 import SideNav from "./APP/SideNav/SideNav.main";
 import DetailPage from "./APP/DetailPage/DetailPage.main";
 import SignupSelect from "./APP/Auth/Auth.signup.select";
@@ -30,9 +30,9 @@ import CommunityMain from "./APP/Comunity/Community.main";
 import Post from "./APP/Comunity/Community.main.post";
 import WritePost from "./APP/Comunity/Community.main.post.write";
 import Category from "./APP/Category/Category.main";
+import CommunityDetail from "./APP/Comunity/Community.detail";
 
 function App() {
-
   const MainScreen = styled.div`
     position: absolute;
     top: 100px;
@@ -49,23 +49,24 @@ function App() {
       {/* <SideNav type='main'></SideNav> */}
       <MainScreen>
         <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/select' element={<SignupSelect />} />
-          <Route path='/agree' element={<SignupAgree />} />
-          <Route path='/signup' element={<Signup />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/product/category' element={<Category />}/>
-          <Route path='/community' element={<CommunityMain />} />
-          <Route path='/post' element={<Post />} />
-          <Route path='/write_post' element={<WritePost />} />
-          <Route path='/lifeTip' element={<LifeTip />} />
-          <Route path='/lifeTip_de' element={<LifeTipDe />} />
-          <Route path='/product/:productId' element={<DetailPage />} />
-          <Route path='/store/:storeId' element={<DetailPage />} />
-          <Route path='/mypage' element={<Mypage />} />
-          <Route path='/likepage' element={<Likepage />} />
-          <Route path='/mypageinfo' element={<Mypageinfo />} />
-          <Route path='*' element={<Home />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/select" element={<SignupSelect />} />
+          <Route path="/agree" element={<SignupAgree />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/product/category" element={<Category />} />
+          <Route path="/community" element={<CommunityMain />} />
+          <Route path="/post" element={<Post />} />
+          <Route path="/write_post" element={<WritePost />} />
+          <Route path="/lifeTip" element={<LifeTip />} />
+          <Route path="/lifeTip_de" element={<LifeTipDe />} />
+          <Route path="/product/:productId" element={<DetailPage />} />
+          <Route path="/store/:storeId" element={<DetailPage />} />
+          <Route path="/mypage" element={<Mypage />} />
+          <Route path="/likepage" element={<Likepage />} />
+          <Route path="/mypageinfo" element={<Mypageinfo />} />
+          <Route path="/community/:no" element={<CommunityDetail />} />
+          <Route path="*" element={<Home />} />
         </Routes>
       </MainScreen>
     </div>
