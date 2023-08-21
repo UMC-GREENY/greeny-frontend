@@ -5,6 +5,12 @@ export const isSuccessState = atom({
   default: false, 
 });
 
+// export const socialTypeState = atom({
+//   key: 'socialTypeState',
+//   default: 'aa', 
+// });
+
+
 // export const isAutoState = atom({
 // 	key: 'isAutoState',
 // 	default: false, 

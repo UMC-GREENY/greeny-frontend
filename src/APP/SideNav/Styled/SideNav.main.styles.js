@@ -38,18 +38,15 @@ export const SideNavInputBox = styled.input`
     margin-left: 10px;
     margin-bottom: 10px;
     margin-right: 4px;
-
 	border: none;
 	outline: none;
     background-color: transparent;
-
     border-bottom: ${props => (props.type === 'main' ? '1px solid #FFFFFF' : '1px solid #000000')};
 `;
 
 export const SideNavInputIcon = styled.div`
 	width: 30px;
 	height: 50px;
-
 	background-image: ${props => (props.type === 'main' ? 'url("/topnavbar/searchIconWhite.png");' : 'url("/topnavbar/searchIcon.png");')};
 	background-size: 25px 25px;
 	background-position: center;
@@ -62,7 +59,7 @@ export const SideNavList = styled.div`
     padding: 10px;
     ${tokens.typography.s_title}
     margin-top: 20px;
-
     font-family: New York;
     color: ${props => (props.type === 'main' ? '#FFFFFF' : '')}
+    cursor: pointer;
 `

@@ -110,9 +110,13 @@ export const NextButton = styled.button`
 
 //약관 내용 박스
 export const ContentsBox = styled.div`
-	border:solid 1px #E6E6E6;
+  border: solid 1px #e6e6e6;
   padding: 10px;
-	margin-bottom: 10px;
-	margin-left: 30px;
-  color: grey;
+  margin-bottom: 10px;
+  margin-left: 30px;
+  color: gray;
+  width: 1200px;
+  height: 100px;
+  overflow: auto;
+  text-align: left;
 `;

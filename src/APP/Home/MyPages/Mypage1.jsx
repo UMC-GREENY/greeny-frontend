@@ -246,7 +246,6 @@ function Mypage() {
     const lowercaseSearchQuery = searchQuery.toLowerCase();
 
     const filtered = userPosts.filter((post) => {
-      // title 또는 content가 undefined이거나 null인 경우를 방지하기 위해 조건문 사용
       const lowercaseTitle = post.title ? post.title.toLowerCase() : '';
 
       return lowercaseTitle.includes(lowercaseSearchQuery);

@@ -124,7 +124,6 @@ export const productcontainer = styled.div`
   border-color: gray;
   border-style: solid;
   border-width: 1px;
-  background-color: beige;
   margin-bottom: 8px;
 `;
 

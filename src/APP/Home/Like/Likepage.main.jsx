@@ -185,7 +185,8 @@ function Likepage() {
                 type={currentTab === 'store' ? 'store' : 'product'}
                 src={
                   currentTab === 'store'
-                    ? baseUrl + item.imageUrl
+                    ? 'https://umc-greeny.s3.ap-northeast-2.amazonaws.com/' +
+                      item.imageUrl
                     : item.imageUrl
                 }
                 title={currentTab === 'store' ? item.name : item.productName}

@@ -13,6 +13,10 @@ function WritePost() {
   const [file, setFile] = useState('');
   const [content, setContent] = useState('');
 
+  const handleCancel = () => {
+    navigate('/post', { state: { type } });
+  }
+
   const handleWrite = async () => {
     try {
       const formData = new FormData();
@@ -84,7 +88,7 @@ function WritePost() {
             />
           </itemS.InputContainer>
 					<itemS.ButtonContainer>
-            <itemS.CancelButton>취소하기</itemS.CancelButton>
+            <itemS.CancelButton onClick={handleCancel}>취소하기</itemS.CancelButton>
             <itemS.WriteButton onClick={handleWrite}>작성하기</itemS.WriteButton>
           </itemS.ButtonContainer>
 				</itemS.InfoBox>

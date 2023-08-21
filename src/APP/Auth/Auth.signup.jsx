@@ -127,6 +127,15 @@ function Signup() {
     }
   };
 
+  const handleCancel = () => {
+    navigate("/agree", { 
+      state: {
+        email: "",
+        type: "general"
+      }
+    });
+  }
+
 
   const handleSubmit = async () => {
     
@@ -275,7 +284,7 @@ function Signup() {
             />
           </itemS.InputContainer>
           <itemS.ButtonContainer>
-            <itemS.CancelButton>취소하기</itemS.CancelButton>
+          <itemS.CancelButton onClick={handleCancel}>취소하기</itemS.CancelButton>
             <itemS.SignupButton
               onClick={handleSubmit}
               disabled={!isFormValid}

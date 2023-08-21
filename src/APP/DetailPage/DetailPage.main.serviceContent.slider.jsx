@@ -71,14 +71,17 @@ const Slider = ({ images }) => {
     <Container className="slider-container">
       <ImagesContainer className="slider-images">
         <ImageBox>
-          {images.map((image, index) => (
-            <Image
-              key={index}
-              src={image}
-              alt={`Image ${index}`}
-              active={selectedImageIndex === index}
-            />
-          ))}
+          {images.map((image, index) => {
+            console.log(image); // 이렇게 중괄호로 묶어주어야 합니다.
+            return (
+              <Image
+                key={index}
+                src={'https://umc-greeny.s3.ap-northeast-2.amazonaws.com/' + image}
+                alt={`Image ${index}`}
+                active={selectedImageIndex === index}
+              />
+            );
+          })}
         </ImageBox>
         <IconsContainer className="slider-icons">
           {images.map((_, index) => (
@@ -93,6 +96,8 @@ const Slider = ({ images }) => {
       </ImagesContainer>
     </Container>
   );
+  
 };
+
 
 export default Slider;
