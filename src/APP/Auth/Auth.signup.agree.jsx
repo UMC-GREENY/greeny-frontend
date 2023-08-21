@@ -4,7 +4,10 @@ import * as itemS from './Styled/Auth.signup.agree.styles';
 import { AuthDummy1 } from './Auth.signup.agreeDummy';
 import { AuthDummy2 } from './Auth.signup.agreeDummy2';
 import { AuthDummy3 } from './Auth.signup.agreeDummy3';
+import { ACCESS_TOKEN, REFRESH_TOKEN } from '../Api/request';
 import axios from 'axios';
+import { useRecoilState } from "recoil";
+import { isSuccessState } from '../Login/Recoil/Recoil.auth.state';
 
 function SignupAgree() {
   const checkboxTexts = [
@@ -14,6 +17,8 @@ function SignupAgree() {
     '개인정보 수집 및 이용에 대한 동의 (선택)',
     '광고 정보 수신 동의 (선택)',
   ];
+
+  const [isSuccess, setIsSuccess] = useRecoilState(isSuccessState); // recoil 로그인 여부
 
   const navigate = useNavigate();
 
@@ -85,6 +90,9 @@ function SignupAgree() {
 
     if (agreementResponse.isSuccess) {
       console.log("동의 양식 제출에 성공했습니다.");
+      localStorage.setItem(ACCESS_TOKEN, agreementResponse.data.accessToken);
+      localStorage.setItem(REFRESH_TOKEN, agreementResponse.data.refreshToken);
+      setIsSuccess(true); // 소셜 회원가입완료 후 로그인된 상태
       navigate("/");
     } else {
       console.log("동의 양식 제출에 실패했습니다.");

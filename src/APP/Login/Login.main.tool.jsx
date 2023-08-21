@@ -36,8 +36,7 @@ function LoginMainTool() {
       const { data } = await request.post(`/api/auth/sign-in/${source}`, null, {
         params: { authorizationCode: code },
       });
-      localStorage.setItem(ACCESS_TOKEN, data.accessToken);
-      localStorage.setItem(REFRESH_TOKEN, data.refreshToken);
+      
       if (data.email !== "nothing") { // 최초 로그인 시 nothing 아닌 email 값 받음
         navigate("/agree", { // 일반 로그인 회원가입 시 약관동의 플로우와 달라 type 필요
           state: {
@@ -46,7 +45,11 @@ function LoginMainTool() {
           }
         });
         return;
+      } else {
+        localStorage.setItem(ACCESS_TOKEN, data.accessToken);
+        localStorage.setItem(REFRESH_TOKEN, data.refreshToken);
       }
+      setIsSuccess(true);
       navigate("/");
     };
     fetch();
