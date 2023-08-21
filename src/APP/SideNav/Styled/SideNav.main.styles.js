@@ -61,6 +61,6 @@ export const SideNavList = styled.div`
     ${tokens.typography.s_title}
     margin-top: 20px;
     font-family: New York;
-    color: ${props => (props.type === 'main' ? '#FFFFFF' : '')}
+    color: ${props => (props.type === 'main' ? '#FFFFFF' : '')};
     cursor: pointer;
 `
