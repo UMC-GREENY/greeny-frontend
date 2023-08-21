@@ -22,12 +22,6 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: '12'
-  
-    - name: Touch env file
-      run: |
-        cd greeny-frontend
-        touch .env
-        echo "${{ secrets.ENV_VARS }}" >> .env
 
     - name: Build
       uses: appleboy/ssh-action@master
