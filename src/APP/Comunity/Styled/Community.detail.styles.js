@@ -101,11 +101,16 @@ export const PostDate = styled.div`
 `;
 export const Pic = styled.div`
   margin-top: 80px;
-  width: 620px;
-  height: 465px;
+  /* width: 620px;
+  height: 465px; */
   flex-shrink: 0;
   border-radius: 5px;
   background: #d9d9d9;
+  width: 566px;
+  height: 424px;
+
+  overflow: hidden;
+  overflow: hidden;
 `;
 
 export const Text = styled.div`

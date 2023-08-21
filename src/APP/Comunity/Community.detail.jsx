@@ -1,11 +1,52 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import * as detailS from "./Styled/Community.detail.styles";
 import { useNavigate } from "react-router";
+import request from "../Api/request";
+import Slider from "./Community.main.serviceContent.slider";
+
 function CommunityDetail() {
   const navigate = useNavigate();
   const handleMore = (type) => {
     navigate("/post", { state: { type } });
   };
+  const [images, setImages] = useState([]);
+  const [userData, setUserData] = useState({
+    title: "",
+    content: "",
+    isLiked: "",
+    createdAt: "",
+    updatedAt: "",
+    writeEmail: "",
+    isWriter: "",
+    likes: "",
+    fileUrls: [],
+  });
+  const urlPath = window.location.pathname; // 현재 페이지의 경로
+  const params = urlPath.split("community/");
+  useEffect(() => {
+    console.log(params[1]);
+    const fetchData = async () => {
+      try {
+        const con = await request.get(`/api/posts?postId=${params[1]}`);
+        setUserData({
+          title: con.data.title,
+          content: con.data.content,
+          isLiked: con.data.isLiked,
+          createdAt: con.data.createdAt,
+          updatedAt: con.data.updatedAt,
+          writeEmail: con.data.writeEmail,
+          isWriter: con.data.isWriter,
+          likes: con.data.likes,
+          fileUrls: con.data.fileUrls,
+        });
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+    console.log(userData.fileUrls);
+  }, [params[1]]);
+
   return (
     <detailS.SignupWrapper>
       <detailS.SignupContentWrapper>
@@ -18,17 +59,34 @@ function CommunityDetail() {
         </detailS.ContentWrapper>
       </detailS.SignupContentWrapper>
       <detailS.Ti>
-        <detailS.Name>제목</detailS.Name>
-        <detailS.PostEmail>idd***@gmail.com</detailS.PostEmail>
-        <detailS.PostDate>2023.00.00</detailS.PostDate>
+        <detailS.Name>{userData.title}</detailS.Name>
+        <detailS.PostEmail>{userData.writeEmail}</detailS.PostEmail>
+        <detailS.PostDate>{userData.updatedAt}</detailS.PostDate>
       </detailS.Ti>
-      <detailS.Pic />
+      <detailS.Pic>
+        <Slider
+          images={userData.fileUrls.map(
+            (imageUrl) =>
+              `https://umc-greeny.s3.ap-northeast-2.amazonaws.com/${imageUrl}`
+          )}
+        />
+
+        {/* {userData.fileUrls.map((imageUrl, index) => (
+          <Slider images={userData.fileUrls} />
+        ))} */}
+      </detailS.Pic>
+      {/* <detailS.Pic
+        src={`https://umc-greeny.s3.ap-northeast-2.amazonaws.com/${userData.fileUrls[0]}`}
+        alt="Image"
+      /> */}
+
       <detailS.Text>
-        text
+        {userData.content}
         <detailS.ConTi>
           <detailS.One>
             <div>
               <img src="/community/photo.png" />
+              {}
             </div>
             <div>
               <img src="/community/chat.png" />
