@@ -24,6 +24,7 @@ function TopNav() {
   
   const handleLogout = () => {
     setIsSuccess(false);
+    window.localStorage.clear();
     alert("로그아웃 되었습니다")
     navigate("/home"); // 예시로 로그아웃 후 이동하는 경로
   };

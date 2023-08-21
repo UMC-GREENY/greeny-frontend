@@ -126,4 +126,5 @@ export const ModalButton = styled.div`
   font-size: 30px;
   color: white;
   text-align: center;
+  cursor: pointer;
 `;
