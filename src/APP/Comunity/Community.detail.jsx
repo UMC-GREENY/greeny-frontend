@@ -9,14 +9,14 @@ function CommunityDetail() {
   const handleMore = (type) => {
     navigate("/post", { state: { type } });
   };
-  const [images, setImages] = useState([]);
+  const [love, setLove] = useState(false);
   const [userData, setUserData] = useState({
     title: "",
     content: "",
     isLiked: "",
     createdAt: "",
     updatedAt: "",
-    writeEmail: "",
+    writerEmail: "",
     isWriter: "",
     likes: "",
     fileUrls: [],
@@ -34,7 +34,7 @@ function CommunityDetail() {
           isLiked: con.data.isLiked,
           createdAt: con.data.createdAt,
           updatedAt: con.data.updatedAt,
-          writeEmail: con.data.writeEmail,
+          writerEmail: con.data.writerEmail,
           isWriter: con.data.isWriter,
           likes: con.data.likes,
           fileUrls: con.data.fileUrls,
@@ -44,8 +44,12 @@ function CommunityDetail() {
       }
     };
     fetchData();
-    console.log(userData.fileUrls);
+    console.log(userData);
   }, [params[1]]);
+
+  const onLove = () => {
+    setLove(!love);
+  };
 
   return (
     <detailS.SignupWrapper>
@@ -60,7 +64,7 @@ function CommunityDetail() {
       </detailS.SignupContentWrapper>
       <detailS.Ti>
         <detailS.Name>{userData.title}</detailS.Name>
-        <detailS.PostEmail>{userData.writeEmail}</detailS.PostEmail>
+        <detailS.PostEmail>{userData.writerEmail}</detailS.PostEmail>
         <detailS.PostDate>{userData.updatedAt}</detailS.PostDate>
       </detailS.Ti>
       <detailS.Pic>
@@ -70,15 +74,7 @@ function CommunityDetail() {
               `https://umc-greeny.s3.ap-northeast-2.amazonaws.com/${imageUrl}`
           )}
         />
-
-        {/* {userData.fileUrls.map((imageUrl, index) => (
-          <Slider images={userData.fileUrls} />
-        ))} */}
       </detailS.Pic>
-      {/* <detailS.Pic
-        src={`https://umc-greeny.s3.ap-northeast-2.amazonaws.com/${userData.fileUrls[0]}`}
-        alt="Image"
-      /> */}
 
       <detailS.Text>
         {userData.content}
@@ -86,14 +82,20 @@ function CommunityDetail() {
           <detailS.One>
             <div>
               <img src="/community/photo.png" />
-              {}
+              {userData.fileUrls.length}
             </div>
             <div>
               <img src="/community/chat.png" />
             </div>
           </detailS.One>
-          <div>
-            <img src="/community/favorite.png" />
+          <div onClick={onLove}>
+            {love == false ? (
+              <img src="/community/pre_favorite.png" />
+            ) : (
+              <img src="/community/favorite.png" />
+            )}
+
+            {userData.likes}
           </div>
         </detailS.ConTi>
       </detailS.Text>

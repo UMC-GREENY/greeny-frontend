@@ -142,8 +142,11 @@ export const One = styled.div`
     align-items: center;
     width: 43px;
     height: 24px;
+    justify-content: space-around;
+    align-items: center;
   }
 `;
+
 export const Co = styled.div`
   margin-top: 30px;
   width: 1182px;
