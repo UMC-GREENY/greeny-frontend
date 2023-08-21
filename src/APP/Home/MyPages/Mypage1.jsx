@@ -12,9 +12,10 @@ function Mypage() {
   const handleLogout = () => {
     const confirmLogout = window.confirm("정말 로그아웃을 하십니까");
     if (confirmLogout) {
+      setIsSuccess(false);
       window.localStorage.clear();
-      alert("로그아웃 완료");
-      navigate("/login");
+      alert("로그아웃 되었습니다.");
+      navigate("/");
     }
   };
 

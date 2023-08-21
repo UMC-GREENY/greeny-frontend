@@ -15,7 +15,6 @@ function SignupSelect() {
       }
     });
   };
-  // Rest of the component code...
 
   return (
     <itemS.SignupWrapper>
@@ -23,19 +22,8 @@ function SignupSelect() {
         <itemS.Title>Join</itemS.Title>
         <itemS.SubTitle>회원가입</itemS.SubTitle>
         <itemS.InfoBox>
-          {/* Container to align buttons to the left */}
           <itemS.ButtonContainer>
             <itemS.SignupButton onClick={handleSubmit}>일반 회원가입</itemS.SignupButton>
-            <itemS.InputBtn 
-              type="button"
-              onClick={() => {/* Handle Naver signup button click */}}
-              style={{ backgroundImage: `url(${naverLogo})` }}
-            />
-            <itemS.InputBtn 
-              type="button"
-              onClick={() => {/* Handle Naver signup button click */}}
-              style={{ backgroundImage: `url(${kakaoLogo})` }}
-            />
           </itemS.ButtonContainer>
         </itemS.InfoBox>
         <itemS.SubTitle></itemS.SubTitle>
