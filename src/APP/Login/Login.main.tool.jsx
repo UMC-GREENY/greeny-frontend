@@ -4,8 +4,8 @@ import * as toolS from "./Styled/Login.main.tool.styles";
 import request from "./../Api/request";
 import { ACCESS_TOKEN, REFRESH_TOKEN, refreshToken } from "./../Api/request";
 import LoginKakao from "./Login.kakao";
-import { useRecoilState } from "recoil";
-import { isSuccessState } from "./Recoil/Recoil.auth.state";
+import { useRecoilState, useRecoilValue, } from "recoil";
+import { isSuccessState, socialTypeState } from "./Recoil/Recoil.auth.state";
 import LoginNaver from "./Login.naver";
 
 function LoginMainTool() {
@@ -27,7 +27,9 @@ function LoginMainTool() {
     const params = new URLSearchParams(window.location.search);
     const code = params.get("code");
     if (!code) return;
-    const source = localStorage.getItem("source");
+    const source = useRecoilValue(socialTypeState);
+    console.log("source",source);
+    // const source = localStorage.getItem("source");
     if (!source) {
       console.error("Source is not available.");
       return;
