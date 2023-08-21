@@ -9,20 +9,30 @@ function AllItem() {
 
     const [allItem, setAllItem] = useState([]);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await request.get('/api/products/simple?page=0&size=800'
-                );
 
-                setAllItem(response.data.content);
-                console.log('데이터:', allItem);
-            } catch (error) {
-                console.error('데이터 가져오기 실패', error);
+   useEffect(() => {
+      let isMounted = true; // 언마운트 상태 확인을 위한 변수
+
+      setAllItem([]);
+
+      const fetchData = async () => {
+         try {
+            if (isMounted) {
+               const response = await request.get('/api/products/simple?page=0&size=800')
+               console.log('response:', response.data);
+               setAllItem(response.data.content);
             }
-        };
-        fetchData();
-    }, []);
+         } catch (error) {
+            console.error('데이터 가져오기 실패', error);
+         }
+      };
+
+      fetchData();
+
+      return () => {
+         isMounted = false; // 컴포넌트 언마운트 시 변수 업데이트
+      };
+   }, []); // 의존성 배열에 isProduct 추가
 
     // 페이지네이션 관련 상태
     const [currentPage, setCurrentPage] = useState(1);
@@ -50,7 +60,7 @@ function AllItem() {
 
       const sortreview = async () => {
         try {
-          const response = await request.get('/api/products/simple?page=0&size=800&sort=reviews,desc');
+          const response = await request.get('/api/products/simple?page=0&size=800&sort=reviews,desc')
           setAllItem(response.data.content);
           console.log('데이터:', allItem);
         } catch (error) {
@@ -61,7 +71,7 @@ function AllItem() {
     return (
         <>
             <itemS.TitleWrap type='best'>
-                <itemS.TitleText>All</itemS.TitleText>
+                <itemS.TitleText>PRODUCTS ALL</itemS.TitleText>
             </itemS.TitleWrap>
             <itemS.SortContainer>
                 <itemS.SortText onClick={sortBest}>인기순</itemS.SortText>
@@ -70,7 +80,7 @@ function AllItem() {
             </itemS.SortContainer>
             <itemS.ItemsWrapper type='all'>
                 {currentItems.map((item, index) => (
-                    <ProductCard key={index} type='best' data={item}/>
+                    <ProductCard key={index} type="best" data={item} />
                 ))}
             </itemS.ItemsWrapper>
             <itemS.PaginationWrapper>

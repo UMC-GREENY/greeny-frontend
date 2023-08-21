@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 import MainLandigPicture from "../Home/Home.main.landing.picture";
-import NewItem from "./Category.main.newItem";
-import BestItem from "./Category.main.bestItem";
-import AllItem from "./Category.main.allItem";
+import NewItem from "./Category.main.store.newItem";
+import BestItem from "./Category.main.store.bestItem";
+import AllItem from "./Category.main.store.allItem";
 
 
 import request from '../Api/request';
@@ -31,14 +31,15 @@ export const ContentWrapper = styled.div`
     flex-direction: column;
 `
 
-function Category() {
-
+function Store() {
     // 토큰 유효 검사 실시 false면 refreshToken로 재발급
   // isSuccess 는 사용하고 싶으면 쓰세요
   const [isSuccess, setIsSuccess] = useState(null);
+
   useEffect(() => {
     // 데이터 가져오기를 처리하는 함수 정의
     async function fetchData() {
+      
       try {
         const response = await request.get('/api/auth');
         console.log("response",response);
@@ -79,4 +80,4 @@ function Category() {
    );
 }
 
-export default Category;
+export default Store;
