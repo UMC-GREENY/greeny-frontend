@@ -25,6 +25,7 @@ jobs:
   
     - name: Touch env file
       run: |
+        cd greeny-frontend
         touch .env
         echo "${{ secrets.ENV_VARS }}" >> .env
 
