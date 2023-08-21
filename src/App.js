@@ -30,7 +30,7 @@ import LifeTipDe from './APP/LifeTip/LifeTipDe.main';
 import CommunityMain from './APP/Comunity/Community.main';
 import Post from './APP/Comunity/Community.main.post';
 import WritePost from './APP/Comunity/Community.main.post.write';
-
+import Category from './APP/Category/Category.main';
 function App() {
   const MainScreen = styled.div`
     position: absolute;
@@ -45,7 +45,7 @@ function App() {
   return (
     <div className='App'>
       <TopNav></TopNav>
-      {/* <SideNav></SideNav> */}
+      {/* <SideNav type='main'></SideNav> */}
       <MainScreen>
         <Routes>
           <Route path='/' element={<Home />} />
@@ -53,6 +53,7 @@ function App() {
           <Route path='/agree' element={<SignupAgree />} />
           <Route path='/signup' element={<Signup />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/product/category' element={<Category />} />
           <Route path='/community' element={<CommunityMain />} />
           <Route path='/post' element={<Post />} />
           <Route path='/write_post' element={<WritePost />} />

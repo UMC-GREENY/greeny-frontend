@@ -19,14 +19,14 @@ export const TopNavWrapper = styled.div`
 
 export const TopNavContentWrapper = styled.div`
   width: 100%;
-  height: 50px;
+  height: 100px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 
   ${(props) =>
     props.type == 'main'
-      ? `background-color: ${tokens.colors.green_main};`
+      ? `background-color: ${tokens.colors.green_dark};`
       : `background-color: #ffffff; color: #000000;`}
 
   z-index: 100;
@@ -105,11 +105,12 @@ export const TopNavInputIcon = styled.div`
 export const TopNavHamburger = styled.div`
   width: 30px;
   height: 30px;
-
   background-image: url('/topnavbar/hamburger.png');
   background-size: 40px 40px;
   background-position: center;
   background-repeat: no-repeat;
+  background-color: white;
+  cursor: pointer;
 `;
 export const ModalLine = styled.div`
   width: 1160%;
@@ -126,4 +127,5 @@ export const ModalButton = styled.div`
   font-size: 30px;
   color: white;
   text-align: center;
+  cursor: pointer;
 `;

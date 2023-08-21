@@ -182,18 +182,25 @@ function Mypage() {
   //page 넘기기
 
   // 페이지네이션 관련 상태
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 4;
 
+  const itemsPerPage = 4;
+  const [currentPagePosts, setCurrentPagePosts] = useState(1);
+  const [currentPageReviews, setCurrentPageReviews] = useState(1);
   // 현재 페이지의 리뷰 목록 계산
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const currentPosts = userPosts.slice(startIndex, endIndex);
-  const currentReviews = userReview.slice(startIndex, endIndex);
+  const startIndex1 = (currentPagePosts - 1) * itemsPerPage;
+  const startIndex2 = (currentPageReviews - 1) * itemsPerPage;
+  const endIndex1 = startIndex1 + itemsPerPage;
+  const endIndex2 = startIndex2 + itemsPerPage;
+  const currentPosts = userPosts.slice(startIndex1, endIndex1);
+  const currentReviews = userReview.slice(startIndex2, endIndex2);
 
   // 페이지 변경 시 호출되는 함수
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
+  const handlePageChangePosts = (pageNumber) => {
+    setCurrentPagePosts(pageNumber);
+  };
+
+  const handlePageChangeReviews = (pageNumber) => {
+    setCurrentPageReviews(pageNumber);
   };
   ///////////////
   /* const Pagination1 = ({
@@ -224,6 +231,29 @@ function Mypage() {
       </div>
     );
   };*/
+  ///////////////////////////
+  ////검색 sample
+  const [filteredPosts, setFilteredPosts] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearch = () => {
+    // 검색어가 비어있는 경우
+    if (!searchQuery.trim()) {
+      setFilteredPosts([]);
+      return;
+    }
+
+    const lowercaseSearchQuery = searchQuery.toLowerCase();
+
+    const filtered = userPosts.filter((post) => {
+      // title 또는 content가 undefined이거나 null인 경우를 방지하기 위해 조건문 사용
+      const lowercaseTitle = post.title ? post.title.toLowerCase() : '';
+
+      return lowercaseTitle.includes(lowercaseSearchQuery);
+    });
+
+    setFilteredPosts(filtered);
+  };
 
   return (
     <mystyles.Div>
@@ -270,14 +300,36 @@ function Mypage() {
         </mystyles.secondcontainer>
         <mystyles.PaginationWrapper>
           <Pagination
-            activePage={currentPage}
+            activePage={currentPagePosts}
             itemsCountPerPage={itemsPerPage}
             totalItemsCount={userPosts.length}
-            onChange={handlePageChange}
+            onChange={handlePageChangePosts}
             hideNavigation={true}
             hideFirstLastPages={true}
           />
         </mystyles.PaginationWrapper>
+        <div>
+          <input
+            type='text'
+            placeholder='검색어를 입력하세요'
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          <button onClick={handleSearch}>검색</button>
+          <div>
+            {filteredPosts.length > 0 ? (
+              filteredPosts.map((post) => (
+                <div key={post.id}>
+                  <h2>{post.title}</h2>
+                  <p>{post.content}</p>
+                </div>
+              ))
+            ) : (
+              <p>검색 결과가 없습니다.</p>
+            )}
+          </div>
+        </div>
+
         <hr></hr>
         <mystyles.secondcontainer>
           <mystyles.secondcontainertitle>
@@ -306,10 +358,10 @@ function Mypage() {
         </mystyles.secondcontainer>
         <mystyles.PaginationWrapper>
           <Pagination
-            activePage={currentPage}
+            activePage={currentPageReviews}
             itemsCountPerPage={itemsPerPage}
             totalItemsCount={userReview.length}
-            onChange={handlePageChange}
+            onChange={handlePageChangeReviews}
             hideNavigation={true}
             hideFirstLastPages={true}
           />
