@@ -1,6 +1,6 @@
 import request from "../Api/request";
 import * as toolS from "./Styled/Login.main.tool.styles";
-import { useRecoilValue, } from "recoil";
+import { useRecoilState } from "recoil";
 import { socialTypeState } from "./Recoil/Recoil.auth.state";
 
 const Rest_api_key = process.env.REACT_APP_API_KEY; //REST API KEY
