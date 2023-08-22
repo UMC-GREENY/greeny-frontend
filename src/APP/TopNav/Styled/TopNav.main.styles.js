@@ -110,6 +110,7 @@ export const TopNavHamburger = styled.div`
   background-size: 40px 40px;
   background-position: center;
   background-repeat: no-repeat;
+  background-color: white;
   cursor: pointer;
 `;
 export const ModalLine = styled.div`
@@ -118,7 +119,7 @@ export const ModalLine = styled.div`
   display: flex;
   justify-content: flex-end;
   margin-bottom: 103px;
-  margin-right: 40px;
+  margin-right: 20px;
 `;
 
 export const ModalButton = styled.div`

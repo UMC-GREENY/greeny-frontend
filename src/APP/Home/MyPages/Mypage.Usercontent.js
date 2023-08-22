@@ -6,7 +6,7 @@ function UserContent() {
   const [userPosts, setUserPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(null); // 상태 최상위 레벨로 이동
-
+  /////////////////////////////////////////////////////
   useEffect(() => {
     async function fetchData() {
       try {
@@ -30,7 +30,7 @@ function UserContent() {
 
     fetchData();
   }, []);
-
+  //////////////////////////////////////
   useEffect(() => {
     const fetchUserPosts = async () => {
       setLoading(true);
@@ -62,6 +62,7 @@ function UserContent() {
   useEffect(() => {
     console.log(userPosts); // userPosts가 업데이트될 때마다 로그 출력
   }, [userPosts]); // userPosts를 의존성 배열로 추가
+  /////////////////////////////////////////////////////////////////
 
   return (
     <div>

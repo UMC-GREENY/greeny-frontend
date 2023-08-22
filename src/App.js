@@ -1,5 +1,5 @@
-import logo from "./logo.svg";
-import "./App.css";
+import logo from './logo.svg';
+import './App.css';
 import {
   BrowserRouter,
   Route,
@@ -7,10 +7,10 @@ import {
   useLocation,
   Routes,
   useNavigate,
-} from "react-router-dom";
+} from 'react-router-dom';
 //styles
-import styled from "styled-components";
-import * as tokens from "./APP/tokens";
+import styled from 'styled-components';
+import * as tokens from './APP/tokens';
 
 //Main components
 import TopNav from "./APP/TopNav/TopNav.main";
@@ -47,7 +47,6 @@ function App() {
   `;
   return (
     <div className="App">
-      
       <TopNav></TopNav>
       <SideNav></SideNav>
       <MainScreen>
@@ -57,8 +56,7 @@ function App() {
           <Route path='/agree' element={<SignupAgree />} />
           <Route path='/signup' element={<Signup />} />
           <Route path='/login' element={<Login />} />
-          <Route path='/product' element={<Product />}/>
-          <Route path='/store' element={<Store  />}/>
+          <Route path='/product' element={<Category />} />
           <Route path='/community' element={<CommunityMain />} />
           <Route path='/post' element={<Post />} />
           <Route path='/write_post' element={<WritePost />} />

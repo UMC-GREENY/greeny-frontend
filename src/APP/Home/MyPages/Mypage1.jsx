@@ -1,44 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import * as mystyles from "./Styled/Mypage.styles";
-import { FaStar } from "react-icons/fa";
-import request from "../../Api/request";
-import { refreshToken } from "../../Api/request";
-import { ACCESS_TOKEN } from "../../Api/request";
-import Pagination from "react-js-pagination";
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import * as mystyles from './Styled/Mypage.styles';
+import { FaStar } from 'react-icons/fa';
+import request from '../../Api/request';
+import { refreshToken } from '../../Api/request';
+import { ACCESS_TOKEN } from '../../Api/request';
+import Pagination from 'react-js-pagination';
 
 function Mypage() {
   const navigate = useNavigate();
-  const handleLogout = () => {
-    const confirmLogout = window.confirm("정말 로그아웃을 하십니까");
-    if (confirmLogout) {
-      setIsSuccess(false);
-      window.localStorage.clear();
-      alert("로그아웃 되었습니다.");
-      navigate("/");
-    }
-  };
-
-  const handleWithdrawal = async () => {
-    const confirmWithdrawal = window.confirm("정말 회원탈퇴를 하십니까");
-    if (confirmWithdrawal) {
-      try {
-        const response = await request.delete("/api/members/withdrawal", {
-          headers: {
-            Authorization: `Bearer ${window.localStorage.getItem(
-              "ACCESS_TOKEN"
-            )}`,
-          },
-        });
-
-        alert("회원탈퇴 완료");
-        navigate("/");
-      } catch (error) {
-        console.error("회원탈퇴 실패", error);
-      }
-    }
-  };
-
   /*const usercontentinfo = [
     {
       title: '글제목1',
@@ -89,26 +59,63 @@ function Mypage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await request.get("/api/auth");
-        console.log("response", response);
+        const response = await request.get('/api/auth');
+        console.log('response', response);
         setIsSuccess(response.isSuccess);
       } catch (error) {
         if (error.response && error.response.status === 401) {
           try {
             await refreshToken();
-            const response = await request.get("/api/auth");
+            const response = await request.get('/api/auth');
             setIsSuccess(response.isSuccess);
           } catch (refreshError) {
-            console.error("토큰 갱신 중 오류:", refreshError);
+            console.error('토큰 갱신 중 오류:', refreshError);
           }
         } else {
-          console.error("데이터 가져오기 중 오류:", error);
+          console.error('데이터 가져오기 중 오류:', error);
         }
       }
     };
 
     fetchData();
   }, []);
+  //////////////////////////
+  ///로그아웃, 회원탈퇴
+  const handleLogout = () => {
+    const confirmLogout = window.confirm('정말 로그아웃을 하십니까');
+    if (confirmLogout) {
+      window.localStorage.clear();
+      alert('로그아웃 완료');
+      navigate('/login');
+    }
+  };
+
+  const handleWithdrawal = async () => {
+    let response;
+    const confirmWithdrawal = window.confirm('정말 회원탈퇴를 하십니까');
+    if (confirmWithdrawal) {
+      try {
+        response = await request.delete('/api/members', {
+          headers: {
+            Authorization: `Bearer ${window.localStorage.getItem(
+              ACCESS_TOKEN
+            )}`,
+          },
+        });
+        console.log(response);
+
+        if (isSuccess) {
+          alert('회원 탈퇴가 완료되었습니다.');
+          // 회원 탈퇴 후 필요한 동작 (예: 로그아웃, 페이지 이동 등)
+        } else {
+          alert('회원 탈퇴 실패');
+        }
+      } catch (error) {
+        console.error('회원 탈퇴 실패', error);
+      }
+    }
+  };
+
   ////////////////
   ///작성글 api 연결
   useEffect(() => {
@@ -116,18 +123,18 @@ function Mypage() {
       const fetchUserPosts = async () => {
         setLoading(true);
         try {
-          const response = await request.get("/api/members/post?sort=id,desc", {
+          const response = await request.get('/api/members/post?sort=id,desc', {
             headers: {
               Authorization: `Bearer ${window.localStorage.getItem(
                 ACCESS_TOKEN
               )}`,
             },
           });
-          console.log("서버 응답 데이터:", response);
+          console.log('서버 응답 데이터:', response);
           setUserPosts(response.data.content);
           console.log(userPosts);
         } catch (error) {
-          console.error("사용자의 작성글을 가져오는데 실패", error);
+          console.error('사용자의 작성글을 가져오는데 실패', error);
         } finally {
           setLoading(false);
         }
@@ -146,7 +153,6 @@ function Mypage() {
     if (isSuccess) {
       const fetchUserReview = async () => {
         setLoading(true);
-        console.log("Dd");
         console.log(request);
         try {
           const response = await request.get(
@@ -162,7 +168,7 @@ function Mypage() {
           console.log(response);
           setUserReview(response.data.content);
         } catch (error) {
-          console.error("사용자의 후기를 가져오는데 실패", error);
+          console.error('사용자의 후기를 가져오는데 실패', error);
         } finally {
           setLoading(false);
           console.log(userReview);
@@ -176,18 +182,25 @@ function Mypage() {
   //page 넘기기
 
   // 페이지네이션 관련 상태
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 4;
 
+  const itemsPerPage = 4;
+  const [currentPagePosts, setCurrentPagePosts] = useState(1);
+  const [currentPageReviews, setCurrentPageReviews] = useState(1);
   // 현재 페이지의 리뷰 목록 계산
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const currentPosts = userPosts.slice(startIndex, endIndex);
-  const currentReviews = userReview.slice(startIndex, endIndex);
+  const startIndex1 = (currentPagePosts - 1) * itemsPerPage;
+  const startIndex2 = (currentPageReviews - 1) * itemsPerPage;
+  const endIndex1 = startIndex1 + itemsPerPage;
+  const endIndex2 = startIndex2 + itemsPerPage;
+  const currentPosts = userPosts.slice(startIndex1, endIndex1);
+  const currentReviews = userReview.slice(startIndex2, endIndex2);
 
   // 페이지 변경 시 호출되는 함수
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
+  const handlePageChangePosts = (pageNumber) => {
+    setCurrentPagePosts(pageNumber);
+  };
+
+  const handlePageChangeReviews = (pageNumber) => {
+    setCurrentPageReviews(pageNumber);
   };
   ///////////////
   /* const Pagination1 = ({
@@ -218,11 +231,33 @@ function Mypage() {
       </div>
     );
   };*/
+  ///////////////////////////
+  ////검색 sample
+  const [filteredPosts, setFilteredPosts] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearch = () => {
+    // 검색어가 비어있는 경우
+    if (!searchQuery.trim()) {
+      setFilteredPosts([]);
+      return;
+    }
+
+    const lowercaseSearchQuery = searchQuery.toLowerCase();
+
+    const filtered = userPosts.filter((post) => {
+      const lowercaseTitle = post.title ? post.title.toLowerCase() : '';
+
+      return lowercaseTitle.includes(lowercaseSearchQuery);
+    });
+
+    setFilteredPosts(filtered);
+  };
 
   return (
     <mystyles.Div>
       <mystyles.Wrapper>
-        <mystyles.Title style={{ fontFamily: "Merriweather" }}>
+        <mystyles.Title style={{ fontFamily: 'Merriweather' }}>
           My Page
         </mystyles.Title>
         <mystyles.firstcontainer>
@@ -231,12 +266,12 @@ function Mypage() {
           </mystyles.secondcontainertitle>
           <mystyles.firstcontainerbutton
             onClick={() =>
-              navigate("/mypageinfo", {
-                state: { type: "mypageinfopage", name: "기본정보" },
+              navigate('/mypageinfo', {
+                state: { type: 'mypageinfopage', name: '기본정보' },
               })
             }
           >
-            {">"}
+            {'>'}
           </mystyles.firstcontainerbutton>
         </mystyles.firstcontainer>
         <hr></hr>
@@ -264,14 +299,36 @@ function Mypage() {
         </mystyles.secondcontainer>
         <mystyles.PaginationWrapper>
           <Pagination
-            activePage={currentPage}
+            activePage={currentPagePosts}
             itemsCountPerPage={itemsPerPage}
             totalItemsCount={userPosts.length}
-            onChange={handlePageChange}
+            onChange={handlePageChangePosts}
             hideNavigation={true}
             hideFirstLastPages={true}
           />
         </mystyles.PaginationWrapper>
+        <mystyles.SideNavSearchWrapper>
+          <mystyles.SideNavInputBox
+            type='text'
+            placeholder='검색어를 입력하세요'
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          <button onClick={handleSearch}>검색</button>
+        </mystyles.SideNavSearchWrapper>
+        <div>
+          {filteredPosts.length > 0 ? (
+            filteredPosts.map((post) => (
+              <div key={post.id}>
+                <h2>{post.title}</h2>
+                <p>{post.content}</p>
+              </div>
+            ))
+          ) : (
+            <p>검색 결과가 없습니다.</p>
+          )}
+        </div>
+
         <hr></hr>
         <mystyles.secondcontainer>
           <mystyles.secondcontainertitle>
@@ -284,7 +341,7 @@ function Mypage() {
                   {[...Array(5)].map((_, index) => (
                     <FaStar
                       key={index}
-                      color={index < post.star ? "gold" : "gray"}
+                      color={index < post.star ? 'gold' : 'gray'}
                     />
                   ))}
                 </mystyles.reviewstar>
@@ -300,10 +357,10 @@ function Mypage() {
         </mystyles.secondcontainer>
         <mystyles.PaginationWrapper>
           <Pagination
-            activePage={currentPage}
+            activePage={currentPageReviews}
             itemsCountPerPage={itemsPerPage}
             totalItemsCount={userReview.length}
-            onChange={handlePageChange}
+            onChange={handlePageChangeReviews}
             hideNavigation={true}
             hideFirstLastPages={true}
           />
@@ -312,7 +369,7 @@ function Mypage() {
           <mystyles.lastbutton onClick={handleLogout}>
             로그아웃
           </mystyles.lastbutton>
-          {"|"}
+          {'|'}
           <mystyles.lastbutton onClick={handleWithdrawal}>
             회원탈퇴
           </mystyles.lastbutton>
