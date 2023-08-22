@@ -81,13 +81,13 @@ export const ItemsWrapper = styled.div`
 `;
 
 export const SortContainer = styled.div`
-  width: 124px;
+  width: 344px;
   gap: 4px;
 
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 36px 0 0 1120px;
+  margin: 36px 0 0 920px;
 `;
 
 export const SortText = styled.span`

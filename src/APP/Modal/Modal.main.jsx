@@ -12,6 +12,15 @@ function Modal({ isOpen, onClose, children }) {
     navigate(path); // 클릭한 경로로 이동
     onClose(); // 모달 닫기
   };
+  const handleJoin = () => {
+    navigate("/agree", { // 소셜 최초 로그인 시 이동되는 약관동의 와 다른 플로우 구분 위해 type 보냄
+      state: {
+        email: "",
+        type: "general"
+      }
+    });
+    onClose();
+  }
 
   if (!isOpen) return null;
 
@@ -35,6 +44,7 @@ function Modal({ isOpen, onClose, children }) {
           <Styles.ModalContentInnerpage
             onClick={() =>
               handleLinkClick('/store/:storeId', {
+              // handleLinkClick('/store', {
                 state: { type: 'store', name: '스토어' },
               })
             }
@@ -68,11 +78,7 @@ function Modal({ isOpen, onClose, children }) {
             LOG IN
           </Styles.ModalContentInnerpage>
           <Styles.ModalContentInnerpage
-            onClick={() =>
-              handleLinkClick('/select', {
-                state: { type: 'select', name: '회원가입' },
-              })
-            }
+            onClick={handleJoin}
           >
             JOIN
           </Styles.ModalContentInnerpage>

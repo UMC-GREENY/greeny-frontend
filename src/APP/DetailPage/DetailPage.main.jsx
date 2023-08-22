@@ -18,10 +18,21 @@ function DetailPage() {
     setSelectedService(service);
   };
 
+  useEffect(() => {
+    console.log("TLqkf:", isProduct);
+    pathPL(); // productId를 가져오는 함수 호출
+    const path = window.location.pathname;
+    if (path.includes("/store")) {
+      setIsProduct(false);
+    } else if (path.includes("/product")) {
+      setIsProduct(true);
+    }
+  }, [isProduct]); // 처음 렌더링 시에만 실행
+
   const pathPL = () => {
-   const path = window.location.pathname;
-   const productIdRegex = /\/product\/([0-9]+)/;
-    const matches = path.match(productIdRegex);
+    const path = window.location.pathname;
+    const regex = isProduct === true ? /\/product\/([0-9]+)/ : /\/store\/([0-9]+)/;
+    const matches = path.match(regex);
 
     if (matches) {
       const extractedProductId = matches[1];
@@ -31,33 +42,27 @@ function DetailPage() {
     }
   }
 
-  useEffect(() => {
-   const path = window.location.pathname;
-   if (path.includes("/store/:storeId")) {
-     setIsProduct(false);
-   } else if (path.includes("/product/:productId")) {
-     setIsProduct(true);
-   }
-   pathPL();
- }, [productId]); // productId가 변경될 때마다 실행
-
   return (
     <>
-      <DetailItem
-        style={commonStyle}
-        isProduct={isProduct}
-        productId={productId} // productId를 DetailItem 컴포넌트로 전달
-      />
-      <ServiceList
-        style={commonStyle}
-        onSelectService={handleSelectService}
-      />
-      <ServiceContent
-        style={commonStyle}
-        selectedService={selectedService}
-        isProduct={isProduct}
-        productId={productId} // productId를 ServiceContent 컴포넌트로 전달
-      />
+      {productId !== null && ( // productId가 설정되었을 때에만 렌더링
+        <>
+          <DetailItem
+            style={commonStyle}
+            isProduct={isProduct}
+            productId={productId}
+          />
+          <ServiceList
+            style={commonStyle}
+            onSelectService={handleSelectService}
+          />
+          <ServiceContent
+            style={commonStyle}
+            selectedService={selectedService}
+            isProduct={isProduct}
+            productId={productId}
+          />
+        </>
+      )}
     </>
   );
 }
