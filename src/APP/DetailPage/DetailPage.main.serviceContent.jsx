@@ -22,16 +22,6 @@ function ServiceContent({ selectedService, isProduct, productId }) {
     console.log("isSuccess", isSuccess);
     useBeforeUnload();
 
-    const ReviewDummy = [
-        {
-            "star": 3,
-            "content": "리뷰 내용 미리보기 리뷰 내용 미리보기",
-            "writerEmail": "idd***@gmail.com",
-            "createdAt": '2023.09.08',
-        },
-
-    ]
-
     useEffect(() => {
         // 선택된 서비스가 변경될 때마다 isWriting을 false로 초기화
         setIsWriting(false);
@@ -41,14 +31,14 @@ function ServiceContent({ selectedService, isProduct, productId }) {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await request.get(`/api/products?productId=${productId}`);
+                const response = isProduct === true ? await request.get(`/api/products?productId=${productId}`) : await request.get(`/api/stores?storeId=${productId}`);
                 setItemInfo(response.data);
             } catch (error) {
                 console.error('데이터 가져오기 실패', error);
             }
         };
         fetchData();
-    }, [productId]);
+    }, []);
 
 
     useEffect(() => {
@@ -109,12 +99,24 @@ function ServiceContent({ selectedService, isProduct, productId }) {
                         <itemS.InquiryWrapper type="total">
                             <itemS.ContentText type="headLine">아래 연락망을 통해 해당 브랜드 및 스토어에 문의할 수 있습니다.</itemS.ContentText>
                             <itemS.InquiryWrapper type="contact">
-                                <itemS.InquiryWrapper type="phone">
-                                    <itemS.ContentText type="body"> ☎ {itemInfo.phone}</itemS.ContentText>
-                                </itemS.InquiryWrapper>
-                                <itemS.InquiryWrapper type="email">
-                                    <itemS.ContentText type="body"> ＠ {itemInfo.webUrl}</itemS.ContentText>
-                                </itemS.InquiryWrapper>
+                                {itemInfo.phone !== null ? (
+                                    <itemS.InquiryWrapper type="phone">
+                                        <itemS.ContentText type="body"> ☎ {itemInfo.phone}</itemS.ContentText>
+                                    </itemS.InquiryWrapper>
+                                ) : (
+                                    <itemS.InquiryWrapper type="phone">
+                                        <itemS.ContentText type="body"> ☎ 제공되지 않습니다</itemS.ContentText>
+                                    </itemS.InquiryWrapper>
+                                )}
+                                {itemInfo.webUrl !== null ? (
+                                    <itemS.InquiryWrapper type="email">
+                                        <itemS.ContentText type="body"> ＠ {itemInfo.webUrl}</itemS.ContentText>
+                                    </itemS.InquiryWrapper>
+                                ) : (
+                                    <itemS.InquiryWrapper type="phone">
+                                        <itemS.ContentText type="body"> ＠ 제공되지 않습니다</itemS.ContentText>
+                                    </itemS.InquiryWrapper>
+                                )}
                             </itemS.InquiryWrapper>
                         </itemS.InquiryWrapper>
                     </>
@@ -170,7 +172,7 @@ function ServiceContent({ selectedService, isProduct, productId }) {
                                         <itemS.Btn type="write" onClick={(e) => {
                                             if (isSuccess) {
                                                 setIsWriting(true);
-                                            }else {alert("로그인을 해 주세요.")}
+                                            } else { alert("로그인을 해 주세요.") }
                                         }} >글 쓰기</itemS.Btn>
                                     </itemS.ReviewWrapper>
                                     <itemS.overline></itemS.overline>
@@ -221,7 +223,7 @@ function ServiceContent({ selectedService, isProduct, productId }) {
                                         <Pagination
                                             activePage={currentPage}
                                             itemsCountPerPage={itemsPerPage}
-                                            totalItemsCount={ReviewDummy.length}
+                                            totalItemsCount={currentReviews.length}
                                             onChange={handlePageChange}
                                             hideNavigation={true}
                                             hideFirstLastPages={true}

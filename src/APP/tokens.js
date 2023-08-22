@@ -1,6 +1,7 @@
 export const colors = {
   green_main: "#0A1A16",
   green_main2: "#649D17",
+  green_tag: "#D9F0AB",
   green_deep: "#1A2807",
   green_dark: "#111904",
   grey_15: "#262626",
@@ -9,6 +10,7 @@ export const colors = {
   grey_60: "#999999",
   grey_70: "#B3B3B3",
   grey_80: "#CCCCCC",
+  grey_90:"#E6E6E6",
   grey_95: "#F2F2F2",
   grey_100: "#FFFFFF",
   grey_200: "#a1a1a1",

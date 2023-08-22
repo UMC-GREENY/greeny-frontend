@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as itemS from "./Styled/Auth.signup.select.styles";
-import naverLogo from './naver-logo.png';
-import kakaoLogo from './kakao-logo.png';
 
 function SignupSelect() {
   const navigate = useNavigate();

@@ -4,7 +4,7 @@ import * as toolS from "./Styled/Login.main.tool.styles";
 import request from "./../Api/request";
 import { ACCESS_TOKEN, REFRESH_TOKEN, refreshToken } from "./../Api/request";
 import LoginKakao from "./Login.kakao";
-import { useRecoilState } from "recoil";
+import { useRecoilState} from "recoil";
 import { isSuccessState } from "./Recoil/Recoil.auth.state";
 import LoginNaver from "./Login.naver";
 
@@ -35,20 +35,20 @@ function LoginMainTool() {
     const fetch = async () => {
       const { data } = await request.post(`/api/auth/sign-in/${source}`, null, {
         params: { authorizationCode: code },
-      });
-      localStorage.setItem(ACCESS_TOKEN, data.accessToken);
-      localStorage.setItem(REFRESH_TOKEN, data.refreshToken);
-      if (data.email !== "nothing") {
-        // 최초 로그인 시 nothing 아닌 email 값 받음
-        navigate("/agree", {
-          // 일반 로그인 회원가입 시 약관동의 플로우와 달라 type 필요
+      });    
+      if (data.email !== "nothing") { // 최초 로그인 시 nothing 아닌 email 값 받음
+        navigate("/agree", { // 일반 로그인 회원가입 시 약관동의 플로우와 달라 type 필요
           state: {
             email: data.email,
             type: "social",
           },
         });
         return;
+      } else {
+        localStorage.setItem(ACCESS_TOKEN, data.accessToken);
+        localStorage.setItem(REFRESH_TOKEN, data.refreshToken);
       }
+      setIsSuccess(true);
       navigate("/");
     };
     fetch();
@@ -94,7 +94,12 @@ function LoginMainTool() {
   };
 
   const handleSignup = () => {
-    navigate("/select");
+    navigate("/agree", { // 소셜 최초 로그인 시 이동되는 약관동의 와 다른 플로우 구분 위해 type 보냄
+      state: {
+        email: "",
+        type: "general"
+      }
+    });
   };
 
   return (
@@ -118,7 +123,7 @@ function LoginMainTool() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <toolS.Label>
+              {/* <toolS.Label>
                 <input
                   type="checkbox"
                   checked={isAutoLogin}
@@ -128,7 +133,7 @@ function LoginMainTool() {
                   }}
                 />
                 자동 로그인
-              </toolS.Label>
+              </toolS.Label> */}
               <toolS.LoginBtn style={{ marginTop: "40px" }}>
                 <button onClick={handleLogin}>로그인</button>
               </toolS.LoginBtn>
