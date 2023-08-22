@@ -1,26 +1,28 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate,useLocation } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import * as itemS from "./Styled/Community.main.post.styles";
 import { FaStar, FaRegStar, FaHome } from 'react-icons/fa';
 import request from '../Api/request';
 import Pagination from "react-js-pagination";
 
+
 function Post() {
-	const navigate = useNavigate();
+  const navigate = useNavigate();
   const location = useLocation();
   const type = location.state?.type;
-	
-	const handleMore = () => {
-    navigate('/write_post', { state: { type } });
+
+  const handleMore = () => {
+    navigate("/write_post", { state: { type } });
   };
 
-	const renderStars = (count) => {
+  const renderStars = (count) => {
     const stars = [];
     for (let i = 0; i < 5; i++) {
       stars.push(i < count ? <FaStar key={i} /> : <FaRegStar key={i} />);
     }
     return stars;
   };
+
 
 	const [searchKeyword, setSearchKeyword] = useState(""); // 검색어 상태
 	const [completeKeyword, setCompleteSearchKeyword] = useState(""); // 검색어 상태
@@ -55,9 +57,11 @@ function Post() {
 
 
 	const [storeReviewsResponse, setStoreReviewsResponse] = useState([]); //스토어 리뷰
+
   const [productReviewsResponse, setProductReviewsResponse] = useState([]); //제품 리뷰
   const [bestResponse, setBestResponse] = useState([]); //베스트 게시글
   const [postResponse, setPostResponse] = useState([]); //게시글
+
 
 	// 페이지네이션 관련 상태
 	const [currentPage, setCurrentPage] = useState(1);
@@ -104,16 +108,15 @@ function Post() {
 					setPostResponse(postResponse.data.content);
 					console.log('postResponse', postResponse);  
         }
-        
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
       }
     };
 
     // Call the fetchData function when 'type' changes
     fetchData();
   }, [type]);
-	
+
   return (
     <itemS.SignupWrapper>
       <itemS.SignupContentWrapper>
