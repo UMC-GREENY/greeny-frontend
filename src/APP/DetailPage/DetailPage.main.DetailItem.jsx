@@ -4,7 +4,7 @@ import request from '../Api/request';
 import { useNavigate } from 'react-router-dom';
 import LikeButton from '../Home/Like/Likepage.main.clickitem';
 function DetailItem({ isProduct, productId }) {
-  const [itemInfo, setItemInfo] = useState([]);
+// const [itemInfo, setItemInfo] = useState([]);
 
 
 //   useEffect(() => {
