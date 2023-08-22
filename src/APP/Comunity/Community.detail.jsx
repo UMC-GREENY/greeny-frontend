@@ -30,7 +30,6 @@ function CommunityDetail() {
   const urlPath = window.location.pathname; // 현재 페이지의 경로
   const params = urlPath.split("community/");
   useEffect(() => {
-    console.log(params[1]);
     const fetchData = async () => {
       try {
         const con = await request.get(`/api/posts?postId=${params[1]}`);
@@ -46,14 +45,11 @@ function CommunityDetail() {
           fileUrls: con.data.fileUrls,
         });
         setLove(userData.isLiked);
-        console.log(userData);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
     fetchData();
-    console.log(userData);
-    console.log(userData);
   }, [params[1]]);
   //좋아요
   useEffect(() => {
@@ -99,8 +95,25 @@ function CommunityDetail() {
   const [comment, setComment] = useState([]);
   const fetchComments = async () => {
     try {
-      const response = await request.get(`/api/comments?postId=${params[1]}`);
+      const response =
+        isSuccess === true
+          ? await request.get(`/api/comments/auth?postId=${params[1]}`, {
+              headers: {
+                Authorization: `Bearer ${window.localStorage.getItem(
+                  ACCESS_TOKEN
+                )}`,
+              },
+            })
+          : await request.get(`/api/comments?postId=${params[1]}`, {
+              headers: {
+                Authorization: `Bearer ${window.localStorage.getItem(
+                  ACCESS_TOKEN
+                )}`,
+              },
+            });
       setComment(response.data.reverse());
+      console.log(response);
+      console.log(response.data, "writer");
     } catch (error) {
       console.error("Error fetching comments:", error);
     }
@@ -146,7 +159,27 @@ function CommunityDetail() {
     fetchData();
   };
 
-  // console.log(myComment);
+  //댓글삭제
+  const RemoveComment = async (commentItem) => {
+    try {
+      console.log(comment.id);
+      const response = await request.delete(
+        `/api/comments?commentId=${commentItem.id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${window.localStorage.getItem(
+              ACCESS_TOKEN
+            )}`,
+          },
+        }
+      );
+      fetchComments();
+      // setComment(response.data.reverse());
+    } catch (error) {
+      console.error("Error fetching comments:", error);
+    }
+  };
+
   return (
     <detailS.SignupWrapper>
       <detailS.SignupContentWrapper>
@@ -196,7 +229,7 @@ function CommunityDetail() {
             ) : (
               <img src="/community/pre_favorite.png" />
             )}
-            {console.log(userData.isLiked)}
+
             {userData.likes}
           </div>
         </detailS.ConTi>
@@ -208,7 +241,13 @@ function CommunityDetail() {
               <div>{commentItem.writerEmail}</div>
               <div>{commentItem.updatedAt}</div>
             </detailS.Who>
-            {commentItem.content}
+            <detailS.ConBtn>
+              {commentItem.content}
+              {commentItem.isWriter && (
+                <button onClick={() => RemoveComment(commentItem)}>삭제</button>
+              )}
+            </detailS.ConBtn>
+            {console.log(comment)}
           </detailS.Commend>
         ))}
         {visibleComments < comment.length && (

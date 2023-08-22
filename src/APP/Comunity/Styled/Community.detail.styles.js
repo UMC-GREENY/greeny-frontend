@@ -85,7 +85,7 @@ export const PostEmail = styled.div`
   font-weight: 400;
   line-height: 24px; /* 150% */
   /* font-variant: all-small-caps; */
-  ${(props) => `color: ${tokens.colors.grey_15}`};
+  ${(props) => `color: ${tokens.colors.grey_15}`}
 `;
 
 export const PostDate = styled.div`
@@ -180,6 +180,22 @@ export const Who = styled.div`
     ${(props) => `color: ${tokens.colors.grey_40}`};
   }
 `;
+
+export const ConBtn = styled.div`
+  display: flex;
+  justify-content: space-between;
+  ${(props) => `color: ${tokens.colors.grey_40}`};
+  & > button {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    ${(props) => `color:${tokens.colors.green_main2}`};
+  }
+`;
+
 export const Write = styled.div`
   display: flex;
   justify-content: space-between;
