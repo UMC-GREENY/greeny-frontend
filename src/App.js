@@ -46,8 +46,9 @@ function App() {
   `;
   return (
     <div className="App">
+      
       <TopNav></TopNav>
-      {/* <SideNav type='main'></SideNav> */}
+      <SideNav></SideNav>
       <MainScreen>
         <Routes>
           <Route path='/' element={<Home />} />

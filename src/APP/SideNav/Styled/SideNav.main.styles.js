@@ -17,7 +17,7 @@ export const SideNavWrapper = styled.div`
             gap: 20px;
 
 `
-      : ` 
+      : `   margin-top: 174px;
             margin-left: 69px;
             height: 272px;
             width: 190px;
