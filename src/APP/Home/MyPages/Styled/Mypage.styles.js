@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import * as tokens from '../../../tokens';
+import styled, { css } from "styled-components";
+import * as tokens from "../../../tokens";
 
 export const Div = styled.div`
   display: flex;
@@ -25,12 +25,11 @@ export const totalcontainer = styled.div`
 `;
 export const firstcontainer = styled.div`
   width: 1270px;
-  heigth: 44px;
   display: flex;
   text-align: start;
-  border-color: black;
   border-style: solid;
-  border-width: 0 0 2px 0;
+  border-width: 0 0 1px 0;
+  ${(props) => `border-color: ${tokens.colors.grey_15}`}
 `;
 export const firstcontainerbutton = styled.div`
   width: 40px;
@@ -43,9 +42,9 @@ export const firstcontainerbutton = styled.div`
 `;
 export const secondcontainertitle = styled.div`
   font-size: 20px;
-  color: black;
   margin-bottom: 10px;
   margin-top: 36px;
+  ${(props) => `color: ${tokens.colors.grey_15}`}
 `;
 export const Title = styled.div`
   width: 181px;

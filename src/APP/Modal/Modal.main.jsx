@@ -17,7 +17,7 @@ function Modal({ isOpen, onClose, children }) {
 
   return (
     <Styles.ModalOverlay>
-      <Styles.ModalClose onClick={onClose}>&times;</Styles.ModalClose>
+      {/* <Styles.ModalClose onClick={onClose}>&times;</Styles.ModalClose> */}
       <Styles.ModalContent>{children}</Styles.ModalContent>
       <Styles.ModalContents>
         <Styles.ModalContentsInner>

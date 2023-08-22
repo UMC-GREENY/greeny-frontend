@@ -84,7 +84,7 @@ export const PostEmail = styled.div`
   font-style: normal;
   font-weight: 400;
   line-height: 24px; /* 150% */
-  font-variant: all-small-caps;
+  /* font-variant: all-small-caps; */
   ${(props) => `color: ${tokens.colors.grey_15}`};
 `;
 
@@ -96,8 +96,8 @@ export const PostDate = styled.div`
   font-style: normal;
   font-weight: 400;
   line-height: 24px; /* 150% */
-  font-variant: all-small-caps;
-  ${(props) => `color: ${tokens.colors.grey_40}`};
+  /* font-variant: all-small-caps; */
+  ${(props) => `color: ${tokens.colors.grey_40}`}
 `;
 export const Pic = styled.div`
   margin-top: 80px;
@@ -121,7 +121,7 @@ export const Text = styled.div`
   font-style: normal;
   font-weight: 400;
   line-height: 24px; /* 150% */
-  font-variant: all-small-caps;
+  /* font-variant: all-small-caps; */
 `;
 export const ConTi = styled.div`
   display: flex;
@@ -163,7 +163,7 @@ export const Commend = styled.div`
   font-style: normal;
   font-weight: 400;
   line-height: 24px; /* 150% */
-  font-variant: all-small-caps;
+  /* font-variant: all-small-caps; */
 `;
 export const Who = styled.div`
   width: 1182px;
@@ -175,7 +175,7 @@ export const Who = styled.div`
   font-style: normal;
   font-weight: 400;
   line-height: 18px; /* 150% */
-  font-variant: all-small-caps;
+  /* font-variant: all-small-caps; */
   & > div {
     ${(props) => `color: ${tokens.colors.grey_40}`};
   }
@@ -193,7 +193,7 @@ export const Write = styled.div`
   font-style: normal;
   font-weight: 400;
   line-height: 18px; /* 150% */
-  font-variant: all-small-caps;
+  /* font-variant: all-small-caps; */
   margin-bottom: 84px;
   ${(props) => `color: ${tokens.colors.grey_40}`};
   & > button {
@@ -216,31 +216,38 @@ export const Write = styled.div`
     ${(props) => `color: ${tokens.colors.grey_100}`};
   }
 `;
-export const Box = styled.div`
+export const Box = styled.input`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  font-family: "Pretendard";
   width: "1031px";
   border-radius: 5px;
-  ${(props) => `border: 1px solid ${tokens.colors.grey_60}`};
-  & > div {
-    margin-left: 10px;
-    width: 1000px;
-    text-align: left;
-  }
-`;
-export const Memtion = styled.input`
-  margin-left: 10px;
-  margin-right: 10px;
-  width: 1000px;
-  height: 64px;
-  border: none;
-  font-family: "Pretendard";
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: 24px; /* 150% */
-  font-variant: all-small-caps;
-  ${(props) => `color: 1px solid ${tokens.colors.grey_15}`};
+  /* font-variant: all-small-caps; */
+  width: 1031px;
+  padding: 10px;
+  ${(props) => `border: 1px solid ${tokens.colors.grey_60}`};
+  ${(props) => `color:  ${tokens.colors.grey_15}`};
+`;
+
+export const preBtn = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  & > button {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    width: 160px;
+    height: 32px;
+    padding: 4px, 12px, 4px, 12px;
+    background-color: white;
+    font-family: "Pretendard";
+    font-size: 16px;
+    font-weight: 400;
+    border: none;
+    ${(props) => `color:  ${tokens.colors.grey_60}`};
+  }
 `;

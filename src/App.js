@@ -54,7 +54,7 @@ function App() {
           <Route path="/agree" element={<SignupAgree />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/product/category" element={<Category />} />
+          <Route path="/product" element={<Category />} />
           <Route path="/community" element={<CommunityMain />} />
           <Route path="/post" element={<Post />} />
           <Route path="/write_post" element={<WritePost />} />
@@ -65,8 +65,8 @@ function App() {
           <Route path="/mypage" element={<Mypage />} />
           <Route path="/likepage" element={<Likepage />} />
           <Route path="/mypageinfo" element={<Mypageinfo />} />
-          <Route path="/community/:no" element={<CommunityDetail />} />
           <Route path="*" element={<Home />} />
+          <Route path="/community/:no" element={<CommunityDetail />} />
         </Routes>
       </MainScreen>
     </div>
