@@ -25,7 +25,7 @@ function Modal({ isOpen, onClose, children }) {
           <Styles.ModalContentInnerLine></Styles.ModalContentInnerLine>
           <Styles.ModalContentInnerpage
             onClick={() =>
-              handleLinkClick('/select', {
+              handleLinkClick('/product', {
                 state: { type: 'product', name: '제품' },
               })
             }
@@ -34,7 +34,7 @@ function Modal({ isOpen, onClose, children }) {
           </Styles.ModalContentInnerpage>
           <Styles.ModalContentInnerpage
             onClick={() =>
-              handleLinkClick('/select', {
+              handleLinkClick('/store/:storeId', {
                 state: { type: 'store', name: '스토어' },
               })
             }

@@ -20,7 +20,7 @@ function ProductCard(props) {
       <itemS.cardWrap type={props.type} onClick={handleCardClick}>
         <itemS.img src={props.data.imageUrl} type={props.type}></itemS.img>
         <itemS.descripWrap>
-          <LikeButton></LikeButton>
+          <LikeButton id={props.data.id}></LikeButton>
           <itemS.text type='brand'>{props.data.storeName}</itemS.text>
           <itemS.text type='name'>{props.data.productName}</itemS.text>
           <itemS.text type='price'>₩ {props.data.price}</itemS.text>

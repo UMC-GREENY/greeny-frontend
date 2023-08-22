@@ -6,6 +6,7 @@ import { refreshToken } from '../../Api/request';
 import axios from 'axios';
 const LikeButton = ({ type, id }) => {
   const [isSuccess, setIsSuccess] = useState(null);
+  const [itemId, setItemId] = useState(id);
   useEffect(() => {
     async function fetchData() {
       try {
@@ -66,7 +67,7 @@ const LikeButton = ({ type, id }) => {
       console.log('토큰 유효');
       try {
         const response = await request.post(
-          '/api/bookmarks?type=store&id=1',
+          `/api/bookmarks?type=store&id=${id}`,
           null,
           {
             headers: {
@@ -77,6 +78,11 @@ const LikeButton = ({ type, id }) => {
             },
           }
         );
+        if (isLike) {
+          console.log(`${itemId}번 아이템이 찜 해제되었습니다.`);
+        } else {
+          console.log(`${itemId}번 아이템이 찜되었습니다.`);
+        }
 
         setIsLike((prevState) => !prevState);
         console.log('찜하기 완료');

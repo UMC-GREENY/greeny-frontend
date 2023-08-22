@@ -16,7 +16,7 @@ function LikedProductpage(props) {
           {content2}
         </mystyles.productinfodetail2>
         <mystyles.lastcontainer>
-          <LikeButton likestate={likestate}></LikeButton>
+          <LikeButton></LikeButton>
         </mystyles.lastcontainer>
       </mystyles.productinfo>
     </mystyles.productcontainer>

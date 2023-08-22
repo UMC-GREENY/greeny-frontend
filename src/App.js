@@ -29,20 +29,8 @@ import LifeTipDe from './APP/LifeTip/LifeTipDe.main';
 import CommunityMain from './APP/Comunity/Community.main';
 import Post from './APP/Comunity/Community.main.post';
 import WritePost from './APP/Comunity/Community.main.post.write';
-import Category from './APP/Category/Category.main';
+import Category from './APP/Category/Category.main.store';
 
-import SideNav from './APP/SideNav/SideNav.main';
-import DetailPage from './APP/DetailPage/DetailPage.main';
-import SignupSelect from './APP/Auth/Auth.signup.select';
-import SignupAgree from './APP/Auth/Auth.signup.agree';
-import Signup from './APP/Auth/Auth.signup';
-import Login from './APP/Login/Login.main';
-import LifeTip from './APP/LifeTip/LifeTip.main';
-import LifeTipDe from './APP/LifeTip/LifeTipDe.main';
-import CommunityMain from './APP/Comunity/Community.main';
-import Post from './APP/Comunity/Community.main.post';
-import WritePost from './APP/Comunity/Community.main.post.write';
-import Category from './APP/Category/Category.main';
 function App() {
   const MainScreen = styled.div`
     position: absolute;

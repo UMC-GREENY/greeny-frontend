@@ -1,5 +1,5 @@
-import styled, { css } from "styled-components";
-import * as tokens from "../../../tokens";
+import styled, { css } from 'styled-components';
+import * as tokens from '../../../tokens';
 
 export const Div = styled.div`
   display: flex;
@@ -175,4 +175,25 @@ export const PaginationWrapper = styled.div`
     text-decoration-line: none;
     color: ${tokens.colors.grey_60};
   }
+`;
+
+export const SideNavSearchWrapper = styled.div`
+  width: 391px;
+  height: 44px;
+  display: flex;
+  background-color: yellow;
+`;
+
+export const SideNavInputBox = styled.input`
+  width: 353px;
+  height: 20px;
+  margin-top: 13px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  margin-right: 4px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  border-bottom: ${(props) =>
+    props.type === 'main' ? '1px solid #FFFFFF' : '1px solid #000000'};
 `;
