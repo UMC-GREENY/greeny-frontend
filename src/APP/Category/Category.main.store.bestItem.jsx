@@ -38,7 +38,7 @@ function BestItemStore() {
       <>
          <itemS.TitleWrap type='best'>
             <itemS.overline></itemS.overline>
-            <itemS.TitleText>"STORE BEST"</itemS.TitleText>
+            <itemS.TitleText>STORE BEST</itemS.TitleText>
             <itemS.overline></itemS.overline>
          </itemS.TitleWrap>
          <itemS.ItemsWrapper type='best'>
