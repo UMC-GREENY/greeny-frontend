@@ -6,7 +6,7 @@ import Slider from "./Community.main.serviceContent.slider";
 import { isSuccessState } from "../Login/Recoil/Recoil.auth.state";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { ACCESS_TOKEN, REFRESH_TOKEN, refreshToken } from "../Api/request";
-import Pagination from "react-js-pagination";
+
 function CommunityDetail() {
   const navigate = useNavigate();
   const isSuccess = useRecoilValue(isSuccessState);
@@ -32,7 +32,22 @@ function CommunityDetail() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const con = await request.get(`/api/posts?postId=${params[1]}`);
+        const con =
+          isSuccess === true
+            ? await request.get(`/api/posts/auth?postId=${params[1]}`, {
+                headers: {
+                  Authorization: `Bearer ${window.localStorage.getItem(
+                    ACCESS_TOKEN
+                  )}`,
+                },
+              })
+            : await request.get(`/api/posts?postId=${params[1]}`, {
+                headers: {
+                  Authorization: `Bearer ${window.localStorage.getItem(
+                    ACCESS_TOKEN
+                  )}`,
+                },
+              });
         setUserData({
           title: con.data.title,
           content: con.data.content,
@@ -44,14 +59,17 @@ function CommunityDetail() {
           likes: con.data.likes,
           fileUrls: con.data.fileUrls,
         });
-        setLove(userData.isLiked);
+        setLove(con.data.isLiked);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
     fetchData();
+
+    console.log(love, "loge");
   }, [params[1]]);
   //좋아요
+
   useEffect(() => {
     // console.log(params[1]);
     const fetchData = async () => {
@@ -69,26 +87,24 @@ function CommunityDetail() {
         );
       } catch (error) {
         console.error("Error fetching data:", error);
-        console.log("에러");
+        // console.log("에러");
       }
     };
     fetchData();
-  }, [love]);
+  }, [params[1]]);
 
   const onLove = () => {
     setLove(!love);
-    if (userData.isLiked == false) {
-      if (love) {
-        setUserData((prevUserData) => ({
-          ...prevUserData,
-          likes: prevUserData.likes - 1,
-        }));
-      } else {
-        setUserData((prevUserData) => ({
-          ...prevUserData,
-          likes: prevUserData.likes + 1,
-        }));
-      }
+    if (love) {
+      setUserData((prevUserData) => ({
+        ...prevUserData,
+        likes: prevUserData.likes - 1,
+      }));
+    } else {
+      setUserData((prevUserData) => ({
+        ...prevUserData,
+        likes: prevUserData.likes + 1,
+      }));
     }
   };
   //댓글 목록 불러오기
@@ -112,8 +128,6 @@ function CommunityDetail() {
               },
             });
       setComment(response.data.reverse());
-      console.log(response);
-      console.log(response.data, "writer");
     } catch (error) {
       console.error("Error fetching comments:", error);
     }
@@ -162,7 +176,7 @@ function CommunityDetail() {
   //댓글삭제
   const RemoveComment = async (commentItem) => {
     try {
-      console.log(comment.id);
+      // console.log(comment.id);
       const response = await request.delete(
         `/api/comments?commentId=${commentItem.id}`,
         {
@@ -196,14 +210,18 @@ function CommunityDetail() {
         <detailS.PostEmail>{userData.writerEmail}</detailS.PostEmail>
         <detailS.PostDate>{userData.updatedAt}</detailS.PostDate>
       </detailS.Ti>
-      <detailS.Pic>
-        <Slider
-          images={userData.fileUrls.map(
-            (imageUrl) =>
-              `https://umc-greeny.s3.ap-northeast-2.amazonaws.com/${imageUrl}`
-          )}
-        />
-      </detailS.Pic>
+      {userData.fileUrls.length === 0 ? (
+        <></>
+      ) : (
+        <detailS.Pic>
+          <Slider
+            images={userData.fileUrls.map(
+              (imageUrl) =>
+                `https://umc-greeny.s3.ap-northeast-2.amazonaws.com/${imageUrl}`
+            )}
+          />
+        </detailS.Pic>
+      )}
 
       <detailS.Text>
         {userData.content}
@@ -222,14 +240,14 @@ function CommunityDetail() {
             onClick={isSuccess ? onLove : null}
             style={{ display: "flex", alignItems: "center", fontSize: "12px" }}
           >
-            {userData.isLiked ? (
-              <img src="/community/favorite.png" />
-            ) : love ? (
+            {love ? (
               <img src="/community/favorite.png" />
             ) : (
               <img src="/community/pre_favorite.png" />
             )}
-
+            {console.log(love, "ss")}
+            {console.log(userData.likes, "likes")}
+            {console.log(userData.isLiked, "liked")}
             {userData.likes}
           </div>
         </detailS.ConTi>
@@ -247,7 +265,6 @@ function CommunityDetail() {
                 <button onClick={() => RemoveComment(commentItem)}>삭제</button>
               )}
             </detailS.ConBtn>
-            {console.log(comment)}
           </detailS.Commend>
         ))}
         {visibleComments < comment.length && (
