@@ -4,13 +4,12 @@ import * as toolS from "./Styled/Login.main.tool.styles";
 import request from "./../Api/request";
 import { ACCESS_TOKEN, REFRESH_TOKEN, refreshToken } from "./../Api/request";
 import LoginKakao from "./Login.kakao";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState} from "recoil";
 import { isSuccessState } from "./Recoil/Recoil.auth.state";
 import LoginNaver from "./Login.naver";
 
 function LoginMainTool() {
   const [isSuccess, setIsSuccess] = useRecoilState(isSuccessState); // recoil 로그인 여부
-  // const socialType = useRecoilValue(socialTypeState);
   const [type, setType] = useState("login");
   const [name, setName] = useState("로그인");
   const navigate = useNavigate();
@@ -28,8 +27,6 @@ function LoginMainTool() {
     const params = new URLSearchParams(window.location.search);
     const code = params.get("code");
     if (!code) return;
-    // const source = socialType;
-    // console.log("source",source);
     const source = localStorage.getItem("source");
     if (!source) {
       console.error("Source is not available.");
@@ -98,7 +95,12 @@ function LoginMainTool() {
   };
 
   const handleSignup = () => {
-    navigate("/select");
+    navigate("/agree", { // 소셜 최초 로그인 시 이동되는 약관동의 와 다른 플로우 구분 위해 type 보냄
+      state: {
+        email: "",
+        type: "general"
+      }
+    });
   };
 
   return (
@@ -122,7 +124,7 @@ function LoginMainTool() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <toolS.Label>
+              {/* <toolS.Label>
                 <input
                   type="checkbox"
                   checked={isAutoLogin}
@@ -132,7 +134,7 @@ function LoginMainTool() {
                   }}
                 />
                 자동 로그인
-              </toolS.Label>
+              </toolS.Label> */}
               <toolS.LoginBtn style={{ marginTop: "40px" }}>
                 <button onClick={handleLogin}>로그인</button>
               </toolS.LoginBtn>

@@ -36,6 +36,7 @@ export const TopNavLogo = styled.span`
   height: fit-content;
   margin-left: 10vw;
   text-align: left;
+  cursor: pointer;
   ${tokens.typography.display_1}
 `;
 
