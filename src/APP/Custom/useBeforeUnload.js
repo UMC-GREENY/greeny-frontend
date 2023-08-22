@@ -1,15 +1,19 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
-// import { isAutoState } from '../Login/Recoil/Recoil.auth.state';
-import { isAutoState } from './Recoil/Custom.recoil.auto';
+import { isSuccessState } from '../Login/Recoil/Recoil.auth.state';
 
 function useBeforeUnload() {
-	const removeTokenFromLocalStorage = () => {
-      window.localStorage.clear();
-		};
+  const isSuccess = useRecoilValue(isSuccessState);
+
   useEffect(() => {
+    const removeTokenFromLocalStorage = () => {
+      window.localStorage.clear();
+    };
+
     const handleBeforeUnload = (event) => {
-      removeTokenFromLocalStorage();
+      if (isSuccess) {
+        removeTokenFromLocalStorage();
+      }
     };
 
     window.addEventListener('beforeunload', handleBeforeUnload);
@@ -17,34 +21,7 @@ function useBeforeUnload() {
     return () => {
       window.removeEventListener('beforeunload', handleBeforeUnload);
     };
-  }, []);
+  }, [isSuccess]);
 }
 
 export default useBeforeUnload;
-
-// function useBeforeUnload() {
-//   const isAuto = useRecoilValue(isAutoState);
-//   console.log("isAuto",isAuto);
-// 	const removeTokenFromLocalStorage = () => {
-//       if (!isAuto) {
-//         console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-//         window.localStorage.clear();
-//       } else {
-//         console.log("~!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-//       }
-// 		};
-//   useEffect(() => {
-//     const handleBeforeUnload = (event) => {
-//       console.log("isAuto",isAuto);
-//       removeTokenFromLocalStorage();
-//     };
-
-//     window.addEventListener('beforeunload', handleBeforeUnload);
-
-//     return () => {
-//       window.removeEventListener('beforeunload', handleBeforeUnload);
-//     };
-//   }, []);
-// }
-
-// export default useBeforeUnload;
