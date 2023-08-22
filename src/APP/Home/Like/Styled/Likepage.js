@@ -141,7 +141,6 @@ export const productinfo = styled.div`
   align-items: start;
 `;
 export const productinfotitle = styled.div`
-  font-size: 20px;
   justify-content: start;
   text-align: start;
   margin-top: 5px;

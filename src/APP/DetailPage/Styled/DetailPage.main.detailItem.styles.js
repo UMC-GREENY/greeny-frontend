@@ -1,108 +1,103 @@
-import styled from "styled-components";
-import * as tokens from "../../tokens";
+import styled from 'styled-components';
+import * as tokens from '../../tokens';
 
 export const ItemWrapper = styled.div`
-    position: relative;
-    width: 75vw;
-    margin-left: 12.5vw;
+  position: relative;
+  width: 75vw;
+  margin-left: 12.5vw;
 
-    display: flex;
-    justify-content: center;
-    align-items: center ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const InItemWrapper = styled.div`
-    position: absolute;
-    width: 1272px;
-`
+  position: absolute;
+  width: 1272px;
+`;
 
 export const ImageItem = styled.img`
-    position: absolute;
-    top: 104px;
-    left: -0px;
-    width: 625px;
-    height: 468px;
-    border-radius: 5px;
-    
-    object-fit: cover;
+  position: absolute;
+  top: 104px;
+  left: -0px;
+  width: 625px;
+  height: 468px;
+  border-radius: 5px;
+
+  object-fit: cover;
 `;
 
 export const TitleItemWrapper = styled.div`
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
-    ${(props) => 
-        props.type === "top"
-            ? `
+  ${(props) =>
+    props.type === 'top'
+      ? `
                 align-items: start;
                 top: 150px;
                left: 685px;
                width: 585px;`
-            : props.type === "middle"
-            ? ` 
+      : props.type === 'middle'
+      ? ` 
                 align-items: start;
                 top: 357px;
                 left: 685px;
                 width: 587px;
                 height: 80px;;
             `
-            :`
+      : `
                 align-items: end;
                 top: 471px;
                 left: 1055px;
                 width: 225px;
                 height: 100px;
-            `
-    }
-    
-`
+            `}
+`;
 export const overline = styled.span`
-    height: 1px;
-    background-color: ${tokens.colors.grey_60};
-    margin-top: 4px;
-    ${(props) => 
-        props.type === "name"
-            ? `width: 585px`
-            : `width: 245px;`
-    }`
+  height: 1px;
+  background-color: ${tokens.colors.grey_60};
+  margin-top: 4px;
+  ${(props) => (props.type === 'name' ? `width: 585px` : `width: 245px;`)}
+`;
 
 export const titleText = styled.span`
-${(props) =>
-      props.type === "brand"
-         ? `height: 30px;
+  ${(props) =>
+    props.type === 'brand'
+      ? `height: 30px;
                 font-size: 20px;    
                 line-height: 30px;
                 font-weight: bold;
                 color: ${tokens.colors.grey_50};`
-         : props.type === "name"
-            ? `
+      : props.type === 'name'
+      ? `
                 color: ${tokens.colors.grey_15};
                 font-weight: bold;
                 font-size: 32px;
                 line-height: 60px;
                 letter-spacing: -2px;
                 text-align: start;`
-            : props.type === "price"
-            ? `height: 30px;
+      : props.type === 'price'
+      ? `height: 30px;
                 color: ${tokens.colors.grey_15};
                 font-size: 20px;
                 line-height: 30px;`
-            : props.type === "totalPrice"
-            ? ` color: ${tokens.colors.grey_15};
+      : props.type === 'totalPrice'
+      ? ` color: ${tokens.colors.grey_15};
                 font-size: 24px;
                 line-height: 36px;`
-            : props.type === "address" 
-            ? `
+      : props.type === 'address'
+      ? `
             font-size: 20px;
             font-weight: 600;
             line-height: 30px;
             color: ${tokens.colors.grey_15}
             margin-top: 4px;
             `
-            :props.type === "area"
-            ? `
+      : props.type === 'area'
+      ? `
             width: 86px;
             height: 24px;
             padding: 0px 16px 0px 16px;
@@ -113,8 +108,8 @@ ${(props) =>
             line-height: 24px;
             text-align: center;
             `
-            :props.type === "description"
-            ? `
+      : props.type === 'description'
+      ? `
             width: 587px;
             height: 90px;
             margin-top: 8px;
@@ -125,43 +120,47 @@ ${(props) =>
             font-family: Pretendard;
             text-align: left;
             `
-        :`height: 30px;
+      : `height: 30px;
             color: ${tokens.colors.grey_40};
             font-size: 20px;
             line-height: 30px;`}
-` 
+`;
 
 export const LinkTitleWrapper = styled.div`
-    width: 585px;
-    color: ${tokens.colors.grey_60};
+  width: 585px;
+  color: ${tokens.colors.grey_60};
 
-    display: flex;
-    justify-content: space-between;
-`
+  display: flex;
+  justify-content: space-between;
+`;
 
 export const LinkTitle = styled.span`
-    height: 27px;
-    font-size: 20px;
-    line-height: 24px;
-    margin-top: 8px;
-`
+  height: 27px;
+  font-size: 20px;
+  line-height: 24px;
+  margin-top: 8px;
+`;
 
 export const totalWrapper = styled.div`
-    width: 182px;
-    height: 36px;
-    
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-`
+  width: 182px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
 
 export const wishBtn = styled.button`
-    width: 224px;
-    height: 44px;
-    background-color: ${tokens.colors.green_main2};
-    color:${tokens.colors.grey_100};
-    border: none;
-    font-size: 24px;
-    line-height: 36px;
-    border-radius: 6px;
-`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 224px;
+  height: 44px;
+  background-color: ${tokens.colors.green_main2};
+  color: ${tokens.colors.grey_100};
+  border: none;
+  font-size: 24px;
+  line-height: 36px;
+  border-radius: 6px;
+`;

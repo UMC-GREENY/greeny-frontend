@@ -307,28 +307,6 @@ function Mypage() {
             hideFirstLastPages={true}
           />
         </mystyles.PaginationWrapper>
-        <mystyles.SideNavSearchWrapper>
-          <mystyles.SideNavInputBox
-            type='text'
-            placeholder='검색어를 입력하세요'
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-          <button onClick={handleSearch}>검색</button>
-        </mystyles.SideNavSearchWrapper>
-        <div>
-          {filteredPosts.length > 0 ? (
-            filteredPosts.map((post) => (
-              <div key={post.id}>
-                <h2>{post.title}</h2>
-                <p>{post.content}</p>
-              </div>
-            ))
-          ) : (
-            <p>검색 결과가 없습니다.</p>
-          )}
-        </div>
-
         <hr></hr>
         <mystyles.secondcontainer>
           <mystyles.secondcontainertitle>

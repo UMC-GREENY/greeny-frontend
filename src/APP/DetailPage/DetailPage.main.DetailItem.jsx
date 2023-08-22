@@ -13,6 +13,7 @@ function DetailItem({ isProduct, productId }) {
           `/api/products?productId=${productId}`
         );
         setItemInfo(response.data);
+        console.log('아이템인포', itemInfo);
       } catch (error) {
         console.error('데이터 가져오기 실패', error);
       }
@@ -74,7 +75,12 @@ function DetailItem({ isProduct, productId }) {
           </itemS.totalWrapper>
           <itemS.wishBtn>
             {' '}
-            <LikeButton></LikeButton> 찜하기
+            <LikeButton
+              type='product'
+              id={itemInfo.id}
+              isLike={false}
+            ></LikeButton>{' '}
+            찜하기
           </itemS.wishBtn>
         </itemS.TitleItemWrapper>
       </itemS.InItemWrapper>

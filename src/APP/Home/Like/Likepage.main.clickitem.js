@@ -1,35 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { FaHeart } from 'react-icons/fa';
+import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import request from '../../Api/request'; // request 모듈을 가져온다고 가정
 import { ACCESS_TOKEN } from '../../Api/request';
 import { refreshToken } from '../../Api/request';
 import axios from 'axios';
-const LikeButton = ({ type, id }) => {
+const LikeButton = ({ type, id, isLike }) => {
   const [isSuccess, setIsSuccess] = useState(null);
-  const [itemId, setItemId] = useState(id);
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await request.get('/api/auth');
-        console.log('response', response);
-        setIsSuccess(response.isSuccess);
-      } catch (error) {
-        if (error.response && error.response.status === 401) {
-          try {
-            await refreshToken();
-            const response = await request.get('/api/auth');
-            setIsSuccess(response.isSuccess);
-          } catch (refreshError) {
-            console.error('토큰 갱신 중 오류:', refreshError);
-          }
-        } else {
-          console.error('데이터 가져오기 중 오류:', error);
-        }
-      }
-    }
-
-    fetchData();
-  }, []);
 
   const isTokenValid = () => {
     const accessToken = window.localStorage.getItem(ACCESS_TOKEN);
@@ -56,8 +32,11 @@ const LikeButton = ({ type, id }) => {
     }
   };
   ////////////////////////////////////////////////////////
-  const [isLike, setIsLike] = useState(false);
+  const [initialLikeState, setInitialLikeState] = useState(isLike);
 
+  useEffect(() => {
+    setInitialLikeState(isLike); // 초기 isLike 값을 설정
+  }, [isLike]);
   const handleToggleLike = async () => {
     if (!isTokenValid()) {
       console.log('토큰이 유효하지 않습니다.');
@@ -67,7 +46,7 @@ const LikeButton = ({ type, id }) => {
       console.log('토큰 유효');
       try {
         const response = await request.post(
-          `/api/bookmarks?type=store&id=${id}`,
+          `/api/bookmarks?type=${type}&id=${id}`,
           null,
           {
             headers: {
@@ -78,13 +57,13 @@ const LikeButton = ({ type, id }) => {
             },
           }
         );
-        if (isLike) {
-          console.log(`${itemId}번 아이템이 찜 해제되었습니다.`);
+        if (initialLikeState) {
+          console.log(`${id}번 아이템이 찜 해제되었습니다.`);
         } else {
-          console.log(`${itemId}번 아이템이 찜되었습니다.`);
+          console.log(`${id}번 아이템이 찜되었습니다.`);
         }
 
-        setIsLike((prevState) => !prevState);
+        setInitialLikeState((prevState) => !prevState);
         console.log('찜하기 완료');
       } catch (error) {
         console.error('찜하기 실패', error);
@@ -99,11 +78,13 @@ const LikeButton = ({ type, id }) => {
   };
 
   return (
-    <FaHeart
-      onClick={handleToggleLike}
-      color={isLike ? 'red' : 'gray'}
-      style={buttonStyle}
-    />
+    <div onClick={handleToggleLike}>
+      {initialLikeState ? (
+        <FaHeart color='red' style={buttonStyle} />
+      ) : (
+        <FaRegHeart color='gray' style={buttonStyle} />
+      )}
+    </div>
   );
 };
 
