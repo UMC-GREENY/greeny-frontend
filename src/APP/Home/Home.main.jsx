@@ -1,15 +1,15 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
+import React, { useEffect, useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
 //components
-import MainLandigPicture from './Home.main.landing.picture';
-import NewItemStore from '../Category/Category.main.store.newItem';
-import BestItemStore from '../Category/Category.main.store.bestItem';
-import NewItemProduct from '../Category/Category.main.product.newItem';
-import BestItemProduct from '../Category/Category.main.product.bestItem';
-import BannerSlider from './Banner/Banner.main';
-import { lifeTipCards } from './Banner/Banner.main.dummy';
+import MainLandigPicture from "./Home.main.landing.picture";
+import NewItemStore from "../Category/Category.main.store.newItem";
+import BestItemStore from "../Category/Category.main.store.bestItem";
+import NewItemProduct from "../Category/Category.main.product.newItem";
+import BestItemProduct from "../Category/Category.main.product.bestItem";
+import BannerSlider from "./Banner/Banner.main";
+import { lifeTipCards } from "./Banner/Banner.main.dummy";
 export const CategoryWrapper = styled.div`
   width: 100%;
 
@@ -37,7 +37,7 @@ export const LinkWrapper = styled.div`
   margin-left: 1300px;
   width: 120px;
   ${(props) =>
-    props.type === 'store'
+    props.type === "store"
       ? `
 			top: 1600px;`
       : `
@@ -49,7 +49,7 @@ export const LinkSpan = styled.span`
   font-family: Pretendard;
   color: #666666;
   ${(props) =>
-    props.type === 'more'
+    props.type === "more"
       ? `
 				width: 90px;
 				height: 24px;
@@ -76,15 +76,15 @@ function Home() {
       <CategoryWrapper>
         <ContentWrapper>
           <NewItemStore></NewItemStore>
-          <LinkWrapper type='store' onClick={handleNavigateStore}>
-            <LinkSpan type='more'>더 알아보기</LinkSpan>
-            <LinkSpan type='c'>&gt;</LinkSpan>
+          <LinkWrapper type="store" onClick={handleNavigateStore}>
+            <LinkSpan type="more">더 알아보기</LinkSpan>
+            <LinkSpan type="c">&gt;</LinkSpan>
           </LinkWrapper>
           <BestItemStore></BestItemStore>
           <NewItemProduct></NewItemProduct>
-          <LinkWrapper type='product' onClick={handleNavigateProduct}>
-            <LinkSpan type='more'>더 알아보기</LinkSpan>
-            <LinkSpan type='c'>&gt;</LinkSpan>
+          <LinkWrapper type="product" onClick={handleNavigateProduct}>
+            <LinkSpan type="more">더 알아보기</LinkSpan>
+            <LinkSpan type="c">&gt;</LinkSpan>
           </LinkWrapper>
           <BestItemProduct></BestItemProduct>
         </ContentWrapper>
