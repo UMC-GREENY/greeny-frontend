@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import * as tokens from "../../tokens";
 
 export const Wrapper = styled.div`
@@ -36,7 +36,7 @@ export const Box = styled.div`
 `;
 export const Btns = styled.div`
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
   align-items: center;
   font-size: 23px;
   height: 44px;
@@ -59,4 +59,30 @@ export const Btn = styled.button`
   font-weight: 400;
   ${(props) => `color: ${tokens.colors.grey_40}`}
 `;
-export const ItemsWrapper = styled.div``;
+export const StyleSelect = styled.select`
+  border-radius: 6px;
+  padding-left: 5px;
+  /* Subheading/Subheading */
+  font-family: "Pretendard";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+  ${(props) => `border: ${tokens.colors.grey_70}`}
+  ${(props) =>
+    props.name === "location" &&
+    css`
+      width: 63px;
+      height: 32px;
+      color: ${tokens.colors.grey_70};
+      margin-right: 12px;
+    `}
+
+  ${(props) =>
+    props.name === "category" &&
+    css`
+      width: 175px;
+      height: 32px;
+      color: ${tokens.colors.grey_70};
+    `}
+`;

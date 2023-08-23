@@ -14,11 +14,7 @@ export const SignupContentWrapper = styled.div`
   margin-top: 104px;
   margin-left: 240px;
   margin-right: 240px;
-<<<<<<< HEAD
-  width: 1440px;
-=======
   width: 1270px;
->>>>>>> f65cd3705c42860d2326d0c41d7795885557e684
 `;
 
 export const Title = styled.h1`
@@ -44,11 +40,7 @@ export const ContentWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-<<<<<<< HEAD
-  width: 1440px;
-=======
   width: 1270px;
->>>>>>> f65cd3705c42860d2326d0c41d7795885557e684
   height: 44px;
   padding-bottom: 16px;
   border-bottom: 1px solid black;
@@ -68,11 +60,7 @@ export const ListButton = styled.button`
 export const Ti = styled.div`
   display: flex;
   justify-content: space-between;
-<<<<<<< HEAD
-  width: 1440px;
-=======
   width: 1270px;
->>>>>>> f65cd3705c42860d2326d0c41d7795885557e684
   border: none;
 `;
 export const Name = styled.div`
@@ -124,11 +112,7 @@ export const Pic = styled.div`
 
 export const Text = styled.div`
   margin-top: 80px;
-<<<<<<< HEAD
-  width: 1440px;
-=======
   width: 1270px;
->>>>>>> f65cd3705c42860d2326d0c41d7795885557e684
   font-family: "Pretendard";
   font-size: 16px;
   font-style: normal;
@@ -141,11 +125,7 @@ export const ConTi = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-top: 80px;
-<<<<<<< HEAD
-  width: 1440px;
-=======
   width: 1270px;
->>>>>>> f65cd3705c42860d2326d0c41d7795885557e684
   ${(props) => `border-bottom: 1px solid ${tokens.colors.grey_15}`};
 `;
 export const One = styled.div`
