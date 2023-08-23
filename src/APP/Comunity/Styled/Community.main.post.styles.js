@@ -13,7 +13,7 @@ export const SignupContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: left;
-  margin-top: 104px;
+  margin-top: 0px;
   margin-left: 240px;
   margin-right: 240px;
   width: 1270px;
