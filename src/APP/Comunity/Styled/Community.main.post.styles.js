@@ -13,7 +13,7 @@ export const SignupContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: left;
-  margin-top: 104px;
+  margin-top: 0px;
   margin-left: 240px;
   margin-right: 240px;
   width: 1270px;
@@ -43,7 +43,7 @@ export const SubTitle = styled.div`
 export const Line = styled.div`
   display: flex;
   justify-content: center;
-  width: 1400px;
+  width: 1230px;
   height: 1px;
   margin-bottom: 10px;
   ${(props) => `background-color: ${tokens.colors.grey_80}`};
@@ -90,7 +90,7 @@ export const InfoLine = styled.div`
 export const PostTitle = styled.div`
   font-size: 16px;
   text-align: left;
-  width: 1200px;
+  width: 1070px;
   ${(props) => `color: ${tokens.colors.grey_15}`};
 `;
 
@@ -104,7 +104,7 @@ export const PostStar = styled.div`
 export const PostContent = styled.div`
   font-size: 16px;
   text-align: left;
-  width: 930px;
+  width: 800px;
   margin-right: 20px;
   ${(props) => `color: ${tokens.colors.grey_15}`};
 `;
@@ -158,54 +158,6 @@ export const InputIcon = styled.div`
   background-position: bottom;
   background-repeat: no-repeat;
 `;
-//--------------------------------------------------------------------
-
-// export const PaginationBox = styled.div`
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   margin-left: 600px;
-
-//   width: 202px;
-
-// `;
-
-// export const PaginationButton = styled.button`
-//   ${(props) => `
-//     background-color: white;
-//     color: black;
-//     width: 30px;
-//     height: 30px;
-//     border: none;
-//     cursor: pointer;
-//     border-radius: 4px;
-//     margin: 0 2px;
-//     margin-top: 50px;
-//     outline: none;
-//     ${props.disabled ? "opacity: 0.5; pointer-events: none;" : ""}
-//   `}
-// `;
-
-// export const PageNumber = styled.div`
-//   width: 50px;
-//   height: 30px;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   color: ${tokens.colors.grey_900};
-//   border-radius: 4px;
-//   cursor: pointer;
-//   margin: 0 2px;
-//   margin-top: 50px;
-//   font-size: 14px;
-//   font-weight: bold;
-//   user-select: none;
-
-//   &:hover {
-//     background-color: ${tokens.colors.grey_80};
-//   }
-// `;
-//------------------------------------------------
 
 export const PaginationWrapper = styled.div`
   .pagination {
@@ -218,13 +170,11 @@ export const PaginationWrapper = styled.div`
     padding: 0;
   }
   ul.pagination li {
->>>>>>> f65cd3705c42860d2326d0c41d7795885557e684
     display: inline-block;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1rem;
->>>>>>> f65cd3705c42860d2326d0c41d7795885557e684
     width: 26px;
     height: 26px;
     border-radius: 99%;

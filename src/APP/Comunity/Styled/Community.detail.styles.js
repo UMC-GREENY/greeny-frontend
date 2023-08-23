@@ -11,12 +11,10 @@ export const SignupContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: left;
-  margin-top: 104px;
+  margin-top: 0px;
   margin-left: 240px;
   margin-right: 240px;
-
   width: 1270px;
->>>>>>> f65cd3705c42860d2326d0c41d7795885557e684
 `;
 
 export const Title = styled.h1`
@@ -43,7 +41,6 @@ export const ContentWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 1270px;
->>>>>>> f65cd3705c42860d2326d0c41d7795885557e684
   height: 44px;
   padding-bottom: 16px;
   border-bottom: 1px solid black;
@@ -69,7 +66,7 @@ export const Ti = styled.div`
 export const Name = styled.div`
   margin-top: 40px;
   display: flex;
-  width: 975px;
+  width: 870px;
   font-family: 'Pretendard';
   font-size: 32px;
   font-style: normal;

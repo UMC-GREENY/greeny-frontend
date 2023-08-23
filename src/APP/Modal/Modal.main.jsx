@@ -44,7 +44,7 @@ function Modal({ isOpen, onClose, children }) {
           </Styles.ModalContentInnerpage>
           <Styles.ModalContentInnerpage
             onClick={() =>
-              handleLinkClick('/store/:storeId', {
+              handleLinkClick('/store', {
                 state: { type: 'store', name: '스토어' },
               })
             }
