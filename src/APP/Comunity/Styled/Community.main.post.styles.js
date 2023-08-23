@@ -43,7 +43,7 @@ export const SubTitle = styled.div`
 export const Line = styled.div`
   display: flex;
   justify-content: center;
-  width: 1400px;
+  width: 1230px;
   height: 1px;
   margin-bottom: 10px;
   ${(props) => `background-color: ${tokens.colors.grey_80}`};
@@ -90,7 +90,7 @@ export const InfoLine = styled.div`
 export const PostTitle = styled.div`
   font-size: 16px;
   text-align: left;
-  width: 1200px;
+  width: 1070px;
   ${(props) => `color: ${tokens.colors.grey_15}`};
 `;
 
@@ -104,7 +104,7 @@ export const PostStar = styled.div`
 export const PostContent = styled.div`
   font-size: 16px;
   text-align: left;
-  width: 930px;
+  width: 800px;
   margin-right: 20px;
   ${(props) => `color: ${tokens.colors.grey_15}`};
 `;
@@ -160,72 +160,7 @@ export const InputIcon = styled.div`
 `;
 //--------------------------------------------------------------------
 
-// export const PaginationBox = styled.div`
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   margin-left: 600px;
-<<<<<<< HEAD
-  
-//   width: 202px;
-  
-// `;
-
-=======
-
-//   width: 202px;
-
-// `;
-
->>>>>>> f65cd3705c42860d2326d0c41d7795885557e684
-// export const PaginationButton = styled.button`
-//   ${(props) => `
-//     background-color: white;
-//     color: black;
-//     width: 30px;
-//     height: 30px;
-//     border: none;
-//     cursor: pointer;
-//     border-radius: 4px;
-//     margin: 0 2px;
-//     margin-top: 50px;
-//     outline: none;
-//     ${props.disabled ? "opacity: 0.5; pointer-events: none;" : ""}
-//   `}
-// `;
-
-// export const PageNumber = styled.div`
-//   width: 50px;
-//   height: 30px;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-<<<<<<< HEAD
-  
-=======
-
->>>>>>> f65cd3705c42860d2326d0c41d7795885557e684
-//   color: ${tokens.colors.grey_900};
-//   border-radius: 4px;
-//   cursor: pointer;
-//   margin: 0 2px;
-//   margin-top: 50px;
-//   font-size: 14px;
-//   font-weight: bold;
-//   user-select: none;
-
-//   &:hover {
-//     background-color: ${tokens.colors.grey_80};
-//   }
-// `;
-//------------------------------------------------
-
 export const PaginationWrapper = styled.div`
-<<<<<<< HEAD
-    .pagination { display: flex; justify-content: center; margin-top: 15px;}
-    ul { list-style: none; padding: 0; }
-    ul.pagination li {
-=======
   .pagination {
     display: flex;
     justify-content: center;
@@ -236,35 +171,16 @@ export const PaginationWrapper = styled.div`
     padding: 0;
   }
   ul.pagination li {
->>>>>>> f65cd3705c42860d2326d0c41d7795885557e684
     display: inline-block;
     display: flex;
     justify-content: center;
     align-items: center;
-<<<<<<< HEAD
-    font-size: 1rem; 
-=======
     font-size: 1rem;
->>>>>>> f65cd3705c42860d2326d0c41d7795885557e684
     width: 26px;
     height: 26px;
     border-radius: 99%;
     font-size: 12px;
     line-height: 18px;
-<<<<<<< HEAD
-    border: none;}
-    margin: 15px 0 0px 600px ;
-    ul.pagination li.active a { color: ${tokens.colors.grey_100}; }
-    ul.pagination li.active { background-color: ${tokens.colors.green_deep}; }
-    ul.pagination li a {text-decoration-line: none; color: ${tokens.colors.grey_60};}
-`
-
-export const keyword = styled.p`
-    margin-top: 40px;
-    font-weight: 700;
-    font-size: 24px;
-`
-=======
     border: none;
   }
   margin: 15px 0 0px 600px;
@@ -285,4 +201,3 @@ export const keyword = styled.p`
   font-weight: 700;
   font-size: 24px;
 `;
->>>>>>> f65cd3705c42860d2326d0c41d7795885557e684
