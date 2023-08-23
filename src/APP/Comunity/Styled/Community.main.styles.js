@@ -16,7 +16,7 @@ export const SignupContentWrapper = styled.div`
   margin-top: 104px;
   margin-left: 240px;
   margin-right: 240px;
-  width: 1440px;
+  width: 1270px;
 `;
 
 export const Title = styled.h1`
@@ -50,7 +50,6 @@ export const Line = styled.div`
 export const InfoBox = styled.div`
   padding: 20px;
   border-bottom: 1px solid black;
-  
 `;
 
 export const MoreButton = styled.button`
@@ -68,12 +67,11 @@ export const ContentWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 1440px;
-	height: 44px;
-	padding-bottom: 10px;
+  width: 1270px;
+  height: 44px;
+  padding-bottom: 10px;
   margin-top: 50px;
   border-bottom: 1px solid black;
-	
 `;
 
 export const InfoLine = styled.div`
@@ -85,30 +83,29 @@ export const InfoLine = styled.div`
 
 export const PostStar = styled.div`
   font-size: 16px;
-  text-align: left; 
+  text-align: left;
   width: 250px;
   margin-right: 20px;
 `;
 
 export const PostContent = styled.div`
   font-size: 16px;
-  text-align: left; 
+  text-align: left;
   width: 930px;
   margin-right: 20px;
   ${(props) => `color: ${tokens.colors.grey_15}`};
 `;
 
-
 export const PostTitle = styled.div`
   font-size: 16px;
-  text-align: left; 
+  text-align: left;
   width: 1200px;
   ${(props) => `color: ${tokens.colors.grey_15}`};
 `;
 
 export const PostEmail = styled.div`
   font-size: 14px;
-  text-align: left; 
+  text-align: left;
   margin-right: 40px;
   width: 160px;
   ${(props) => `color: ${tokens.colors.grey_15}`};
@@ -116,10 +113,8 @@ export const PostEmail = styled.div`
 
 export const PostDate = styled.div`
   font-size: 14px;
-  text-align: left; 
+  text-align: left;
   margin-right: 0px;
   width: 130px;
   ${(props) => `color: ${tokens.colors.grey_40}`};
 `;
-
-

@@ -16,14 +16,14 @@ export const SignupContentWrapper = styled.div`
   margin-top: 104px;
   margin-left: 240px;
   margin-right: 240px;
-  width: 1440px;
-	border-bottom: 1px solid black;
+  width: 1270px;
+  border-bottom: 1px solid black;
 `;
 
 export const Title = styled.h1`
   display: flex;
   font-size: 48px;
-  
+
   font-family: "New York";
   font-weight: normal;
   justify-content: flex-start;
@@ -36,9 +36,8 @@ export const SubTitle = styled.div`
   justify-content: flex-start;
   font-family: "New York";
   font-size: 24px;
-	margin-top: 36px;
-	padding-bottom: 16px;
-  
+  margin-top: 36px;
+  padding-bottom: 16px;
 `;
 
 export const Line = styled.div`
@@ -58,30 +57,27 @@ export const ContentWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 1440px;
-	height: 44px;
-	padding-bottom: 16px;
+  width: 1270px;
+  height: 44px;
+  padding-bottom: 16px;
   border-bottom: 1px solid black;
-	
 `;
 
-
 export const WriteButton = styled.button`
-	${(props) => `background-color: ${tokens.colors.grey_900}`};
+  ${(props) => `background-color: ${tokens.colors.grey_900}`};
   ${(props) => `color: ${tokens.colors.grey_100}`};
   width: 88px;
   height: 29px;
   border: none;
   padding: 4px 10px;
   cursor: pointer;
-	border-radius: 4px;
+  border-radius: 4px;
 `;
 //-------------------------------------------------------
 
 export const LabelContainer = styled.div`
   flex: 1;
 `;
-
 
 //---------------------------------------------------------
 export const InfoLine = styled.div`
@@ -93,21 +89,21 @@ export const InfoLine = styled.div`
 
 export const PostTitle = styled.div`
   font-size: 16px;
-  text-align: left; 
+  text-align: left;
   width: 1200px;
   ${(props) => `color: ${tokens.colors.grey_15}`};
 `;
 
 export const PostStar = styled.div`
   font-size: 16px;
-  text-align: left; 
+  text-align: left;
   width: 250px;
   margin-right: 20px;
 `;
 
 export const PostContent = styled.div`
   font-size: 16px;
-  text-align: left; 
+  text-align: left;
   width: 930px;
   margin-right: 20px;
   ${(props) => `color: ${tokens.colors.grey_15}`};
@@ -115,7 +111,7 @@ export const PostContent = styled.div`
 
 export const PostEmail = styled.div`
   font-size: 14px;
-  text-align: left; 
+  text-align: left;
   margin-right: 40px;
   width: 160px;
   ${(props) => `color: ${tokens.colors.grey_15}`};
@@ -123,7 +119,7 @@ export const PostEmail = styled.div`
 
 export const PostDate = styled.div`
   font-size: 14px;
-  text-align: left; 
+  text-align: left;
   margin-left: 0px;
   width: 130px;
   ${(props) => `color: ${tokens.colors.grey_40}`};
@@ -134,7 +130,7 @@ export const PostDate = styled.div`
 export const PageSearchWrapper = styled.div`
   display: flex;
   flex-direction: row;
-`
+`;
 //--------------------------------------------------
 export const InputWrapper = styled.div`
   width: 391px;
@@ -169,11 +165,19 @@ export const InputIcon = styled.div`
 //   align-items: center;
 //   justify-content: center;
 //   margin-left: 600px;
+<<<<<<< HEAD
   
 //   width: 202px;
   
 // `;
 
+=======
+
+//   width: 202px;
+
+// `;
+
+>>>>>>> f65cd3705c42860d2326d0c41d7795885557e684
 // export const PaginationButton = styled.button`
 //   ${(props) => `
 //     background-color: white;
@@ -196,7 +200,11 @@ export const InputIcon = styled.div`
 //   display: flex;
 //   align-items: center;
 //   justify-content: center;
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> f65cd3705c42860d2326d0c41d7795885557e684
 //   color: ${tokens.colors.grey_900};
 //   border-radius: 4px;
 //   cursor: pointer;
@@ -213,19 +221,37 @@ export const InputIcon = styled.div`
 //------------------------------------------------
 
 export const PaginationWrapper = styled.div`
+<<<<<<< HEAD
     .pagination { display: flex; justify-content: center; margin-top: 15px;}
     ul { list-style: none; padding: 0; }
     ul.pagination li {
+=======
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  ul.pagination li {
+>>>>>>> f65cd3705c42860d2326d0c41d7795885557e684
     display: inline-block;
     display: flex;
     justify-content: center;
     align-items: center;
+<<<<<<< HEAD
     font-size: 1rem; 
+=======
+    font-size: 1rem;
+>>>>>>> f65cd3705c42860d2326d0c41d7795885557e684
     width: 26px;
     height: 26px;
     border-radius: 99%;
     font-size: 12px;
     line-height: 18px;
+<<<<<<< HEAD
     border: none;}
     margin: 15px 0 0px 600px ;
     ul.pagination li.active a { color: ${tokens.colors.grey_100}; }
@@ -238,3 +264,25 @@ export const keyword = styled.p`
     font-weight: 700;
     font-size: 24px;
 `
+=======
+    border: none;
+  }
+  margin: 15px 0 0px 600px;
+  ul.pagination li.active a {
+    color: ${tokens.colors.grey_100};
+  }
+  ul.pagination li.active {
+    background-color: ${tokens.colors.green_deep};
+  }
+  ul.pagination li a {
+    text-decoration-line: none;
+    color: ${tokens.colors.grey_60};
+  }
+`;
+
+export const keyword = styled.p`
+  margin-top: 40px;
+  font-weight: 700;
+  font-size: 24px;
+`;
+>>>>>>> f65cd3705c42860d2326d0c41d7795885557e684

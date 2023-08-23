@@ -28,7 +28,7 @@ function StoreCard(props) {
           type={props.type}
         ></itemS.img>
         <itemS.descripWrap>
-          <LikeButton id={props.data.id}></LikeButton>
+          <LikeButton type='store' id={props.data.id}></LikeButton>
           <itemS.text type='brand'>{props.data.name}</itemS.text>
           <itemS.tagWrap>
             <itemS.text type='location'>{props.data.location}</itemS.text>
