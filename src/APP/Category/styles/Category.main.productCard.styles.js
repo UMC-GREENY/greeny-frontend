@@ -1,9 +1,9 @@
-import styled from "styled-components";
-import * as tokens from "../../tokens";
+import styled from 'styled-components';
+import * as tokens from '../../tokens';
 
 export const cardWrap = styled.div`
-  width: ${(props) => (props.type === "best" ? "292px" : "330px;")};
-  height: ${(props) => (props.type === "best" ? "498px" : "548px")};
+  width: ${(props) => (props.type === 'best' ? '292px' : '330px;')};
+  height: ${(props) => (props.type === 'best' ? '498px' : '548px')};
   border-radius: 6px;
   border: 1px solid ${tokens.colors.grey_90};
   margin-right: 100px;
@@ -11,12 +11,19 @@ export const cardWrap = styled.div`
   flex-direction: column;
   align-items: center;
 
-  margin-top: ${(props) => (props.type === "best" ? "40px" : "")};
+  margin-top: ${(props) => (props.type === 'best' ? '40px' : '')};
 `;
-
+export const ImageWrap = styled.div`
+  position: relative;
+`;
+export const likebuttonWrap = styled.div`
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+`;
 export const img = styled.img`
-  width: ${(props) => (props.type === "best" ? "292px" : "330px;")};
-  height: ${(props) => (props.type === "best" ? "390px" : "440px")};
+  width: ${(props) => (props.type === 'best' ? '292px' : '330px;')};
+  height: ${(props) => (props.type === 'best' ? '390px' : '440px')};
   border-radius: 5px 5px 0px 0px;
 `;
 
@@ -42,20 +49,20 @@ export const text = styled.span`
   text-align: center;
   margin-top: 4px;
   ${(props) =>
-    props.type === "brand"
+    props.type === 'brand'
       ? `
             font-size: 24px;
             line-height: 36px;
             letter-spacing: 0em;
 `
-      : props.type === "location"
+      : props.type === 'location'
       ? `
       width: 60px;
       padding: 0px 16px 0px 16px;
       border-radius: 5px;
       border: 1px solid ${tokens.colors.grey_60};
 `
-      : props.type === "category"
+      : props.type === 'category'
       ? `
       background-color: ${tokens.colors.green_tag};
       width: 88px;

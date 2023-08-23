@@ -174,6 +174,7 @@ function DetailItem({ isProduct, productId }) {
               type='product'
               id={itemInfo.id}
               isLike={false}
+              inner={true}
             ></LikeButton>{' '}
             찜하기
           </itemS.wishBtn>

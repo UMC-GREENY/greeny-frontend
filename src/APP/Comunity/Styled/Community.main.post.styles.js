@@ -158,55 +158,6 @@ export const InputIcon = styled.div`
   background-position: bottom;
   background-repeat: no-repeat;
 `;
-//--------------------------------------------------------------------
-
-// export const PaginationBox = styled.div`
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   margin-left: 600px;
-//   width: 202px;
-
-// `;
-
-// export const PaginationButton = styled.button`
-//   ${(props) => `
-//     background-color: white;
-//     color: black;
-//     width: 30px;
-//     height: 30px;
-//     border: none;
-//     cursor: pointer;
-//     border-radius: 4px;
-//     margin: 0 2px;
-//     margin-top: 50px;
-//     outline: none;
-//     ${props.disabled ? "opacity: 0.5; pointer-events: none;" : ""}
-//   `}
-// `;
-
-// export const PageNumber = styled.div`
-//   width: 50px;
-//   height: 30px;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-
-//   color: ${tokens.colors.grey_900};
-//   border-radius: 4px;
-//   cursor: pointer;
-//   margin: 0 2px;
-//   margin-top: 50px;
-//   font-size: 14px;
-//   font-weight: bold;
-//   user-select: none;
-
-//   &:hover {
-//     background-color: ${tokens.colors.grey_80};
-//   }
-// `;
-
-//------------------------------------------------
 
 export const PaginationWrapper = styled.div`
   .pagination {

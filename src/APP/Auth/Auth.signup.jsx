@@ -59,7 +59,6 @@ function Signup() {
     // URL 쿼리에서 토큰 추출
     const queryParams = new URLSearchParams(location.search);
     const tokenFromQuery = queryParams.get('token');
-    console.log("@@@@",tokenFromQuery);
     // 토큰이 존재하고 유효한지 확인
       if (tokenFromQuery) {
         const storedToken = localStorage.getItem('token');
@@ -72,7 +71,6 @@ function Signup() {
   }, [token]);
   //이메일 인증하기
   const handleEmailVerification = async () => { 
-    console.log("email".email);
     const requestData = {
       email: email,
       authorizationUrl: "https://www.greeny.n-e.kr/signup"
@@ -165,7 +163,6 @@ function Signup() {
             personalInfo: personalInfo,
             thirdParty: thirdParty,
           };
-          console.log("agreementData",agreementData);
 
           const agreementResponse = await request.post('/api/auth/sign-up/agreement', agreementData);
           console.log("agreementResponse", agreementResponse);

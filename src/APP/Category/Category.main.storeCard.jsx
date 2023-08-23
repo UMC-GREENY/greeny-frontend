@@ -21,14 +21,23 @@ function StoreCard(props) {
 
   return (
     <>
-      <itemS.cardWrap type={props.type} onClick={handleCardClick}>
-        <itemS.img
-          src={props.data.imageUrl}
-          onError={handleImageError}
-          type={props.type}
-        ></itemS.img>
-        <itemS.descripWrap>
-          <LikeButton type="store" id={props.data.id}></LikeButton>
+      <itemS.cardWrap type={props.type}>
+        <itemS.ImageWrap>
+          <itemS.img
+            src={props.data.imageUrl}
+            onError={handleImageError}
+            type={props.type}
+          ></itemS.img>
+          <itemS.likebuttonWrap>
+            <LikeButton
+              type="store"
+              id={props.data.id}
+              inner={false}
+            ></LikeButton>
+          </itemS.likebuttonWrap>
+        </itemS.ImageWrap>
+
+        <itemS.descripWrap onClick={handleCardClick}>
           <itemS.text type="brand">{props.data.name}</itemS.text>
           <itemS.tagWrap>
             <itemS.text type="location">{props.data.location}</itemS.text>

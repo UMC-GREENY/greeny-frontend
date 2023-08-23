@@ -6,7 +6,6 @@ import { refreshToken } from "../Api/request";
 import { ACCESS_TOKEN } from "../Api/request";
 import { isSuccessState } from "../Login/Recoil/Recoil.auth.state";
 import { useRecoilState, useRecoilValue } from "recoil";
-import ProductCard from "./Search.productCard";
 import StoreCard from "../Category/Category.main.storeCard";
 
 function SearchStore({ prop }) {

@@ -10,10 +10,17 @@ export const cardWrap = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-right: 100px;
+
   margin-top: ${(props) => (props.type === "best" ? "40px" : "")};
 `;
-
+export const ImageWrap = styled.div`
+  position: relative;
+`;
+export const likebuttonWrap = styled.div`
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+`;
 export const img = styled.img`
   width: ${(props) => (props.type === "best" ? "292px" : "330px;")};
   height: ${(props) => (props.type === "best" ? "390px" : "440px")};
