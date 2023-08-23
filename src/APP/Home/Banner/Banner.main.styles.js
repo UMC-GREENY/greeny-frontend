@@ -20,21 +20,63 @@ export const MainImg = styled.img`
 `;
 
 export const MainText = styled.div`
-  color: white;
-  font-family: New York;
-  font-size: 48px;
-  font-weight: 400;
-  line-height: 73px;
-  letter-spacing: 0em;
-  position: absolute;
-  top: 211px;
-  right: 240px;
-  width: 600px;
-  height: 328px;
-  text-align: right;
+  &.whitest {
+    color: white;
+    font-family: New York;
+    font-size: 48px;
+    font-weight: 550;
+    line-height: 73px;
+    letter-spacing: 0em;
+    position: absolute;
+    top: 211px;
+    right: 240px;
+    width: 600px;
+    height: 328px;
+    text-align: right;
+  }
+
+  &.blackst {
+    color: black;
+    font-family: New York;
+    font-size: 48px;
+    font-weight: 550;
+    line-height: 73px;
+    letter-spacing: 0em;
+    position: absolute;
+    top: 211px;
+    right: 240px;
+    width: 600px;
+    height: 328px;
+    text-align: right;
+  }
 `;
 export const SideNavWrap = styled.div`
   margin-top: 94px;
   position: absolute;
-  color: white;
+`;
+
+export const LinkWrapperr = styled.div`
+  &.whitest {
+    color: white;
+    position: absolute;
+    top: 600px;
+    right: 240px;
+    display: flex;
+    flex-direction: row;
+    font-size: 16px;
+    border-style: solid;
+    border-width: 0 0 2px 0;
+  }
+
+  &.blackst {
+    color: black;
+    position: absolute;
+    top: 600px;
+    right: 240px;
+    display: flex;
+    flex-direction: row;
+    font-size: 16px;
+    border-style: solid;
+    border-width: 0 0 2px 0;
+  }
 `;
