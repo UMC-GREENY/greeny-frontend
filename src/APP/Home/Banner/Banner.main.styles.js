@@ -56,6 +56,7 @@ export const SideNavWrap = styled.div`
 `;
 
 export const LinkWrapperr = styled.div`
+  cursor: pointer;
   &.whitest {
     color: white;
     position: absolute;

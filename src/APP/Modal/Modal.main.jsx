@@ -1,15 +1,24 @@
 import React from 'react';
 import * as Styles from './Styled/Modal.main.styles'; // Styles로 명시적으로 임포트
 import { useNavigate } from 'react-router-dom';
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { isSuccessState } from '../Login/Recoil/Recoil.auth.state';
+import useBeforeUnload from '../Custom/useBeforeUnload';
 
 function Modal({ isOpen, onClose, children }) {
   const isSuccess = useRecoilValue(isSuccessState);
+  const setIsSuccess = useSetRecoilState(isSuccessState);
   const navigate = useNavigate();
 
   const handleLinkClick = (path) => {
     navigate(path); // 클릭한 경로로 이동
+    onClose(); // 모달 닫기
+  };
+  const handleLogout = () => {
+    setIsSuccess(false);
+    window.localStorage.clear();
+    alert("로그아웃 되었습니다")
+    navigate("/home"); // 예시로 로그아웃 후 이동하는 경로
     onClose(); // 모달 닫기
   };
   const handleJoin = () => {
@@ -68,14 +77,8 @@ function Modal({ isOpen, onClose, children }) {
         <Styles.ModalContentsInner>
           <Styles.ModalContentInnerTitle>ME</Styles.ModalContentInnerTitle>
           <Styles.ModalContentInnerLine></Styles.ModalContentInnerLine>
-          <Styles.ModalContentInnerpage
-            onClick={() =>
-              handleLinkClick('/login', {
-                state: { type: 'login', name: '로그인' },
-              })
-            }
-          >
-            LOG IN
+          <Styles.ModalContentInnerpage onClick={isSuccess ? handleLogout : () => {navigate("/login"); onClose(); }}>
+            {isSuccess ? "LOG OUT" : "LOG IN"}
           </Styles.ModalContentInnerpage>
           <Styles.ModalContentInnerpage onClick={handleJoin}>
             JOIN

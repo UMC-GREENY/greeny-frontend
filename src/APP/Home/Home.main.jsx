@@ -36,12 +36,13 @@ export const LinkWrapper = styled.div`
   justify-content: space-between;
   margin-left: 1300px;
   width: 120px;
+  cursor: pointer;
   ${(props) =>
     props.type === "store"
       ? `
-			top: 1600px;`
+			top: 1750px;`
       : `
-				top: 3929px;
+				top: 4079px;
 				`}
 `;
 
