@@ -54,7 +54,6 @@ function Signup() {
   const [selectedDomain, setSelectedDomain] = useState('직접입력');
 
   const [token, setToken] = useState('');
-  // const [resEmail, setResEmail] = useState('');
   
   useEffect(() => {
     // URL 쿼리에서 토큰 추출
@@ -83,12 +82,9 @@ function Signup() {
       alert("이메일을 보냈습니다. 이메일 확인하기 버튼을 눌러주세요.")
       console.log('res: ', res)
       if (res.isSuccess) {
-        // setIsEmailVerified(true);
         localStorage.setItem('token', res.data.token);
         localStorage.setItem('email', res.data.email);
         setToken(localStorage.getItem('token'));
-        // setToken(res.data.token);
-        // setResEmail(res.data.email);
       } else {
         console.log("res.isSuccess",res.isSuccess);
       }

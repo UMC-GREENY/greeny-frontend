@@ -71,7 +71,6 @@ function CommunityDetail() {
   //좋아요
 
   useEffect(() => {
-    // console.log(params[1]);
     const fetchData = async () => {
       try {
         const response = await request.post(
@@ -87,7 +86,6 @@ function CommunityDetail() {
         );
       } catch (error) {
         console.error("Error fetching data:", error);
-        // console.log("에러");
       }
     };
     fetchData();

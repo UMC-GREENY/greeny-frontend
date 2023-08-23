@@ -5,7 +5,7 @@ import * as itemS from "./Styled/Auth.signup.select.styles";
 function SignupSelect() {
   const navigate = useNavigate();
   const handleSubmit = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     navigate("/agree", { // 소셜 최초 로그인 시 이동되는 약관동의 와 다른 플로우 구분 위해 type 보냄
       state: {
         email: "",

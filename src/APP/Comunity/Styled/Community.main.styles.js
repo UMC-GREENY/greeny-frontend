@@ -91,7 +91,7 @@ export const PostStar = styled.div`
 export const PostContent = styled.div`
   font-size: 16px;
   text-align: left;
-  width: 930px;
+  width: 800px;
   margin-right: 20px;
   ${(props) => `color: ${tokens.colors.grey_15}`};
 `;
@@ -99,7 +99,7 @@ export const PostContent = styled.div`
 export const PostTitle = styled.div`
   font-size: 16px;
   text-align: left;
-  width: 1200px;
+  width: 1070px;
   ${(props) => `color: ${tokens.colors.grey_15}`};
 `;
 
