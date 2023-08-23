@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
-import * as itemS from "./Styled/Community.main.post.styles";
-import { FaStar, FaRegStar, FaHome } from "react-icons/fa";
-import request from "../Api/request";
-import Pagination from "react-js-pagination";
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import * as itemS from './Styled/Community.main.post.styles';
+
+import { FaStar, FaRegStar, FaHome } from 'react-icons/fa';
+import request from '../Api/request';
+import Pagination from 'react-js-pagination';
 
 function Post() {
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ function Post() {
   const type = location.state?.type;
 
   const handleMore = () => {
-    navigate("/write_post", { state: { type } });
+    navigate('/write_post', { state: { type } });
   };
 
   const renderStars = (count) => {
@@ -22,8 +23,8 @@ function Post() {
     return stars;
   };
 
-  const [searchKeyword, setSearchKeyword] = useState(""); // 검색어 상태
-  const [completeKeyword, setCompleteSearchKeyword] = useState(""); // 검색어 상태
+  const [searchKeyword, setSearchKeyword] = useState(''); // 검색어 상태
+  const [completeKeyword, setCompleteSearchKeyword] = useState(''); // 검색어 상태
 
   // 검색 기능을 처리하는 함수
   const handleSearch = async () => {
@@ -31,22 +32,22 @@ function Post() {
     try {
       let response;
 
-      if (type === "best") {
+      if (type === 'best') {
         response = await request.get(
           `/api/posts/search?keyword=${searchKeyword}&page=0&size=3005&sort=hits,desc`
         );
         setBestResponse(response.data.content);
-      } else if (type === "storereview") {
+      } else if (type === 'storereview') {
         response = await request.get(
           `/api/reviews/all?type=store&keyword=${searchKeyword}&page=0&size=3005&sort=id,desc`
         );
         setStoreReviewsResponse(response.data.content);
-      } else if (type === "productreview") {
+      } else if (type === 'productreview') {
         response = await request.get(
           `/api/reviews/all?type=product&keyword=${searchKeyword}&page=0&size=3005&sort=id,desc`
         );
         setProductReviewsResponse(response.data.content);
-      } else if (type === "community") {
+      } else if (type === 'community') {
         response = await request.get(
           `/api/posts/search?keyword=${searchKeyword}&page=0&size=3005&sort=id,desc`
         );
@@ -55,7 +56,7 @@ function Post() {
 
       setCurrentPage(1);
     } catch (error) {
-      console.error("Error searching data:", error);
+      console.error('Error searching data:', error);
     }
   };
 
@@ -74,13 +75,13 @@ function Post() {
 
   let currentItems = [];
 
-  if (type === "best") {
+  if (type === 'best') {
     currentItems = bestResponse.slice(startIndex, endIndex);
-  } else if (type === "storereview") {
+  } else if (type === 'storereview') {
     currentItems = storeReviewsResponse.slice(startIndex, endIndex);
-  } else if (type === "productreview") {
+  } else if (type === 'productreview') {
     currentItems = productReviewsResponse.slice(startIndex, endIndex);
-  } else if (type === "community") {
+  } else if (type === 'community') {
     currentItems = postResponse.slice(startIndex, endIndex);
   }
 
@@ -92,33 +93,33 @@ function Post() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        if (type === "best") {
+        if (type === 'best') {
           const bestResponse = await request.get(
-            "/api/posts/search?page=0&size=3005&sort=hits,desc"
+            '/api/posts/search?page=0&size=3005&sort=hits,desc'
           );
           setBestResponse(bestResponse.data.content);
-          console.log("bestResponse", bestResponse);
-        } else if (type === "storereview") {
+          console.log('bestResponse', bestResponse);
+        } else if (type === 'storereview') {
           const storeReviewsResponse = await request.get(
-            "/api/reviews/all?type=store&page=0&size=3005&sort=id,desc"
+            '/api/reviews/all?type=store&page=0&size=3005&sort=id,desc'
           );
           setStoreReviewsResponse(storeReviewsResponse.data.content);
-          console.log("storeReviewsResponse", storeReviewsResponse);
-        } else if (type === "productreview") {
+          console.log('storeReviewsResponse', storeReviewsResponse);
+        } else if (type === 'productreview') {
           const productReviewsResponse = await request.get(
-            "/api/reviews/all?type=product&page=0&size=3005&sort=id,desc"
+            '/api/reviews/all?type=product&page=0&size=3005&sort=id,desc'
           );
           setProductReviewsResponse(productReviewsResponse.data.content);
-          console.log("productReviewsResponse", productReviewsResponse);
-        } else if (type === "community") {
+          console.log('productReviewsResponse', productReviewsResponse);
+        } else if (type === 'community') {
           const postResponse = await request.get(
-            "/api/posts/search?page=0&size=3005&sort=id,desc"
+            '/api/posts/search?page=0&size=3005&sort=id,desc'
           );
           setPostResponse(postResponse.data.content);
-          console.log("postResponse", postResponse);
+          console.log('postResponse', postResponse);
         }
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error('Error fetching data:', error);
       }
     };
 
@@ -130,7 +131,7 @@ function Post() {
     <itemS.SignupWrapper>
       <itemS.SignupContentWrapper>
         <itemS.Title>Community</itemS.Title>
-        {type === "best" && (
+        {type === 'best' && (
           <React.Fragment>
             <itemS.ContentWrapper>
               <itemS.SubTitle>BEST POST</itemS.SubTitle>
@@ -159,7 +160,7 @@ function Post() {
             </itemS.InfoBox>
           </React.Fragment>
         )}
-        {type === "storereview" && (
+        {type === 'storereview' && (
           <React.Fragment>
             <itemS.ContentWrapper>
               <itemS.SubTitle>ECO-STORE REVIEW</itemS.SubTitle>
@@ -189,7 +190,7 @@ function Post() {
             </itemS.InfoBox>
           </React.Fragment>
         )}
-        {type === "productreview" && (
+        {type === 'productreview' && (
           <React.Fragment>
             <itemS.ContentWrapper>
               <itemS.SubTitle>ECO_PRODUCT REVIEW</itemS.SubTitle>
@@ -219,7 +220,7 @@ function Post() {
             </itemS.InfoBox>
           </React.Fragment>
         )}
-        {type === "community" && (
+        {type === 'community' && (
           <React.Fragment>
             <itemS.ContentWrapper>
               <itemS.SubTitle>GREENY COMMUNITY</itemS.SubTitle>
@@ -255,11 +256,11 @@ function Post() {
             activePage={currentPage}
             itemsCountPerPage={itemsPerPage}
             totalItemsCount={
-              type === "best"
+              type === 'best'
                 ? bestResponse.length
-                : type === "storereview"
+                : type === 'storereview'
                 ? storeReviewsResponse.length
-                : type === "productreview"
+                : type === 'productreview'
                 ? productReviewsResponse.length
                 : postResponse.length
             }
@@ -269,7 +270,7 @@ function Post() {
         </itemS.PaginationWrapper>
         <itemS.InputWrapper>
           <itemS.InputBox
-            placeholder="게시글 검색하기"
+            placeholder='게시글 검색하기'
             value={searchKeyword}
             onChange={(e) => setSearchKeyword(e.target.value)}
           />

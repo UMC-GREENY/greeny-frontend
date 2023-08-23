@@ -181,6 +181,7 @@ function Likepage() {
           <mystyles.contentsinnercontainer>
             {currentItems.map((item, index) => (
               <LikedProductpage
+                id={currentTab === 'store' ? item.id : item.id}
                 likestate={true}
                 type={currentTab === 'store' ? 'store' : 'product'}
                 src={
