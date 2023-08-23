@@ -30,6 +30,7 @@ export const SideNavSearchWrapper = styled.div`
 `;
 
 export const SideNavInputBox = styled.input`
+  font-family: Pretendard;
   width: 80%;
   height: 20px;
   margin-top: 13px;
@@ -39,6 +40,7 @@ export const SideNavInputBox = styled.input`
   border: none;
   outline: none;
   background-color: transparent;
+  color: ${(props) => props.type === "main" ? '#FFFFFF' : ''};
   border-bottom: ${(props) =>
     props.type === "main" ? "1px solid #FFFFFF" : "1px solid #000000"};
 `;
