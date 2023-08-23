@@ -7,6 +7,7 @@ import axios from 'axios';
 function Signup() {
   
   const location = useLocation();
+  // console.log("location",location);
   const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
@@ -59,7 +60,6 @@ function Signup() {
     // URL 쿼리에서 토큰 추출
     const queryParams = new URLSearchParams(location.search);
     const tokenFromQuery = queryParams.get('token');
-    console.log("@@@@",tokenFromQuery);
     // 토큰이 존재하고 유효한지 확인
       if (tokenFromQuery) {
         const storedToken = localStorage.getItem('token');
@@ -131,16 +131,17 @@ function Signup() {
       }
     });
   }
+  const handleSubmitt = async () => {console.log("야이");}
 
 
   const handleSubmit = async () => {
-    
+    console.log("야호");
     if (!isEmailVerified) {
       alert("이메일로 이동 후, 이메일 확인하기 버튼을 눌러주세요.");
       return;
     }
-    const personalInfo = location.state.optionalChecked;
-    const thirdParty = location.state.advertisingChecked;
+    const personalInfo = false;
+    const thirdParty = false;
 
     try {
       const requestData = {
@@ -283,7 +284,6 @@ function Signup() {
           <itemS.CancelButton onClick={handleCancel}>취소하기</itemS.CancelButton>
             <itemS.SignupButton
               onClick={handleSubmit}
-              disabled={!isFormValid}
             >
             회원가입</itemS.SignupButton>
           </itemS.ButtonContainer>
