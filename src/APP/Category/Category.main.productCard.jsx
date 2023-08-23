@@ -21,7 +21,7 @@ function ProductCard(props) {
         <itemS.ImageWrap>
           <itemS.img src={props.data.imageUrl} type={props.type}></itemS.img>
           <itemS.likebuttonWrap>
-            <LikeButton type='product' id={props.data.id} inner={false}></LikeButton>
+          { props.data.bookmarked ? (<LikeButton type='product' id={props.data.id} isLike={true} inner={false}></LikeButton>) : (<LikeButton type='product' id={props.data.id} isLike={false} inner={false}></LikeButton>)}
           </itemS.likebuttonWrap>
         </itemS.ImageWrap>
         <itemS.descripWrap onClick={handleCardClick}>

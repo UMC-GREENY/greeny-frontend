@@ -35,7 +35,7 @@ const LikeButton = ({ type, id, isLike, inner }) => {
   const [initialLikeState, setInitialLikeState] = useState(isLike);
 
   useEffect(() => {
-    setInitialLikeState(isLike); // 초기 isLike 값을 설정
+
   }, [isLike]);
   const handleToggleLike = async () => {
     if (!isTokenValid()) {

@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import * as itemS from "./styles/Category.main.newItem.styles"
 import request from "../Api/request";
+import { ACCESS_TOKEN } from "../Api/request";
 
 import StoreCard from "./Category.main.storeCard";
 
-function BestItemStore() {
+function BestItemStore(props) {
    const [bestItem, setBestItem] = useState([]);
+   const [isSuccess, setIsSuccess] = useState(props.isSuccess);
  
 
 
@@ -17,9 +19,20 @@ function BestItemStore() {
       const fetchData = async () => {
          try {
             if (isMounted) {
-               const response = await request.get('/api/stores/simple?page=0&size=8&sort=bookmarks,desc')
-               console.log('response:', response.data);
-               setBestItem(response.data.content);
+               if (isSuccess === true) {
+                  const response = await request.get('/api/stores/auth/simple?page=0&size=8&sort=bookmarks,desc', {
+                     headers: {
+                        'Content-Type': 'multipart/form-data',
+                        Authorization: `Bearer ${window.localStorage.getItem(ACCESS_TOKEN)}`
+                    },
+                  })
+                  console.log('auth response:', response.data);
+                  setBestItem(response.data.content);
+               } else {
+                  const response = await request.get('/api/stores/simple?page=0&size=8&sort=bookmarks,desc')
+                  console.log('response:', response.data);
+                  setBestItem(response.data.content);
+               }
             }
          } catch (error) {
             console.error('데이터 가져오기 실패', error);
