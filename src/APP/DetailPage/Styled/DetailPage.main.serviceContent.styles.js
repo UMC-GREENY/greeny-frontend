@@ -145,6 +145,11 @@ export const ReviewWrapper = styled.div`
                 width: 1231px;
                 display: flex;
             `
+            : props.type === "text"
+      ? `
+                display:flex;
+                justify-content: space-between;
+            `
       : props.type === "writeContent"
       ? `
                 width: 1212px;
@@ -269,11 +274,23 @@ export const PaginationWrapper = styled.div`
   ul.pagination li a {
     text-decoration-line: none;
     color: ${tokens.colors.grey_60};
+    background-image: url("/review/deleteIcon");
   }
 `;
 
-/* ${(props) => 
-        props.type === "name"
-            ? `width: 585px`
-            : `width: 245px;`
-    }` */
+export const imgIcon = styled.img`
+${(props) => 
+        props.type === "delete"
+            ? `width: 44px;
+            );
+             `
+            : `width: 24px;
+            margin-left:4px;`
+    }`
+// `
+
+//  ${(props) => 
+//         props.type === "name"
+//             ? `width: 585px`
+//             : `width: 245px;`
+//     }` */
