@@ -160,6 +160,7 @@ export const InputIcon = styled.div`
 `;
 //--------------------------------------------------------------------
 
+
 export const PaginationWrapper = styled.div`
   .pagination {
     display: flex;
