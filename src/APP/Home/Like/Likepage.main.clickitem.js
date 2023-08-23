@@ -80,9 +80,13 @@ const LikeButton = ({ type, id, isLike }) => {
   return (
     <div onClick={handleToggleLike}>
       {initialLikeState ? (
-        <FaHeart color='red' style={buttonStyle} />
+        <FaHeart
+          color='#649D17
+        '
+          style={buttonStyle}
+        />
       ) : (
-        <FaRegHeart color='gray' style={buttonStyle} />
+        <FaRegHeart color='beige' style={buttonStyle} />
       )}
     </div>
   );

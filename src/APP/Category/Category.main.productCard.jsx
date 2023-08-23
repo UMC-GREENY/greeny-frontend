@@ -17,10 +17,14 @@ function ProductCard(props) {
 
   return (
     <>
-      <itemS.cardWrap type={props.type} onClick={handleCardClick}>
-        <itemS.img src={props.data.imageUrl} type={props.type}></itemS.img>
-        <itemS.descripWrap>
-          <LikeButton id={props.data.id}></LikeButton>
+      <itemS.cardWrap type={props.type}>
+        <itemS.ImageWrap>
+          <itemS.img src={props.data.imageUrl} type={props.type}></itemS.img>
+          <itemS.likebuttonWrap>
+            <LikeButton type='product' id={props.data.id}></LikeButton>
+          </itemS.likebuttonWrap>
+        </itemS.ImageWrap>
+        <itemS.descripWrap onClick={handleCardClick}>
           <itemS.text type='brand'>{props.data.storeName}</itemS.text>
           <itemS.text type='name'>{props.data.productName}</itemS.text>
           <itemS.text type='price'>₩ {props.data.price}</itemS.text>

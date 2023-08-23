@@ -12,16 +12,18 @@ function LikedProductpage(props) {
 
   const calculateFontSize = () => {
     if (titleLength < 10) {
-      return 25;
+      return 21;
     } else if (titleLength < 20) {
-      return 20;
+      return 18;
     } else {
-      return 15;
+      return 13;
     }
   };
   return (
     <mystyles.productcontainer>
-      <mystyles.productimage src={src}></mystyles.productimage>
+      <mystyles.productimage>
+        <mystyles.productimagereal src={src}></mystyles.productimagereal>
+      </mystyles.productimage>
       <mystyles.productinfo>
         <mystyles.productinfotitle style={{ fontSize: calculateFontSize() }}>
           {title}
