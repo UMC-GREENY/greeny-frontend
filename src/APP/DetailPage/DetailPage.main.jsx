@@ -19,7 +19,6 @@ function DetailPage() {
   };
 
   useEffect(() => {
-    console.log("TLqkf:", isProduct);
     pathPL(); // productId를 가져오는 함수 호출
     const path = window.location.pathname;
     if (path.includes("/store")) {

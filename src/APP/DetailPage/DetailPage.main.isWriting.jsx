@@ -13,12 +13,10 @@ function IsWriting(props) {
 
     // 별점 변경 시 호출되는 함수
     const handleRatingChange = (newRating) => {
-        console.log("평점: ", newRating)
         setStar(newRating);
     };
 
     const handleContentChange = (e) => {
-        console.log("컨텐츠 ", e)
         setContent(e);
     };
 

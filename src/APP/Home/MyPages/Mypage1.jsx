@@ -319,7 +319,7 @@ function Mypage() {
                   {[...Array(5)].map((_, index) => (
                     <FaStar
                       key={index}
-                      color={index < post.star ? 'gold' : 'gray'}
+                      color={index < post.star ? 'black' : 'gray'}
                     />
                   ))}
                 </mystyles.reviewstar>

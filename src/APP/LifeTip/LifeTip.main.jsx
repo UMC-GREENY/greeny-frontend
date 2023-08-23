@@ -5,7 +5,6 @@ import * as mainS from "./Styled/LifeTip.main.styles";
 
 function LifeTip() {
   const [num, setNum] = useState(1);
-  console.log(num);
   return (
     <mainS.Div>
       <mainS.Wrapper>

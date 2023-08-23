@@ -4,7 +4,7 @@ import request from '../../Api/request'; // request 모듈을 가져온다고 �
 import { ACCESS_TOKEN } from '../../Api/request';
 import { refreshToken } from '../../Api/request';
 import axios from 'axios';
-const LikeButton = ({ type, id, isLike }) => {
+const LikeButton = ({ type, id, isLike, inner }) => {
   const [isSuccess, setIsSuccess] = useState(null);
 
   const isTokenValid = () => {
@@ -75,14 +75,21 @@ const LikeButton = ({ type, id, isLike }) => {
   const buttonStyle = {
     fontSize: '24px',
     cursor: 'pointer',
+    marginRight: '8px',
+    marginTop: '8px'
   };
+
+  const heartColor = inner ? '#ffffff' : '#649D17'; //하트 색깔
 
   return (
     <div onClick={handleToggleLike}>
       {initialLikeState ? (
-        <FaHeart color='red' style={buttonStyle} />
+        <FaHeart
+          color={heartColor}
+          style={buttonStyle}
+        />
       ) : (
-        <FaRegHeart color='gray' style={buttonStyle} />
+        <FaRegHeart color='beige' style={buttonStyle} />
       )}
     </div>
   );

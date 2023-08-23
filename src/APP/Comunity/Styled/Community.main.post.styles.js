@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import * as tokens from "../../tokens";
+import styled from 'styled-components';
+import * as tokens from '../../tokens';
 
 export const SignupWrapper = styled.div`
   display: flex;
@@ -24,7 +24,7 @@ export const Title = styled.h1`
   display: flex;
   font-size: 48px;
 
-  font-family: "New York";
+  font-family: 'New York';
   font-weight: normal;
   justify-content: flex-start;
   margin-top: 104px;
@@ -34,7 +34,7 @@ export const Title = styled.h1`
 export const SubTitle = styled.div`
   display: flex;
   justify-content: flex-start;
-  font-family: "New York";
+  font-family: 'New York';
   font-size: 24px;
   margin-top: 36px;
   padding-bottom: 16px;
@@ -146,22 +146,18 @@ export const InputBox = styled.input`
   border: none;
   outline: none;
   font-size: 12px;
-  font-family: "Pretendard";
+  font-family: 'Pretendard';
   ${(prop) =>
     `color:${tokens.colors.grey_60}; border-bottom:1px solid ${tokens.colors.grey_15}`}
 `;
 export const InputIcon = styled.div`
   width: 30px;
   height: 50px;
-  background-image: url("/../../lifetip/search.png");
+  background-image: url('/../../lifetip/search.png');
   background-size: 25px 25px;
   background-position: bottom;
   background-repeat: no-repeat;
 `;
-//--------------------------------------------------------------------
-
-
-//------------------------------------------------
 
 export const PaginationWrapper = styled.div`
   .pagination {
