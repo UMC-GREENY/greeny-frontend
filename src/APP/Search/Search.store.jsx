@@ -6,7 +6,7 @@ import { refreshToken } from "../Api/request";
 import { ACCESS_TOKEN } from "../Api/request";
 import { isSuccessState } from "../Login/Recoil/Recoil.auth.state";
 import { useRecoilState, useRecoilValue } from "recoil";
-import StoreCard from "../Category/Category.main.storeCard";
+import SearchStoreCard from "./Search.storeCard";
 
 function SearchStore({ prop }) {
   const [content, setContent] = useState([]);
@@ -91,7 +91,7 @@ function SearchStore({ prop }) {
               <SearchS.Alert>검색 결과가 없습니다.</SearchS.Alert>
             ) : (
               content.map((item, index) => (
-                <StoreCard key={index} type="new" data={item} />
+                <SearchStoreCard key={index} type="new" data={item} />
               ))
             )}
           </SearchS.ItemsWrapper>

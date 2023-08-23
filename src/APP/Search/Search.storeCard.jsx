@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import * as itemS from "./Styled/Search.card.styles";
 import { useNavigate } from "react-router-dom";
 import LikeButton from "../Home/Like/Likepage.main.clickitem";
-function SearchStoreCard() {
+function SearchStoreCard(props) {
   const navigate = useNavigate();
 
   if (!props.data) {
