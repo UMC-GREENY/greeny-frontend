@@ -70,7 +70,6 @@ function Home() {
   const handleNavigateProduct = () => {
     navigate(`/product`);
   };
-  console.log(lifeTipCards);
   return (
     <>
       <BannerSlider></BannerSlider>

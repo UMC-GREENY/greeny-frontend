@@ -29,7 +29,7 @@ function StoreCard(props) {
             type={props.type}
           ></itemS.img>
           <itemS.likebuttonWrap>
-            <LikeButton type='store' id={props.data.id}></LikeButton>
+            <LikeButton type='store' id={props.data.id} inner={false}></LikeButton>
           </itemS.likebuttonWrap>
         </itemS.ImageWrap>
 

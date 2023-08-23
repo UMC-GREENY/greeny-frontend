@@ -2,7 +2,6 @@ import { Link, useLocation } from "react-router-dom";
 import * as tipDeS from "./Styled/LifeTipDe.main.styles";
 function LifeTipDe() {
   const location = useLocation();
-  console.log(location);
   const title = location.state.title;
   const ti = location.state.ti;
   const recy = location.state.recy;
