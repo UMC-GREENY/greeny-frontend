@@ -11,6 +11,9 @@ import BestItemProduct from '../Category/Category.main.product.bestItem';
 import BannerSlider from './Banner/Banner.main';
 import { lifeTipCards } from './Banner/Banner.main.dummy';
 
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { isSuccessState } from '../Login/Recoil/Recoil.auth.state';
+import useBeforeUnload from '../Custom/useBeforeUnload';
 
 import request from '../Api/request';
 import { refreshToken } from '../Api/request';
@@ -67,6 +70,11 @@ export const LinkSpan = styled.span`
 `;
 
 function Home() {
+  const isSuccess = useRecoilValue(isSuccessState);
+  const setIsSuccess = useSetRecoilState(isSuccessState);
+  console.log("isSuccess", isSuccess);
+  useBeforeUnload();
+  
   const navigate = useNavigate();
   const handleNavigateStore = () => {
     navigate(`/store`);
@@ -77,38 +85,38 @@ function Home() {
   };
 
   // 토큰 유효 검사 실시 false면 refreshToken로 재발급
-  // isSuccess 는 사용하고 싶으면 쓰세요
-  const [isSuccess, setIsSuccess] = useState(null);
+  // // isSuccess 는 사용하고 싶으면 쓰세요
+  // const [isSuccess, setIsSuccess] = useState(null);
 
-  useEffect(() => {
-    // 데이터 가져오기를 처리하는 함수 정의
-    async function fetchData() {
+  // useEffect(() => {
+  //   // 데이터 가져오기를 처리하는 함수 정의
+  //   async function fetchData() {
 
-      try {
-        const response = await request.get('/api/auth');
-        console.log("response", response);
-        setIsSuccess(response.isSuccess);
+  //     try {
+  //       const response = await request.get('/api/auth');
+  //       console.log("response", response);
+  //       setIsSuccess(response.isSuccess);
 
-      } catch (error) {
-        if (error.response && error.response.status === 401) {
-          // 토큰 만료 또는 인증 실패로 인한 오류인 경우
-          try {
-            // refreshToken 함수를 사용하여 액세스 토큰 갱신
-            await refreshToken();
-            // 실패한 요청을 다시 시도
-            const response = await request.get('/api/auth');
-            setIsSuccess(response.isSuccess);
-          } catch (refreshError) {
-            console.error('토큰 갱신 중 오류:', refreshError);
-          }
-        } else {
-          console.error('데이터 가져오기 중 오류:', error);
-        }
-      }
-    }
+  //     } catch (error) {
+  //       if (error.response && error.response.status === 401) {
+  //         // 토큰 만료 또는 인증 실패로 인한 오류인 경우
+  //         try {
+  //           // refreshToken 함수를 사용하여 액세스 토큰 갱신
+  //           await refreshToken();
+  //           // 실패한 요청을 다시 시도
+  //           const response = await request.get('/api/auth');
+  //           setIsSuccess(response.isSuccess);
+  //         } catch (refreshError) {
+  //           console.error('토큰 갱신 중 오류:', refreshError);
+  //         }
+  //       } else {
+  //         console.error('데이터 가져오기 중 오류:', error);
+  //       }
+  //     }
+  //   }
 
-    fetchData();
-  }, [isSuccess]);
+  //   fetchData();
+  // }, [isSuccess]);
   return (
     <>
 {isSuccess !== null && (
