@@ -66,7 +66,7 @@ export const Ti = styled.div`
 export const Name = styled.div`
   margin-top: 40px;
   display: flex;
-  width: 975px;
+  width: 870px;
   font-family: "Pretendard";
   font-size: 32px;
   font-style: normal;
