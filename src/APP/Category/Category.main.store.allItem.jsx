@@ -115,7 +115,7 @@ function AllItem(props) {
       <itemS.TitleWrap type='best'>
         <itemS.TitleText>STORE ALL</itemS.TitleText>
       </itemS.TitleWrap>
-      <itemS.SortContainer>
+      <itemS.SortContainer type='store'>
         <itemS.SortText onClick={sortBest}>인기순</itemS.SortText>
         <itemS.overline type='sero'></itemS.overline>
         <itemS.SortText onClick={sortreview}>후기순</itemS.SortText>
