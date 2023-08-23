@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
+import React, { useEffect, useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
 //components
 import MainLandigPicture from './Home.main.landing.picture';
@@ -44,12 +44,13 @@ export const LinkWrapper = styled.div`
   justify-content: space-between;
   margin-left: 1300px;
   width: 120px;
+  cursor: pointer;
   ${(props) =>
-    props.type === 'store'
+    props.type === "store"
       ? `
-			top: 1600px;`
+			top: 1750px;`
       : `
-				top: 3929px;
+				top: 4079px;
 				`}
 `;
 
@@ -57,7 +58,7 @@ export const LinkSpan = styled.span`
   font-family: Pretendard;
   color: #666666;
   ${(props) =>
-    props.type === 'more'
+    props.type === "more"
       ? `
 				width: 90px;
 				height: 24px;
@@ -121,7 +122,7 @@ function Home() {
     <>
 {isSuccess !== null && (
   <>
-  <BannerSlider></BannerSlider>
+  <MainLandigPicture></MainLandigPicture>
   <CategoryWrapper>
     <ContentWrapper>
       <NewItemStore isSuccess={isSuccess}></NewItemStore>

@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import styled from "styled-components";
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 
-import MainLandigPicture from "../Home/Home.main.landing.picture";
-import NewItem from "./Category.main.product.newItem";
-import BestItem from "./Category.main.product.bestItem";
-import AllItem from "./Category.main.product.allItem";
-
+import MainLandigPicture from '../Home/Home.main.landing.picture';
+import NewItem from './Category.main.product.newItem';
+import BestItem from './Category.main.product.bestItem';
+import AllItem from './Category.main.product.allItem';
+import BannerSlider from '../Home/Banner/Banner.main';
 
 import request from '../Api/request';
 import { refreshToken } from '../Api/request';
@@ -18,24 +18,24 @@ import useBeforeUnload from '../Custom/useBeforeUnload';
 
 
 export const CategoryWrapper = styled.div`
-    width: 100%;
+  width: 100%;
 
-    display: flex;
-    justify-content: center;
-    align-items: center ;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 
-    background-color: white;
-`
+  background-color: white;
+`;
 
 export const ContentWrapper = styled.div`
-    padding-top: 100px;
-    width: 1440px;
-    display: flex;
-    justify-content: center;
-    align-items: center ;
-    flex-direction: column;
-`
+  padding-top: 100px;
+  width: 1440px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
 
 function Product() {
 
@@ -81,7 +81,7 @@ useBeforeUnload();
     <>
       {isSuccess !== null && (
         <>
-          <MainLandigPicture></MainLandigPicture>
+          <BannerSlider></BannerSlider>
           <CategoryWrapper>
             <ContentWrapper>
               <NewItem isSuccess={isSuccess}></NewItem>

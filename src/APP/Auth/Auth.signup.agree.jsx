@@ -58,6 +58,10 @@ function SignupAgree() {
     if (checkedItems.slice(1, 3).every(item => item)) {
       setOptionalChecked(checkedItems[3]);
       setAdvertisingChecked(checkedItems[4]);
+      // console.log("checkedItems[3]",checkedItems[3]);
+      // console.log("optionalChecked",optionalChecked);
+      localStorage.setItem('optionalChecked', checkedItems[3]);
+      localStorage.setItem('advertisingChecked', checkedItems[4]);
 
       navigate('/signup', {
         state: {

@@ -7,6 +7,7 @@ import axios from 'axios';
 function Signup() {
   
   const location = useLocation();
+  // console.log("location",location);
   const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
@@ -130,15 +131,14 @@ function Signup() {
     });
   }
 
-
   const handleSubmit = async () => {
-    
+    console.log("야호");
     if (!isEmailVerified) {
       alert("이메일로 이동 후, 이메일 확인하기 버튼을 눌러주세요.");
       return;
     }
-    const personalInfo = location.state.optionalChecked;
-    const thirdParty = location.state.advertisingChecked;
+    const personalInfo = localStorage.getItem('optionalChecked');
+    const thirdParty = localStorage.getItem('advertisingChecked');
 
     try {
       const requestData = {
@@ -280,7 +280,6 @@ function Signup() {
           <itemS.CancelButton onClick={handleCancel}>취소하기</itemS.CancelButton>
             <itemS.SignupButton
               onClick={handleSubmit}
-              disabled={!isFormValid}
             >
             회원가입</itemS.SignupButton>
           </itemS.ButtonContainer>
