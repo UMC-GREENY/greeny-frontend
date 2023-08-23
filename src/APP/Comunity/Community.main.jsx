@@ -75,7 +75,7 @@ function CommunityMain() {
         <itemS.InfoBox>
           {bestResponse.map((post, index) => (
             <React.Fragment key={post.id}>
-              <itemS.InfoLine>
+              <itemS.InfoLine onClick={() => navigate(`/community/${post.id}`)}>
                 <itemS.PostTitle>{post.title}</itemS.PostTitle>
                 <itemS.PostEmail>{post.writerEmail}</itemS.PostEmail>
                 <itemS.PostDate>{post.createdAt}</itemS.PostDate>
