@@ -6,8 +6,9 @@ export const MainImg = styled.div`
 	height: 648px;
 
 	padding-top: 90px;
-	
 	background-image: url("/home/mainPicture.png");
+	background-size: cover; /* 이미지를 배율에 맞춰서 크게 표시 */
+	background-repeat: no-repeat; /* 이미지 반복하지 않음 */
 `
 
 
