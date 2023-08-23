@@ -29,11 +29,21 @@ function StoreCard(props) {
             type={props.type}
           ></itemS.img>
           <itemS.likebuttonWrap>
-            <LikeButton
-              type="store"
-              id={props.data.id}
-              inner={false}
-            ></LikeButton>
+            {props.data.isBookmarked ? (
+              <LikeButton
+                type="store"
+                id={props.data.id}
+                isLike={true}
+                inner={false}
+              ></LikeButton>
+            ) : (
+              <LikeButton
+                type="store"
+                id={props.data.id}
+                isLike={false}
+                inner={false}
+              ></LikeButton>
+            )}
           </itemS.likebuttonWrap>
         </itemS.ImageWrap>
 

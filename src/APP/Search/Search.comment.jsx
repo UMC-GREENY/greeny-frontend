@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router";
-
+import * as Comments from "./Styled/Search.comment.styles";
 function SearchComment(props) {
   const navigate = useNavigate();
 
@@ -10,6 +10,14 @@ function SearchComment(props) {
     // 상세 페이지로 이동
     navigate(`/community/${props.data.id}`);
   };
-  return <></>;
+  return (
+    <>
+      <Comments.Div type={props.data} onClick={handleCardClick}>
+        <Comments.Title>{props.data.title}</Comments.Title>
+        <Comments.Email>{props.data.writerEmail}</Comments.Email>
+        <Comments.Date>{props.data.createdAt}</Comments.Date>
+      </Comments.Div>
+    </>
+  );
 }
 export default SearchComment;

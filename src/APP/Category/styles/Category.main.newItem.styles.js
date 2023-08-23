@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import * as tokens from "../../tokens";
 
 export const TitleWrap = styled.div`
@@ -60,7 +60,7 @@ export const ItemsWrapper = styled.div`
         flex-wrap: wrap;
         margin-top: 60px;
 `
-    : props.type === "all"
+      : props.type === "all"
       ? `
         width: 1264px;
         height: auto;
@@ -81,13 +81,23 @@ export const ItemsWrapper = styled.div`
 `;
 
 export const SortContainer = styled.div`
-  width: 344px;
+  width: 1264px;
   gap: 4px;
 
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 36px 0 0 920px;
+  ${(props) =>
+    props.type === "store"
+      ? `
+      
+      width: 132px;
+      margin: 36px 0 0 1117px;
+
+`
+      : ` 
+     
+            `}
 `;
 
 export const SortText = styled.span`
@@ -97,26 +107,70 @@ export const SortText = styled.span`
   line-height: 24px;
   letter-spacing: 0em;
   text-align: right;
-  :active {font-weight: 600;};
+  :active {
+    font-weight: 600;
+  }
 `;
 
 export const PaginationWrapper = styled.div`
-    .pagination { display: flex; justify-content: center; margin-top: 15px;}
-    ul { list-style: none; padding: 0; }
-    ul.pagination li {
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  ul.pagination li {
     display: inline-block;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1rem; 
+    font-size: 1rem;
     width: 26px;
     height: 26px;
     border-radius: 99%;
     font-size: 12px;
     line-height: 18px;
-    border: none;}
-    margin: 30px 0 142px 0 ;
-    ul.pagination li.active a { color: ${tokens.colors.grey_100}; }
-    ul.pagination li.active { background-color: ${tokens.colors.green_deep}; }
-    ul.pagination li a {text-decoration-line: none; color: ${tokens.colors.grey_60};}
-`
+    border: none;
+  }
+  margin: 30px 0 142px 0;
+  ul.pagination li.active a {
+    color: ${tokens.colors.grey_100};
+  }
+  ul.pagination li.active {
+    background-color: ${tokens.colors.green_deep};
+  }
+  ul.pagination li a {
+    text-decoration-line: none;
+    color: ${tokens.colors.grey_60};
+  }
+`;
+export const StyleSelect = styled.select`
+  border-radius: 6px;
+  padding-left: 5px;
+  /* Subheading/Subheading */
+  font-family: "Pretendard";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+  ${(props) => `border: ${tokens.colors.grey_70}`}
+  ${(props) =>
+    props.name === "location" &&
+    css`
+      width: 63px;
+      height: 32px;
+      color: ${tokens.colors.grey_70};
+      margin-right: 12px;
+    `}
+
+  ${(props) =>
+    props.name === "category" &&
+    css`
+      width: 175px;
+      height: 32px;
+      color: ${tokens.colors.grey_70};
+    `}
+`;

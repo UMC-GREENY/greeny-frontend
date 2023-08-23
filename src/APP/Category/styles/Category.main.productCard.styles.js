@@ -31,7 +31,7 @@ export const descripWrap = styled.div`
   width: 292px;
   height: 104px;
   padding: 0px 0px 12px 0px;
-
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;

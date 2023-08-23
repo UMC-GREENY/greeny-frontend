@@ -18,8 +18,8 @@ function SideNav(props) {
       <SideNavS.SideNavSearchWrapper>
         <SideNavS.SideNavInputBox
           type={props.type}
-          value={content} // 현재 상태 값을 value로 설정
-          onChange={(e) => setContent(e.target.value)} // 값을 업데이트하는 함수
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
         ></SideNavS.SideNavInputBox>
         <SideNavS.SideNavInputIcon
           type={props.type}

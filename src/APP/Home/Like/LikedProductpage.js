@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import * as mystyles from './Styled/Likepage';
 import LikeButton from './Likepage.main.clickitem';
 function LikedProductpage(props) {
   const { id, src, title, content1, content2, type, likestate } = props;
   const [titleLength, setTitleLength] = useState(title.length);
+  const navigate = useNavigate();
+  const handleLikedpageClick = () => {
+    navigate(`/store/${id}`);
+  };
+
   console.log(id);
   console.log(type);
   useEffect(() => {
@@ -21,7 +27,7 @@ function LikedProductpage(props) {
   };
   return (
     <mystyles.productcontainer>
-      <mystyles.productimage>
+      <mystyles.productimage onClick={handleLikedpageClick}>
         <mystyles.productimagereal src={src}></mystyles.productimagereal>
       </mystyles.productimage>
       <mystyles.productinfo>

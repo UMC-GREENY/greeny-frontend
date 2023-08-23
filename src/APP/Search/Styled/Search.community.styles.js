@@ -6,6 +6,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100vw;
+  margin-bottom: 126px;
 `;
 export const Div = styled.div`
   display: flex;
@@ -28,9 +29,12 @@ export const Div = styled.div`
 `;
 export const Box = styled.div`
   width: 1270px;
+  height: 176px;
   border-style: solid;
   border-width: 1px 0px 1px 0px;
-
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   height: ${(props) => (props.type.length === 0 ? "224px" : "174x")};
   ${(props) => `border-bottom: 1px solid ${tokens.colors.grey_15}`}
 `;
@@ -99,6 +103,7 @@ export const ItemsWrapper = styled.div`
 `;
 export const Alert = styled.div`
   width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;

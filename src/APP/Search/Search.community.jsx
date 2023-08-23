@@ -33,7 +33,6 @@ function SearchCommunity({ prop }) {
           ) : (
             content.map((item, index) => (
               <SearchComment key={index} data={item} />
-              // <StoreCard key={index} type="new" data={item} />
             ))
           )}
         </SearchC.Box>
