@@ -1,5 +1,4 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
 import {
   BrowserRouter,
   Route,
@@ -7,10 +6,10 @@ import {
   useLocation,
   Routes,
   useNavigate,
-} from 'react-router-dom';
+} from "react-router-dom";
 //styles
-import styled from 'styled-components';
-import * as tokens from './APP/tokens';
+import styled from "styled-components";
+import * as tokens from "./APP/tokens";
 
 //Main components
 import TopNav from "./APP/TopNav/TopNav.main";
@@ -31,7 +30,7 @@ import Post from "./APP/Comunity/Community.main.post";
 import WritePost from "./APP/Comunity/Community.main.post.write";
 import CommunityDetail from "./APP/Comunity/Community.detail";
 import Product from "./APP/Category/Category.main.product.jsx";
-import Store from "./APP/Category/Category.main.store"
+import Store from "./APP/Category/Category.main.store";
 
 function App() {
   const MainScreen = styled.div`
@@ -50,25 +49,25 @@ function App() {
       <SideNav></SideNav>
       <MainScreen>
         <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/select' element={<SignupSelect />} />
-          <Route path='/agree' element={<SignupAgree />} />
-          <Route path='/signup' element={<Signup />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/product' element={<Product />} />
-          <Route path='/store' element={<Store />} />
-          <Route path='/community' element={<CommunityMain />} />
-          <Route path='/post' element={<Post />} />
-          <Route path='/write_post' element={<WritePost />} />
-          <Route path='/lifeTip' element={<LifeTip />} />
-          <Route path='/lifeTip_de' element={<LifeTipDe />} />
-          <Route path='/product/:productId' element={<DetailPage />} />
-          <Route path='/store/:storeId' element={<DetailPage />} />
-          <Route path='/mypage' element={<Mypage />} />
-          <Route path='/likepage' element={<Likepage />} />
-          <Route path='/mypageinfo' element={<Mypageinfo />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/select" element={<SignupSelect />} />
+          <Route path="/agree" element={<SignupAgree />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/product" element={<Product />} />
+          <Route path="/store" element={<Store />} />
+          <Route path="/community" element={<CommunityMain />} />
+          <Route path="/post" element={<Post />} />
+          <Route path="/write_post" element={<WritePost />} />
+          <Route path="/lifeTip" element={<LifeTip />} />
+          <Route path="/lifeTip_de" element={<LifeTipDe />} />
+          <Route path="/product/:productId" element={<DetailPage />} />
+          <Route path="/store/:storeId" element={<DetailPage />} />
+          <Route path="/mypage" element={<Mypage />} />
+          <Route path="/likepage" element={<Likepage />} />
+          <Route path="/mypageinfo" element={<Mypageinfo />} />
           <Route path="/community/:no" element={<CommunityDetail />} />
-          <Route path='*' element={<Home />} />
+          <Route path="*" element={<Home />} />
         </Routes>
       </MainScreen>
     </div>
