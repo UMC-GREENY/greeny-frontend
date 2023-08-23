@@ -23,7 +23,7 @@ export const LoginTitle = styled.div`
   display: flex;
   width: 100%;
   justify-content: flex-start;
-  margin-left: 75px;
+  margin-left: 200px;
   font-family: "New York";
   font-size: 48px;
   ${(props) => `color: ${tokens.colors.green_main2}`}
