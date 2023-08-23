@@ -65,3 +65,7 @@ export const Div2 = styled.div`
     }
   }
 `;
+
+export const more = styled.h3`
+  cursor: pointer;
+`;
