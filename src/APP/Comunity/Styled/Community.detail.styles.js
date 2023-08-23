@@ -14,7 +14,7 @@ export const SignupContentWrapper = styled.div`
   margin-top: 104px;
   margin-left: 240px;
   margin-right: 240px;
-  width: 1440px;
+  width: 1270px;
 `;
 
 export const Title = styled.h1`
@@ -40,7 +40,7 @@ export const ContentWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 1440px;
+  width: 1270px;
   height: 44px;
   padding-bottom: 16px;
   border-bottom: 1px solid black;
@@ -60,7 +60,7 @@ export const ListButton = styled.button`
 export const Ti = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 1440px;
+  width: 1270px;
   border: none;
 `;
 export const Name = styled.div`
@@ -112,7 +112,7 @@ export const Pic = styled.div`
 
 export const Text = styled.div`
   margin-top: 80px;
-  width: 1440px;
+  width: 1270px;
   font-family: "Pretendard";
   font-size: 16px;
   font-style: normal;
@@ -125,7 +125,7 @@ export const ConTi = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-top: 80px;
-  width: 1440px;
+  width: 1270px;
   ${(props) => `border-bottom: 1px solid ${tokens.colors.grey_15}`};
 `;
 export const One = styled.div`
