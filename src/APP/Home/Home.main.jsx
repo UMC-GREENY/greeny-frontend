@@ -73,7 +73,7 @@ function Home() {
   console.log(lifeTipCards);
   return (
     <>
-      <BannerSlider></BannerSlider>
+      <MainLandigPicture></MainLandigPicture>
       <CategoryWrapper>
         <ContentWrapper>
           <NewItemStore></NewItemStore>
