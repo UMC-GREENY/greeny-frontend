@@ -31,7 +31,7 @@ export const Box = styled.div`
   border-style: solid;
   border-width: 1px 0px 1px 0px;
 
-  height: ${(props) => (props.type === "best" ? "224px" : "1226px")};
+  height: ${(props) => (props.type.length === 0 ? "224px" : "1226px")};
   ${(props) => `border-bottom: 1px solid ${tokens.colors.grey_15}`}
 `;
 export const Btns = styled.div`
@@ -93,7 +93,13 @@ export const ItemsWrapper = styled.div`
   height: auto;
   border-radius: 6px;
   border: 1px;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   flex-wrap: wrap;
   margin-top: 60px;
+`;
+export const Alert = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

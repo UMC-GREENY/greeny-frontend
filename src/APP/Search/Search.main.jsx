@@ -1,22 +1,16 @@
 import { useState } from "react";
 import SearchProduct from "./Search.product";
 import SearchStore from "./Search.store";
+import { useLocation } from "react-router-dom";
 
 function Search() {
-  const [ex, setEx] = useState("");
-  const [ex1, setEx1] = useState("");
-  const Change = () => {
-    setEx1(ex);
-  };
+  const content = useLocation();
+
   return (
     <>
-      <input onChange={(e) => setEx(e.target.value)} />
-      <button
-        onClick={Change}
-        style={{ widh: "30px", height: "30px" }}
-      ></button>
-      <SearchProduct></SearchProduct>
-      <SearchStore prop={"샵"}></SearchStore>
+      <h2>{content.state}검색결과입니다.</h2>
+      <SearchProduct prop={content.state}></SearchProduct>
+      <SearchStore prop={content.state}></SearchStore>
     </>
   );
 }

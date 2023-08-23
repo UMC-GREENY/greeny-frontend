@@ -2,11 +2,13 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import * as tokens from "../tokens";
 import * as SideNavS from "./Styled/SideNav.main.styles";
+import { useState } from "react";
 
 //components
 
 function SideNav(props) {
   const navigate = useNavigate();
+  const [content, setContent] = useState("");
   const NavClick = (e, type) => {
     e.preventDefault();
     navigate(`${type}`);
@@ -14,10 +16,14 @@ function SideNav(props) {
   return (
     <SideNavS.SideNavWrapper type={props.type}>
       <SideNavS.SideNavSearchWrapper>
-        <SideNavS.SideNavInputBox type={props.type}></SideNavS.SideNavInputBox>
+        <SideNavS.SideNavInputBox
+          type={props.type}
+          value={content} // 현재 상태 값을 value로 설정
+          onChange={(e) => setContent(e.target.value)} // 값을 업데이트하는 함수
+        ></SideNavS.SideNavInputBox>
         <SideNavS.SideNavInputIcon
           type={props.type}
-          onClick={() => navigate("/search")}
+          onClick={() => navigate("/search", { state: content })}
         ></SideNavS.SideNavInputIcon>
       </SideNavS.SideNavSearchWrapper>
       <SideNavS.SideNavList

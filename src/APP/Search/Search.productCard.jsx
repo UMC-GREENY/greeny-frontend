@@ -14,6 +14,7 @@ function SearchProductCard(props) {
     navigate(`/product/${props.data.id}`);
     console.log(props.data);
   };
+
   return (
     <>
       <itemS.cardWrap type={props.type} onClick={handleCardClick}>

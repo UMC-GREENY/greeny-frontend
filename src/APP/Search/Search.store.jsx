@@ -6,7 +6,8 @@ import { refreshToken } from "../Api/request";
 import { ACCESS_TOKEN } from "../Api/request";
 import { isSuccessState } from "../Login/Recoil/Recoil.auth.state";
 import { useRecoilState, useRecoilValue } from "recoil";
-import ProductCard from "../Category/Category.main.productCard";
+import ProductCard from "./Search.productCard";
+import StoreCard from "../Category/Category.main.storeCard";
 
 function SearchStore({ prop }) {
   const [content, setContent] = useState([]);
@@ -19,7 +20,7 @@ function SearchStore({ prop }) {
         const con =
           isSuccess === true
             ? await request.get(
-                `/api/stores/simple?keyword=${prop}&page=0&size=2`,
+                `/api/stores/auth/simple?keyword=${prop}&page=0&size=2`,
                 {
                   headers: {
                     Authorization: `Bearer ${window.localStorage.getItem(
@@ -46,12 +47,12 @@ function SearchStore({ prop }) {
       }
     };
     fetchData();
-  }, []);
+  }, [prop]);
   return (
     <SearchS.Wrapper>
       <SearchS.Div>
         <h2>Eco-Store</h2>
-        <SearchS.Box type={"d"}>
+        <SearchS.Box type={content}>
           <SearchS.Btns>
             <div style={{ display: "flex", justifyContent: "center" }}>
               <SearchS.StyleSelect name="location">
@@ -87,9 +88,13 @@ function SearchStore({ prop }) {
             </div>
           </SearchS.Btns>
           <SearchS.ItemsWrapper>
-            {content.map((item, index) => (
-              <ProductCard key={index} type="new" data={item} />
-            ))}
+            {content.length === 0 ? (
+              <SearchS.Alert>검색 결과가 없습니다.</SearchS.Alert>
+            ) : (
+              content.map((item, index) => (
+                <StoreCard key={index} type="new" data={item} />
+              ))
+            )}
           </SearchS.ItemsWrapper>
           {/* <Pagination /> */}
         </SearchS.Box>
