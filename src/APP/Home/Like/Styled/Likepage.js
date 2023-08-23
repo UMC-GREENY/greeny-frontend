@@ -127,10 +127,18 @@ export const productcontainer = styled.div`
   margin-bottom: 8px;
 `;
 
-export const productimage = styled.img`
-  width: 160px;
+export const productimage = styled.div`
+  width: 170px;
   height: 175px;
   border-radius: 6px;
+  object-fit: cover;
+`;
+
+export const productimagereal = styled.img`
+  width: 175px;
+  height: 100%;
+  border-radius: 6px;
+  object-fit: cover;
 `;
 
 export const productinfo = styled.div`
@@ -145,6 +153,7 @@ export const productinfotitle = styled.div`
   text-align: start;
   margin-top: 5px;
   font-family: Pretendard;
+  white-space: normal;
 `;
 export const productinfodetail = styled.div`
   /* 공통 스타일 */

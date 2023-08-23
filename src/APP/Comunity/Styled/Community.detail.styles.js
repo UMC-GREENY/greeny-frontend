@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import * as tokens from "../../tokens";
+import styled from 'styled-components';
+import * as tokens from '../../tokens';
 export const SignupWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -14,9 +14,7 @@ export const SignupContentWrapper = styled.div`
   margin-top: 104px;
   margin-left: 240px;
   margin-right: 240px;
-<<<<<<< HEAD
-  width: 1440px;
-=======
+
   width: 1270px;
 >>>>>>> f65cd3705c42860d2326d0c41d7795885557e684
 `;
@@ -25,7 +23,7 @@ export const Title = styled.h1`
   display: flex;
   font-size: 48px;
 
-  font-family: "New York";
+  font-family: 'New York';
   font-weight: normal;
   justify-content: flex-start;
   margin-top: 104px;
@@ -35,7 +33,7 @@ export const SubTitle = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  font-family: "New York";
+  font-family: 'New York';
   font-size: 24px;
   margin-top: 36px;
   padding-bottom: 16px;
@@ -44,9 +42,6 @@ export const ContentWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-<<<<<<< HEAD
-  width: 1440px;
-=======
   width: 1270px;
 >>>>>>> f65cd3705c42860d2326d0c41d7795885557e684
   height: 44px;
@@ -61,25 +56,21 @@ export const ListButton = styled.button`
   cursor: pointer;
   border-radius: 4px;
   font-size: 16px;
-  font-family: "Pretendard";
+  font-family: 'Pretendard';
   ${(props) => `border: 1px solid ${tokens.colors.grey_80}`};
   ${(props) => `color: ${tokens.colors.grey_60}`};
 `;
 export const Ti = styled.div`
   display: flex;
   justify-content: space-between;
-<<<<<<< HEAD
-  width: 1440px;
-=======
   width: 1270px;
->>>>>>> f65cd3705c42860d2326d0c41d7795885557e684
   border: none;
 `;
 export const Name = styled.div`
   margin-top: 40px;
   display: flex;
   width: 975px;
-  font-family: "Pretendard";
+  font-family: 'Pretendard';
   font-size: 32px;
   font-style: normal;
   font-weight: 600;
@@ -92,7 +83,7 @@ export const PostEmail = styled.div`
   display: flex;
   align-items: flex-end;
   font-size: 16px;
-  font-family: "Pretendard";
+  font-family: 'Pretendard';
   font-style: normal;
   font-weight: 400;
   line-height: 24px; /* 150% */
@@ -103,7 +94,7 @@ export const PostEmail = styled.div`
 export const PostDate = styled.div`
   display: flex;
   align-items: flex-end;
-  font-family: "Pretendard";
+  font-family: 'Pretendard';
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -124,12 +115,8 @@ export const Pic = styled.div`
 
 export const Text = styled.div`
   margin-top: 80px;
-<<<<<<< HEAD
-  width: 1440px;
-=======
   width: 1270px;
->>>>>>> f65cd3705c42860d2326d0c41d7795885557e684
-  font-family: "Pretendard";
+  font-family: 'Pretendard';
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -141,11 +128,7 @@ export const ConTi = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-top: 80px;
-<<<<<<< HEAD
-  width: 1440px;
-=======
   width: 1270px;
->>>>>>> f65cd3705c42860d2326d0c41d7795885557e684
   ${(props) => `border-bottom: 1px solid ${tokens.colors.grey_15}`};
 `;
 export const One = styled.div`
@@ -175,7 +158,7 @@ export const Commend = styled.div`
   stroke-width: 1px;
   ${(props) => `border-bottom: 1px solid ${tokens.colors.grey_80}`};
   ${(props) => `color: ${tokens.colors.grey_15}`};
-  font-family: "Pretendard";
+  font-family: 'Pretendard';
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -187,7 +170,7 @@ export const Who = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: "Pretendard";
+  font-family: 'Pretendard';
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
@@ -221,7 +204,7 @@ export const Write = styled.div`
   height: 106px;
   flex-shrink: 0;
   border-radius: 5px;
-  font-family: "Pretendard";
+  font-family: 'Pretendard';
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
@@ -239,7 +222,7 @@ export const Write = styled.div`
     gap: 10px;
     flex-shrink: 0;
     border-radius: 4px;
-    font-family: "Pretendard";
+    font-family: 'Pretendard';
     font-size: 16px;
     font-style: normal;
     font-weight: 600;
@@ -251,8 +234,8 @@ export const Write = styled.div`
 `;
 export const Box = styled.input`
   display: flex;
-  font-family: "Pretendard";
-  width: "1031px";
+  font-family: 'Pretendard';
+  width: '1031px';
   border-radius: 5px;
   font-size: 16px;
   font-style: normal;
@@ -277,7 +260,7 @@ export const preBtn = styled.div`
     height: 32px;
     padding: 4px, 12px, 4px, 12px;
     background-color: white;
-    font-family: "Pretendard";
+    font-family: 'Pretendard';
     font-size: 16px;
     font-weight: 400;
     border: none;
