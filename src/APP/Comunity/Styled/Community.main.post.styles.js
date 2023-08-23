@@ -43,7 +43,7 @@ export const SubTitle = styled.div`
 export const Line = styled.div`
   display: flex;
   justify-content: center;
-  width: 1400px;
+  width: 1230px;
   height: 1px;
   margin-bottom: 10px;
   ${(props) => `background-color: ${tokens.colors.grey_80}`};
@@ -90,7 +90,7 @@ export const InfoLine = styled.div`
 export const PostTitle = styled.div`
   font-size: 16px;
   text-align: left;
-  width: 1200px;
+  width: 1070px;
   ${(props) => `color: ${tokens.colors.grey_15}`};
 `;
 
@@ -104,7 +104,7 @@ export const PostStar = styled.div`
 export const PostContent = styled.div`
   font-size: 16px;
   text-align: left;
-  width: 930px;
+  width: 800px;
   margin-right: 20px;
   ${(props) => `color: ${tokens.colors.grey_15}`};
 `;
@@ -205,6 +205,7 @@ export const InputIcon = styled.div`
 //     background-color: ${tokens.colors.grey_80};
 //   }
 // `;
+
 //------------------------------------------------
 
 export const PaginationWrapper = styled.div`

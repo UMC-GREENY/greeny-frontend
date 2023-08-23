@@ -1,6 +1,49 @@
+import React, { useEffect, useState } from "react";
+import request from "../Api/request";
 import Pagination from "react-js-pagination";
 import * as SearchS from "./Styled/Search.store.styles";
-function SearchStore() {
+import { refreshToken } from "../Api/request";
+import { ACCESS_TOKEN } from "../Api/request";
+import { isSuccessState } from "../Login/Recoil/Recoil.auth.state";
+import { useRecoilState, useRecoilValue } from "recoil";
+
+function SearchStore({ prop }) {
+  const [content, setContent] = useState([]);
+  const isSuccess = useRecoilValue(isSuccessState);
+  console.log(isSuccess);
+  console.log(prop);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const con =
+          isSuccess === true
+            ? await request.get(
+                `/api/stores/simple?keyword=${prop}&page=0&size=2`,
+                {
+                  headers: {
+                    Authorization: `Bearer ${window.localStorage.getItem(
+                      ACCESS_TOKEN
+                    )}`,
+                  },
+                }
+              )
+            : await request.get(
+                `/api/stores/simple?keyword=${prop}&page=0&size=2`,
+                {
+                  headers: {
+                    Authorization: `Bearer ${window.localStorage.getItem(
+                      ACCESS_TOKEN
+                    )}`,
+                  },
+                }
+              );
+        console.log(con);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, []);
   return (
     <SearchS.Wrapper>
       <SearchS.Div>

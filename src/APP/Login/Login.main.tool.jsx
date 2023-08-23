@@ -23,7 +23,6 @@ function LoginMainTool() {
   };
 
   useEffect(() => {
-    // const code = window.location.href.split("=")[1];
     const params = new URLSearchParams(window.location.search);
     const code = params.get("code");
     if (!code) return;
@@ -67,14 +66,9 @@ function LoginMainTool() {
       .post("/api/auth/sign-in/general", requestData)
       .then((res) => {
         console.log("res: ", res);
-        // console.log('accessToken : ', res['accessToken'])
-        // const token = res['data']['accessToken'].replace("Bearer", "").trim();
         const { accessToken, refreshToken } = res.data;
-        // console.log('token : ', token)
         localStorage.setItem(ACCESS_TOKEN, accessToken);
         localStorage.setItem(REFRESH_TOKEN, refreshToken);
-        // 헤더에 토큰 잘 들어가는지 확인
-        // console.log("headers:", request.defaults.headers)
         console.log("accessToken", accessToken);
         console.log("refreshToken", refreshToken);
 
@@ -123,17 +117,6 @@ function LoginMainTool() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              {/* <toolS.Label>
-                <input
-                  type="checkbox"
-                  checked={isAutoLogin}
-                  onChange={(e) => {
-                    setIsAutoLogin(e.target.checked);
-                    // setIsAuto(e.target.checked);
-                  }}
-                />
-                자동 로그인
-              </toolS.Label> */}
               <toolS.LoginBtn style={{ marginTop: "40px" }}>
                 <button onClick={handleLogin}>로그인</button>
               </toolS.LoginBtn>
