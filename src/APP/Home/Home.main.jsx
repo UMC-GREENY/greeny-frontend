@@ -73,7 +73,7 @@ function Home() {
   };
   return (
     <>
-      <BannerSlider></BannerSlider>
+      <MainLandigPicture></MainLandigPicture>
       <CategoryWrapper>
         <ContentWrapper>
           <NewItemStore></NewItemStore>
