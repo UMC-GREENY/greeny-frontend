@@ -31,6 +31,7 @@ import WritePost from "./APP/Comunity/Community.main.post.write";
 import CommunityDetail from "./APP/Comunity/Community.detail";
 import Product from "./APP/Category/Category.main.product.jsx";
 import Store from "./APP/Category/Category.main.store";
+import Search from "./APP/Search/Search.main";
 
 function App() {
   const MainScreen = styled.div`
@@ -67,6 +68,7 @@ function App() {
           <Route path="/likepage" element={<Likepage />} />
           <Route path="/mypageinfo" element={<Mypageinfo />} />
           <Route path="/community/:no" element={<CommunityDetail />} />
+          <Route path="/search" element={<Search />} />
           <Route path="*" element={<Home />} />
         </Routes>
       </MainScreen>
