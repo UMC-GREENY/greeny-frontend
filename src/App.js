@@ -34,40 +34,37 @@ import Store from "./APP/Category/Category.main.store";
 
 function App() {
   const MainScreen = styled.div`
-    position: absolute;
+    position: relative;
     top: 100px;
     width: 100vw;
     min-height: 100vh;
     height: fit-content;
-
-    // background-color: ${tokens.colors.grey_100};
-    z-index: 50;
   `;
   return (
     <div className="App">
       <TopNav></TopNav>
-      <SideNav></SideNav>
       <MainScreen>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/select" element={<SignupSelect />} />
-          <Route path="/agree" element={<SignupAgree />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
           <Route path="/product" element={<Product />} />
           <Route path="/store" element={<Store />} />
-          <Route path="/community" element={<CommunityMain />} />
-          <Route path="/post" element={<Post />} />
-          <Route path="/write_post" element={<WritePost />} />
-          <Route path="/lifeTip" element={<LifeTip />} />
-          <Route path="/lifeTip_de" element={<LifeTipDe />} />
-          <Route path="/product/:productId" element={<DetailPage />} />
-          <Route path="/store/:storeId" element={<DetailPage />} />
-          <Route path="/mypage" element={<Mypage />} />
-          <Route path="/likepage" element={<Likepage />} />
-          <Route path="/mypageinfo" element={<Mypageinfo />} />
-          <Route path="/community/:no" element={<CommunityDetail />} />
           <Route path="*" element={<Home />} />
+
+          <Route path="/select" element={<><SideNav></SideNav><SignupSelect /></>} />
+          <Route path="/agree" element={<><SideNav></SideNav><SignupAgree /></>} />
+          <Route path="/signup" element={<><SideNav></SideNav><Signup /></>} />
+          <Route path="/login" element={<><SideNav></SideNav><Login /></>} />
+          <Route path="/community" element={<><SideNav></SideNav><CommunityMain /></>} />
+          <Route path="/post" element={<><SideNav></SideNav><Post /></>} />
+          <Route path="/write_post" element={<><SideNav></SideNav><WritePost /></>} />
+          <Route path="/lifeTip" element={<><SideNav></SideNav><LifeTip /></>} />
+          <Route path="/lifeTip_de" element={<><SideNav></SideNav><LifeTipDe /></>} />
+          <Route path="/product/:productId" element={<><SideNav></SideNav><DetailPage /></>} />
+          <Route path="/store/:storeId" element={<><SideNav></SideNav><DetailPage /></>} />
+          <Route path="/mypage" element={<><SideNav></SideNav><Mypage /></>} />
+          <Route path="/likepage" element={<><SideNav></SideNav><Likepage /></>} />
+          <Route path="/mypageinfo" element={<><SideNav></SideNav><Mypageinfo /></>} />
+          <Route path="/community/:no" element={<><SideNav></SideNav><CommunityDetail /></>} />
         </Routes>
       </MainScreen>
     </div>
