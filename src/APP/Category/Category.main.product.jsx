@@ -72,9 +72,9 @@ function Product() {
         <MainLandigPicture></MainLandigPicture>
         <CategoryWrapper>
             <ContentWrapper>
-                <NewItem></NewItem>
-                <BestItem></BestItem>
-                <AllItem></AllItem>
+                <NewItem auth={isSuccess}></NewItem>
+                <BestItem auth={isSuccess}></BestItem>
+                <AllItem auth={isSuccess}></AllItem>
             </ContentWrapper>
         </CategoryWrapper>
       </>

@@ -5,9 +5,10 @@ import request from "../Api/request";
 
 import ProductCard from "./Category.main.productCard";
 
-function AllItem() {
+function AllItem(auth) {
 
     const [allItem, setAllItem] = useState([]);
+   const [isSuccess, setIsSuccess] = useState(auth);
 
 
    useEffect(() => {

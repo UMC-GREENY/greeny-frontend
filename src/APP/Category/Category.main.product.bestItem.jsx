@@ -4,8 +4,9 @@ import request from "../Api/request";
 
 import ProductCard from "./Category.main.productCard";
 
-function BestItemProduct() {
+function BestItemProduct(auth) {
    const [bestItem, setBestItem] = useState([]);
+   const [isSuccess, setIsSuccess] = useState(auth);
  
 
 

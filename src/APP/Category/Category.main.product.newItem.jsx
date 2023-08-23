@@ -4,8 +4,9 @@ import * as itemS from "./styles/Category.main.newItem.styles"
 
 import ProductCard from "./Category.main.productCard";
 
-function NewItemProduct() {
+function NewItemProduct(auth) {
    const [newItem, setNewItem] = useState([]);
+   const [isSuccess, setIsSuccess] = useState(auth);
 
 
    useEffect(() => {
