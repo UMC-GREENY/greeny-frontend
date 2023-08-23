@@ -165,19 +165,11 @@ export const InputIcon = styled.div`
 //   align-items: center;
 //   justify-content: center;
 //   margin-left: 600px;
-<<<<<<< HEAD
   
 //   width: 202px;
   
 // `;
 
-=======
-
-//   width: 202px;
-
-// `;
-
->>>>>>> f65cd3705c42860d2326d0c41d7795885557e684
 // export const PaginationButton = styled.button`
 //   ${(props) => `
 //     background-color: white;
@@ -200,11 +192,7 @@ export const InputIcon = styled.div`
 //   display: flex;
 //   align-items: center;
 //   justify-content: center;
-<<<<<<< HEAD
   
-=======
-
->>>>>>> f65cd3705c42860d2326d0c41d7795885557e684
 //   color: ${tokens.colors.grey_900};
 //   border-radius: 4px;
 //   cursor: pointer;
@@ -221,11 +209,6 @@ export const InputIcon = styled.div`
 //------------------------------------------------
 
 export const PaginationWrapper = styled.div`
-<<<<<<< HEAD
-    .pagination { display: flex; justify-content: center; margin-top: 15px;}
-    ul { list-style: none; padding: 0; }
-    ul.pagination li {
-=======
   .pagination {
     display: flex;
     justify-content: center;
@@ -236,35 +219,16 @@ export const PaginationWrapper = styled.div`
     padding: 0;
   }
   ul.pagination li {
->>>>>>> f65cd3705c42860d2326d0c41d7795885557e684
     display: inline-block;
     display: flex;
     justify-content: center;
     align-items: center;
-<<<<<<< HEAD
-    font-size: 1rem; 
-=======
     font-size: 1rem;
->>>>>>> f65cd3705c42860d2326d0c41d7795885557e684
     width: 26px;
     height: 26px;
     border-radius: 99%;
     font-size: 12px;
     line-height: 18px;
-<<<<<<< HEAD
-    border: none;}
-    margin: 15px 0 0px 600px ;
-    ul.pagination li.active a { color: ${tokens.colors.grey_100}; }
-    ul.pagination li.active { background-color: ${tokens.colors.green_deep}; }
-    ul.pagination li a {text-decoration-line: none; color: ${tokens.colors.grey_60};}
-`
-
-export const keyword = styled.p`
-    margin-top: 40px;
-    font-weight: 700;
-    font-size: 24px;
-`
-=======
     border: none;
   }
   margin: 15px 0 0px 600px;
@@ -285,4 +249,3 @@ export const keyword = styled.p`
   font-weight: 700;
   font-size: 24px;
 `;
->>>>>>> f65cd3705c42860d2326d0c41d7795885557e684
