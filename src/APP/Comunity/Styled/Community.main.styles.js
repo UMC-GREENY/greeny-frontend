@@ -41,7 +41,7 @@ export const SubTitle = styled.div`
 export const Line = styled.div`
   display: flex;
   justify-content: center;
-  width: 1400px;
+  width: 1230px;
   height: 1px;
   margin-bottom: 10px;
   ${(props) => `background-color: ${tokens.colors.grey_80}`};
