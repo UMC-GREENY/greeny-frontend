@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from "react";
 
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { isSuccessState } from '../Login/Recoil/Recoil.auth.state';
+import useBeforeUnload from '../Custom/useBeforeUnload';
+
 // components
 import DetailItem from "./DetailPage.main.DetailItem";
 import ServiceList from "./DetailPage.main.serviceList";
 import ServiceContent from "./DetailPage.main.serviceContent";
 
 function DetailPage() {
-  const commonStyle = {
-    fontFamily: "Predendard"
-  };
+  const isSuccess = useRecoilValue(isSuccessState);
+  const setIsSuccess = useSetRecoilState(isSuccessState);
+  console.log("isSuccess", isSuccess);
+  useBeforeUnload();
 
   const [isProduct, setIsProduct] = useState(true);
   const [selectedService, setSelectedService] = useState("detailInfo");
@@ -46,16 +51,13 @@ function DetailPage() {
       {productId !== null && ( // productId가 설정되었을 때에만 렌더링
         <>
           <DetailItem
-            style={commonStyle}
             isProduct={isProduct}
             productId={productId}
           />
           <ServiceList
-            style={commonStyle}
             onSelectService={handleSelectService}
           />
           <ServiceContent
-            style={commonStyle}
             selectedService={selectedService}
             isProduct={isProduct}
             productId={productId}

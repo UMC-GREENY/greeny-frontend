@@ -36,7 +36,7 @@ const LikeButton = ({ type, id, isLike, inner }) => {
 
   useEffect(() => {
 
-  }, [isLike]);
+  }, [initialLikeState]);
   const handleToggleLike = async () => {
     if (!isTokenValid()) {
       console.log('토큰이 유효하지 않습니다.');
