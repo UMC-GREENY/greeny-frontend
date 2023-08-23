@@ -35,7 +35,7 @@ function LikedProductpage(props) {
           {content2}
         </mystyles.productinfodetail2>
         <mystyles.lastcontainer>
-          <LikeButton type={type} id={id} isLike={true}></LikeButton>
+          <LikeButton type={type} id={id} isLike={true} inner={false}></LikeButton>
         </mystyles.lastcontainer>
       </mystyles.productinfo>
     </mystyles.productcontainer>

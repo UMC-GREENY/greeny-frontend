@@ -174,7 +174,6 @@ function CommunityDetail() {
   //댓글삭제
   const RemoveComment = async (commentItem) => {
     try {
-      // console.log(comment.id);
       const response = await request.delete(
         `/api/comments?commentId=${commentItem.id}`,
         {

@@ -41,7 +41,6 @@ function UserLikeStore() {
         );
         console.log('서버 응답 데이터:', response);
         setLikeStore(response.data.content);
-        console.log(likeStore);
       } catch (error) {
         console.error('찜한 스토어 목록을 가져오는데 실패', error);
       } finally {

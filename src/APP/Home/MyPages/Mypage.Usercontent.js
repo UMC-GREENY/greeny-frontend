@@ -48,7 +48,6 @@ function UserContent() {
         );
         console.log('서버 응답 데이터:', response);
         setUserPosts(response.data.content);
-        console.log(userPosts);
       } catch (error) {
         console.error('사용자의 정보를 가져오는데 실패', error);
       } finally {
