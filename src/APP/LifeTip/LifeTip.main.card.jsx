@@ -1,5 +1,5 @@
-import { useNavigate } from "react-router-dom";
-import * as cardS from "./Styled/LifeTip.main.card.styles";
+import { useNavigate } from 'react-router-dom';
+import * as cardS from './Styled/LifeTip.main.card.styles';
 function LifeTipCard({ title, ti, recy, type, num, content1, content2, img }) {
   const navigate = useNavigate();
   return (
@@ -12,7 +12,7 @@ function LifeTipCard({ title, ti, recy, type, num, content1, content2, img }) {
         <h5>2023.07.10</h5>
         <button
           onClick={() =>
-            navigate("/lifeTip_de", {
+            navigate('/lifeTip_de', {
               state: {
                 title: title,
                 ti: ti,
@@ -27,7 +27,7 @@ function LifeTipCard({ title, ti, recy, type, num, content1, content2, img }) {
           }
         >
           <h3>더 알아보기</h3>
-          <h4>{">"}</h4>
+          <h4>{'>'}</h4>
         </button>
       </cardS.Div2>
     </cardS.Div>
