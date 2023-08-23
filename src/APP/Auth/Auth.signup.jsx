@@ -130,8 +130,6 @@ function Signup() {
       }
     });
   }
-  const handleSubmitt = async () => {console.log("야이");}
-
 
   const handleSubmit = async () => {
     console.log("야호");
@@ -139,8 +137,8 @@ function Signup() {
       alert("이메일로 이동 후, 이메일 확인하기 버튼을 눌러주세요.");
       return;
     }
-    const personalInfo = false;
-    const thirdParty = false;
+    const personalInfo = localStorage.getItem('optionalChecked');
+    const thirdParty = localStorage.getItem('advertisingChecked');
 
     try {
       const requestData = {
