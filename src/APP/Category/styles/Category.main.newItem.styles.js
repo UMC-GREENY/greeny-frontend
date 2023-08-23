@@ -87,7 +87,18 @@ export const SortContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  /* margin: 36px 0 0 920px; */
+
+  ${(props) =>
+    props.type === "store"
+      ? `
+      
+      width: 132px;
+      margin: 36px 0 0 1117px;
+
+`
+      : ` 
+     
+            `}
 `;
 
 export const SortText = styled.span`

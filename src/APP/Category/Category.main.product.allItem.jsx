@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import * as itemS from "./styles/Category.main.newItem.styles"
 import Pagination from "react-js-pagination";
 import request from "../Api/request";
+import { ACCESS_TOKEN } from "../Api/request";
 
 import ProductCard from "./Category.main.productCard";
 
-function AllItem() {
+function AllItem(props) {
 
     const [allItem, setAllItem] = useState([]);
+   const [isSuccess, setIsSuccess] = useState(props.isSuccess);
 
 
    useEffect(() => {
@@ -18,21 +20,33 @@ function AllItem() {
       const fetchData = async () => {
          try {
             if (isMounted) {
-               const response = await request.get('/api/products/simple?page=0&size=800')
-               console.log('response:', response.data);
-               setAllItem(response.data.content);
+              if (isSuccess === true) {
+                const response = await request.get('/api/products/auth/simple?page=0&size=800', {
+                   headers: {
+                      'Content-Type': 'multipart/form-data',
+                      Authorization: `Bearer ${window.localStorage.getItem(ACCESS_TOKEN)}`
+                  },
+                })
+                console.log('response best 잘 불러옴:', response.data);
+                setAllItem(response.data.content);
+             } else {
+                const response = await request.get('/api/products/simple?page=0&size=800')
+                console.log('response:', response.data);
+                setAllItem(response.data.content);
+             }
             }
          } catch (error) {
             console.error('데이터 가져오기 실패', error);
          }
       };
 
+      
       fetchData();
 
       return () => {
          isMounted = false; // 컴포넌트 언마운트 시 변수 업데이트
       };
-   }, []); // 의존성 배열에 isProduct 추가
+   }, [isSuccess]); // 의존성 배열에 isProduct 추가
 
     // 페이지네이션 관련 상태
     const [currentPage, setCurrentPage] = useState(1);
@@ -50,8 +64,20 @@ function AllItem() {
 
     const sortBest = async () => {
         try {
-          const response = await request.get('/api/products/simple?page=0&size=800&sort=bookmarks,desc');
-          setAllItem(response.data.content);
+          if (isSuccess === true) {
+            const response = await request.get('/api/products/auth/simple?page=0&size=800&sort=bookmarks,desc', {
+               headers: {
+                  'Content-Type': 'multipart/form-data',
+                  Authorization: `Bearer ${window.localStorage.getItem(ACCESS_TOKEN)}`
+              },
+            })
+            console.log('response best 잘 불러옴:', response.data);
+            setAllItem(response.data.content);
+         } else {
+            const response = await request.get('/api/products/simple?page=0&size=800&sort=bookmarks,desc')
+            console.log('response:', response.data);
+            setAllItem(response.data.content);
+         }
           console.log('데이터:', allItem);
         } catch (error) {
           console.error('데이터 가져오기 실패', error);
@@ -60,9 +86,20 @@ function AllItem() {
 
       const sortreview = async () => {
         try {
-          const response = await request.get('/api/products/simple?page=0&size=800&sort=reviews,desc')
-          setAllItem(response.data.content);
-          console.log('데이터:', allItem);
+          if (isSuccess === true) {
+            const response = await request.get('/api/products/auth/simple?page=0&size=800&sort=reviews,desc', {
+               headers: {
+                  'Content-Type': 'multipart/form-data',
+                  Authorization: `Bearer ${window.localStorage.getItem(ACCESS_TOKEN)}`
+              },
+            })
+            console.log('response view 잘 불러옴:', response.data);
+            setAllItem(response.data.content);
+         } else {
+            const response = await request.get('/api/products/simple?page=0&size=800&sort=reviews,desc')
+            console.log('response:', response.data);
+            setAllItem(response.data.content);
+         }
         } catch (error) {
           console.error('데이터 가져오기 실패', error);
         }
@@ -70,8 +107,20 @@ function AllItem() {
 
       const sortPriceUp = async () => {
         try {
-          const response = await request.get('/api/products/simple?page=0&size=800&sort=price,desc')
-          setAllItem(response.data.content);
+          if (isSuccess === true) {
+            const response = await request.get('/api/products/auth/simple?page=0&size=800&sort=price,desc', {
+               headers: {
+                  'Content-Type': 'multipart/form-data',
+                  Authorization: `Bearer ${window.localStorage.getItem(ACCESS_TOKEN)}`
+              },
+            })
+            console.log('response view 잘 불러옴:', response.data);
+            setAllItem(response.data.content);
+         } else {
+            const response = await request.get('/api/products/simple?page=0&size=800&sort=price,desc')
+            console.log('response:', response.data);
+            setAllItem(response.data.content);
+         }
           console.log('데이터:', allItem);
         } catch (error) {
           console.error('데이터 가져오기 실패', error);
@@ -80,8 +129,21 @@ function AllItem() {
 
       const sortPriceDown = async () => {
         try {
-          const response = await request.get('/api/products/simple?page=0&size=800&sort=price')
-          setAllItem(response.data.content);
+          if (isSuccess === true) {
+            const response = await request.get('/api/products/auth/simple?page=0&size=800&sort=price', {
+               headers: {
+                  'Content-Type': 'multipart/form-data',
+                  Authorization: `Bearer ${window.localStorage.getItem(ACCESS_TOKEN)}`
+              },
+            })
+            console.log('response view 잘 불러옴:', response.data);
+            setAllItem(response.data.content);
+         } else {
+            const response = await request.get('/api/products/simple?page=0&size=800&sort=price')
+            console.log('response:', response.data);
+            setAllItem(response.data.content);
+         }
+          
           console.log('데이터:', allItem);
         } catch (error) {
           console.error('데이터 가져오기 실패', error);
