@@ -164,50 +164,77 @@ export const InputIcon = styled.div`
 `;
 //--------------------------------------------------------------------
 
-export const PaginationBox = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: 600px;
+// export const PaginationBox = styled.div`
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   margin-left: 600px;
   
-  width: 202px;
+//   width: 202px;
   
-`;
+// `;
 
-export const PaginationButton = styled.button`
-  ${(props) => `
-    background-color: white;
-    color: black;
-    width: 30px;
-    height: 30px;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-    margin: 0 2px;
-    margin-top: 50px;
-    outline: none;
-    ${props.disabled ? "opacity: 0.5; pointer-events: none;" : ""}
-  `}
-`;
+// export const PaginationButton = styled.button`
+//   ${(props) => `
+//     background-color: white;
+//     color: black;
+//     width: 30px;
+//     height: 30px;
+//     border: none;
+//     cursor: pointer;
+//     border-radius: 4px;
+//     margin: 0 2px;
+//     margin-top: 50px;
+//     outline: none;
+//     ${props.disabled ? "opacity: 0.5; pointer-events: none;" : ""}
+//   `}
+// `;
 
-export const PageNumber = styled.div`
-  width: 50px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+// export const PageNumber = styled.div`
+//   width: 50px;
+//   height: 30px;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
   
-  color: ${tokens.colors.grey_900};
-  border-radius: 4px;
-  cursor: pointer;
-  margin: 0 2px;
-  margin-top: 50px;
-  font-size: 14px;
-  font-weight: bold;
-  user-select: none;
+//   color: ${tokens.colors.grey_900};
+//   border-radius: 4px;
+//   cursor: pointer;
+//   margin: 0 2px;
+//   margin-top: 50px;
+//   font-size: 14px;
+//   font-weight: bold;
+//   user-select: none;
 
-  &:hover {
-    background-color: ${tokens.colors.grey_80};
-  }
-`;
+//   &:hover {
+//     background-color: ${tokens.colors.grey_80};
+//   }
+// `;
 //------------------------------------------------
+
+export const PaginationWrapper = styled.div`
+    .pagination { display: flex; justify-content: center; margin-top: 15px;}
+    ul { list-style: none; padding: 0; }
+    ul.pagination li {
+    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem; 
+    width: 26px;
+    height: 26px;
+    border-radius: 99%;
+    font-size: 12px;
+    line-height: 18px;
+    border: none;}
+    margin: 15px 0 0px 600px ;
+    ul.pagination li.active a { color: ${tokens.colors.grey_100}; }
+    ul.pagination li.active { background-color: ${tokens.colors.green_deep}; }
+    ul.pagination li a {text-decoration-line: none; color: ${tokens.colors.grey_60};}
+`
+
+export const keyword = styled.p`
+    margin-top: 40px;
+    font-weight: 700;
+    font-size: 24px;
+`

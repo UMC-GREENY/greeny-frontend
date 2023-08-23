@@ -69,13 +69,16 @@ function SignupAgree() {
   };
 
   const handleCancel = () => {
-    if (type === "social") {
-      navigate("/login", {
-        state: { type: "login", name: "로그인" },
-      })
-    } else if (type === "general") {    
-      navigate("/select");
-    }
+    navigate("/login", {
+      state: { type: "login", name: "로그인" },
+    })
+    // if (type === "social") {
+    //   navigate("/login", {
+    //     state: { type: "login", name: "로그인" },
+    //   })
+    // } else if (type === "general") {    
+    //   navigate("/select");
+    // }
   };
 
   const handleSignUp = async () => { //소셜 로그인 약관동의

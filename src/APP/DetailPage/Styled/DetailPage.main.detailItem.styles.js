@@ -94,7 +94,7 @@ export const titleText = styled.span`
             font-weight: 600;
             line-height: 30px;
             color: ${tokens.colors.grey_15}
-            margin-top: 4px;
+            margin-top: 8px;
             `
       : props.type === 'area'
       ? `

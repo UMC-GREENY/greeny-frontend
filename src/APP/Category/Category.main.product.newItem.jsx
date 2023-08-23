@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from 'axios';
 import request from "../Api/request";
 import * as itemS from "./styles/Category.main.newItem.styles"
 
@@ -39,7 +38,7 @@ function NewItemProduct() {
          <itemS.TitleWrap>
             <itemS.overline></itemS.overline>
             <itemS.TitleText>
-               "PRODUCTS NEW"
+               PRODUCTS NEW
             </itemS.TitleText>
             <itemS.overline></itemS.overline>
          </itemS.TitleWrap>

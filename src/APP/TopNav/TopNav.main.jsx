@@ -15,9 +15,9 @@ function TopNav() {
   const navigate = useNavigate();
   const NavClick = (e, type) => {
     e.preventDefault();
-    alert(
-      `${type}버튼이 클릭됐습니다. 이 함수를 활용해서 다른 페이지로 이동하게 하시면 됩니다!`
-    );
+    // alert(
+    //   `${type}버튼이 클릭됐습니다. 이 함수를 활용해서 다른 페이지로 이동하게 하시면 됩니다!`
+    // );
 
     navigate(`${type}`);
   };

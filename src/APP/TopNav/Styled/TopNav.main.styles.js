@@ -36,6 +36,7 @@ export const TopNavLogo = styled.span`
   height: fit-content;
   margin-left: 10vw;
   text-align: left;
+  cursor: pointer;
   ${tokens.typography.display_1}
 `;
 
@@ -103,10 +104,10 @@ export const TopNavInputIcon = styled.div`
 `;
 
 export const TopNavHamburger = styled.div`
-  width: 30px;
-  height: 30px;
-  background-image: url('/topnavbar/hamburger.png');
-  background-size: 40px 40px;
+  width: 20px;
+  height: 18px;
+  background-image: url('/topnavbar/hamburger2.png');
+  background-size: 20px 20px;
   background-position: center;
   background-repeat: no-repeat;
   background-color: white;

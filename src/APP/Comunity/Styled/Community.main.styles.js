@@ -110,6 +110,7 @@ export const PostEmail = styled.div`
   font-size: 14px;
   text-align: left; 
   margin-right: 40px;
+  width: 160px;
   ${(props) => `color: ${tokens.colors.grey_15}`};
 `;
 

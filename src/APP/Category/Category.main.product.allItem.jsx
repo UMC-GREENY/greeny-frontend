@@ -67,6 +67,26 @@ function AllItem() {
           console.error('데이터 가져오기 실패', error);
         }
       };
+
+      const sortPriceUp = async () => {
+        try {
+          const response = await request.get('/api/products/simple?page=0&size=800&sort=price,desc')
+          setAllItem(response.data.content);
+          console.log('데이터:', allItem);
+        } catch (error) {
+          console.error('데이터 가져오기 실패', error);
+        }
+      };
+
+      const sortPriceDown = async () => {
+        try {
+          const response = await request.get('/api/products/simple?page=0&size=800&sort=price')
+          setAllItem(response.data.content);
+          console.log('데이터:', allItem);
+        } catch (error) {
+          console.error('데이터 가져오기 실패', error);
+        }
+      };
       
     return (
         <>
@@ -77,7 +97,12 @@ function AllItem() {
                 <itemS.SortText onClick={sortBest}>인기순</itemS.SortText>
                 <itemS.overline type='sero'></itemS.overline>
                 <itemS.SortText onClick={sortreview}>후기순</itemS.SortText>
+                <itemS.overline type='sero'></itemS.overline>
+                <itemS.SortText onClick={sortPriceUp}>가격 높은 순</itemS.SortText>
+                <itemS.overline type='sero'></itemS.overline>
+                <itemS.SortText onClick={sortPriceDown}>가격 낮은 순</itemS.SortText>
             </itemS.SortContainer>
+
             <itemS.ItemsWrapper type='all'>
                 {currentItems.map((item, index) => (
                     <ProductCard key={index} type="best" data={item} />
