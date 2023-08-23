@@ -32,19 +32,19 @@ export const ContentWrapper = styled.div`
 `
 
 function Store() {
-    // 토큰 유효 검사 실시 false면 refreshToken로 재발급
+  // 토큰 유효 검사 실시 false면 refreshToken로 재발급
   // isSuccess 는 사용하고 싶으면 쓰세요
   const [isSuccess, setIsSuccess] = useState(null);
 
   useEffect(() => {
     // 데이터 가져오기를 처리하는 함수 정의
     async function fetchData() {
-      
+
       try {
         const response = await request.get('/api/auth');
-        console.log("response",response);
+        console.log("response", response);
         setIsSuccess(response.isSuccess);
-        
+
       } catch (error) {
         if (error.response && error.response.status === 401) {
           // 토큰 만료 또는 인증 실패로 인한 오류인 경우
@@ -64,20 +64,26 @@ function Store() {
     }
 
     fetchData();
-  }, []);
+  }, [isSuccess]);
 
-   return (
-      <>
-        <MainLandigPicture></MainLandigPicture>
-        <CategoryWrapper>
+  return (
+    <>
+      {isSuccess !== null && (
+        <>
+          <MainLandigPicture></MainLandigPicture>
+          <CategoryWrapper>
             <ContentWrapper>
-                <NewItem></NewItem>
-                <BestItem></BestItem>
-                <AllItem></AllItem>
+              <NewItem isSuccess={isSuccess}></NewItem>
+              <BestItem isSuccess={isSuccess}></BestItem>
+              <AllItem isSuccess={isSuccess}></AllItem>
             </ContentWrapper>
-        </CategoryWrapper>
-      </>
-   );
+          </CategoryWrapper>
+        </>
+      )}
+    </>
+  );
 }
+
+
 
 export default Store;

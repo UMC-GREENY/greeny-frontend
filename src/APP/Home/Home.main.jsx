@@ -10,6 +10,11 @@ import NewItemProduct from '../Category/Category.main.product.newItem';
 import BestItemProduct from '../Category/Category.main.product.bestItem';
 import BannerSlider from './Banner/Banner.main';
 import { lifeTipCards } from './Banner/Banner.main.dummy';
+
+
+import request from '../Api/request';
+import { refreshToken } from '../Api/request';
+import { ACCESS_TOKEN } from '../Api/request';
 export const CategoryWrapper = styled.div`
   width: 100%;
 
@@ -70,27 +75,67 @@ function Home() {
   const handleNavigateProduct = () => {
     navigate(`/product`);
   };
+
+  // 토큰 유효 검사 실시 false면 refreshToken로 재발급
+  // isSuccess 는 사용하고 싶으면 쓰세요
+  const [isSuccess, setIsSuccess] = useState(null);
+
+  useEffect(() => {
+    // 데이터 가져오기를 처리하는 함수 정의
+    async function fetchData() {
+
+      try {
+        const response = await request.get('/api/auth');
+        console.log("response", response);
+        setIsSuccess(response.isSuccess);
+
+      } catch (error) {
+        if (error.response && error.response.status === 401) {
+          // 토큰 만료 또는 인증 실패로 인한 오류인 경우
+          try {
+            // refreshToken 함수를 사용하여 액세스 토큰 갱신
+            await refreshToken();
+            // 실패한 요청을 다시 시도
+            const response = await request.get('/api/auth');
+            setIsSuccess(response.isSuccess);
+          } catch (refreshError) {
+            console.error('토큰 갱신 중 오류:', refreshError);
+          }
+        } else {
+          console.error('데이터 가져오기 중 오류:', error);
+        }
+      }
+    }
+
+    fetchData();
+  }, [isSuccess]);
   return (
     <>
-      <BannerSlider></BannerSlider>
-      <CategoryWrapper>
-        <ContentWrapper>
-          <NewItemStore></NewItemStore>
-          <LinkWrapper type='store' onClick={handleNavigateStore}>
-            <LinkSpan type='more'>더 알아보기</LinkSpan>
-            <LinkSpan type='c'>&gt;</LinkSpan>
-          </LinkWrapper>
-          <BestItemStore></BestItemStore>
-          <NewItemProduct></NewItemProduct>
-          <LinkWrapper type='product' onClick={handleNavigateProduct}>
-            <LinkSpan type='more'>더 알아보기</LinkSpan>
-            <LinkSpan type='c'>&gt;</LinkSpan>
-          </LinkWrapper>
-          <BestItemProduct></BestItemProduct>
-        </ContentWrapper>
-      </CategoryWrapper>
-    </>
+{isSuccess !== null && (
+  <>
+  <BannerSlider></BannerSlider>
+  <CategoryWrapper>
+    <ContentWrapper>
+      <NewItemStore isSuccess={isSuccess}></NewItemStore>
+      <LinkWrapper type='store' onClick={handleNavigateStore}>
+        <LinkSpan type='more'>더 알아보기</LinkSpan>
+        <LinkSpan type='c'>&gt;</LinkSpan>
+      </LinkWrapper>
+      <BestItemStore isSuccess={isSuccess}></BestItemStore>
+      <NewItemProduct isSuccess={isSuccess}></NewItemProduct>
+      <LinkWrapper type='product' onClick={handleNavigateProduct}>
+        <LinkSpan type='more'>더 알아보기</LinkSpan>
+        <LinkSpan type='c'>&gt;</LinkSpan>
+      </LinkWrapper>
+      <BestItemProduct isSuccess={isSuccess}></BestItemProduct>
+    </ContentWrapper>
+  </CategoryWrapper>
+</>
+)}
+</>
   );
+  
 }
+
 
 export default Home;
