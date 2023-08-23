@@ -205,6 +205,7 @@ function CommunityDetail() {
       </detailS.SignupContentWrapper>
       <detailS.Ti>
         <detailS.Name>{userData.title}</detailS.Name>
+
         <detailS.PostEmail>{userData.writerEmail}</detailS.PostEmail>
         <detailS.PostDate>{userData.updatedAt}</detailS.PostDate>
       </detailS.Ti>
