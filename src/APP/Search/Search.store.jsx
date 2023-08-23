@@ -6,6 +6,7 @@ import { refreshToken } from "../Api/request";
 import { ACCESS_TOKEN } from "../Api/request";
 import { isSuccessState } from "../Login/Recoil/Recoil.auth.state";
 import { useRecoilState, useRecoilValue } from "recoil";
+import ProductCard from "../Category/Category.main.productCard";
 
 function SearchStore({ prop }) {
   const [content, setContent] = useState([]);
@@ -38,6 +39,8 @@ function SearchStore({ prop }) {
                 }
               );
         console.log(con);
+        console.log(con.data.content);
+        setContent(con.data.content);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -83,6 +86,11 @@ function SearchStore({ prop }) {
               <SearchS.Btn>후기순</SearchS.Btn>
             </div>
           </SearchS.Btns>
+          <SearchS.ItemsWrapper>
+            {content.map((item, index) => (
+              <ProductCard key={index} type="new" data={item} />
+            ))}
+          </SearchS.ItemsWrapper>
           {/* <Pagination /> */}
         </SearchS.Box>
       </SearchS.Div>

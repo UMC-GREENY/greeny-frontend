@@ -86,3 +86,14 @@ export const StyleSelect = styled.select`
       color: ${tokens.colors.grey_70};
     `}
 `;
+export const ItemsWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  width: 1264px;
+  height: auto;
+  border-radius: 6px;
+  border: 1px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 60px;
+`;
