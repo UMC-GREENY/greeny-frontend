@@ -87,7 +87,6 @@ export const SortContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
   ${(props) =>
     props.type === "store"
       ? `

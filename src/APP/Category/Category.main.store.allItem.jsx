@@ -61,7 +61,7 @@ function AllItem() {
     try {
       if (locationKw === "" && categoryKw === "") {
         const response = await request.get(
-          `/api/stores/simple?page=0&size=800&sort=${buttonType},desc`,
+          `/api/stores/simple?page=0&size=800&sort=${buttonType}`,
           {
             headers: {
               Authorization: `Bearer ${window.localStorage.getItem(
@@ -77,7 +77,7 @@ function AllItem() {
           const response = await request.get(
             `/api/stores/simple?location=${encodeURIComponent(
               locationKw
-            )}&page=0&size=800&sort=${buttonType},desc`,
+            )}&page=0&size=800&sort=${buttonType}`,
             {
               headers: {
                 Authorization: `Bearer ${window.localStorage.getItem(
@@ -89,7 +89,7 @@ function AllItem() {
           console.log(
             `/api/stores/simple?location=${encodeURIComponent(
               locationKw
-            )}&page=0&size=800&sort=${buttonType},desc`
+            )}&page=0&size=800&sort=${buttonType}`
           );
           setAllItem(response.data.content);
         } else {
@@ -99,7 +99,7 @@ function AllItem() {
                 locationKw
               )}&category=${encodeURIComponent(
                 categoryKw
-              )}&page=0&size=800&sort=${buttonType},desc`,
+              )}&page=0&size=800&sort=${buttonType}`,
               {
                 headers: {
                   Authorization: `Bearer ${window.localStorage.getItem(
@@ -113,7 +113,7 @@ function AllItem() {
                 locationKw
               )}&category=${encodeURIComponent(
                 categoryKw
-              )}&page=0&size=800&sort=${buttonType},desc`
+              )}&page=0&size=800&sort=${buttonType}`
             );
             setAllItem(response.data.content);
           } else {
@@ -122,7 +122,7 @@ function AllItem() {
                 locationKw
               )}&category=${encodeURIComponent(
                 categoryKw
-              )}&page=0&size=800&sort=${buttonType},desc`,
+              )}&page=0&size=800&sort=${buttonType}`,
               {
                 headers: {
                   Authorization: `Bearer ${window.localStorage.getItem(
@@ -136,7 +136,7 @@ function AllItem() {
                 locationKw
               )}&category=${encodeURIComponent(
                 categoryKw
-              )}&page=0&size=800&sort=${buttonType},desc`
+              )}&page=0&size=800&sort=${buttonType}`
             );
             setAllItem(response.data.content);
           }
@@ -146,22 +146,23 @@ function AllItem() {
       console.error("데이터 가져오기 실패", error);
     }
   };
-  const sortClick = async (props) => {
-    await setButtonType(props); // 버튼 타입 변경 (비동기로 실행)
-    sortBest(); // sortBest 함수 호출
-    console.log(buttonType);
-  };
-  // const sortClick = (props) => {
-  //   setButtonType(props);
-  //   {
-  //     props === "bookmarks" && sortBest(props);
-  //   }
-  //   {
-  //     props === "reviews" && sortBest(props);
-  //   }
-
+  // const sortClick = async (props) => {
+  //   await setButtonType(props); // 버튼 타입 변경 (비동기로 실행)
+  //   await sortBest(); // sortBest 함수 호출
+  //   fetchData(); // 상태 다시 가져오기
   //   console.log(buttonType);
   // };
+  const sortClick = (props) => {
+    setButtonType(props);
+    {
+      props === "bookmarks" && sortBest(props);
+    }
+    {
+      props === "reviews" && sortBest(props);
+    }
+
+    console.log(buttonType);
+  };
 
   const handleSelectChange1 = (event) => {
     setLocationKw(event.target.value); // 선택된 값 업데이트
