@@ -19,7 +19,7 @@ function SearchStore({ prop }) {
         const con =
           isSuccess === true
             ? await request.get(
-                `/api/stores/auth/simple?keyword=${prop}&page=0&size=2`,
+                `/api/stores/auth/simple?keyword=${prop}&page=0&size=6&sort=id,desc`,
                 {
                   headers: {
                     Authorization: `Bearer ${window.localStorage.getItem(
@@ -29,7 +29,7 @@ function SearchStore({ prop }) {
                 }
               )
             : await request.get(
-                `/api/stores/simple?keyword=${prop}&page=0&size=2`,
+                `/api/stores/simple?keyword=${prop}&page=0&size=6&sort=id,desc`,
                 {
                   headers: {
                     Authorization: `Bearer ${window.localStorage.getItem(
@@ -47,6 +47,62 @@ function SearchStore({ prop }) {
     };
     fetchData();
   }, [prop]);
+
+  const sortBest = async () => {
+    try {
+      if (isSuccess === true) {
+        const response = await request.get(
+          `/api/stores/auth/simple?keyword=${prop}&page=0&size=6&sort=bookmarks,desc`,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+              Authorization: `Bearer ${window.localStorage.getItem(
+                ACCESS_TOKEN
+              )}`,
+            },
+          }
+        );
+        console.log("response best 잘 불러옴:", response.data);
+        setContent(response.data.content);
+      } else {
+        const response = await request.get(
+          `/api/stores/simple?keyword=${prop}&page=0&size=6&sort=bookmarks,desc`
+        );
+        console.log("response:", response.data);
+        setContent(response.data.content);
+      }
+      console.log("데이터:", content);
+    } catch (error) {
+      console.error("데이터 가져오기 실패", error);
+    }
+  };
+  const sortreview = async () => {
+    try {
+      if (isSuccess === true) {
+        const response = await request.get(
+          `/api/stores/auth/simple?keyword=${prop}&page=0&size=6&sort=reviews,desc`,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+              Authorization: `Bearer ${window.localStorage.getItem(
+                ACCESS_TOKEN
+              )}`,
+            },
+          }
+        );
+        console.log("response view 잘 불러옴:", response.data);
+        setContent(response.data.content);
+      } else {
+        const response = await request.get(
+          `/api/stores/simple?keyword=${prop}&page=0&size=6&sort=reviews,desc`
+        );
+        console.log("response:", response.data);
+        setContent(response.data.content);
+      }
+    } catch (error) {
+      console.error("데이터 가져오기 실패", error);
+    }
+  };
   return (
     <SearchS.Wrapper>
       <SearchS.Div>
@@ -82,8 +138,8 @@ function SearchStore({ prop }) {
               </SearchS.StyleSelect>
             </div>
             <div style={{ display: "flex" }}>
-              <SearchS.Btn>인기순</SearchS.Btn>|
-              <SearchS.Btn>후기순</SearchS.Btn>
+              <SearchS.Btn onClick={sortBest}>인기순</SearchS.Btn>|
+              <SearchS.Btn onClick={sortreview}>후기순</SearchS.Btn>
             </div>
           </SearchS.Btns>
           <SearchS.ItemsWrapper>
