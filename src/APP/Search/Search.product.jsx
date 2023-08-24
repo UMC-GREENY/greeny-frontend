@@ -18,7 +18,7 @@ function SearchProduct({ prop }) {
         const con =
           isSuccess === true
             ? await request.get(
-                `/api/products/auth/simple?keyword=${prop}&page=0&size=2&sort=id,desc`,
+                `/api/products/auth/simple?keyword=${prop}&page=0&size=6&sort=id,desc`,
                 {
                   headers: {
                     Authorization: `Bearer ${window.localStorage.getItem(
@@ -28,7 +28,7 @@ function SearchProduct({ prop }) {
                 }
               )
             : await request.get(
-                `/api/products/simple?keyword=${prop}&page=0&size=2&sort=id,desc`,
+                `/api/products/simple?keyword=${prop}&page=0&size=6&sort=id,desc`,
                 {
                   headers: {
                     Authorization: `Bearer ${window.localStorage.getItem(
@@ -49,7 +49,7 @@ function SearchProduct({ prop }) {
     try {
       if (isSuccess === true) {
         const response = await request.get(
-          `/api/products/auth/simple?keyword=${prop}&page=0&size=800&sort=bookmarks,desc`,
+          `/api/products/auth/simple?keyword=${prop}&page=0&size=6&sort=bookmarks,desc`,
           {
             headers: {
               "Content-Type": "multipart/form-data",
@@ -63,7 +63,7 @@ function SearchProduct({ prop }) {
         setContent(response.data.content);
       } else {
         const response = await request.get(
-          `/api/products/simple?keyword=${prop}&page=0&size=800&sort=bookmarks,desc`
+          `/api/products/simple?keyword=${prop}&page=0&size=6&sort=bookmarks,desc`
         );
         console.log("response:", response.data);
         setContent(response.data.content);
@@ -77,7 +77,7 @@ function SearchProduct({ prop }) {
     try {
       if (isSuccess === true) {
         const response = await request.get(
-          `/api/products/auth/simple?keyword=${prop}page=0&size=800&sort=reviews,desc`,
+          `/api/products/auth/simple?keyword=${prop}page=0&size=6&sort=reviews,desc`,
           {
             headers: {
               "Content-Type": "multipart/form-data",
@@ -91,7 +91,7 @@ function SearchProduct({ prop }) {
         setContent(response.data.content);
       } else {
         const response = await request.get(
-          `/api/products/simple?keyword=${prop}&page=0&size=800&sort=reviews,desc`
+          `/api/products/simple?keyword=${prop}&page=0&size=6&sort=reviews,desc`
         );
         console.log("response:", response.data);
         setContent(response.data.content);
@@ -104,7 +104,7 @@ function SearchProduct({ prop }) {
     try {
       if (isSuccess === true) {
         const response = await request.get(
-          `/api/products/auth/simple?keyword=${prop}&page=0&size=800&sort=price,desc`,
+          `/api/products/auth/simple?keyword=${prop}&page=0&size=6&sort=price,desc`,
           {
             headers: {
               "Content-Type": "multipart/form-data",
@@ -118,7 +118,7 @@ function SearchProduct({ prop }) {
         setContent(response.data.content);
       } else {
         const response = await request.get(
-          `/api/products/simple?keyword=${prop}&page=0&size=800&sort=price,desc`
+          `/api/products/simple?keyword=${prop}&page=0&size=6&sort=price,desc`
         );
         console.log("response:", response.data);
         setContent(response.data.content);
@@ -132,7 +132,7 @@ function SearchProduct({ prop }) {
     try {
       if (isSuccess === true) {
         const response = await request.get(
-          `/api/products/auth/simple?keyword=${prop}&page=0&size=800&sort=price`,
+          `/api/products/auth/simple?keyword=${prop}&page=0&size=6&sort=price`,
           {
             headers: {
               "Content-Type": "multipart/form-data",
@@ -146,7 +146,7 @@ function SearchProduct({ prop }) {
         setContent(response.data.content);
       } else {
         const response = await request.get(
-          `/api/products/simple?keyword=${prop}&page=0&size=800&sort=price`
+          `/api/products/simple?keyword=${prop}&page=0&size=6&sort=price`
         );
         console.log("response:", response.data);
         setContent(response.data.content);
