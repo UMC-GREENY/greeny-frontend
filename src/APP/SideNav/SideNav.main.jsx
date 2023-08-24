@@ -1,12 +1,14 @@
-import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
-import * as tokens from '../tokens';
-import * as SideNavS from './Styled/SideNav.main.styles';
+import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+import * as tokens from "../tokens";
+import * as SideNavS from "./Styled/SideNav.main.styles";
+import { useState } from "react";
 
 //components
 
 function SideNav(props) {
   const navigate = useNavigate();
+  const [content, setContent] = useState("");
   const NavClick = (e, type) => {
     e.preventDefault();
     navigate(`${type}`);
@@ -16,36 +18,34 @@ function SideNav(props) {
       <SideNavS.SideNavSearchWrapper>
         <SideNavS.SideNavInputBox
           type={props.type}
-          className={props.className}
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
         ></SideNavS.SideNavInputBox>
         <SideNavS.SideNavInputIcon
           type={props.type}
-          className={props.className}
+          onClick={() => navigate("/search", { state: content })}
         ></SideNavS.SideNavInputIcon>
       </SideNavS.SideNavSearchWrapper>
       <SideNavS.SideNavList
         type={props.type}
-        className={props.className}
         onClick={(e) => {
-          NavClick(e, '/product');
+          NavClick(e, "/product");
         }}
       >
         ECO-PRODUCTS
       </SideNavS.SideNavList>
       <SideNavS.SideNavList
         type={props.type}
-        className={props.className}
         onClick={(e) => {
-          NavClick(e, '/store');
+          NavClick(e, "/store");
         }}
       >
         ECO-STORE
       </SideNavS.SideNavList>
       <SideNavS.SideNavList
         type={props.type}
-        className={props.className}
         onClick={(e) => {
-          NavClick(e, '/community');
+          NavClick(e, "/community");
         }}
       >
         COMMUNITY

@@ -81,7 +81,7 @@ export const ItemsWrapper = styled.div`
 `;
 
 export const SortContainer = styled.div`
-  width: 344px;
+  width: 1264px;
   gap: 4px;
 
   display: flex;
@@ -96,10 +96,8 @@ export const SortContainer = styled.div`
 
 `
       : ` 
-      width: 344px;
-      margin: 36px 0 0 920px;
+     
             `}
-
 `;
 
 export const SortText = styled.span`
