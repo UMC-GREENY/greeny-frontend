@@ -23,7 +23,7 @@ function ServiceList({ onSelectService }) {
                   : `3px solid ${tokens.colors.grey_80}`,
             }}
           >
-            제품 정보
+            상세 정보
           </itemS.serviceItem>
           <itemS.serviceItem
             onClick={() => handleServiceClick("review")}

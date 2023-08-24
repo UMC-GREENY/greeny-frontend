@@ -2,6 +2,7 @@ import styled from "styled-components";
 import * as tokens from "../../tokens";
 
 export const serviceListWrapper = styled.div`
+    font-family: "Pretendard";
     position: relative;
     top: 692px;
     width: 75vw;

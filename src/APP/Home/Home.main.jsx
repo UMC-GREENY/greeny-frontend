@@ -8,7 +8,6 @@ import NewItemStore from '../Category/Category.main.store.newItem';
 import BestItemStore from '../Category/Category.main.store.bestItem';
 import NewItemProduct from '../Category/Category.main.product.newItem';
 import BestItemProduct from '../Category/Category.main.product.bestItem';
-import BannerSlider from './Banner/Banner.main';
 import { lifeTipCards } from './Banner/Banner.main.dummy';
 
 import { useRecoilValue, useSetRecoilState } from 'recoil';
@@ -48,9 +47,9 @@ export const LinkWrapper = styled.div`
   ${(props) =>
     props.type === "store"
       ? `
-			top: 1750px;`
+			top: 1600px;`
       : `
-				top: 4079px;
+				top: 3929px;
 				`}
 `;
 

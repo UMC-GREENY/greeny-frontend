@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { tokens } from "stylis";
 
@@ -63,6 +63,10 @@ const Icon = styled.div`
 const Slider = ({ images }) => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
+  useEffect(()=>{
+    console.log("이미지", images)
+  }, [])
+
   const handleIconClick = (index) => {
     setSelectedImageIndex(index);
   };
@@ -72,7 +76,7 @@ const Slider = ({ images }) => {
       <ImagesContainer className="slider-images">
         <ImageBox>
           {images.map((image, index) => {
-            console.log(image); // 이렇게 중괄호로 묶어주어야 합니다.
+            console.log(image);
             return (
               <Image
                 key={index}
@@ -86,11 +90,12 @@ const Slider = ({ images }) => {
         <IconsContainer className="slider-icons">
           {images.map((_, index) => (
             <Icon
-              key={index}
-              active={selectedImageIndex === index}
-              onClick={() => handleIconClick(index)}
-            >
-            </Icon>
+  key={index}
+  active={selectedImageIndex === index ? "true" : "false"}
+  onClick={() => handleIconClick(index)}
+>
+</Icon>
+
           ))}
         </IconsContainer>
       </ImagesContainer>

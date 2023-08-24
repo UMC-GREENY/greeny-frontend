@@ -51,6 +51,7 @@ function ServiceContent({ selectedService, isProduct, productId }) {
                 } else {
                     const response = await request.get(`/api/reviews/simple?type=store&id=${productId}&page=0&size=2&sort=id,desc`);
                     setReview(response.data.content);
+                    console.log('데이터', response);
                 }
             } catch (error) {
                 console.error('데이터 가져오기 실패', error);
@@ -128,39 +129,6 @@ function ServiceContent({ selectedService, isProduct, productId }) {
                             <IsViewing data={review} setIsViewing={setIsViewing} isProduct={Product}></IsViewing>
 
                         ) : isWriting ? (
-                            // <>
-                            //     <itemS.ReviewWrapper type="top">
-                            //         <itemS.ReviewWrapper type="text">
-                            //             <itemS.ContentText type="text">리뷰 작성하기</itemS.ContentText>
-                            //         </itemS.ReviewWrapper>
-                            //     </itemS.ReviewWrapper>
-                            //     <itemS.overline></itemS.overline>
-                            //     <itemS.ReviewWrapper type="body">
-                            //         <itemS.ReviewWrapper type="writeContent">
-                            //             <itemS.ContentText type="content" style={{ fontWeight: 600, marginRight: "110px" }}>평점</itemS.ContentText>
-                            //             <StarRatings
-                            //                 rating={rating}
-                            //                 starRatedColor="black"
-                            //                 changeRating={handleRatingChange}
-                            //                 numberOfStars={5}
-                            //                 name='rating'
-                            //             />
-                            //         </itemS.ReviewWrapper>
-                            //         <itemS.ReviewWrapper type="writeContent">
-                            //             <itemS.ContentText type="content" style={{ fontWeight: 600, marginRight: "75px" }}>첨부파일</itemS.ContentText>
-                            //             <itemS.ContentText type="body1" style={{ width: "824px", borderRadius: "5px", border: "1px solid #B3B3B3", display: "flex", alignItems: "center", paddingLeft: "10px" }}>첨부파일명</itemS.ContentText>
-                            //             <itemS.Btn type="attach">파일 첨부하기</itemS.Btn>
-                            //         </itemS.ReviewWrapper>
-                            //         <itemS.ReviewWrapper type="writeContent">
-                            //             <itemS.ContentText type="content" style={{ fontWeight: 600, marginRight: "116px" }}>본문</itemS.ContentText>
-                            //             <itemS.textarea placeholder="본문 내용"></itemS.textarea>
-                            //         </itemS.ReviewWrapper>
-                            //     </itemS.ReviewWrapper>
-                            //     <itemS.ReviewWrapper type="btns">
-                            //         <itemS.Btn type="cancelSubmit" style={{ backgroundColor: tokens.colors.grey_80 }} onClick={() => setIsWriting(false)}>취소하기</itemS.Btn>
-                            //         <itemS.Btn type="cancelSubmit" style={{ backgroundColor: tokens.colors.green_main2 }}>작성하기</itemS.Btn>
-                            //     </itemS.ReviewWrapper>
-                            // </>
                             <IsWriting data={productId} setIsWriting={setIsWriting} isProduct={Product}></IsWriting>
                         )
                             : (
@@ -204,8 +172,10 @@ function ServiceContent({ selectedService, isProduct, productId }) {
                                                             textOverflow: "ellipsis",
                                                         }}
                                                     >
-                                                        {reviewItem.content} {/* 리뷰 내용 */}
+                                                        {reviewItem.content}
+                                                        {reviewItem.existsFile && <itemS.imgIcon src={'/review/photo.png'} alt="Review Image" />}
                                                     </itemS.ContentText>
+                                                
                                                     <itemS.ContentText type="body1">{reviewItem.writerEmail}</itemS.ContentText>
                                                     <itemS.ContentText
                                                         type="body1"

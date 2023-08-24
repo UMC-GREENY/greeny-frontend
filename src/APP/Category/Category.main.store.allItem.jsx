@@ -41,6 +41,7 @@ function AllItem() {
       isMounted = false; // 컴포넌트 언마운트 시 변수 업데이트
     };
   }, []); // 의존성 배열에 isProduct 추가
+  
 
   // 페이지네이션 관련 상태
   const [currentPage, setCurrentPage] = useState(1);
