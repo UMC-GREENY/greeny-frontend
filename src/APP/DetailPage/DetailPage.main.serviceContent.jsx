@@ -88,10 +88,19 @@ function ServiceContent({ selectedService, isProduct, productId }) {
             <itemS.ContentWrap>
                 {selectedService === "detailInfo" && (
                     <>
-                        {itemInfo.contentUrl ?
-                            <itemS.DetailInfo src={"https://umc-greeny.s3.ap-northeast-2.amazonaws.com/" + itemInfo.contentUrl}></itemS.DetailInfo>
-                            : <itemS.ContentText type="headLine">Web URL을 참고해 주세요</itemS.ContentText>
-                        }
+                        {isProduct ? (
+                            itemInfo.contentUrl ? (
+                                <itemS.DetailInfo src={"https://umc-greeny.s3.ap-northeast-2.amazonaws.com/" + itemInfo.contentUrl} />
+                            ) : (
+                                <itemS.ContentText type="headLine">Web URL을 참고해 주세요</itemS.ContentText>
+                            )
+                        ) : (
+                            itemInfo.runningTime ? (
+                                <itemS.ContentText type="headLine">🕖 {itemInfo.runningTime}</itemS.ContentText>
+                            ) : (
+                                <itemS.ContentText type="headLine">Web URL을 참고해 주세요</itemS.ContentText>
+                            )
+                        )}
                     </>
                 )}
 
@@ -175,7 +184,7 @@ function ServiceContent({ selectedService, isProduct, productId }) {
                                                         {reviewItem.content}
                                                         {reviewItem.existsFile && <itemS.imgIcon src={'/review/photo.png'} alt="Review Image" />}
                                                     </itemS.ContentText>
-                                                
+
                                                     <itemS.ContentText type="body1">{reviewItem.writerEmail}</itemS.ContentText>
                                                     <itemS.ContentText
                                                         type="body1"

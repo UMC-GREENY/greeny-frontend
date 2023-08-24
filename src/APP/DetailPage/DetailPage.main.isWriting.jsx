@@ -71,6 +71,7 @@ function IsWriting(props) {
                 .then((res) => {
                     console.log("post res:", res);
                     if (res.isSuccess) {
+                        alert(res.message);
                         navigate(`/product/${props.data}`, { state: { type } });
                     } else {
                         console.error('게시물 작성에 실패했습니다.');

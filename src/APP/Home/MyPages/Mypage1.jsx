@@ -277,7 +277,7 @@ function Mypage() {
         <hr></hr>
         <mystyles.secondcontainer>
           <mystyles.secondcontainertitle>
-            내가 쓴 글({userPosts.length})
+            내가 쓴 글 ({userPosts.length})
           </mystyles.secondcontainertitle>
           <mystyles.thirdcontainer>
             {Array.isArray(userPosts) ? (
@@ -310,11 +310,15 @@ function Mypage() {
         <hr></hr>
         <mystyles.secondcontainer>
           <mystyles.secondcontainertitle>
-            내 후기({userReview.length})
+            내 후기 ({userReview.length})
           </mystyles.secondcontainertitle>
           <mystyles.thirdcontainer>
             {currentReviews.map((post) => (
-              <mystyles.mycontents key={post.id}>
+              <mystyles.mycontents key={post.id} onClick={() =>
+                navigate(`/${post.type}/review/${post.idByType}}`, {
+                  state: { array: {post} },
+                })
+              } >
                 <mystyles.reviewstar>
                   {[...Array(5)].map((_, index) => (
                     <FaStar
