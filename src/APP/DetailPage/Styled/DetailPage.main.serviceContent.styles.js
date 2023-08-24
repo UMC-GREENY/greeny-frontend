@@ -2,6 +2,7 @@ import styled from "styled-components";
 import * as tokens from "../../tokens";
 
 export const ContentWrap = styled.div`
+font-family: "Pretendard";
   position: relative;
   top: 757px;
   width: 75vw;

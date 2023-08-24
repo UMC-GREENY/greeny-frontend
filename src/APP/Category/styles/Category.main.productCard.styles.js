@@ -37,7 +37,7 @@ export const descripWrap = styled.div`
 `;
 
 export const text = styled.span`
-  font-family: Pretendard;
+  font-family: "Pretendard";
 
   width: 280px;
   overflow: hidden;
