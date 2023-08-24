@@ -6,7 +6,6 @@ export const cardWrap = styled.div`
   height: ${(props) => (props.type === 'best' ? '498px' : '548px')};
   border-radius: 6px;
   border: 1px solid ${tokens.colors.grey_90};
-
   display: flex;
   flex-direction: column;
   align-items: center;

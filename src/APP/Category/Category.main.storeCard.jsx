@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import * as itemS from './styles/Category.main.productCard.styles';
-import { useNavigate } from 'react-router-dom';
-import LikeButton from '../Home/Like/Likepage.main.clickitem';
+import React, { useEffect, useState } from "react";
+import * as itemS from "./styles/Category.main.productCard.styles";
+import { useNavigate } from "react-router-dom";
+import LikeButton from "../Home/Like/Likepage.main.clickitem";
 function StoreCard(props) {
   const navigate = useNavigate();
 
@@ -16,7 +16,7 @@ function StoreCard(props) {
 
   const handleImageError = (event) => {
     event.target.src =
-      'https://umc-greeny.s3.ap-northeast-2.amazonaws.com/store_basic.png';
+      "https://umc-greeny.s3.ap-northeast-2.amazonaws.com/store_basic.png";
   };
 
   return (
@@ -29,15 +29,29 @@ function StoreCard(props) {
             type={props.type}
           ></itemS.img>
           <itemS.likebuttonWrap>
-            {props.data.isBookmarked ? (<LikeButton type='store' id={props.data.id} isLike={true} inner={false}></LikeButton>) : (<LikeButton type='store' id={props.data.id} isLike={false} inner={false}></LikeButton>)}
+            {props.data.isBookmarked ? (
+              <LikeButton
+                type="store"
+                id={props.data.id}
+                isLike={true}
+                inner={false}
+              ></LikeButton>
+            ) : (
+              <LikeButton
+                type="store"
+                id={props.data.id}
+                isLike={false}
+                inner={false}
+              ></LikeButton>
+            )}
           </itemS.likebuttonWrap>
         </itemS.ImageWrap>
 
         <itemS.descripWrap onClick={handleCardClick}>
-          <itemS.text type='brand'>{props.data.name}</itemS.text>
+          <itemS.text type="brand">{props.data.name}</itemS.text>
           <itemS.tagWrap>
-            <itemS.text type='location'>{props.data.location}</itemS.text>
-            <itemS.text type='category'>{props.data.category}</itemS.text>
+            <itemS.text type="location">{props.data.location}</itemS.text>
+            <itemS.text type="category">{props.data.category}</itemS.text>
           </itemS.tagWrap>
         </itemS.descripWrap>
       </itemS.cardWrap>
