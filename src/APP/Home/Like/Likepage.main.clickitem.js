@@ -6,6 +6,29 @@ import { refreshToken } from '../../Api/request';
 import axios from 'axios';
 const LikeButton = ({ type, id, isLike, inner }) => {
   const [isSuccess, setIsSuccess] = useState(null);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await request.get('/api/auth');
+        console.log('response', response);
+        setIsSuccess(response.isSuccess);
+      } catch (error) {
+        if (error.response && error.response.status === 401) {
+          try {
+            await refreshToken();
+            const response = await request.get('/api/auth');
+            setIsSuccess(response.isSuccess);
+          } catch (refreshError) {
+            console.error('토큰 갱신 중 오류:', refreshError);
+          }
+        } else {
+          console.error('데이터 가져오기 중 오류:', error);
+        }
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const isTokenValid = () => {
     const accessToken = window.localStorage.getItem(ACCESS_TOKEN);
