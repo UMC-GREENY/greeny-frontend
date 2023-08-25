@@ -14,7 +14,7 @@ export const MainImg = styled.div`
 
 export const MainText = styled.span`
 	color: #FFFFFF;
-	font-family: New York;
+	font-family: 'New York';
 	font-size: 48px;
 	font-weight: 400;
 	line-height: 73px;
