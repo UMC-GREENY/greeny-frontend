@@ -84,6 +84,7 @@ export const tabwrapper = styled.div`
   justify-content: start;
   color: black;
   margin-top: 26px;
+  cursor: pointer;
  
 
   .submenu {
@@ -147,6 +148,7 @@ export const productinfo = styled.div`
   flex-direction: column;
   justify-content: start;
   align-items: start;
+  width: 200px;
 `;
 export const productinfotitle = styled.div`
   justify-content: start;
@@ -202,7 +204,7 @@ export const productinfodetail2 = styled.div`
   /* type이 'store'일 때의 스타일 */
   &.store {
     text-align: start;
-    width: 88px;
+    width: 100px;
     height: 24px;
     text-align: center;
     color: black;
@@ -220,6 +222,7 @@ export const lastcontainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  margin-left: 5px;
 `;
 /*---------------------------------------------- */
 export const PageSearchWrapper = styled.div`

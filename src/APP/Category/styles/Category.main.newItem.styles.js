@@ -81,22 +81,19 @@ export const ItemsWrapper = styled.div`
 `;
 
 export const SortContainer = styled.div`
-  width: 1264px;
-  gap: 4px;
-
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   ${(props) =>
-    props.type === "store"
+      props.type === "store"
       ? `
       
       width: 132px;
       margin: 36px 0 0 1117px;
-
 `
       : ` 
-     
+      width: 344px;
+      margin: 36px 0 0 920px;
             `}
 `;
 

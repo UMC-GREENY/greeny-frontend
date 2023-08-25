@@ -18,7 +18,7 @@ function SearchProduct({ prop }) {
         const con =
           isSuccess === true
             ? await request.get(
-                `/api/products/auth/simple?keyword=${prop}&page=0&size=2`,
+                `/api/products/auth/simple?keyword=${prop}&page=0&size=6&sort=id,desc`,
                 {
                   headers: {
                     Authorization: `Bearer ${window.localStorage.getItem(
@@ -28,7 +28,7 @@ function SearchProduct({ prop }) {
                 }
               )
             : await request.get(
-                `/api/products/simple?keyword=${prop}&page=0&size=2`,
+                `/api/products/simple?keyword=${prop}&page=0&size=6&sort=id,desc`,
                 {
                   headers: {
                     Authorization: `Bearer ${window.localStorage.getItem(
@@ -45,15 +45,129 @@ function SearchProduct({ prop }) {
     fetchData();
     console.log(content, "con");
   }, [prop]);
+  const sortBest = async () => {
+    try {
+      if (isSuccess === true) {
+        const response = await request.get(
+          `/api/products/auth/simple?keyword=${prop}&page=0&size=6&sort=bookmarks,desc`,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+              Authorization: `Bearer ${window.localStorage.getItem(
+                ACCESS_TOKEN
+              )}`,
+            },
+          }
+        );
+        console.log("response best 잘 불러옴:", response.data);
+        setContent(response.data.content);
+      } else {
+        const response = await request.get(
+          `/api/products/simple?keyword=${prop}&page=0&size=6&sort=bookmarks,desc`
+        );
+        console.log("response:", response.data);
+        setContent(response.data.content);
+      }
+      console.log("데이터:", content);
+    } catch (error) {
+      console.error("데이터 가져오기 실패", error);
+    }
+  };
+  const sortreview = async () => {
+    try {
+      if (isSuccess === true) {
+        const response = await request.get(
+          `/api/products/auth/simple?keyword=${prop}page=0&size=6&sort=reviews,desc`,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+              Authorization: `Bearer ${window.localStorage.getItem(
+                ACCESS_TOKEN
+              )}`,
+            },
+          }
+        );
+        console.log("response view 잘 불러옴:", response.data);
+        setContent(response.data.content);
+      } else {
+        const response = await request.get(
+          `/api/products/simple?keyword=${prop}&page=0&size=6&sort=reviews,desc`
+        );
+        console.log("response:", response.data);
+        setContent(response.data.content);
+      }
+    } catch (error) {
+      console.error("데이터 가져오기 실패", error);
+    }
+  };
+  const sortPriceUp = async () => {
+    try {
+      if (isSuccess === true) {
+        const response = await request.get(
+          `/api/products/auth/simple?keyword=${prop}&page=0&size=6&sort=price,desc`,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+              Authorization: `Bearer ${window.localStorage.getItem(
+                ACCESS_TOKEN
+              )}`,
+            },
+          }
+        );
+        console.log("response view 잘 불러옴:", response.data);
+        setContent(response.data.content);
+      } else {
+        const response = await request.get(
+          `/api/products/simple?keyword=${prop}&page=0&size=6&sort=price,desc`
+        );
+        console.log("response:", response.data);
+        setContent(response.data.content);
+      }
+      console.log("데이터:", content);
+    } catch (error) {
+      console.error("데이터 가져오기 실패", error);
+    }
+  };
+  const sortPriceDown = async () => {
+    try {
+      if (isSuccess === true) {
+        const response = await request.get(
+          `/api/products/auth/simple?keyword=${prop}&page=0&size=6&sort=price`,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+              Authorization: `Bearer ${window.localStorage.getItem(
+                ACCESS_TOKEN
+              )}`,
+            },
+          }
+        );
+        console.log("response view 잘 불러옴:", response.data);
+        setContent(response.data.content);
+      } else {
+        const response = await request.get(
+          `/api/products/simple?keyword=${prop}&page=0&size=6&sort=price`
+        );
+        console.log("response:", response.data);
+        setContent(response.data.content);
+      }
+
+      console.log("데이터:", content);
+    } catch (error) {
+      console.error("데이터 가져오기 실패", error);
+    }
+  };
+
   return (
     <SearchP.Wrapper>
       <SearchP.Div>
         <h2>Product</h2>
         <SearchP.Box type={content}>
           <SearchP.Btns>
-            <SearchP.Btn>인기순</SearchP.Btn>|<SearchP.Btn>후기순</SearchP.Btn>|
-            <SearchP.Btn>가격 높은 순</SearchP.Btn>|
-            <SearchP.Btn>가격 낮은 순</SearchP.Btn>
+            <SearchP.Btn onClick={sortBest}>인기순</SearchP.Btn>|
+            <SearchP.Btn onClick={sortreview}>후기순</SearchP.Btn>|
+            <SearchP.Btn onClick={sortPriceUp}>가격 높은 순</SearchP.Btn>|
+            <SearchP.Btn onClick={sortPriceDown}>가격 낮은 순</SearchP.Btn>
           </SearchP.Btns>
 
           <SearchP.ItemsWrapper>
