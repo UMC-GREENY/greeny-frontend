@@ -5,6 +5,7 @@ export const Div = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 30px;
+  font-family: 'Pretendard';
 `;
 export const Wrapper = styled.div`
   display: flex;
@@ -44,7 +45,8 @@ export const secondcontainertitle = styled.div`
   font-size: 20px;
   margin-bottom: 10px;
   margin-top: 36px;
-  ${(props) => `color: ${tokens.colors.grey_15}`}
+  ${(props) => `color: ${tokens.colors.grey_15}`};
+  font-family: 'New York';
 `;
 export const Title = styled.div`
   width: 181px;
@@ -52,6 +54,7 @@ export const Title = styled.div`
   color: #649d17;
   text-align: start;
   margin-right: 1100px;
+  font-family: 'New York';
 `;
 export const secondcontainer = styled.div`
   display: flex;
@@ -60,6 +63,7 @@ export const secondcontainer = styled.div`
   flex-direction: column;
   align-items: start;
   margin-top: 40px;
+  margin-bottom: 40px;
 `;
 export const styledInput_pw = styled.input`
   width: 50%;
@@ -86,6 +90,7 @@ export const thirdcontainer = styled.div`
   color: #999999;
   border-style: solid;
   border-width: 2px 0 2px 0;
+  padding: 20px 0 20px;
 `;
 export const mycontents = styled.div`
   height: 30px;

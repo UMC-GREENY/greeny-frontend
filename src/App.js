@@ -32,6 +32,7 @@ import CommunityDetail from "./APP/Comunity/Community.detail";
 import Product from "./APP/Category/Category.main.product.jsx";
 import Store from "./APP/Category/Category.main.store";
 import Search from "./APP/Search/Search.main";
+import Review from "./APP/DetailPage/DetailPage.main.review";
 
 function App() {
   const MainScreen = styled.div`
@@ -151,11 +152,29 @@ function App() {
             }
           />
           <Route
+            path="/product/review/:productId"
+            element={
+              <>
+                <SideNav></SideNav>
+                <Review />
+              </>
+            }
+          />
+          <Route
             path="/store/:storeId"
             element={
               <>
                 <SideNav></SideNav>
                 <DetailPage />
+              </>
+            }
+          />
+          <Route
+            path="/store/review/:storeId"
+            element={
+              <>
+                <SideNav></SideNav>
+                <Review />
               </>
             }
           />

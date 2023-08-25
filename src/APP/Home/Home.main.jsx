@@ -54,7 +54,7 @@ export const LinkWrapper = styled.div`
 `;
 
 export const LinkSpan = styled.span`
-  font-family: Pretendard;
+  font-family: "Pretendard";
   color: #666666;
   ${(props) =>
     props.type === "more"

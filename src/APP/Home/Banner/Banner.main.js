@@ -39,7 +39,7 @@ export const LinkSpan = styled.span`
 `;
 const lifeTipCards = [
   {
-    title: `친환경적인\n 라이프 스타일 구축을 위해\n 노력하는 Greenny`,
+    title: `친환경적인\n 라이프 스타일 구축을 위해\n 노력하는 Greeny`,
     num: 0,
     class: 0,
     img: '/home/mainPicture.png',

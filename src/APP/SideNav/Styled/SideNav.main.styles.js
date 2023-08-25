@@ -91,7 +91,7 @@ export const SideNavInputIcon = styled.div`
   background-repeat: no-repeat;
 
   &.whitest {
-    color:white
+    color:white;
     width: 30px;
     height: 50px;
     background-image: url("/topnavbar/searchIconWhite.png");

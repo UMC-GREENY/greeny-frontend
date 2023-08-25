@@ -251,7 +251,7 @@ function AllItem() {
       <itemS.TitleWrap type="best">
         <itemS.TitleText>STORE ALL</itemS.TitleText>
       </itemS.TitleWrap>
-      <itemS.SortContainer>
+      <itemS.SortAllContainer>
         <div style={{ display: "flex" }}>
           <itemS.StyleSelect name="location" onChange={handleSelectChange1}>
             <option hidden value="default">
@@ -301,7 +301,7 @@ function AllItem() {
             후기순
           </itemS.SortText>
         </div>
-      </itemS.SortContainer>
+      </itemS.SortAllContainer>
       <itemS.ItemsWrapper type="all">
         {currentItems.map((item, index) => (
           <StoreCard key={index} type="best" data={item} />

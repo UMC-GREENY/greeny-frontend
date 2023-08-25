@@ -6,6 +6,7 @@ import { refreshToken } from '../../Api/request';
 import axios from 'axios';
 const LikeButton = ({ type, id, isLike, inner }) => {
   const [isSuccess, setIsSuccess] = useState(null);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -58,7 +59,7 @@ const LikeButton = ({ type, id, isLike, inner }) => {
   const [initialLikeState, setInitialLikeState] = useState(isLike);
 
   useEffect(() => {
-
+    // console.log("헤헤",initialLikeState);
   }, [initialLikeState]);
   const handleToggleLike = async () => {
     if (!isTokenValid()) {

@@ -7,7 +7,7 @@ function LikedProductpage(props) {
   const [titleLength, setTitleLength] = useState(title.length);
   const navigate = useNavigate();
   const handleLikedpageClick = () => {
-    navigate(`/store/${id}`);
+    navigate(`/${type}/${id}`);
   };
 
   console.log(id);

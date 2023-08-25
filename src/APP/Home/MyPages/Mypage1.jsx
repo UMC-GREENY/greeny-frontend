@@ -274,10 +274,9 @@ function Mypage() {
             {">"}
           </mystyles.firstcontainerbutton>
         </mystyles.firstcontainer>
-        <hr></hr>
         <mystyles.secondcontainer>
           <mystyles.secondcontainertitle>
-            내가 쓴 글({userPosts.length})
+            내가 쓴 글 ({userPosts.length})
           </mystyles.secondcontainertitle>
           <mystyles.thirdcontainer>
             {Array.isArray(userPosts) ? (
@@ -296,28 +295,30 @@ function Mypage() {
                 </mystyles.mycontents>
               ))
             ) : (
-              <p>배열이 존재하지 않음</p>
+              <p>게시물이 존재하지 않음</p>
             )}
           </mystyles.thirdcontainer>
         </mystyles.secondcontainer>
         <mystyles.PaginationWrapper>
           <Pagination
-            activePage={currentPagePosts}
+            activePage={currentPageReviews}
             itemsCountPerPage={itemsPerPage}
-            totalItemsCount={userPosts.length}
-            onChange={handlePageChangePosts}
-            hideNavigation={true}
+            totalItemsCount={userReview.length}
+            onChange={handlePageChangeReviews}
             hideFirstLastPages={true}
           />
         </mystyles.PaginationWrapper>
-        <hr></hr>
         <mystyles.secondcontainer>
           <mystyles.secondcontainertitle>
-            내 후기({userReview.length})
+            내 후기 ({userReview.length})
           </mystyles.secondcontainertitle>
           <mystyles.thirdcontainer>
             {currentReviews.map((post) => (
-              <mystyles.mycontents key={post.id}>
+              <mystyles.mycontents key={post.id} onClick={() =>
+                navigate(`/${post.type}/review/${post.idByType}`, {
+                  state: { array: {post} },
+                })
+              } >
                 <mystyles.reviewstar>
                   {[...Array(5)].map((_, index) => (
                     <FaStar
@@ -337,14 +338,13 @@ function Mypage() {
           </mystyles.thirdcontainer>
         </mystyles.secondcontainer>
         <mystyles.PaginationWrapper>
-          <Pagination
-            activePage={currentPageReviews}
-            itemsCountPerPage={itemsPerPage}
-            totalItemsCount={userReview.length}
-            onChange={handlePageChangeReviews}
-            hideNavigation={true}
-            hideFirstLastPages={true}
-          />
+        <Pagination
+                    activePage={currentPageReviews}
+                    itemsCountPerPage={itemsPerPage}
+                    totalItemsCount={userReview.length}
+                    onChange={handlePageChangeReviews}
+                    hideFirstLastPages={true}
+                />
         </mystyles.PaginationWrapper>
         <mystyles.lastcontainer>
           <mystyles.lastbutton onClick={handleLogout}>

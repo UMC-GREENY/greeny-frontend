@@ -35,19 +35,20 @@ function CommunityDetail() {
         const con =
           isSuccess === true
             ? await request.get(`/api/posts/auth?postId=${params[1]}`, {
-                headers: {
-                  Authorization: `Bearer ${window.localStorage.getItem(
-                    ACCESS_TOKEN
-                  )}`,
-                },
-              })
+              headers: {
+                Authorization: `Bearer ${window.localStorage.getItem(
+                  ACCESS_TOKEN
+                )}`,
+              },
+            })
             : await request.get(`/api/posts?postId=${params[1]}`, {
-                headers: {
-                  Authorization: `Bearer ${window.localStorage.getItem(
-                    ACCESS_TOKEN
-                  )}`,
-                },
-              });
+              headers: {
+                Authorization: `Bearer ${window.localStorage.getItem(
+                  ACCESS_TOKEN
+                )}`,
+              },
+            });
+        console.log("화긴중", con.data);
         setUserData({
           title: con.data.title,
           content: con.data.content,
@@ -68,13 +69,14 @@ function CommunityDetail() {
 
     console.log(love, "loge");
   }, [params[1]]);
-  //좋아요
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await request.post(
-          `/api/posts/like?postId=${params[1]}`,
+  //좋아요
+  const onLove = async () => {
+    try {
+      // 선택한 포스트에 대한 좋아요 처리
+      if (love === true) {
+        await request.post(
+          `/api/posts/like?postId=${params[1]}`, // 변경: unlike 엔드포인트 사용
           null,
           {
             headers: {
@@ -84,205 +86,217 @@ function CommunityDetail() {
             },
           }
         );
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-    fetchData();
-  }, [params[1]]);
-
-  const onLove = () => {
-    setLove(!love);
-    if (love) {
-      setUserData((prevUserData) => ({
-        ...prevUserData,
-        likes: prevUserData.likes - 1,
-      }));
-    } else {
-      setUserData((prevUserData) => ({
-        ...prevUserData,
-        likes: prevUserData.likes + 1,
-      }));
-    }
-  };
-  //댓글 목록 불러오기
-  const [comment, setComment] = useState([]);
-  const fetchComments = async () => {
-    try {
-      const response =
-        isSuccess === true
-          ? await request.get(`/api/comments/auth?postId=${params[1]}`, {
-              headers: {
-                Authorization: `Bearer ${window.localStorage.getItem(
-                  ACCESS_TOKEN
-                )}`,
-              },
-            })
-          : await request.get(`/api/comments?postId=${params[1]}`, {
-              headers: {
-                Authorization: `Bearer ${window.localStorage.getItem(
-                  ACCESS_TOKEN
-                )}`,
-              },
-            });
-      setComment(response.data.reverse());
-    } catch (error) {
-      console.error("Error fetching comments:", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchComments();
-  }, [params[1]]);
-
-  const [visibleComments, setVisibleComments] = useState(5);
-
-  const loadMoreComments = () => {
-    setVisibleComments(visibleComments + 5);
-  };
-  //댓글달기
-  const [myComment, setMyComment] = useState();
-  const addComment = () => {
-    const fetchData = async () => {
-      try {
-        const requestData = {
-          content: myComment,
-        };
-
-        const response = await request.post(
-          `/api/comments?postId=${params[1]}`,
-          requestData, // 전송할 데이터
+        setUserData((prevUserData) => ({
+          ...prevUserData,
+          likes: prevUserData.likes - 1,
+        }));
+        setLove(false);
+        
+      } else {
+        await request.post(
+          `/api/posts/like?postId=${params[1]}`, // 변경: like 엔드포인트 사용
+          null,
           {
             headers: {
               Authorization: `Bearer ${window.localStorage.getItem(
                 ACCESS_TOKEN
               )}`,
-              "Content-Type": "application/json", // 데이터 형식을 JSON으로 지정
             },
           }
         );
-        fetchComments();
-        setMyComment("");
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        console.log("에러");
+  
+        setUserData((prevUserData) => ({
+          ...prevUserData,
+          likes: prevUserData.likes + 1,
+        }));
+        setLove(true);
       }
-    };
-    fetchData();
+    } catch (error) {
+      if (error.response.status === 403) {
+        alert(error.response.data.message);
+      }
+      console.error("Error fetching data:", error);
+    }
   };
-
-  //댓글삭제
-  const RemoveComment = async (commentItem) => {
-    try {
-      const response = await request.delete(
-        `/api/comments?commentId=${commentItem.id}`,
-        {
+  
+//댓글 목록 불러오기
+const [comment, setComment] = useState([]);
+const fetchComments = async () => {
+  try {
+    const response =
+      isSuccess === true
+        ? await request.get(`/api/comments/auth?postId=${params[1]}`, {
           headers: {
             Authorization: `Bearer ${window.localStorage.getItem(
               ACCESS_TOKEN
             )}`,
           },
+        })
+        : await request.get(`/api/comments?postId=${params[1]}`, {
+          headers: {
+            Authorization: `Bearer ${window.localStorage.getItem(
+              ACCESS_TOKEN
+            )}`,
+          },
+        });
+    setComment(response.data.reverse());
+  } catch (error) {
+    console.error("Error fetching comments:", error);
+  }
+};
+
+useEffect(() => {
+  fetchComments();
+}, [params[1]]);
+
+const [visibleComments, setVisibleComments] = useState(5);
+
+const loadMoreComments = () => {
+  setVisibleComments(visibleComments + 5);
+};
+//댓글달기
+const [myComment, setMyComment] = useState();
+const addComment = () => {
+  const fetchData = async () => {
+    try {
+      const requestData = {
+        content: myComment,
+      };
+
+      const response = await request.post(
+        `/api/comments?postId=${params[1]}`,
+        requestData, // 전송할 데이터
+        {
+          headers: {
+            Authorization: `Bearer ${window.localStorage.getItem(
+              ACCESS_TOKEN
+            )}`,
+            "Content-Type": "application/json", // 데이터 형식을 JSON으로 지정
+          },
         }
       );
       fetchComments();
-      // setComment(response.data.reverse());
+      setMyComment("");
     } catch (error) {
-      console.error("Error fetching comments:", error);
+      console.error("Error fetching data:", error);
+      console.log("에러");
     }
   };
+  fetchData();
+};
 
-  return (
-    <detailS.SignupWrapper>
-      <detailS.SignupContentWrapper>
-        <detailS.Title>Community</detailS.Title>
-        <detailS.ContentWrapper>
-          <detailS.SubTitle>GREENY COMMUNITY</detailS.SubTitle>
-          <detailS.ListButton onClick={() => handleMore("community")}>
-            글 목록
-          </detailS.ListButton>
-        </detailS.ContentWrapper>
-      </detailS.SignupContentWrapper>
-      <detailS.Ti>
-        <detailS.Name>{userData.title}</detailS.Name>
+//댓글삭제
+const RemoveComment = async (commentItem) => {
+  try {
+    const response = await request.delete(
+      `/api/comments?commentId=${commentItem.id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${window.localStorage.getItem(
+            ACCESS_TOKEN
+          )}`,
+        },
+      }
+    );
+    fetchComments();
+    // setComment(response.data.reverse());
+  } catch (error) {
+    console.error("Error fetching comments:", error);
+  }
+};
 
-        <detailS.PostEmail>{userData.writerEmail}</detailS.PostEmail>
-        <detailS.PostDate>{userData.updatedAt}</detailS.PostDate>
-      </detailS.Ti>
-      {userData.fileUrls.length === 0 ? (
-        <></>
-      ) : (
-        <detailS.Pic>
-          <Slider
-            images={userData.fileUrls.map(
-              (imageUrl) =>
-                `https://umc-greeny.s3.ap-northeast-2.amazonaws.com/${imageUrl}`
-            )}
-          />
-        </detailS.Pic>
-      )}
+return (
+  <detailS.SignupWrapper>
+    <detailS.SignupContentWrapper>
+      <detailS.Title>Community</detailS.Title>
+      <detailS.ContentWrapper>
+        <detailS.SubTitle>GREENY COMMUNITY</detailS.SubTitle>
+        <detailS.ListButton onClick={() => handleMore("community")}>
+          글 목록
+        </detailS.ListButton>
+      </detailS.ContentWrapper>
+    </detailS.SignupContentWrapper>
+    <detailS.Ti>
+      <detailS.Name>{userData.title}</detailS.Name>
 
-      <detailS.Text>
-        {userData.content}
-        <detailS.ConTi>
-          <detailS.One>
-            <div>
-              <img src="/community/photo.png" />
-              {userData.fileUrls.length}
-            </div>
-            <div>
-              <img src="/community/chat.png" />
-              {comment.length}
-            </div>
-          </detailS.One>
-          <div
-            onClick={isSuccess ? onLove : null}
-            style={{ display: "flex", alignItems: "center", fontSize: "12px" }}
-          >
-            {love ? (
-              <img src="/community/favorite.png" />
-            ) : (
-              <img src="/community/pre_favorite.png" />
-            )}
-            {console.log(love, "ss")}
-            {console.log(userData.likes, "likes")}
-            {console.log(userData.isLiked, "liked")}
-            {userData.likes}
-          </div>
-        </detailS.ConTi>
-      </detailS.Text>
-      <detailS.Co>
-        {comment.slice(0, visibleComments).map((commentItem) => (
-          <detailS.Commend key={commentItem.id}>
-            <detailS.Who>
-              <div>{commentItem.writerEmail}</div>
-              <div>{commentItem.updatedAt}</div>
-            </detailS.Who>
-            <detailS.ConBtn>
-              {commentItem.content}
-              {commentItem.isWriter && (
-                <button onClick={() => RemoveComment(commentItem)}>삭제</button>
-              )}
-            </detailS.ConBtn>
-          </detailS.Commend>
-        ))}
-        {visibleComments < comment.length && (
-          <detailS.preBtn>
-            <button onClick={loadMoreComments}>
-              이전 댓글 더 보기
-              <img src="/community/arrow.png" />
-            </button>
-          </detailS.preBtn>
-        )}
-      </detailS.Co>
-      <detailS.Write>
-        <detailS.Box
-          disabled={!isSuccess}
-          onChange={(e) => setMyComment(e.target.value)}
-          value={myComment}
+      <detailS.PostEmail>{userData.writerEmail}</detailS.PostEmail>
+      <detailS.PostDate>{userData.updatedAt}</detailS.PostDate>
+    </detailS.Ti>
+    {userData.fileUrls.length === 0 ? (
+      <></>
+    ) : (
+      <detailS.Pic>
+        <Slider
+          images={userData.fileUrls.map(
+            (imageUrl) =>
+              `https://umc-greeny.s3.ap-northeast-2.amazonaws.com/${imageUrl}`
+          )}
         />
-        <button onClick={addComment}>댓글 등록</button>
-      </detailS.Write>
-    </detailS.SignupWrapper>
-  );
+      </detailS.Pic>
+    )}
+
+    <detailS.Text>
+      {userData.content}
+      <detailS.ConTi>
+        <detailS.One>
+          <div>
+            <img src="/community/photo.png" />
+            {userData.fileUrls.length}
+          </div>
+          <div>
+            <img src="/community/chat.png" />
+            {comment.length}
+          </div>
+        </detailS.One>
+        <div
+          onClick={isSuccess ? onLove : null}
+          style={{ display: "flex", alignItems: "center", fontSize: "12px" }}
+        >
+          {love ? (
+            <img src="/community/favorite.png" />
+          ) : (
+            <img src="/community/pre_favorite.png" />
+          )}
+          {console.log(love, "ss")}
+          {console.log(userData.likes, "likes")}
+          {console.log(userData.isLiked, "liked")}
+          {userData.likes}
+        </div>
+      </detailS.ConTi>
+    </detailS.Text>
+    <detailS.Co>
+      {comment.slice(0, visibleComments).map((commentItem) => (
+        <detailS.Commend key={commentItem.id}>
+          <detailS.Who>
+            <div>{commentItem.writerEmail}</div>
+            <div>{commentItem.updatedAt}</div>
+          </detailS.Who>
+          <detailS.ConBtn>
+            {commentItem.content}
+            {commentItem.isWriter && (
+              <button onClick={() => RemoveComment(commentItem)}>삭제</button>
+            )}
+          </detailS.ConBtn>
+        </detailS.Commend>
+      ))}
+      {visibleComments < comment.length && (
+        <detailS.preBtn>
+          <button onClick={loadMoreComments}>
+            이전 댓글 더 보기
+            <img src="/community/arrow.png" />
+          </button>
+        </detailS.preBtn>
+      )}
+    </detailS.Co>
+    <detailS.Write>
+      <detailS.Box
+        disabled={!isSuccess}
+        onChange={(e) => setMyComment(e.target.value)}
+        value={myComment}
+      />
+      <button onClick={addComment}>댓글 등록</button>
+    </detailS.Write>
+  </detailS.SignupWrapper>
+);
 }
 export default CommunityDetail;
