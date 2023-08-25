@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import * as mystyles from "./Styled/Mypage.styles";
-import { FaStar } from "react-icons/fa";
-import request from "../../Api/request";
-import { refreshToken } from "../../Api/request";
-import { ACCESS_TOKEN } from "../../Api/request";
-import Pagination from "react-js-pagination";
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import * as mystyles from './Styled/Mypage.styles';
+import { FaStar } from 'react-icons/fa';
+import request from '../../Api/request';
+import { refreshToken } from '../../Api/request';
+import { ACCESS_TOKEN } from '../../Api/request';
+import Pagination from 'react-js-pagination';
 
 function Mypage() {
   const navigate = useNavigate();
@@ -59,20 +59,20 @@ function Mypage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await request.get("/api/auth");
-        console.log("response", response);
+        const response = await request.get('/api/auth');
+        console.log('response', response);
         setIsSuccess(response.isSuccess);
       } catch (error) {
         if (error.response && error.response.status === 401) {
           try {
             await refreshToken();
-            const response = await request.get("/api/auth");
+            const response = await request.get('/api/auth');
             setIsSuccess(response.isSuccess);
           } catch (refreshError) {
-            console.error("토큰 갱신 중 오류:", refreshError);
+            console.error('토큰 갱신 중 오류:', refreshError);
           }
         } else {
-          console.error("데이터 가져오기 중 오류:", error);
+          console.error('데이터 가져오기 중 오류:', error);
         }
       }
     };
@@ -82,20 +82,20 @@ function Mypage() {
   //////////////////////////
   ///로그아웃, 회원탈퇴
   const handleLogout = () => {
-    const confirmLogout = window.confirm("정말 로그아웃을 하십니까");
+    const confirmLogout = window.confirm('정말 로그아웃을 하십니까');
     if (confirmLogout) {
       window.localStorage.clear();
-      alert("로그아웃 완료");
-      navigate("/login");
+      alert('로그아웃 완료');
+      navigate('/login');
     }
   };
 
   const handleWithdrawal = async () => {
     let response;
-    const confirmWithdrawal = window.confirm("정말 회원탈퇴를 하십니까");
+    const confirmWithdrawal = window.confirm('정말 회원탈퇴를 하십니까');
     if (confirmWithdrawal) {
       try {
-        response = await request.delete("/api/members", {
+        response = await request.delete('/api/members', {
           headers: {
             Authorization: `Bearer ${window.localStorage.getItem(
               ACCESS_TOKEN
@@ -105,13 +105,13 @@ function Mypage() {
         console.log(response);
 
         if (isSuccess) {
-          alert("회원 탈퇴가 완료되었습니다.");
+          alert('회원 탈퇴가 완료되었습니다.');
           // 회원 탈퇴 후 필요한 동작 (예: 로그아웃, 페이지 이동 등)
         } else {
-          alert("회원 탈퇴 실패");
+          alert('회원 탈퇴 실패');
         }
       } catch (error) {
-        console.error("회원 탈퇴 실패", error);
+        console.error('회원 탈퇴 실패', error);
       }
     }
   };
@@ -123,18 +123,18 @@ function Mypage() {
       const fetchUserPosts = async () => {
         setLoading(true);
         try {
-          const response = await request.get("/api/members/post?sort=id,desc", {
+          const response = await request.get('/api/members/post?sort=id,desc', {
             headers: {
               Authorization: `Bearer ${window.localStorage.getItem(
                 ACCESS_TOKEN
               )}`,
             },
           });
-          console.log("서버 응답 데이터:", response);
+          console.log('서버 응답 데이터:', response);
           setUserPosts(response.data.content);
           console.log(userPosts);
         } catch (error) {
-          console.error("사용자의 작성글을 가져오는데 실패", error);
+          console.error('사용자의 작성글을 가져오는데 실패', error);
         } finally {
           setLoading(false);
         }
@@ -156,7 +156,7 @@ function Mypage() {
         console.log(request);
         try {
           const response = await request.get(
-            "/api/members/review?type=store&id=1&sort=id,desc",
+            '/api/members/review?type=store&id=1&sort=id,desc',
             {
               headers: {
                 Authorization: `Bearer ${window.localStorage.getItem(
@@ -168,7 +168,7 @@ function Mypage() {
           console.log(response);
           setUserReview(response.data.content);
         } catch (error) {
-          console.error("사용자의 후기를 가져오는데 실패", error);
+          console.error('사용자의 후기를 가져오는데 실패', error);
         } finally {
           setLoading(false);
           console.log(userReview);
@@ -234,7 +234,7 @@ function Mypage() {
   ///////////////////////////
   ////검색 sample
   const [filteredPosts, setFilteredPosts] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState('');
 
   const handleSearch = () => {
     // 검색어가 비어있는 경우
@@ -246,7 +246,7 @@ function Mypage() {
     const lowercaseSearchQuery = searchQuery.toLowerCase();
 
     const filtered = userPosts.filter((post) => {
-      const lowercaseTitle = post.title ? post.title.toLowerCase() : "";
+      const lowercaseTitle = post.title ? post.title.toLowerCase() : '';
 
       return lowercaseTitle.includes(lowercaseSearchQuery);
     });
@@ -257,7 +257,7 @@ function Mypage() {
   return (
     <mystyles.Div>
       <mystyles.Wrapper>
-        <mystyles.Title style={{ fontFamily: "Merriweather" }}>
+        <mystyles.Title style={{ fontFamily: 'Merriweather' }}>
           My Page
         </mystyles.Title>
         <mystyles.firstcontainer>
@@ -266,12 +266,12 @@ function Mypage() {
           </mystyles.secondcontainertitle>
           <mystyles.firstcontainerbutton
             onClick={() =>
-              navigate("/mypageinfo", {
-                state: { type: "mypageinfopage", name: "기본정보" },
+              navigate('/mypageinfo', {
+                state: { type: 'mypageinfopage', name: '기본정보' },
               })
             }
           >
-            {">"}
+            {'>'}
           </mystyles.firstcontainerbutton>
         </mystyles.firstcontainer>
         <hr></hr>
@@ -326,7 +326,7 @@ function Mypage() {
                   {[...Array(5)].map((_, index) => (
                     <FaStar
                       key={index}
-                      color={index < post.star ? "black" : "gray"}
+                      color={index < post.star ? 'black' : 'gray'}
                     />
                   ))}
                 </mystyles.reviewstar>
@@ -354,7 +354,7 @@ function Mypage() {
           <mystyles.lastbutton onClick={handleLogout}>
             로그아웃
           </mystyles.lastbutton>
-          {"|"}
+          {'|'}
           <mystyles.lastbutton onClick={handleWithdrawal}>
             회원탈퇴
           </mystyles.lastbutton>
