@@ -16,6 +16,7 @@ export const SignupContentWrapper = styled.div`
   margin-top: 0px;
   margin-left: 240px;
   margin-right: 240px;
+  padding-bottom: 104px;
   width: 1270px;
 `;
 
@@ -52,18 +53,16 @@ export const InfoBox = styled.div`
   border-bottom: 1px solid black;
 `;
 
-export const MoreButton = styled.button`
-  ${(props) => `background-color: ${tokens.colors.grey_900}`};
-  ${(props) => `color: ${tokens.colors.grey_100}`};
-  width: 88px;
-  height: 29px;
-  border: none;
-  padding: 4px 10px;
+export const MoreWrap = styled.div`
+  width: 80px;
+  display: flex;
+  justify-content: space-around;
   cursor: pointer;
-  border-radius: 4px;
-`;
+  font-family: 'Pretendard'; 
+  color:${tokens.colors.grey_60};
+`
 
-export const ContentWrapper = styled.div`
+export const ContentWrapper = styled.div` 
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -75,6 +74,7 @@ export const ContentWrapper = styled.div`
 `;
 
 export const InfoLine = styled.div`
+  font-family: 'Pretendard'; 
   display: flex;
   flex-direction: row;
   align-items: center;

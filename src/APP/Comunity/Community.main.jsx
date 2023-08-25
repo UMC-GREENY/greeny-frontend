@@ -67,9 +67,10 @@ function CommunityMain() {
         <itemS.Title>Community</itemS.Title>
         <itemS.ContentWrapper>
           <itemS.SubTitle>BEST POST</itemS.SubTitle>
-          <itemS.MoreButton onClick={() => handleMore("best")}>
-            더보기
-          </itemS.MoreButton>
+          <itemS.MoreWrap onClick={() => handleMore("best")}>
+            <span>더보기</span>
+            <span>&gt;</span>
+          </itemS.MoreWrap>
         </itemS.ContentWrapper>
 
         <itemS.InfoBox>
@@ -87,9 +88,10 @@ function CommunityMain() {
 
         <itemS.ContentWrapper>
           <itemS.SubTitle>ECO-STORE REVIEW</itemS.SubTitle>
-          <itemS.MoreButton onClick={() => handleMore("storereview")}>
-            더보기
-          </itemS.MoreButton>
+          <itemS.MoreWrap onClick={() => handleMore("storereview")}>
+            <span>더보기</span>
+            <span>&gt;</span>
+          </itemS.MoreWrap>
         </itemS.ContentWrapper>
 
         <itemS.InfoBox>
@@ -108,9 +110,10 @@ function CommunityMain() {
 
         <itemS.ContentWrapper>
           <itemS.SubTitle>ECO_PRODUCT REVIEW</itemS.SubTitle>
-          <itemS.MoreButton onClick={() => handleMore("productreview")}>
-            더보기
-          </itemS.MoreButton>
+          <itemS.MoreWrap onClick={() => handleMore("productreview")}>
+            <span>더보기</span>
+            <span>&gt;</span>
+          </itemS.MoreWrap>
         </itemS.ContentWrapper>
 
         <itemS.InfoBox>
@@ -129,9 +132,10 @@ function CommunityMain() {
 
         <itemS.ContentWrapper>
           <itemS.SubTitle>GREENY COMMUNITY</itemS.SubTitle>
-          <itemS.MoreButton onClick={() => handleMore("community")}>
-            더보기
-          </itemS.MoreButton>
+          <itemS.MoreWrap onClick={() => handleMore("community")}>
+            <span>더보기</span>
+            <span>&gt;</span>
+          </itemS.MoreWrap>
         </itemS.ContentWrapper>
 
         <itemS.InfoBox>
