@@ -82,23 +82,20 @@ export const ItemsWrapper = styled.div`
 
 export const SortContainer = styled.div`
   display: flex;
-  flex-direction: row;
+  width: 344px;
+  margin: 36px 0 0 920px;
   justify-content: space-between;
-  ${(props) =>
-      props.type === "store"
-      ? `
-      
-      width: 132px;
-      margin: 36px 0 0 1117px;
-`
-      : ` 
-      width: 344px;
-      margin: 36px 0 0 920px;
-            `}
+`;
+
+export const SortAllContainer = styled.div`
+  display: flex;
+  width: 1260px;
+  justify-content: space-between;
+  margin-top: 32px;
 `;
 
 export const SortText = styled.span`
-  font-family: Pretendard;
+  font-family: "Pretendard";
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
