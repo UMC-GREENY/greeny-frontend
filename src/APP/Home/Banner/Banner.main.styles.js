@@ -8,7 +8,7 @@ export const BannerWrap = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   width: 1440px;
-  height: 900px;
+  height: 738px;
 `;
 export const MainImg = styled.img`
   width: 100%;
@@ -22,10 +22,9 @@ export const MainImg = styled.img`
 export const MainText = styled.div`
   &.whitest {
     color: white;
-    font-family: New York;
+    font-family: 'New York';
     font-size: 48px;
     font-weight: 550;
-    line-height: 73px;
     letter-spacing: 0em;
     position: absolute;
     top: 211px;
@@ -37,10 +36,9 @@ export const MainText = styled.div`
 
   &.blackst {
     color: black;
-    font-family: New York;
+    font-family: 'New York';
     font-size: 48px;
     font-weight: 550;
-    line-height: 73px;
     letter-spacing: 0em;
     position: absolute;
     top: 211px;
@@ -51,8 +49,6 @@ export const MainText = styled.div`
   }
 `;
 export const SideNavWrap = styled.div`
-  margin-top: 94px;
-  position: absolute;
 `;
 
 export const LinkWrapperr = styled.div`
