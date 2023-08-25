@@ -180,7 +180,11 @@ function Post() {
             <itemS.InfoBox>
               {currentItems.map((post, index) => (
                 <React.Fragment key={post.id}>
-                  <itemS.InfoLine>
+                  <itemS.InfoLine onClick={() =>
+                    navigate(`/${post.type}/review/${post.idByType}`, {
+                      state: { array: { post } },
+                    })
+                  }>
                     <itemS.PostStar>{renderStars(post.star)}</itemS.PostStar>
                     <itemS.PostContent>{post.content}</itemS.PostContent>
                     <itemS.PostEmail>{post.writerEmail}</itemS.PostEmail>
@@ -210,7 +214,11 @@ function Post() {
             <itemS.InfoBox>
               {currentItems.map((post, index) => (
                 <React.Fragment key={post.id}>
-                  <itemS.InfoLine>
+                  <itemS.InfoLine onClick={() =>
+                    navigate(`/${post.type}/review/${post.idByType}`, {
+                      state: { array: { post } },
+                    })
+                  }>
                     <itemS.PostStar>{renderStars(post.star)}</itemS.PostStar>
                     <itemS.PostContent>{post.content}</itemS.PostContent>
                     <itemS.PostEmail>{post.writerEmail}</itemS.PostEmail>
@@ -263,10 +271,10 @@ function Post() {
               type === "best"
                 ? bestResponse.length
                 : type === "storereview"
-                ? storeReviewsResponse.length
-                : type === "productreview"
-                ? productReviewsResponse.length
-                : postResponse.length
+                  ? storeReviewsResponse.length
+                  : type === "productreview"
+                    ? productReviewsResponse.length
+                    : postResponse.length
             }
             onChange={handlePageChange}
             hideFirstLastPages={true}

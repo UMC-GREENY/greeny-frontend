@@ -152,7 +152,7 @@ function App() {
             }
           />
           <Route
-            path="/product/:productId/review"
+            path="/product/review/:productId"
             element={
               <>
                 <SideNav></SideNav>

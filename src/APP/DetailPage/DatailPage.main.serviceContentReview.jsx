@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import * as itemS from "./Styled/DetailPage.main.serviceContent.styles"
 import * as tokens from "../tokens";
 import StarRatings from "react-star-ratings";
@@ -12,6 +13,7 @@ import useBeforeUnload from '../Custom/useBeforeUnload';
 
 
 function ServiceContentReview(props) {
+    const navigate = useNavigate();
 
     const [review, setReview] = useState([]);
 
@@ -47,21 +49,12 @@ function ServiceContentReview(props) {
                     }
                 } else {
                     if (props.isProduct === true) {
-                    
                         const response = await request.get(`/api/reviews?type=product&id=${props.reviewID}`);
                         setReview(response.data);
                     } else {
                         const response = await request.get(`/api/reviews?type=store&id=${props.reviewID}`);
                         setReview(response.data);
                     }
-                }
-                if (props.isProduct === true) {
-                    const response = await request.get(`/api/reviews?type=product&id=${props.reviewID}`);
-                    console.log("URL: ", response.data.fileUrls);
-                    setReview(response.data);
-                } else {
-                    const response = await request.get(`/api/reviews?type=store&id=${props.reviewID}`);
-                    setReview(response.data);
                 }
             } catch (error) {
                 console.error('데이터 가져오기 실패', error);
@@ -131,7 +124,9 @@ function ServiceContentReview(props) {
                     </itemS.ReviewWrapper>
                     <itemS.overline></itemS.overline>
                     <itemS.ReviewWrapper type="bottom">
-                        <itemS.Btn type="list" onClick={() => props.setIsViewing(false)}>리뷰 목록</itemS.Btn>
+                        <itemS.Btn type="list" onClick={() => {
+                             navigate(`/community`)
+                        }}>COMMUNITY</itemS.Btn>
                     </itemS.ReviewWrapper>
                     </itemS.ContentWrap>
                 </>

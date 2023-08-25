@@ -60,6 +60,7 @@ export const secondcontainer = styled.div`
   flex-direction: column;
   align-items: start;
   margin-top: 40px;
+  margin-bottom: 40px;
 `;
 export const styledInput_pw = styled.input`
   width: 50%;
@@ -86,6 +87,7 @@ export const thirdcontainer = styled.div`
   color: #999999;
   border-style: solid;
   border-width: 2px 0 2px 0;
+  padding: 20px 0 20px;
 `;
 export const mycontents = styled.div`
   height: 30px;

@@ -97,7 +97,11 @@ function CommunityMain() {
         <itemS.InfoBox>
           {storeReviewsResponse.map((post, index) => (
             <React.Fragment key={post.id}>
-              <itemS.InfoLine>
+              <itemS.InfoLine onClick={() =>
+              navigate(`/${post.type}/review/${post.idByType}`, {
+                state: { array: {post} },
+              })
+            }>
                 <itemS.PostStar>{renderStars(post.star)}</itemS.PostStar>
                 <itemS.PostContent>{post.content}</itemS.PostContent>
                 <itemS.PostEmail>{post.writerEmail}</itemS.PostEmail>
@@ -119,7 +123,11 @@ function CommunityMain() {
         <itemS.InfoBox>
           {productReviewsResponse.map((post, index) => (
             <React.Fragment key={post.id}>
-              <itemS.InfoLine>
+              <itemS.InfoLine onClick={() =>
+              navigate(`/${post.type}/review/${post.idByType}`, {
+                state: { array: {post} },
+              })
+            }>
                 <itemS.PostStar>{renderStars(post.star)}</itemS.PostStar>
                 <itemS.PostContent>{post.content}</itemS.PostContent>
                 <itemS.PostEmail>{post.writerEmail}</itemS.PostEmail>
