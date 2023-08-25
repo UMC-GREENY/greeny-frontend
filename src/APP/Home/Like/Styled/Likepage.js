@@ -32,7 +32,7 @@ export const firstcontainer = styled.div`
 export const firstcontainerfont = styled.h4`
   font-size: 20px;
   color: black;
-  margin"-bottom: 10px;
+  margin-bottom: 10px;
 `;
 export const Title = styled.div`
   display: flex;
@@ -76,7 +76,7 @@ export const thirdcontainer = styled.div`
 `;
 
 export const tabwrapper = styled.div`
-  width: 1279px
+  width: 1279px;
   height: 48px;
   display: flex;
   flex-direction: row;
@@ -138,7 +138,7 @@ export const productimage = styled.div`
 export const productimagereal = styled.img`
   width: 175px;
   height: 100%;
-  border-radius: 6px;
+  border-radius: 6px 0 0 6px;
   object-fit: cover;
 `;
 
@@ -146,7 +146,7 @@ export const productinfo = styled.div`
   margin-left: 12px;
   color: black;
   flex-direction: column;
-  justify-content: start;
+  justify-content: space-between;
   align-items: start;
   width: 200px;
 `;
@@ -154,8 +154,14 @@ export const productinfotitle = styled.div`
   justify-content: start;
   text-align: start;
   margin-top: 5px;
-  font-family: Pretendard;
+  font-family: "Pretendard";
   white-space: normal;
+  font-size: 24px;
+  line-height: 36px;
+  
+  white-space: nowrap; /* 공백을 제거하여 한 줄로 표시 */
+  overflow: hidden; /* 내용이 넘칠 경우 숨김 처리 */
+  text-overflow: ellipsis; /* 넘친 내용을 ...으로 표시 */
 `;
 export const productinfodetail = styled.div`
   /* 공통 스타일 */

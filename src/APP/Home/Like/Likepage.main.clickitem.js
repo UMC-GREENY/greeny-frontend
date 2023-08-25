@@ -58,7 +58,7 @@ const LikeButton = ({ type, id, isLike, inner }) => {
   const [initialLikeState, setInitialLikeState] = useState(isLike);
 
   useEffect(() => {
-
+    console.log("헤헤",initialLikeState);
   }, [initialLikeState]);
   const handleToggleLike = async () => {
     if (!isTokenValid()) {
